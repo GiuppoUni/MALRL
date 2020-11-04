@@ -2,6 +2,10 @@
  AirSim based multi uav predictive manteinance application using reinforcement learning
 
 
+
+
+# Demo files 
+The following are demo files, from [Airsim](https://github.com/microsoft/AirSim/tree/master/PythonClient) ready to be run after installation to test airsim possibilities.
 Multirotor demo files:
 - arm.py -> useless
 - box.py -> Flying a small square box using moveByVelocityZ
