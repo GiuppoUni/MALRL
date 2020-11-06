@@ -33,8 +33,12 @@
 \examiner{Prof. Nome Cognome}
 \examiner{Dr. Nome Cognome}
 \versiondate{\today}
+%====================================%====================================
+%								MY PACKAGES
+%%====================================%====================================
+\usepackage{amsmath}
 
-
+%%====================================%====================================
 
 \begin{document}
 
@@ -60,7 +64,7 @@ verso il prof. Enrico Gregorio.
 \tableofcontents
 
 % Do not use the starred version of the chapter command!
-\chapter{Capitolo non numerato}
+\chapter{Problem}
 
 In this manual you can skip the gray text because it is just dummy text.%
 \footnote{This is a footnote.}
@@ -68,13 +72,57 @@ In this manual you can skip the gray text because it is just dummy text.%
 \textcolor{gray}{\lipsum[1-22]}
 
 
-\section*{Paragrafo non numerato}
+\section*{Problem definition and motivation}
+This section presents the theoretical formulation of the cooperative search
+problem, including the environment model, the vehicle dynamics
+model, the states and action space involved.
+\subsection*{Environment}
+In our proposed collaborative task, the Environment E consists of a portion of space equals to $E_x x E_y$ meters. There are N agents (where $N\le6$) moving at the same discrete time synchronously, sending to the ground station at each time step $t$ the following information:
+$$ s_i(t) = (\bar{g_{i}}(t),F_{i,t},C_{i,t})$$
+where:
+\begin{itemize}
+	\item $\bar{g_{i}}(t) = (x_{i,t},y_{i,t},z_{i,t})$, $\bar{g_{i}}(t)$ are the GPS simulated coordinates at time t for drone i
+	
+	\item $(F_{i,t}){n\times m} = $ 
+	$\begin{bmatrix}
+		p_{0,0} & ... & p_{0,m-1} \\ ... & ... & ... \\ p_{n-1,0} & ... & p_{n-1,m-1} 
+	\end{bmatrix}
+	$, $F_{i,t} $ is an image taken by drone i at time t, p is a pixel
+	
+	\item $(C_{i,t})_{N\times N} = $ 
+	$\begin{bmatrix}
+	c_{0,0} & ... & c_{0,N-1} \\ ... & ... & ... \\ c_{N-1,0} & ... & c_{N-1,N-1} 
+	\end{bmatrix}
+	$,\\ \\
+	 $C_{i,t} $ is the communication matrix associated to instant t for drone i.\\
+	$(c_{u,v})_{u,v=0,..,N-1} = \begin{cases} 0 \mbox{ (false)}, & \mbox{if } drone_{u,v} \mbox{ is outside coverage areaof drone in} \\ 1 \mbox{ (true)}, & \mbox{otherwise}
+	\end{cases}$
+\end{itemize}
 
-In this manual you can skip the gray text because it is just dummy text.
+ The vehicles are assumed to be equipped with reliable
+communication capabilities so that they can exchange sensing information among the group without any error or delay.
+The objective of UAVs is to explore the environment cooperatively and to gather information till the target (or multiple targets) is identified and localized.
 
-\textcolor{gray}{\lipsum[1-22]}
+\subsection*{Action space for simplified Aerial Vehicle}
+At initial timestep $t=0$ each UAV is laying on the ground, positioned inside the respective takeoff zone. Each UAV has associated a takeoff zone which is a rectangular area, not bordering with the others, used to delimit the random initial position for the UAV inside of it.
+% TODO specificare meglio %
+At the next time steps each drone moves to the nearest point belonging to the line representing the street to be patrolled.
+When a UAV is positioned over the street it start flying above it, so at each time step it moves and take pictures of the street. In this phase drones can move in 8 directions in order to follow the path of the street in both direction of travel. So the action space will be: 
+$$ A = \{ 1 \mbox{ (up), }
+2 \mbox{ (up-right), }
+3 \mbox{ (right), } 
+4 \mbox{ (down-right), }
+5\mbox{ (down), }
+6 \mbox{ (down-left), }
+7 \mbox{ (left), } 
+8 \mbox{ (up-left) }
+\}$$
+Each $a \in A$ has specific velocity and angles of motion designed to respect maneuverability constraints.
 
-
+\subsection*{States and observations}
+The already mentioned state $s_i(t) \in S$ is vehicle state vector for vehicle $i^{th}$. This
+information, in particular the first and last component ( $\bar{g_i}(t)$ and $C_{i,t}$) are used to guide the search to certain areas of the
+environment and can be consistently updated using sensor information about the environment. The communication matrix $C_{i,t}$ is used to prevent eventual collision and improve cooperation avoiding multiple exploration of the same places in a limited range of time.
 
 
 \mainmatter
