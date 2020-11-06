@@ -4,6 +4,7 @@
 #=========================================================================#
 
 
+from utils import build_vehicle_distance_matrix
 import utils
 import setup_path
 import airsim
@@ -29,18 +30,32 @@ def main():
     print(f"Client created: {client}")
     client.confirmConnection()
     print('Connection Confirmed')
-
     utils.enable_control_all(client,vehicles)
-    utils.place_one_drone(client,vehicles[0],(0,0,10))
-    utils.place_one_drone(client,vehicles[1],(5,5,10))
-    utils.place_one_drone(client,vehicles[2],(10,10,10))
+    print('UAVs Enabled')
+    
     # takeoff_all(client,vehicles)
 
     zones = utils.generate_spawn_zones()
-    utils.place_drones(client,vehicles,zones)
+    places = utils.place_drones(client,vehicles,zones)
+    print("UAVs positioned at:", places)
+    
+    last_vehicle_pointer = utils.take_off_all(client, vehicles)
+    # We wait until the last drone is off the ground
+    last_vehicle_pointer.join()
 
+    # We mimic the memory bank of a drone, tracking the relative positions.
+    # It should be a n-length vector, with each drone tracking itself and the matrix looks like
 
+    #                                 drone_1 drone_2 ... drone n
+    # all_positions["kin_pos_list"] = [x,y,z] [x,y,z] ... [x,y,z]
+    # all_positions["gps_pos_list"] = [x,y,z] [x,y,z] ... [x,y,z]
 
-    time.sleep(10)
+    for _ in range(20):
+        all_positions = utils.get_all_drone_positions(client,vehicles)
+        build_vehicle_distance_matrix(all_positions)
+        print(all_positions["gps_pos_list"])
+        print(utils.communications_matrix)
+
+        time.sleep(4)
 
 main()
