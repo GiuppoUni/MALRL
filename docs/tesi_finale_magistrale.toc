@@ -1,8 +1,0 @@
-\contentsline {chapter}{Problem}{xi}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Style features of \textsf {sapthesis}}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Page layout}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Page style}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}About figures and tables}{2}{section.1.3}
-\contentsline {section}{\numberline {1.4}A section}{3}{section.1.4}
-\contentsline {section}{\numberline {1.5}Another section}{5}{section.1.5}
-\contentsline {chapter}{\numberline {A}Special commands provided by \textsf {sapthesis}}{7}{appendix.A}
