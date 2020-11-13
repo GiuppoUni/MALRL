@@ -131,6 +131,7 @@ def get_all_drone_positions(client, vehicles) :
     _all_pos["gps_pos_list"] = []
     for i, drone_name in enumerate(vehicles):
         state_data = client.getMultirotorState(vehicle_name=drone_name)
+        print(state_data)
         _all_pos["kin_pos_list"].append( position_to_list(state_data.kinematics_estimated.position) )
         _all_pos["gps_pos_list"].append( gps_position_to_list(state_data.gps_location))
 

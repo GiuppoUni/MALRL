@@ -1,0 +1,44 @@
+================================================================================================================================================
+Materials about:
+Information representation: from POMDP to predictive state representation to TD-networks to deep-learning.
+Inverse RL: how to learn the reward
+Algorithms
++ Off-policy
++ Large scale: linear and nonlinear approximations of the value function
++ Policy search vs. Q-learning based
+Beyond MDP, contextual MDPs
+Optimal exploration
+Hierarchical RL
+Multitask RL and life long learning
+Multiagent RL
+Efficient model based RL
+========================================================================================================================
+
+
+* Sutton & Barto Book: Reinforcement Learning: An Introduction. The classical intuitive intro to the field. I love it.
+
+* The chapter by Bertsekas: Page on mit.edu
+
+* Algorithms for Reinforcement Learning: Csaba Szepesvari. Nice compendium of ready to be implemented algorithms.
+
+* Reinforcement Learning and Dynamic Programming using Function Approximators. Busoniu, Lucian; Robert Babuska ; Bart De Schutter ; Damien Ernst (2010). This is a very practical book that explains some state-of-the-art algorithms (i.e., useful for real world problems) like fitted-Q-iteration and its variations.
+
+* Reinforcement Learning: State-of-the-Art. Vol. 12 of Adaptation, Learning and Optimization. Wiering, M., van Otterlo, M. (Eds.), 2012. Springer, Berlin. In Sutton's words "This book is a valuable resource for students wanting to
+go beyond the older textbooks and for researchers wanting to easily catch up with
+recent developments".
+
+* Optimal Adaptive Control and Differential Games by Reinforcement Learning Principles : Draguna Vrabie, Kyriakos G. Vamvoudakis , Frank L. Lewis. I am not familiar with this one, but I have seen it recommended.
+
+* Markov Decision Processes in Artificial Intelligence, Sigaud O. & Buffet O. editors, ISTE Ld., Wiley and Sons Inc, 2010.
+
+I definitely suggest the books by Sutton and Barto as an excellent intro, the chapter by Bertsekas for getting a solid theoretical background and the book by Busoniu et al. for practical algorithms that can solve some non-toy problems. I also find useful the book by Szepesvari as a quick reference for understanding an comparing algorithms.
+
+There are also several good specialized monographs and surveys on the topic, some of these are:
+
++ "From Bandits to Monte-Carlo Tree Search: The Optimistic Principle Applied to Optimization and Planning" by Remi Munos (New trends on Machine Learning). This monograph covers important nonconvex optimistic optimization methods that can be applied for policy search. Available at https://hal.archives-ouvertes.fr/hal-00747575v5/document
+
++ "Reinforcement Learning in Robotics: A Survey" by J. Kober, J. A. Bagnell and J. Peters. Available at Page on ias.tu-darmstadt.de
+
++ "A Tutorial on Linear Function Approximators for Dynamic Programming and Reinforcement Learning" by A. Geramifard, T. J. Walsh, S. Tllex, G. Chowdhary, N. Roy and J. P. How (Foundations and Trends in Machine Learning). Available at Page on mit.edu
+
++ "A Survey on Policy Search for Robotic" by Newmann and Peters (Foundations and Trends in Machine Learning). Available at Page on ausy.tu-darmstadt.de

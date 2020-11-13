@@ -9,7 +9,7 @@ import cv2
 import time
 import math
 import sys
-import numpy as np
+import numpy as np  
 
 client = airsim.MultirotorClient()
 client.confirmConnection()

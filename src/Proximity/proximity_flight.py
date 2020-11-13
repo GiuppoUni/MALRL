@@ -4,7 +4,6 @@
 #=========================================================================#
 
 
-from utils import build_vehicle_distance_matrix
 import utils
 import setup_path
 import airsim
@@ -20,7 +19,7 @@ import json
 
  
     
-def main():
+if __name__ == '__main__':
     
     vehicles = [v for v in utils.settings["Vehicles"] ]
     print(vehicles)
@@ -39,7 +38,7 @@ def main():
     places = utils.place_drones(client,vehicles,zones)
     print("UAVs positioned at:", places)
     
-    last_vehicle_pointer = utils.take_off_all(client, vehicles)
+    last_vehicle_pointer = utils.takeoff_all(client, vehicles)
     # We wait until the last drone is off the ground
     last_vehicle_pointer.join()
 
@@ -52,10 +51,8 @@ def main():
 
     for _ in range(20):
         all_positions = utils.get_all_drone_positions(client,vehicles)
-        build_vehicle_distance_matrix(all_positions)
+        utils.build_vehicle_distance_matrix(all_positions)
         print(all_positions["gps_pos_list"])
         print(utils.communications_matrix)
 
         time.sleep(4)
-
-main()

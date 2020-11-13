@@ -25,6 +25,7 @@ def takeoff_all_drones(client, drone_names: list) -> None:
 def get_all_drone_positions(client, drones: list) -> np.array:
     for i, drone_name in enumerate(list(drones)):
         state_data = client.getMultirotorState(vehicle_name=drone_name)
+        print(state_data)
         drones[drone_name].pos_vec3 = position_to_list(state_data.kinematics_estimated.position)
         drones[drone_name].gps_pos_vec3 = gps_position_to_list(state_data.gps_location)
 
