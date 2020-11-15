@@ -39,7 +39,7 @@ args = parser.parse_args()
 env = gym.make(args.env_name)
 np.random.seed(123)
 env.seed(123)
-nb_actions = env.action_space.n
+nb_actions = env.action_space[0].n
 
 
 # Next, we build our model. We use the same model that was described by Mnih et al. (2015).
@@ -48,7 +48,7 @@ WINDOW_LENGTH = 1
 # Next, we build our model. We use the same model that was described by Mnih et al. (2015).
 input_shape = (WINDOW_LENGTH,) + INPUT_SHAPE
 
-
+# Layers of NN
 model = Sequential()
 model.add(Conv2D(32, (4, 4), strides=(4, 4) ,activation='relu', input_shape=input_shape, data_format = "channels_first"))
 model.add(Conv2D(64, (3, 3), strides=(2, 2),  activation='relu'))

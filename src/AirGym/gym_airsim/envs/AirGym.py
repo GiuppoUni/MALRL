@@ -16,7 +16,11 @@ logger = logging.getLogger(__name__)
 
 
 class AirSimEnv(gym.Env):
-
+    """
+    #======================================#
+            # THESIS ENVIRONMENT #
+    #======================================#
+    """
     airgym = None
         
     def __init__(self):
@@ -26,6 +30,7 @@ class AirSimEnv(gym.Env):
         
         self.action_space = spaces.Discrete(3)
 		
+        # TODO GPS POS
         self.goal = 	[221.0, -9.0] # global xy coordinates
         
         
@@ -33,15 +38,16 @@ class AirSimEnv(gym.Env):
         self.stepN = 0 
         
         self.allLogs = { 'reward':[0] }
+        # TODO change to initial distance from objective
         self.allLogs['distance'] = [221]
         self.allLogs['track'] = [-2]
         self.allLogs['action'] = [1]
 
 
-        self._seed()
+        self.allLogs["seed"] = self._seed()
         
         global airgym
-        airgym = myAirSimClient()
+        airgym = MyAirSimClient()
         
         
     def _seed(self, seed=None):
@@ -50,9 +56,9 @@ class AirSimEnv(gym.Env):
         
     def computeReward(self, now, track_now):
 	
-		# test if getPosition works here liek that
+		# test if getPosition works here like that
 		# get exact coordiantes of the tip
-      
+        # TODO change to distance in GPS coords
         distance_now = np.sqrt(np.power((self.goal[0]-now["x_val"]),2) + np.power((self.goal[1]-now["y_val"]),2))
         
         distance_before = self.allLogs['distance'][-1]
@@ -81,16 +87,19 @@ class AirSimEnv(gym.Env):
         assert airgym.ping()    
         collided = airgym.take_action(action)
         
+        # change to GPS
         now = airgym.getPosition()
         track = airgym.goal_direction(self.goal, now) 
 
         if collided == True:
             done = True
             reward = -100.0
+            # TODO change to GPS
             distance = np.sqrt(np.power((self.goal[0]-now["x_val"]),2) + np.power((self.goal[1]-now["y_val"]),2))
         elif collided == 99:
             done = True
             reward = 0.0
+            # TODO change to GPS
             distance = np.sqrt(np.power((self.goal[0]-now["x_val"]),2) + np.power((self.goal[1]-now["y_val"]),2))
         else: 
             done = False
@@ -145,7 +154,9 @@ class AirSimEnv(gym.Env):
         
         print("")
         
+        # Change to GPS
         now = airgym.getPosition()
+        # goal_direction needs to be changed to goal_direction_gps using gps
         track = airgym.goal_direction(self.goal, now)
         self.state = airgym.getScreenDepthVis(track)
         

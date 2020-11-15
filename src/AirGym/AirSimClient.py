@@ -424,7 +424,10 @@ class AirSimClientBase:
         AirSimClientBase.write_file(filename, png_bytes)
 
 
-# -----------------------------------  Multirotor APIs ---------------------------------------------
+#=====================================================================================================#
+# # -----------------------------------  Multirotor APIs --------------------------------------------- #
+#=====================================================================================================#
+
 class MultirotorClient(AirSimClientBase, object):
     def __init__(self, ip = ""):
         if (ip == ""):
@@ -434,17 +437,17 @@ class MultirotorClient(AirSimClientBase, object):
     def armDisarm(self, arm, vehicle_name = STD_NAME):
         return self.client.call('armDisarm', arm, vehicle_name)
 
-    def takeoff(self, max_wait_seconds = 15):
-        return self.client.call('takeoff', max_wait_seconds)
+    def takeoff(self, max_wait_seconds = 15,vehicle_name = STD_NAME):
+        return self.client.call('takeoff', max_wait_seconds, vehicle_name)
         
-    def land(self, max_wait_seconds = 60):
-        return self.client.call('land', max_wait_seconds)
+    def land(self, max_wait_seconds = 60,vehicle_name = STD_NAME):
+        return self.client.call('land', max_wait_seconds,vehicle_name)
         
-    def goHome(self):
-        return self.client.call('goHome')
+    def goHome(self,vehicle_name = STD_NAME):
+        return self.client.call('goHome',vehicle_name)
 
-    def hover(self):
-        return self.client.call('hover')
+    def hover(self,vehicle_name = STD_NAME):
+        return self.client.call('hover',vehicle_name)
 
         
     """ 
@@ -467,12 +470,12 @@ class MultirotorClient(AirSimClientBase, object):
         return decodeDict(bPos)
 
 
-    def getLandedState(self):
-        return self.client.call('getLandedState')
-    def getGpsLocation(self):
-        return GeoPoint.from_msgpack(self.client.call('getGpsLocation'))
-    def getPitchRollYaw(self):
-        return self.toEulerianAngle(self.getOrientation())
+    def getLandedState(self,vehicle_name = STD_NAME):
+        return self.client.call('getLandedState',vehicle_name )
+    def getGpsLocation(self,vehicle_name = STD_NAME):
+        return GeoPoint.from_msgpack(self.client.call('getGpsLocation',vehicle_name ))
+    def getPitchRollYaw(self,vehicle_name=STD_NAME):
+        return self.toEulerianAngle(self.getOrientation(vehicle_name=vehicle_name))
     # DEPRECATED
     #def getRCData(self):
     #    return self.client.call('getRCData')

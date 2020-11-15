@@ -1,9 +1,16 @@
 import time
+from time import sleep
 from airsimgeo import AirSimGeoClient
 import utils
 srid = 'EPSG:3857'
-origin = (41.9022357,12.4572837, 0 )
-dest = (41.9030354,12.4663601, 60) #(lat,long,height)
+origin = (
+    12.457480,
+    41.902243,
+    0 )
+dest = (
+    12.466382,
+    41.902491,
+    80) #(lat,long,height)
 
 client = AirSimGeoClient(srid=srid, origin=origin)
 client.confirmConnection()
@@ -17,3 +24,6 @@ print("{:.4f},{:.4f},{:.4f}".format(pos[0], pos[1], pos[2]))
 
 # Move to GPS position
 client.moveToPositionAsyncGeo(gps=dest,vehicle_name="Drone1")
+while(True):
+    sleep(1)
+    print(client.getGpsLocation())

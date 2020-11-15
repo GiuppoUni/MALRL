@@ -43,3 +43,8 @@ Environment demo files:
 - weather.py -> change weather conditions
 
 
+## Conventions
+
+All drone names **NEED** to be in this format:
+"Drone<i>" where i is a number.
+E.g.: Drone1, Drone2, Drone3, ...
