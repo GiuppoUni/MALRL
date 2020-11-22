@@ -1,14 +1,20 @@
 import logging
 import numpy as np
 
-
-
+import utils
 
 class Target:
-    def __init__(self,id,lat,lon):
-        self.id = "Target_" + str(id)
+    def __init__(self,id,lat,lon,z=0):
+        self.id = id
+        self.name = "Target_" + str(id)
         self.lat = lat 
         self.lon = lon
+        self.z = z
+
+        self.x_val , self.y_val , self.z_val  = utils.lonlatToAirSim(lon,lat,z,
+                                # utils.env_cfg.o_x,utils.env_cfg.o_y,utils.env_cfg.o_z)
+                                    0,0,0)
+
         self.isLocalized = False
         self.isClassified = False
 
@@ -20,11 +26,13 @@ class Target:
 
 class TargetManager:
     def __init__(self, n_targets):
-        self.targets = []
+        self.targets = {}
         self.num_targets = n_targets
+        self.ts_allocated = {}
+        self.ts_unallocated = {}
         self.resetTargets()
 
-    def getCoo(self,i):
+    def getGPSCoo(self,i):
         if i == 0:
             return 12.459601163864138, 41.902277040963696
         if i == 1:
@@ -35,17 +43,31 @@ class TargetManager:
             return np.random.uniform(12.45,12.47,1) , np.random.uniform(41.90,4.95,1) 
     
     def resetTargets(self):
-        self.targets =[]
+        self.targets = {}
         for i in range(self.num_targets):
-            _coo = self.getCoo(i)
+            _coo = self.getGPSCoo(i)
             _t = Target(i,lon = _coo[0], lat = _coo[1])
-            self.targets.append(_t)
-
+            self.targets[i] = _t 
+        self.ts_unallocated = self.targets
+        self.ts_allocated = {}
 
     def reset_targets_status(self):
-        for t in self.targets:
-            t.isLocalized = False
-            t.isClassified = False
+        # for t in self.targets:
+        #     t.isLocalized = False
+        #     t.isClassified = False
+        self.ts_unallocated = self.targets
+        self.ts_allocated = {}
+        
+
+    def allocate_target(self,drone_name,target_id):
+        self.ts_allocated[target_id] = {
+            "ts_obj":self.targets[target_id],
+            "drone_name":drone_name
+            }
+
+    def unallocate_target(self,target_id):
+        self.ts_allocated.pop(target_id)
+
 
 
     # TODO generate the mesh for current target in unreal editor 

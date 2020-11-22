@@ -193,12 +193,13 @@ class MyAirSimClient(MultirotorClient):
             # print("STATE:",kin_state)
 
             uav.home_pos = kin_state[b"position"]
-        
             uav.home_ori = kin_state[b"orientation"]
             
             uav.z = -6
 
             self.drones.append(uav)
+
+
 
     def AirSim_reset(self):
         

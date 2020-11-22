@@ -48,3 +48,10 @@ Environment demo files:
 All drone names **NEED** to be in this format:
 "Drone<i>" where i is a number.
 E.g.: Drone1, Drone2, Drone3, ...
+
+
+## Sources
+https://github.com/Kjell-K/AirGym
+https://github.com/koulanurag/ma-gym
+gym-airsim
+TODO look to my watch/star  list

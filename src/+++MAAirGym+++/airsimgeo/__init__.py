@@ -48,13 +48,13 @@ class AirSimGeoClient(MultirotorClient):
     def nedToGps(self, x, y, z):
         return self.lonlatToProj(*self.nedToProj(x, y, z), inverse=True)
 
-    def getGpsLocation(self):
-        """
-        Gets GPS coordinates of the vehicle.
-        """
-        pos = self.simGetGroundTruthKinematics().position
-        gps = self.nedToGps(pos.x_val, pos.y_val, pos.z_val)
-        return gps
+    # def getGpsLocation(self):
+    #     """
+    #     Gets GPS coordinates of the vehicle.
+    #     """
+    #     pos = self.simGetGroundTruthKinematics().position
+    #     gps = self.nedToGps(pos.x_val, pos.y_val, pos.z_val)
+    #     return gps
 
     def moveToPositionAsyncGeo(self, gps=None, proj=None,vel=10, **kwargs):
         """

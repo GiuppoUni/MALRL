@@ -13,24 +13,11 @@ from myAirSimClient import *
 
 logger = logging.getLogger(__name__)
 
+import utils
 
 
 # All coords
 # this format -> (lon,lat,height)
-
-# Depending on type of projection
-SRID = 'EPSG:5555'
-
-ORIGIN = (
-    12.457480,
-    41.902243,
-    0 )
-DEST = (
-    12.466382,
-    41.902491,
-    80) 
-
-
 
 class MultiAgentActionSpace(list):
     def __init__(self, agents_action_space):
@@ -48,14 +35,14 @@ class MultiAgentActionSpace(list):
 class AirSimEnv(gym.Env):
 
 
-    def __init__(self,n_agents = 3, step_cost = -1):
+    def __init__(self,n_agents = 3,n_actions = 3, step_cost = -1):
         self.n_agents = n_agents
         # left depth, center depth, right depth, yaw
         self.observation_space = spaces.Box(low=0, high=255, shape=(30, 100))
-        self.states = [np.zeros((30, 100), dtype=np.uint8) for _ in range(n_agents)]  
-        self.action_space = MultiAgentActionSpace([spaces.Discrete(3) for _ in range(n_agents)])
+        self.states = [np.zeros((30, 100), dtype=np.uint8) for _ in range(n_agents)] 
+        self.n_actions = n_actions
+        self.action_space = MultiAgentActionSpace([spaces.Discrete(n_actions) for _ in range(n_agents)])
 		
-        self.goals = [ [221.0, -9.0] for _ in range(n_agents)] # global xy coordinates
         
         
         self.episodeN = 0
@@ -63,10 +50,16 @@ class AirSimEnv(gym.Env):
         self._step_cost = step_cost
         self._agents_dones = [ False for _ in range(n_agents)]
 
+        
 
         self._seed()
         
-        self.myClient = MyAirSimClient(SRID,ORIGIN)
+        self.myClient = MyAirSimClient(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
+
+        # TODO replace with  allocated targets
+        self.goals = self.myClient.allocate_all_targets() 
+        #[ [221.0, -9.0] for _ in range(n_agents)] # global xy coordinates
+        
 
         self.allLogs = dict()
         self.init_logs()
@@ -110,31 +103,35 @@ class AirSimEnv(gym.Env):
         for agent_i,action in enumerate(agents_actions):
 
             if self._agents_dones[agent_i]:
+                print("[Drone"+str(agent_i)+"]"+"No action (done): ")
                 continue    #agent_i has done with its task
 
-            _current_log = self.allLogs['Drone'+str(agent_i+1)]
+            _current_log = self.allLogs['Drone'+str(agent_i)]
 
             assert self.action_space[agent_i].contains(action), "%r (%s) invalid"%(action, type(action))
-            addToDict(_current_log,"action", action)
+            utils.addToDict(_current_log,"action", action)
         
             assert self.myClient.ping()    
+            # Get current drone
             drone = self.myClient.drones[agent_i]
+            
+            # --- HERE EXECUTE DRONE ACTION ---
             collided = drone.take_action(action)
         
             now = self.myClient.getPosition(vehicle_name = drone.vehicle_name)
             goal = self.goals[agent_i]
             track = drone.goal_direction(goal, now) 
+            
+            done = True
+            distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
+            reward = 0
             if collided == True:
-                done = True
                 reward = -100.0
-                distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
             elif collided == 99:
-                done = True
                 reward = 0.0
-                distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
             else: 
                 done = False
-                reward, distance = self.computeReward("Drone"+str(agent_i+1),
+                reward, distance = self.computeReward("Drone"+str(agent_i),
                                                     now,goal, track)
         
             # Youuuuu made it
@@ -146,9 +143,9 @@ class AirSimEnv(gym.Env):
             rewards[agent_i] = reward
             self._agents_dones[agent_i] = done 
 
-            addToDict(_current_log,"reward", reward)
-            addToDict(_current_log, 'distance', distance) 
-            addToDict(_current_log, 'track', track)      
+            utils.addToDict(_current_log,"reward", reward)
+            utils.addToDict(_current_log, 'distance', distance) 
+            utils.addToDict(_current_log, 'track', track)      
             
             rewardSum = np.sum(_current_log['reward'])
             
@@ -161,7 +158,7 @@ class AirSimEnv(gym.Env):
             info[agent_i] = {"x_pos" : now.x_val, "y_pos" : now.y_val}
 
             assert self.myClient.ping()
-            self.states[agent_i] = drone.getScreenDepthVis(track)
+            # self.states[agent_i] = drone.getScreenDepthVis(track)
         
         sys.stdout.write(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
         sys.stdout.flush()
@@ -186,19 +183,32 @@ class AirSimEnv(gym.Env):
         self.episodeN += 1
         
             
-        print("")
-        self.myClient.AirSim_reset()
-        
-        for i,u in enumerate(self.myClient.drones) :
-            
-            now = self.myClient.getPosition(vehicle_name = u.vehicle_name)
-            track = u.goal_direction(self.goals[i], now)
-            # self.states[i] = u.getScreenDepthVis(track)
+        print("Resetting...")
+        # self.myClient.AirSim_reset()
+        self.local_reset()
 
         self.init_logs()
     
         
         return self.states
+
+    def local_reset(self):
+        # Reset targets
+        self.myClient.targetMg.reset_targets_status()
+        self.goals = self.myClient.allocate_all_targets()
+        for i,d in enumerate(self.myClient.drones):
+            self.myClient.place_one_drone(d.vehicle_name,
+                gps = utils.init_gps[i])
+            _pt = d.reset_Zposition()
+            d.tagPrint("Joining...")
+            # _pt.join()
+            # TODO SHOULD BE JOINED FOR Z BUT CRASH HAPPENS
+            # now = self.myClient.getPosition(d.vehicle_name)
+            # d.track = d.goal_direction( self.goals[i],now)
+            # d.home_pos = now
+            # d.home_ori = self.myClient.getOrientation(d.vehicle_name)
+
+
 
 
     def init_logs(self):
@@ -209,7 +219,4 @@ class AirSimEnv(gym.Env):
                 self.allLogs[u.vehicle_name]['track'] = [-2]
                 self.allLogs[u.vehicle_name]['action'] = [1]
 
-def addToDict(d: dict,k,v):
-    if k not in d:
-        d[k] = []
-    d[k].append(v)
+

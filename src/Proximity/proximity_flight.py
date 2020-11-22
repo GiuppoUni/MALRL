@@ -35,13 +35,13 @@ if __name__ == '__main__':
     # takeoff_all(client,vehicles)
 
     zones = utils.generate_spawn_zones()
-    places = utils.place_drones(client,vehicles,zones)
-    print("UAVs positioned at:", places)
+    # places = utils.place_drones(client,vehicles,zones)
+    # print("UAVs positioned at:", places)
     
     last_vehicle_pointer = utils.takeoff_all(client, vehicles)
     # We wait until the last drone is off the ground
     last_vehicle_pointer.join()
-
+    print("Takeoff completed.")
     # We mimic the memory bank of a drone, tracking the relative positions.
     # It should be a n-length vector, with each drone tracking itself and the matrix looks like
 
@@ -49,10 +49,9 @@ if __name__ == '__main__':
     # all_positions["kin_pos_list"] = [x,y,z] [x,y,z] ... [x,y,z]
     # all_positions["gps_pos_list"] = [x,y,z] [x,y,z] ... [x,y,z]
 
-    for _ in range(20):
-        all_positions = utils.get_all_drone_positions(client,vehicles)
-        utils.build_vehicle_distance_matrix(all_positions)
-        print(all_positions["gps_pos_list"])
-        print(utils.communications_matrix)
-
-        time.sleep(4)
+    # for _ in range(20):
+        # all_positions = utils.get_all_drone_positions(client,vehicles)
+        # utils.build_vehicle_distance_matrix(all_positions)
+        # print(all_positions["gps_pos_list"])
+        # print(utils.communications_matrix)
+        # time.sleep(4)

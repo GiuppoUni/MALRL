@@ -1,7 +1,9 @@
-from airsim.client import *
-from airsim.types import *
+import os
 import airsim
 import time
+from airsim.client import MultirotorClient
+from airsim.types import DrivetrainType, Vector3r, YawMode
+import numpy as np
 from pyproj import Proj
 import sys
 from Drone import DroneAgent
@@ -9,6 +11,9 @@ from gym_airsim.envs.Target import TargetManager,Target
 # Change the path below to point to the directoy where you installed the AirSim PythonClient
 # sys.path.append('../../')
 import utils
+import math
+import cv2
+
 #=======================================================#
 # Wrapper class to handle airsim client and multi drones #
 #            Developed on top of AirSim 1.3.1            #
@@ -16,12 +21,13 @@ import utils
 #=======================================================#
 
 
+client = airsim.MultirotorClient() 
 
-# TODO make it readed from settings or utils
-vehicles = ["Drone1", "Drone2", "Drone3"]
-# Target -> name : [lon,lat]
+vehicles = utils.g_airsim_settings["Vehicles"]
+print('vehicles: ', [v for v in vehicles])
 
-class MyAirSimClient(MultirotorClient):
+
+class MyAirSimClient(airsim.MultirotorClient):
     
     """
     AirSim client that understands arbitrary projection systems
@@ -33,16 +39,18 @@ class MyAirSimClient(MultirotorClient):
             kwargs -- Any keyword arguments forwared to AirSim
     """
     
-    def __init__(self,srid, origin):        
+    def __init__(self,srid, origin,**kwargs):       
         print("Creating custom client ...")
-        MultirotorClient.__init__(self)
+        super(MyAirSimClient, self).__init__(**kwargs)
+        # MultirotorClient.__init__(self)
         print("con conf ...")
-        MultirotorClient.confirmConnection(self)
+        self.confirmConnection()
         print("con confirmed.")
         self.drones = []
         self.drones_names = []
 
-        self.targetMg= TargetManager(3)
+        # TODO replace with variable
+        self.targetMg= TargetManager(6)
 
         self.srid = srid
         self.origin = origin
@@ -52,7 +60,8 @@ class MyAirSimClient(MultirotorClient):
         
         for v in vehicles:
             print("Craete",v)
-            uav = DroneAgent(vehicle_name=v,client = self)
+            uav = DroneAgent(vehicle_name=v,client = client, 
+                z = utils.g_vehicles[v]["Z"])
             uav.enable_armDisarm()
             
             kin_state = uav.getState()
@@ -68,6 +77,7 @@ class MyAirSimClient(MultirotorClient):
             self.drones_names.append(uav.vehicle_name)
 
         print("Custom client created.")
+        
 
     def place_drones(self,init_pose):
         poses = []
@@ -85,32 +95,34 @@ class MyAirSimClient(MultirotorClient):
             d.home_pos , d.home_ori = self.place_one_drone(d.vehicle_name,gps = utils.init_gps[i])
             d.reset_Zposition()
         self.targetMg.reset_targets_status()
-    
-    def AirSim_reset_old(self):
         
-        reset = False
-        z = -6.0
-        while reset != True:
 
-            now = self.getPosition()
-            self.simSetPose(Pose(Vector3r(now.x_val, now.y_val, -30),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True) 
-            now = self.getPosition()
+        
+    # def AirSim_reset_old(self):
+        
+    #     reset = False
+    #     z = -6.0
+    #     while reset != True:
+
+    #         now = self.getPosition()
+    #         self.simSetPose(Pose(Vector3r(now.x_val, now.y_val, -30),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True) 
+    #         now = self.getPosition()
             
-            if (now.z_val - (-30)) == 0:
-                self.simSetPose(Pose(Vector3r(self.home_pos.x_val, self.home_pos.y_val, -30),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True)
-                now = self.getPosition()
+    #         if (now.z_val - (-30)) == 0:
+    #             self.simSetPose(Pose(Vector3r(self.home_pos.x_val, self.home_pos.y_val, -30),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True)
+    #             now = self.getPosition()
                 
-                if (now.x_val - self.home_pos.x_val) == 0 and (now.y_val - self.home_pos.y_val) == 0 and (now.z_val - (-30)) == 0 :
-                    self.simSetPose(Pose(Vector3r(self.home_pos.x_val, self.home_pos.y_val, self.home_pos.z_val),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True)
-                    now = self.getPosition()
+    #             if (now.x_val - self.home_pos.x_val) == 0 and (now.y_val - self.home_pos.y_val) == 0 and (now.z_val - (-30)) == 0 :
+    #                 self.simSetPose(Pose(Vector3r(self.home_pos.x_val, self.home_pos.y_val, self.home_pos.z_val),Quaternionr(self.home_ori.w_val, self.home_ori.x_val, self.home_ori.y_val, self.home_ori.z_val)), True)
+    #                 now = self.getPosition()
                     
-                    if (now.x_val - self.home_pos.x_val) == 0 and (now.y_val - self.home_pos.y_val) == 0 and (now.z_val - self.home_pos.z_val) == 0:
-                        reset = True
-                        self.moveByVelocity(0, 0, 0, 1)
-                        time.sleep(1)
+    #                 if (now.x_val - self.home_pos.x_val) == 0 and (now.y_val - self.home_pos.y_val) == 0 and (now.z_val - self.home_pos.z_val) == 0:
+    #                     reset = True
+    #                     self.moveByVelocity(0, 0, 0, 1)
+    #                     time.sleep(1)
                         
-        self.moveToZAsync(z, 3,vehicle_name="")  
-        time.sleep(3)
+    #     self.moveToZAsync(z, 3,vehicle_name="")  
+    #     time.sleep(3)
 
 
     #==================  AIRSIM GEO APIs =====================
@@ -223,9 +235,11 @@ class MyAirSimClient(MultirotorClient):
         return super().rotateByYawRateAsync( yaw_rate, duration,vehicle_name )
 
     def moveByVelocityZ(self, vx, vy, z, duration, drivetrain = DrivetrainType.MaxDegreeOfFreedom, yaw_mode = YawMode(),vehicle_name = "" ):
-        return super().moveByVelocityZAsync( vx, vy, z, duration, drivetrain, yaw_mode, vehicle_name)
+        return super().moveByVelocityZAsync( vx, vy, z, duration, drivetrain, yaw_mode, vehicle_name = vehicle_name)
 
     def moveByVelocity(self, vx, vy, vz, duration, drivetrain = DrivetrainType.MaxDegreeOfFreedom, yaw_mode = YawMode(),vehicle_name = ""):
+        print("Moving:",vehicle_name)
+        # self.drones[int(vehicle_name[-1])].moving = True
         return super().moveByVelocityAsync( vx, vy, vz, duration, drivetrain, yaw_mode,vehicle_name)
 
 
@@ -233,6 +247,10 @@ class MyAirSimClient(MultirotorClient):
         for dn in self.drones_names :
             self.enableApiControl(True, dn)
             self.armDisarm(True, dn )
+
+    def wakeup_drone(self,dn):
+        self.enableApiControl(True,dn)
+        self.armDisarm(True,dn)
 
     def takeoff_all_drones(self) -> None:
         """
@@ -257,8 +275,12 @@ class MyAirSimClient(MultirotorClient):
             gps.append( gps_position_to_list(state_data.gps_location) )
         return pos, gps
 
+    def allocate_all_targets(self):
+        for i,dn in enumerate(self.drones_names):
+            self.targetMg.allocate_target(dn,i)
+        return [  (self.targetMg.targets[t_id].x_val,self.targetMg.targets[t_id].y_val) for t_id in self.targetMg.targets]
 
-    #============================== HELPERS ==============================================
+    # ============================== HELPERS ==============================================
     
     @staticmethod
     def toEulerianAngle(q):

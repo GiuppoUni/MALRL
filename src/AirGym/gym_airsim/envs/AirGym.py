@@ -16,11 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class AirSimEnv(gym.Env):
-    """
-    #======================================#
-            # THESIS ENVIRONMENT #
-    #======================================#
-    """
+
     airgym = None
         
     def __init__(self):

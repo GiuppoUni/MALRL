@@ -8,6 +8,7 @@ import sys
 from pylab import array, arange, uint8 
 from PIL import Image
 
+import utils
 
 class DroneAgent:
     def __init__(self,vehicle_name = None ,img1=None,img2=None,
@@ -20,16 +21,29 @@ class DroneAgent:
         self.home_ori = home_ori
         self.z = z
         self.client = client
+        self.targets = []
+        self.track = None
+
+    # FORWARD ONLY ACTIONS
 
     def straight(self, duration, speed):
         pitch, roll, yaw  = self.client.getPitchRollYaw(self.vehicle_name)
         vx = math.cos(yaw) * speed
         vy = math.sin(yaw) * speed
-        self.client.moveByVelocityZ(vx, vy, self.z, duration, DrivetrainType.ForwardOnly,
+        vz = 0
+
+        self.client.wakeup_drone(self.vehicle_name)
+        pointer = self.client.moveByVelocityZ(vx, vy,self.z, duration, DrivetrainType.ForwardOnly,
             vehicle_name =self.vehicle_name)
         start = time.time()
-        return start, duration
+        return start, duration, pointer
     
+    def gotoGoal(self, duration, speed):
+        
+        self.client.moveToPositionAsync(5, -5, -20, duration, vehicle_name=self.vehicle_name)
+        start = time.time()
+        return start, duration
+
     def yaw_right(self, duration):
         self.client.rotateByYawRate(30, duration,vehicle_name=self.vehicle_name)
         start = time.time()
@@ -40,60 +54,85 @@ class DroneAgent:
         start = time.time()
         return start, duration
     
+    def stop_moving(self,duration):
+        self.client.moveByVelocity(0, 0, 0, duration,vehicle_name = self.vehicle_name)
+        self.client.rotateByYawRate(0, 1, vehicle_name = self.vehicle_name)
+        start = time.time()
+        return start, duration
+
+    # CRAB ACTIONS
+
+    def crab_straight(self, duration, speed):
+        self.client.moveByVelocity(speed, 0, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+            vehicle_name = self.vehicle_name)
+        start = time.time()
+        return start, duration
     
+    def crab_right(self, duration):
+        self.client.moveByVelocityZ(0, 1, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+            vehicle_name = self.vehicle_name)
+        start = time.time()
+        return start, duration
+    
+    def crab_left(self, duration):
+        self.client.moveByVelocityZ(0, -1, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+            vehicle_name = self.vehicle_name)        
+        start = time.time()
+        return start, duration
+
+
+    # NOTE: ACTION EXECUTION
     def take_action(self, action):
 		
-        #check if copter is on level cause sometimes he goes up without a reason
-        x = 0
-        while self.client.getPosition().z_val < -7.0:
-            print("["+self.vehicle_name+"]","Levelizing...")
-            self.client.moveToZAsync(-6, 3,vehicle_name=self.vehicle_name)
-            time.sleep(1)
-            print(self.client.getPosition().z_val, "and", x)
-            x = x + 1
-            if x > 10:
-                return True        
+        # Check if copter is on level cause sometimes he goes up without a reason
+        min_z = float(utils.g_config["agent"]["min_z"])
+        self.z = self.client.getPosition(vehicle_name=self.vehicle_name).z_val
+        print("["+self.vehicle_name+"] Cur Z", self.z)
+        # if  cur_z < min_z:
+        #     print("["+self.vehicle_name+"]","Levelizing...")
+        #     self.client.moveToZAsync(z = min_z, velocity = 3,vehicle_name=self.vehicle_name)
+        # i = 0
+        # while self.client.getPosition(vehicle_name=self.vehicle_name).z_val < min_z:
+        #     print(self.client.getPosition(vehicle_name=self.vehicle_name).z_val, "and", i)
+        #     i += 1
+        #     time.sleep(1)
+        #     if i > 10:
+        #         return True        
+        # time.sleep(5)
+        # print(self.client.getPosition(vehicle_name=self.vehicle_name).z_val, "and", i)
         
     
         start = time.time()
         duration = 0 
         
         collided = False
- 
         if action == 0:
-
-            start, duration = self.straight(1, 4)
-        
-            while duration > time.time() - start:
-                if self.client.simGetCollisionInfo(vehicle_name = self.vehicle_name).has_collided == True:
-                    return True    
-                
-            self.client.moveByVelocity(0, 0, 0, 1,vehicle_name = self.vehicle_name)
-            self.client.rotateByYawRate(0, 1, vehicle_name = self.vehicle_name)
-            
-            
-        if action == 1:
-         
-            start, duration = self.yaw_right(0.8)
-            
-            while duration > time.time() - start:
-                if self.client.simGetCollisionInfo(vehicle_name = self.vehicle_name).has_collided == True:
-                    return True
-            
-            self.client.moveByVelocity(0, 0, 0, 1,vehicle_name = self.vehicle_name)
-            self.client.rotateByYawRate(0, 1,vehicle_name = self.vehicle_name)
-            
-        if action == 2:
-            
+            start, duration, pointer = self.straight(5, 5)
+            # start, duration = self.gotoGoal(10,5)            
+        elif action == 1:
+            start, duration = self.yaw_right(1)
+        elif action == 2:
             start, duration = self.yaw_left(1)
+        elif action == 3:
+            start, duration = self.stop_moving(3)
+        
+        pointer.join()
+        # self.tagPrint("CHECKING COLLISION...")
+        # while duration > time.time() - start:
+        #     if self.client.simGetCollisionInfo(vehicle_name = self.vehicle_name).has_collided == True:
+        #         print("-"*40,"COLLISION!","-"*40)
+        #         return True
+        #     time.sleep(0.2)    
+        # self.tagPrint("CHECK DONE.")
+
             
-            while duration > time.time() - start:
-                if self.client.simGetCollisionInfo(vehicle_name = self.vehicle_name).has_collided == True:
-                    return True
-                
-            self.client.moveByVelocity(0, 0, 0, 1, vehicle_name = self.vehicle_name)
-            self.client.rotateByYawRate(0, 1, vehicle_name = self.vehicle_name)
-            
+
+        # TO STOP CURRENT ACTION
+        # self.client.moveByVelocity(0, 0, 0, 1,vehicle_name = self.vehicle_name)
+        # time.sleep(1)
+        # self.client.rotateByYawRate(0, 1, vehicle_name = self.vehicle_name)
+        # time.sleep(1)
+
         return collided
     
     def goal_direction(self, goal, pos):
@@ -115,8 +154,10 @@ class DroneAgent:
             vehicle_name = self.vehicle_name)
         img1d = np.array(responses[0].image_data_float, dtype=np.float)
         img1d = 255/np.maximum(np.ones(img1d.size), img1d)
-        img2d = np.reshape(img1d, (responses[0].height, responses[0].width))
-        
+        if(img1d.size != 1):
+            img2d = np.reshape(img1d, (responses[0].height, responses[0].width))
+        else:
+            img2d = (0,0)
         
         image = np.invert(np.array(Image.fromarray(img2d.astype(np.uint8), mode='L')))
         
@@ -161,11 +202,12 @@ class DroneAgent:
     
 
     def reset_Zposition(self):
-        self.tagPrint("Resetting position (async) ...")
-        self.enable_armDisarm()
+        self.tagPrint("Resetting Z position (async) ...")
+        # self.enable_armDisarm()
         # time.sleep(1)
-        self.client.moveToZAsync(self.z, 1.5,vehicle_name=self.vehicle_name) 
+        return self.client.moveToZAsync(self.z, 0.1,vehicle_name=self.vehicle_name) 
         # time.sleep(3)
+        # return self.client.takeoffAsync(vehicle_name = self.vehicle_name)
 
     def tagPrint(self,s=""):
         sys.stdout.write(f"\t [{self.vehicle_name}] "+ s + "\n")
