@@ -21,7 +21,7 @@ import cv2
 #=======================================================#
 
 
-client = airsim.MultirotorClient() 
+
 
 vehicles = utils.g_airsim_settings["Vehicles"]
 print('vehicles: ', [v for v in vehicles])
@@ -41,10 +41,11 @@ class MyAirSimClient(airsim.MultirotorClient):
     
     def __init__(self,srid, origin,**kwargs):       
         print("Creating custom client ...")
-        super(MyAirSimClient, self).__init__(**kwargs)
+        # super(MyAirSimClient, self).__init__(**kwargs)
+        self.direct_client = airsim.MultirotorClient(ip = "127.0.0.1")
         # MultirotorClient.__init__(self)
         print("con conf ...")
-        self.confirmConnection()
+        self.direct_client.confirmConnection()
         print("con confirmed.")
         self.drones = []
         self.drones_names = []
@@ -60,7 +61,7 @@ class MyAirSimClient(airsim.MultirotorClient):
         
         for v in vehicles:
             print("Craete",v)
-            uav = DroneAgent(vehicle_name=v,client = client, 
+            uav = DroneAgent(vehicle_name=v,client = self.direct_client, 
                 z = utils.g_vehicles[v]["Z"])
             uav.enable_armDisarm()
             
@@ -157,7 +158,7 @@ class MyAirSimClient(airsim.MultirotorClient):
         """
         Gets GPS coordinates of the vehicle.
         """
-        pos = self.simGetGroundTruthKinematics(vehicle_name= vehicle_name).position
+        pos = self.direct_client.simGetGroundTruthKinematics(vehicle_name= vehicle_name).position
         gps = self.nedToGps(pos.x_val, pos.y_val, pos.z_val)
         return gps
 
@@ -196,7 +197,7 @@ class MyAirSimClient(airsim.MultirotorClient):
     #======================= CUSTOM API (WRAPPERS) =======================
 
     def getPosition(self,vehicle_name = ""):
-        kin_state = self.getMultirotorState(vehicle_name=vehicle_name).kinematics_estimated
+        kin_state = self.direct_client.getMultirotorState(vehicle_name=vehicle_name).kinematics_estimated
         return kin_state.position
 
     def place_one_drone(self,vehicle_name, gps=None, proj=None,**kwargs ):
@@ -212,7 +213,7 @@ class MyAirSimClient(airsim.MultirotorClient):
         if coords:
             ORIENTATION = airsim.Quaternionr(0, 0, 0, 0)
             pose = airsim.Pose(airsim.Vector3r(*coords), ORIENTATION)
-            super().simSetVehiclePose(pose, 
+            self.direct_client.simSetVehiclePose(pose, 
                 ignore_collison=True,vehicle_name = vehicle_name,**kwargs)
             _gps = self.getGpsLocation(vehicle_name = vehicle_name)
             _or = self.getOrientation(vehicle_name=vehicle_name)
@@ -225,7 +226,7 @@ class MyAirSimClient(airsim.MultirotorClient):
 
     
     def getOrientation(self,vehicle_name = ""):
-        kin_state = self.getMultirotorState(vehicle_name=vehicle_name).kinematics_estimated
+        kin_state = self.direct_client.getMultirotorState(vehicle_name=vehicle_name).kinematics_estimated
         return kin_state.orientation
 
     def getPitchRollYaw(self,vehicle_name=""):

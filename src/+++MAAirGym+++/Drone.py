@@ -27,14 +27,16 @@ class DroneAgent:
     # FORWARD ONLY ACTIONS
 
     def straight(self, duration, speed):
-        pitch, roll, yaw  = self.client.getPitchRollYaw(self.vehicle_name)
-        vx = math.cos(yaw) * speed
-        vy = math.sin(yaw) * speed
-        vz = 0
+        # pitch, roll, yaw  = self.client.getPitchRollYaw(self.vehicle_name)
+        # vx = math.cos(yaw) * speed
+        # vy = math.sin(yaw) * speed
+        # vz = 0
 
-        self.client.wakeup_drone(self.vehicle_name)
-        pointer = self.client.moveByVelocityZ(vx, vy,self.z, duration, DrivetrainType.ForwardOnly,
-            vehicle_name =self.vehicle_name)
+        # self.client.wakeup_drone(self.vehicle_name)
+        self.client.enableApiControl(True,"Drone0")
+        self.client.armDisarm(True,"Drone0")
+        vx,vy,vz = 3,0,0
+        pointer = self.client.moveByVelocityAsync( vx=vx, vy=vy, vz=vz, duration = duration,vehicle_name = "Drone0")
         start = time.time()
         return start, duration, pointer
     
@@ -86,11 +88,13 @@ class DroneAgent:
 		
         # Check if copter is on level cause sometimes he goes up without a reason
         min_z = float(utils.g_config["agent"]["min_z"])
-        self.z = self.client.getPosition(vehicle_name=self.vehicle_name).z_val
-        print("["+self.vehicle_name+"] Cur Z", self.z)
+        # self.z = self.client.getPosition(vehicle_name=self.vehicle_name).z_val
+        # print("["+self.vehicle_name+"] Cur Z", self.z)
+        
         # if  cur_z < min_z:
         #     print("["+self.vehicle_name+"]","Levelizing...")
         #     self.client.moveToZAsync(z = min_z, velocity = 3,vehicle_name=self.vehicle_name)
+        
         # i = 0
         # while self.client.getPosition(vehicle_name=self.vehicle_name).z_val < min_z:
         #     print(self.client.getPosition(vehicle_name=self.vehicle_name).z_val, "and", i)
@@ -106,6 +110,7 @@ class DroneAgent:
         duration = 0 
         
         collided = False
+        pointer = None
         if action == 0:
             start, duration, pointer = self.straight(5, 5)
             # start, duration = self.gotoGoal(10,5)            
@@ -116,7 +121,6 @@ class DroneAgent:
         elif action == 3:
             start, duration = self.stop_moving(3)
         
-        pointer.join()
         # self.tagPrint("CHECKING COLLISION...")
         # while duration > time.time() - start:
         #     if self.client.simGetCollisionInfo(vehicle_name = self.vehicle_name).has_collided == True:
@@ -133,20 +137,20 @@ class DroneAgent:
         # self.client.rotateByYawRate(0, 1, vehicle_name = self.vehicle_name)
         # time.sleep(1)
 
-        return collided
+        return collided,pointer
     
     def goal_direction(self, goal, pos):
         
-        pitch, roll, yaw  = self.client.getPitchRollYaw(vehicle_name = self.vehicle_name)
-        yaw = math.degrees(yaw) 
+        # pitch, roll, yaw  = self.client.getPitchRollYaw(vehicle_name = self.vehicle_name)
+        # yaw = math.degrees(yaw) 
         
-        pos_angle = math.atan2(goal[1] - pos.y_val, goal[0]- pos.x_val)
-        pos_angle = math.degrees(pos_angle) % 360
+        # pos_angle = math.atan2(goal[1] - pos.y_val, goal[0]- pos.x_val)
+        # pos_angle = math.degrees(pos_angle) % 360
 
-        track = math.radians(pos_angle - yaw)  
+        # track = math.radians(pos_angle - yaw)  
         
-        return ((math.degrees(track) - 180) % 360) - 180    
-    
+        # return ((math.degrees(track) - 180) % 360) - 180    
+        return 0    
     
     def getScreenDepthVis(self, track):
 

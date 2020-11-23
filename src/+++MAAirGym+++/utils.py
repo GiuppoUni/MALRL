@@ -121,3 +121,6 @@ def addToDict(d: dict,k,v):
     if k not in d:
         d[k] = []
     d[k].append(v)
+
+def dronePrint(idx,s):
+    print("[Drone"+str(idx)+"]",s)

@@ -1,4 +1,5 @@
 import logging
+from myAirSimClient2 import MyAirSimClient2
 import numpy as np
 import random
 
@@ -9,12 +10,12 @@ from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
 from myAirSimClient import *
-        
+from oldMyAirSimClient import oldMyAirSimClient
 
 logger = logging.getLogger(__name__)
 
 import utils
-
+import sys
 
 # All coords
 # this format -> (lon,lat,height)
@@ -43,7 +44,7 @@ class AirSimEnv(gym.Env):
         self.n_actions = n_actions
         self.action_space = MultiAgentActionSpace([spaces.Discrete(n_actions) for _ in range(n_agents)])
 		
-        
+        self.agent_names = [v for v in utils.g_airsim_settings["Vehicles"] ]
         
         self.episodeN = 0
         self.stepN = 0 
@@ -54,12 +55,13 @@ class AirSimEnv(gym.Env):
 
         self._seed()
         
-        self.myClient = MyAirSimClient(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-
+        # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
+        self.myClient = oldMyAirSimClient()
         # TODO replace with  allocated targets
-        self.goals = self.myClient.allocate_all_targets() 
-        #[ [221.0, -9.0] for _ in range(n_agents)] # global xy coordinates
+        self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         
+        # self.myClient.direct_client.takeoffAsync(vehicle_name="Drone0")
+
 
         self.allLogs = dict()
         self.init_logs()
@@ -100,27 +102,32 @@ class AirSimEnv(gym.Env):
         rewards = [self._step_cost for _ in range(self.n_agents)]
         info = [None for _ in range(self.n_agents)]
         toPrint = ""
-        for agent_i,action in enumerate(agents_actions):
 
-            if self._agents_dones[agent_i]:
+        self.myClient.pts = []
+        for agent_i,action in enumerate(agents_actions):
+            agent_name = 'Drone'+str(agent_i)
+            if self._agents_dones[agent_i]: 
                 print("[Drone"+str(agent_i)+"]"+"No action (done): ")
                 continue    #agent_i has done with its task
 
-            _current_log = self.allLogs['Drone'+str(agent_i)]
+            _current_log = self.allLogs[agent_name]
 
             assert self.action_space[agent_i].contains(action), "%r (%s) invalid"%(action, type(action))
             utils.addToDict(_current_log,"action", action)
         
-            assert self.myClient.ping()    
+            # assert self.myClient.direct_client.ping()    
             # Get current drone
-            drone = self.myClient.drones[agent_i]
+            # drone = self.myClient.drones[agent_i]
             
             # --- HERE EXECUTE DRONE ACTION ---
-            collided = drone.take_action(action)
-        
-            now = self.myClient.getPosition(vehicle_name = drone.vehicle_name)
+            # collided,pt = drone.take_action(action)
+            collided = self.myClient.take_action(action,agent_i)
+            #---------------------------------------------
+            # self.myClient.pts.append(pt)
+            
+            now = self.myClient.getPosition(vehicle_name = agent_name)
             goal = self.goals[agent_i]
-            track = drone.goal_direction(goal, now) 
+            track = self.myClient.goal_direction(goal, now,agent_name) 
             
             done = True
             distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
@@ -157,9 +164,11 @@ class AirSimEnv(gym.Env):
             toPrint+=("\t uav"+str(agent_i)+": {:.1f}/{:.1f}, {:.0f}, {:.0f} \n".format( reward, rewardSum, track, action))
             info[agent_i] = {"x_pos" : now.x_val, "y_pos" : now.y_val}
 
-            assert self.myClient.ping()
+            # assert self.myClient.direct_client.ping()
             # self.states[agent_i] = drone.getScreenDepthVis(track)
-        
+
+        # self.myClient.wait_joins("STEP")
+
         sys.stdout.write(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
         sys.stdout.flush()
 
@@ -194,29 +203,36 @@ class AirSimEnv(gym.Env):
 
     def local_reset(self):
         # Reset targets
-        self.myClient.targetMg.reset_targets_status()
-        self.goals = self.myClient.allocate_all_targets()
-        for i,d in enumerate(self.myClient.drones):
-            self.myClient.place_one_drone(d.vehicle_name,
-                gps = utils.init_gps[i])
-            _pt = d.reset_Zposition()
-            d.tagPrint("Joining...")
-            # _pt.join()
-            # TODO SHOULD BE JOINED FOR Z BUT CRASH HAPPENS
-            # now = self.myClient.getPosition(d.vehicle_name)
-            # d.track = d.goal_direction( self.goals[i],now)
-            # d.home_pos = now
-            # d.home_ori = self.myClient.getOrientation(d.vehicle_name)
+        # self.myClient.targetMg.reset_targets_status()
+        # self.goals = self.myClient.allocate_all_targets()
+        self.goals = [ [221.0, -9.0 + (i*5)] for i in range(self.n_agents)] # global xy coordinates
+        self.myClient.pts = []
+        # for i,d in enumerate(self.myClient.drones):
+        #     self.myClient.place_one_drone(d.vehicle_name,
+        #         gps = utils.init_gps[i])
+        #     # _pt = d.reset_Zposition()
+        #     d.z = -6
+            
+        #     pt = self.myClient.direct_client.moveToZAsync(d.z,3,
+        #         vehicle_name=d.vehicle_name)
+        #     self.myClient.pts.append(pt)
+        #     d.tagPrint("move z reset Joining...")
+        #     # _pt.join()
+        #     # TODO SHOULD BE JOINED FOR Z BUT CRASH HAPPENS
+        #     # now = self.myClient.getPosition(d.vehicle_name)
+        #     # d.track = d.goal_direction( self.goals[i],now)
+        #     # d.home_pos = now
+        #     # d.home_ori = self.myClient.getOrientation(d.vehicle_name)
 
-
+        # self.myClient.wait_joins()
 
 
     def init_logs(self):
-        if self.myClient:
-            for u in self.myClient.drones:
-                self.allLogs[u.vehicle_name] = { 'reward':[0] }
-                self.allLogs[u.vehicle_name]['distance'] = [221]
-                self.allLogs[u.vehicle_name]['track'] = [-2]
-                self.allLogs[u.vehicle_name]['action'] = [1]
+        # return
+        for vn in self.agent_names:
+            self.allLogs[vn] = { 'reward':[0] }
+            self.allLogs[vn]['distance'] = [221]
+            self.allLogs[vn]['track'] = [-2]
+            self.allLogs[vn]['action'] = [1]
 
 

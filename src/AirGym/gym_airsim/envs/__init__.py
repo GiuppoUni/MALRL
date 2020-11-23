@@ -1,1 +1,0 @@
-from gym_airsim.envs.newAirGym import AirSimEnv
