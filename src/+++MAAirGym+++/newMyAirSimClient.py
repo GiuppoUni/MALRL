@@ -14,6 +14,7 @@ import multiprocessing as mp
 from airsim import MultirotorClient
 import airsim
 import sys 
+import utils
 
 class DrivetrainType:
     MaxDegreeOfFreedom = 0
@@ -28,7 +29,7 @@ class AirSimImageType:
     Segmentation = 5
     SurfaceNormals = 6
 
-class oldMyAirSimClient(MultirotorClient):
+class newMyAirSimClient(MultirotorClient):
 
     def __init__(self):        
         self.img1 = None
@@ -36,8 +37,10 @@ class oldMyAirSimClient(MultirotorClient):
 
         MultirotorClient.__init__(self)
         MultirotorClient.confirmConnection(self)
-        self.enableApiControl(True,vehicle_name="Drone0")
-        self.armDisarm(True,vehicle_name="Drone0")
+        self.drones_names = [ v for v in utils.g_airsim_settings["Vehicles"] ]
+        for dn in self.drones_names:
+            self.enableApiControl(True,vehicle_name=dn)
+            self.armDisarm(True,vehicle_name=dn)
     
         self.home_pos = self.getPosition(vehicle_name="Drone0")
     
@@ -62,6 +65,8 @@ class oldMyAirSimClient(MultirotorClient):
 
 
     def straight(self, duration, speed,vName):
+        print('STRAIGHT: ', vName)
+        
         pitch, roll, yaw  = self.getPitchRollYaw(vehicle_name=vName)
         vx = math.cos(yaw) * speed
         vy = math.sin(yaw) * speed
@@ -80,10 +85,8 @@ class oldMyAirSimClient(MultirotorClient):
         return start, duration
     
     
-    def take_action(self, action,agent_i=0):
+    def take_action(self, action,vName):
 		
-        vName = "Drone"+str(agent_i)
-        print('vName: ', vName)
 
         #check if copter is on level cause sometimes he goes up without a reason
         x = 0
@@ -176,11 +179,14 @@ class oldMyAirSimClient(MultirotorClient):
         self.reset()
         # TODO RESET ALL 
         time.sleep(0.2)
-        self.enableApiControl(True,vehicle_name="Drone0")
-        self.armDisarm(True,vehicle_name="Drone0")
+        for dn in self.drones_names:
+            self.enableApiControl(True,vehicle_name=dn)
+            self.armDisarm(True,vehicle_name=dn)
         time.sleep(1)
-        self.moveToZAsync(self.z, 3,vehicle_name="Drone0") 
-        time.sleep(3)
+        for dn in self.drones_names:
+            self.moveToZAsync(self.z, 3,vehicle_name=dn) 
+            time.sleep(1)
+        time.sleep(2)
     
     @staticmethod
     def toEulerianAngle(q):

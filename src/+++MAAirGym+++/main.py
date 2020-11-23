@@ -11,6 +11,10 @@ from navMapWindow import NavMapper
 import utils
 import time
 
+logger = utils.initiate_logger()
+print = logger.info
+
+
 if __name__ == '__main__':
 
 
@@ -22,6 +26,7 @@ if __name__ == '__main__':
     # env = gym.make("AirSimEnv-v1")
     
     
+
     # TODO replace for variables
     env = AirSimEnv(n_agents=int(utils.g_config["rl"]["n_agents"]),
         n_actions = 3,step_cost = -1)
@@ -38,10 +43,10 @@ if __name__ == '__main__':
 
         # env.render()
         
-        while not all(done_n):
-        # for _ in range(0,5): # DEBUG ONLY
-            # action_n = env.action_space.sample() # Random actions
-            action_n = [0 for _ in range(env.n_agents)] # DEBUG ONLY
+        # while not all(done_n):
+        for _ in range(0,150): # DEBUG ONLY
+            action_n = env.action_space.sample() # Random actions DEBUG ONLY
+            # action_n = [0 for _ in range(env.n_agents)] # DEBUG ONLY
 
             obs_n, reward_n, done_n, info = env.step(action_n)
             ep_reward += sum(reward_n)

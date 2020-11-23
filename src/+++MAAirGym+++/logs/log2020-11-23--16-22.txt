@@ -1,0 +1,6 @@
+16:22:08,676 multiAirGym DEBUG Experiment Date: 2020-11-23  16:22
+16:22:10,680 tornado.general WARNING Connect error on fd 1260: WSAECONNREFUSED
+16:22:12,686 tornado.general WARNING Connect error on fd 1260: WSAECONNREFUSED
+16:22:14,690 tornado.general WARNING Connect error on fd 1260: WSAECONNREFUSED
+16:22:16,692 tornado.general WARNING Connect error on fd 1260: WSAECONNREFUSED
+16:22:18,696 tornado.general WARNING Connect error on fd 1260: WSAECONNREFUSED

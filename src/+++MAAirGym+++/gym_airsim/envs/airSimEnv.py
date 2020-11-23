@@ -10,12 +10,15 @@ from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
 from myAirSimClient import *
-from oldMyAirSimClient import oldMyAirSimClient
+from newMyAirSimClient import newMyAirSimClient
 
 logger = logging.getLogger(__name__)
 
 import utils
 import sys
+import main
+
+print = main.logger.info
 
 # All coords
 # this format -> (lon,lat,height)
@@ -56,7 +59,7 @@ class AirSimEnv(gym.Env):
         self._seed()
         
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-        self.myClient = oldMyAirSimClient()
+        self.myClient = newMyAirSimClient()
         # TODO replace with  allocated targets
         self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         
@@ -105,7 +108,9 @@ class AirSimEnv(gym.Env):
 
         self.myClient.pts = []
         for agent_i,action in enumerate(agents_actions):
+            
             agent_name = 'Drone'+str(agent_i)
+            print('STEPPING: ', agent_name)
             if self._agents_dones[agent_i]: 
                 print("[Drone"+str(agent_i)+"]"+"No action (done): ")
                 continue    #agent_i has done with its task
@@ -121,7 +126,7 @@ class AirSimEnv(gym.Env):
             
             # --- HERE EXECUTE DRONE ACTION ---
             # collided,pt = drone.take_action(action)
-            collided = self.myClient.take_action(action,agent_i)
+            collided = self.myClient.take_action(action,agent_name)
             #---------------------------------------------
             # self.myClient.pts.append(pt)
             
@@ -169,8 +174,7 @@ class AirSimEnv(gym.Env):
 
         # self.myClient.wait_joins("STEP")
 
-        sys.stdout.write(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
-        sys.stdout.flush()
+        print(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
 
         return self.states, rewards, self._agents_dones, info
 
@@ -207,6 +211,7 @@ class AirSimEnv(gym.Env):
         # self.goals = self.myClient.allocate_all_targets()
         self.goals = [ [221.0, -9.0 + (i*5)] for i in range(self.n_agents)] # global xy coordinates
         self.myClient.pts = []
+        self.myClient.AirSim_reset()
         # for i,d in enumerate(self.myClient.drones):
         #     self.myClient.place_one_drone(d.vehicle_name,
         #         gps = utils.init_gps[i])
