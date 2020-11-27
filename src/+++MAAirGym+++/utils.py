@@ -6,12 +6,13 @@ from pyproj import Proj
 from configparser import ConfigParser
 import logging
 import datetime
+import numpy as np
 
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
 CONFIGS_FOLDER = "./configs/"
 LOG_FOLDER = "./logs/"
-
+TRAJECTORIES_FOLDER = "./trajectories/"
 
 with open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:
     g_airsim_settings = json.load(jsonFile)
@@ -33,6 +34,8 @@ DEST = (
     41.902491,
     80) 
 
+
+
 # GPS init position of uavs
 init_gps = [
     (
@@ -52,6 +55,11 @@ init_gps = [
         0
         ),
 ]
+
+red_color = [1.0,0.0,0.0]
+green_color = [0.0,1.0,0.0]
+blue_color = [0.0,0.0,1.0]
+
 
 def initiate_logger():
     logging.basicConfig(filename=LOG_FOLDER+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
@@ -153,3 +161,6 @@ def addToDict(d: dict,k,v):
     if k not in d:
         d[k] = []
     d[k].append(v)
+
+
+distance = lambda p1, p2: np.norm(p1-p2)

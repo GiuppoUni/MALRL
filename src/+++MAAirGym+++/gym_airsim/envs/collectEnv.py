@@ -1,3 +1,7 @@
+
+
+import utils
+
 import logging
 from myAirSimClient2 import MyAirSimClient2
 import numpy as np
@@ -12,13 +16,12 @@ from gym.spaces.box import Box
 from myAirSimClient import *
 from newMyAirSimClient import newMyAirSimClient
 
-logger = logging.getLogger(__name__)
 
 import utils
 import sys
 import concurrent.futures
 
-# print = main.logger.info
+
 
 # All coords
 # this format -> (lon,lat,height)
@@ -36,10 +39,22 @@ class MultiAgentActionSpace(list):
         return [agent_action_space.sample() for agent_action_space in self._agents_action_space]
 
 
-class AirSimEnv(gym.Env):
+
+class CollectGameEnv(gym.Env):
+    """
+    Environment in which the agents have to collect the balls
+    """
+    def __init__(
+        self,
+        size=10,
+        width=None,
+        height=None,
+        num_targets=3,
+        n_agents = int(utils.g_config["rl"]["n_agents"]),
+        n_actions = 3, step_cost = -1):
+    
 
 
-    def __init__(self,n_agents = 3,n_actions = 3, step_cost = -1):
         self.n_agents = n_agents
         # left depth, center depth, right depth, yaw
         self.observation_space = spaces.Box(low=0, high=255, shape=(30, 100))
@@ -48,7 +63,7 @@ class AirSimEnv(gym.Env):
         self.action_space = MultiAgentActionSpace([spaces.Discrete(n_actions) for _ in range(n_agents)])
 		
         self.agent_names = [v for v in utils.g_airsim_settings["Vehicles"] ]
-        
+
         self.episodeN = 0
         self.stepN = 0 
         self._step_cost = step_cost
@@ -63,6 +78,8 @@ class AirSimEnv(gym.Env):
         # TODO replace with  allocated targets
         self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         
+        self.targets = dict()
+        self._get_targets()
         # self.myClient.direct_client.takeoffAsync(vehicle_name="Drone0")
 
 
@@ -70,7 +87,22 @@ class AirSimEnv(gym.Env):
         self.init_logs()
 
 
+    def printTargets(self):
         
+        print('Env targets: ', self.targets)
+        
+    def _get_targets(self,regex="TargetB.*"):
+        targets = self.myClient.simListSceneObjects(regex)
+        targets.sort()
+        self.targets_names = targets
+        vec2r_to_numpy_array = lambda vec: np.array([vec.x_val, vec.y_val])
+        self.targets= dict()
+        for wp in targets: 
+            pose = self.myClient.simGetObjectPose(wp)
+            self.targets[wp] = (vec2r_to_numpy_array(pose.position))
+        
+        return True 
+
         
     def _seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
@@ -126,10 +158,6 @@ class AirSimEnv(gym.Env):
             
             # --- HERE EXECUTE DRONE ACTION ---
             # collided,pt = drone.take_action(action)
-            with concurrent.futures.ThreadPoolExecutor() as executor:
-                future = executor.submit(foo, 'world!')
-                return_value = future.result()
-                print(return_value)
             collided = self.myClient.take_action(action,agent_name)
             #---------------------------------------------
             # self.myClient.pts.append(pt)
@@ -243,5 +271,17 @@ class AirSimEnv(gym.Env):
             self.allLogs[vn]['distance'] = [221]
             self.allLogs[vn]['track'] = [-2]
             self.allLogs[vn]['action'] = [1]
+
+
+
+
+
+
+
+
+
+
+
+
 
 

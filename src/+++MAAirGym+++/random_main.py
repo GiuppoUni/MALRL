@@ -1,5 +1,5 @@
-
 import argparse
+from gym_airsim.envs.collectMTEnv import CollectMTEnv
 
 import gym
 
@@ -11,8 +11,7 @@ from navMapWindow import NavMapper
 import utils
 import time
 
-logger = utils.initiate_logger()
-print = logger.info
+
 
 
 if __name__ == '__main__':
@@ -21,15 +20,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='RL for ma-gym')
     parser.add_argument('--episodes', type=int, default=4,
                         help='episodes (default: %(default)s)')
+    parser.add_argument('--debug', type=bool, default=False,
+    help='Log into file (default: %(default)s)')
+
     args = parser.parse_args()
 
     # env = gym.make("AirSimEnv-v1")
     
-    
+    if(args.debug):
+        logger = utils.initiate_logger()
+        print = logger.info
 
     # TODO replace for variables
-    env = AirSimEnv(n_agents=int(utils.g_config["rl"]["n_agents"]),
-        n_actions = 3,step_cost = -1)
+    env = CollectMTEnv()
     
     #navMapper = NavMapper(env.myClient)
     
@@ -53,7 +56,7 @@ if __name__ == '__main__':
             # env.render()
             
             # navMapper.update_nav_fig()
-            time.sleep(2)
+            time.sleep(0.5)
 
         print("="*40)    
         print('Episode #{} Reward: {}'.format(ep_i, ep_reward))
