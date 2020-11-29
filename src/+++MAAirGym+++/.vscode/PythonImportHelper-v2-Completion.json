@@ -268,6 +268,17 @@
         }
     },
     {
+        "label": "MultirotorClient",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {
+            "value": "\n```python\nimport airsim\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "Proj",
         "importPath": "pyproj",
         "description": "pyproj",
@@ -324,94 +335,6 @@
         }
     },
     {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {
-            "value": "\n```python\nimport gym\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {
-            "value": "\n```python\nimport gym\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "error",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {
-            "value": "\n```python\nimport gym\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {
-            "value": "\n```python\nimport gym\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "utils",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {
-            "value": "\n```python\nimport gym\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {
-            "value": "\n```python\nimport typing\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {
-            "value": "\n```python\nimport typing\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Tuple",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {
-            "value": "\n```python\nimport typing\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -445,17 +368,6 @@
         }
     },
     {
-        "label": "ImageColor",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {
-            "value": "\n```python\nimport PIL\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "Image",
         "importPath": "PIL",
         "description": "PIL",
@@ -478,35 +390,13 @@
         }
     },
     {
-        "label": "MyAirSimClient2",
-        "importPath": "myAirSimClient2",
-        "description": "myAirSimClient2",
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
         "isExtraImport": true,
-        "detail": "myAirSimClient2",
+        "detail": "PIL",
         "documentation": {
-            "value": "\n```python\nimport myAirSimClient2\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MyAirSimClient2",
-        "importPath": "myAirSimClient2",
-        "description": "myAirSimClient2",
-        "isExtraImport": true,
-        "detail": "myAirSimClient2",
-        "documentation": {
-            "value": "\n```python\nimport myAirSimClient2\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MyAirSimClient2",
-        "importPath": "myAirSimClient2",
-        "description": "myAirSimClient2",
-        "isExtraImport": true,
-        "detail": "myAirSimClient2",
-        "documentation": {
-            "value": "\n```python\nimport myAirSimClient2\n```\n",
+            "value": "\n```python\nimport PIL\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -545,94 +435,6 @@
         }
     },
     {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
-        "documentation": {
-            "value": "\n```python\nimport gym.utils\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
-        "documentation": {
-            "value": "\n```python\nimport gym.utils\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
-        "documentation": {
-            "value": "\n```python\nimport gym.utils\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Tuple",
-        "importPath": "gym.spaces",
-        "description": "gym.spaces",
-        "isExtraImport": true,
-        "detail": "gym.spaces",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Box",
-        "importPath": "gym.spaces",
-        "description": "gym.spaces",
-        "isExtraImport": true,
-        "detail": "gym.spaces",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Discrete",
-        "importPath": "gym.spaces",
-        "description": "gym.spaces",
-        "isExtraImport": true,
-        "detail": "gym.spaces",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MultiDiscrete",
-        "importPath": "gym.spaces",
-        "description": "gym.spaces",
-        "isExtraImport": true,
-        "detail": "gym.spaces",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Dict",
-        "importPath": "gym.spaces",
-        "description": "gym.spaces",
-        "isExtraImport": true,
-        "detail": "gym.spaces",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "Tuple",
         "importPath": "gym.spaces",
         "description": "gym.spaces",
@@ -761,61 +563,6 @@
         "detail": "gym.spaces.box",
         "documentation": {
             "value": "\n```python\nimport gym.spaces.box\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Box",
-        "importPath": "gym.spaces.box",
-        "description": "gym.spaces.box",
-        "isExtraImport": true,
-        "detail": "gym.spaces.box",
-        "documentation": {
-            "value": "\n```python\nimport gym.spaces.box\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "*",
-        "importPath": "myAirSimClient",
-        "description": "myAirSimClient",
-        "isExtraImport": true,
-        "detail": "myAirSimClient",
-        "documentation": {
-            "value": "\n```python\nimport myAirSimClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "*",
-        "importPath": "myAirSimClient",
-        "description": "myAirSimClient",
-        "isExtraImport": true,
-        "detail": "myAirSimClient",
-        "documentation": {
-            "value": "\n```python\nimport myAirSimClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "*",
-        "importPath": "myAirSimClient",
-        "description": "myAirSimClient",
-        "isExtraImport": true,
-        "detail": "myAirSimClient",
-        "documentation": {
-            "value": "\n```python\nimport myAirSimClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "newMyAirSimClient",
-        "importPath": "newMyAirSimClient",
-        "description": "newMyAirSimClient",
-        "isExtraImport": true,
-        "detail": "newMyAirSimClient",
-        "documentation": {
-            "value": "\n```python\nimport newMyAirSimClient\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -900,6 +647,17 @@
         }
     },
     {
+        "label": "Timeout",
+        "importPath": "eventlet",
+        "description": "eventlet",
+        "isExtraImport": true,
+        "detail": "eventlet",
+        "documentation": {
+            "value": "\n```python\nimport eventlet\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -924,119 +682,6 @@
         }
     },
     {
-        "label": "copy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "copy",
-        "description": "copy",
-        "detail": "copy",
-        "documentation": {
-            "value": "\n```python\nimport copy\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "itertools",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "itertools",
-        "description": "itertools",
-        "detail": "itertools",
-        "documentation": {
-            "value": "\n```python\nimport itertools\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MultiAgentActionSpace",
-        "importPath": "gymUtils.action_space",
-        "description": "gymUtils.action_space",
-        "isExtraImport": true,
-        "detail": "gymUtils.action_space",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.action_space\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "draw_circle",
-        "importPath": "gymUtils.draw",
-        "description": "gymUtils.draw",
-        "isExtraImport": true,
-        "detail": "gymUtils.draw",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.draw\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "draw_grid",
-        "importPath": "gymUtils.draw",
-        "description": "gymUtils.draw",
-        "isExtraImport": true,
-        "detail": "gymUtils.draw",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.draw\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "fill_cell",
-        "importPath": "gymUtils.draw",
-        "description": "gymUtils.draw",
-        "isExtraImport": true,
-        "detail": "gymUtils.draw",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.draw\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "write_cell_text",
-        "importPath": "gymUtils.draw",
-        "description": "gymUtils.draw",
-        "isExtraImport": true,
-        "detail": "gymUtils.draw",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.draw\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MultiAgentObservationSpace",
-        "importPath": "gymUtils.observation_space",
-        "description": "gymUtils.observation_space",
-        "isExtraImport": true,
-        "detail": "gymUtils.observation_space",
-        "documentation": {
-            "value": "\n```python\nimport gymUtils.observation_space\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "argparse",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "argparse",
-        "description": "argparse",
-        "detail": "argparse",
-        "documentation": {
-            "value": "\n```python\nimport argparse\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "IntEnum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {
-            "value": "\n```python\nimport enum\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "AirSimEnv",
         "importPath": "gym_airsim.envs.airSimEnv",
         "description": "gym_airsim.envs.airSimEnv",
@@ -1048,17 +693,6 @@
         }
     },
     {
-        "label": "CollectGameEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "register",
         "importPath": "gym.envs.registration",
         "description": "gym.envs.registration",
@@ -1066,6 +700,72 @@
         "detail": "gym.envs.registration",
         "documentation": {
             "value": "\n```python\nimport gym.envs.registration\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "*",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ImageRequest",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ImageRequest",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {
+            "value": "\n```python\nimport airsim.types\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -1105,24 +805,35 @@
         }
     },
     {
-        "label": "*",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "array",
+        "importPath": "pylab",
+        "description": "pylab",
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "detail": "pylab",
         "documentation": {
-            "value": "\n```python\nimport airsim.types\n```\n",
+            "value": "\n```python\nimport pylab\n```\n",
             "supportThemeIcons": false
         }
     },
     {
-        "label": "ImageRequest",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "arange",
+        "importPath": "pylab",
+        "description": "pylab",
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "detail": "pylab",
         "documentation": {
-            "value": "\n```python\nimport airsim.types\n```\n",
+            "value": "\n```python\nimport pylab\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "uint8",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {
+            "value": "\n```python\nimport pylab\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -1217,6 +928,29 @@
         }
     },
     {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {
+            "value": "\n```python\nimport argparse\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "CollectMTEnv",
         "importPath": "gym_airsim.envs.collectMTEnv",
         "description": "gym_airsim.envs.collectMTEnv",
@@ -1274,28 +1008,6 @@
         }
     },
     {
-        "label": "NavMapper",
-        "importPath": "navMapWindow",
-        "description": "navMapWindow",
-        "isExtraImport": true,
-        "detail": "navMapWindow",
-        "documentation": {
-            "value": "\n```python\nimport navMapWindow\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "NavMapper",
-        "importPath": "navMapWindow",
-        "description": "navMapWindow",
-        "isExtraImport": true,
-        "detail": "navMapWindow",
-        "documentation": {
-            "value": "\n```python\nimport navMapWindow\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -1315,6 +1027,17 @@
         "detail": "airsimgeo",
         "documentation": {
             "value": "\n```python\nimport airsimgeo\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "NavMapper",
+        "importPath": "navMapWindow",
+        "description": "navMapWindow",
+        "isExtraImport": true,
+        "detail": "navMapWindow",
+        "documentation": {
+            "value": "\n```python\nimport navMapWindow\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2159,30 +1882,6 @@
     {
         "label": "MultiAgentActionSpace",
         "kind": 6,
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass CollectGameEnv(gym.Env):",
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import MultiAgentActionSpace\n```\n\n```python\n\n\n```\n\n```python\nclass MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass CollectGameEnv(gym.Env):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "CollectGameEnv",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "class CollectGameEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        size=10,\n        width=None,\n        height=None,\n        num_targets=3,",
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import CollectGameEnv\n```\n\n```python\n\n\n```\n\n```python\nclass CollectGameEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        size=10,\n        width=None,\n        height=None,\n        num_targets=3,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MultiAgentActionSpace",
-        "kind": 6,
         "importPath": "gym_airsim.envs.collectMTEnv",
         "description": "gym_airsim.envs.collectMTEnv",
         "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass Job(threading.Thread):",
@@ -2241,414 +1940,6 @@
         }
     },
     {
-        "label": "Agent",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "class Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):\n        self.id = id\n        self.pos = pos",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import Agent\n```\n\n```python\n\n\n```\n\n```python\nclass Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):\n        self.id = id\n        self.pos = pos\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Lumberjacks",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "class Lumberjacks(gym.Env):\n    \"\"\"\n    Lumberjacks environment involve a grid world, in which multiple lumberjacks attempt to cut down all trees. In order to cut down a tree in given cell, there must be present greater or equal number of agents/lumberjacks then the tree strength in the same location as tree. Tree is then cut down automatically.\n    Agents select one of fire actions ∈ {No-Op, Down, Left, Up, Right}.\n    Each agent's observation includes its:\n        - agent ID (1)\n        - position with in grid (2)\n        - number of steps since beginning (1)\n        - number of agents and tree strength for each cell in agent view (2 * `np.prod(tuple(2 * v + 1 for v in agent_view))`).\n    All values are scaled down into range ∈ [0, 1].",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import Lumberjacks\n```\n\n```python\n\n\n```\n\n```python\nclass Lumberjacks(gym.Env):\n    \"\"\"\n    Lumberjacks environment involve a grid world, in which multiple lumberjacks attempt to cut down all trees. In order to cut down a tree in given cell, there must be present greater or equal number of agents/lumberjacks then the tree strength in the same location as tree. Tree is then cut down automatically.\n    Agents select one of fire actions ∈ {No-Op, Down, Left, Up, Right}.\n    Each agent's observation includes its:\n        - agent ID (1)\n        - position with in grid (2)\n        - number of steps since beginning (1)\n        - number of agents and tree strength for each cell in agent view (2 * `np.prod(tuple(2 * v + 1 for v in agent_view))`).\n    All values are scaled down into range ∈ [0, 1].\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nCoordinates = Tuple[int, int]\nclass Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import logger\n```\n\n```python\n\n\n```\n\n```python\nlogger = logging.getLogger(__name__)\nCoordinates = Tuple[int, int]\nclass Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Coordinates",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "Coordinates = Tuple[int, int]\nclass Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):\n        self.id = id",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import Coordinates\n```\n\n```python\n\n\n```\n\n```python\nCoordinates = Tuple[int, int]\nclass Agent:\n    \"\"\"Dataclass keeping all data for one agent/lumberjack in environment.\n    In order to keep the support for Python3.6 we are not using `dataclasses` module.\n    Attributes:\n        id: unique id in one environment run\n        pos: position of the agent in grid\n    \"\"\"\n    def __init__(self, id: int, pos: Coordinates):\n        self.id = id\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "AGENT_COLOR",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "AGENT_COLOR = ImageColor.getcolor('blue', mode='RGB')\nTREE_COLOR = 'green'\nWALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import AGENT_COLOR\n```\n\n```python\n\n\n```\n\n```python\nAGENT_COLOR = ImageColor.getcolor('blue', mode='RGB')\nTREE_COLOR = 'green'\nWALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TREE_COLOR",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "TREE_COLOR = 'green'\nWALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import TREE_COLOR\n```\n\n```python\n\n\n```\n\n```python\nTREE_COLOR = 'green'\nWALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "WALL_COLOR",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "WALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import WALL_COLOR\n```\n\n```python\n\n\n```\n\n```python\nWALL_COLOR = 'black'\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "CELL_SIZE",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "CELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {\n    'empty': 0,",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import CELL_SIZE\n```\n\n```python\n\n\n```\n\n```python\nCELL_SIZE = 35\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {\n    'empty': 0,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "ACTIONS_IDS",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "ACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {\n    'empty': 0,\n    'wall': 1,",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import ACTIONS_IDS\n```\n\n```python\n\n\n```\n\n```python\nACTIONS_IDS = {\n    'noop': 0,\n    'down': 1,\n    'left': 2,\n    'up': 3,\n    'right': 4,\n}\nPRE_IDS = {\n    'empty': 0,\n    'wall': 1,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "PRE_IDS",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.lumberJackEnv",
-        "description": "gym_airsim.envs.lumberJackEnv",
-        "peekOfCode": "PRE_IDS = {\n    'empty': 0,\n    'wall': 1,\n    'agent': 2,\n    'tree': 3,\n}\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='Random Agent for ma-gym')\n    parser.add_argument('--env', default='Checkers-v0',\n                        help='Name of the environment (default: %(default)s)')",
-        "detail": "gym_airsim.envs.lumberJackEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.lumberJackEnv import PRE_IDS\n```\n\n```python\n\n\n```\n\n```python\nPRE_IDS = {\n    'empty': 0,\n    'wall': 1,\n    'agent': 2,\n    'tree': 3,\n}\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='Random Agent for ma-gym')\n    parser.add_argument('--env', default='Checkers-v0',\n                        help='Name of the environment (default: %(default)s)')\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "World",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class World:\n    encode_dim = 6\n    normalize_obs = 1\n    # Used to map colors to integers\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'purple': 3,\n        'yellow': 4,",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import World\n```\n\n```python\n\n\n```\n\n```python\nclass World:\n    encode_dim = 6\n    normalize_obs = 1\n    # Used to map colors to integers\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'purple': 3,\n        'yellow': 4,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "SmallWorld",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class SmallWorld:\n    encode_dim = 3\n    normalize_obs = 1/3\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'grey': 3\n    }\n    IDX_TO_COLOR = dict(zip(COLOR_TO_IDX.values(), COLOR_TO_IDX.keys()))",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import SmallWorld\n```\n\n```python\n\n\n```\n\n```python\nclass SmallWorld:\n    encode_dim = 3\n    normalize_obs = 1/3\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'grey': 3\n    }\n    IDX_TO_COLOR = dict(zip(COLOR_TO_IDX.values(), COLOR_TO_IDX.keys()))\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "WorldObj",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class WorldObj:\n    \"\"\"\n    Base class for grid world objects\n    \"\"\"\n    def __init__(self, world, type, color):\n        assert type in world.OBJECT_TO_IDX, type\n        assert color in world.COLOR_TO_IDX, color\n        self.type = type\n        self.color = color\n        self.contains = None",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import WorldObj\n```\n\n```python\n\n\n```\n\n```python\nclass WorldObj:\n    \"\"\"\n    Base class for grid world objects\n    \"\"\"\n    def __init__(self, world, type, color):\n        assert type in world.OBJECT_TO_IDX, type\n        assert color in world.COLOR_TO_IDX, color\n        self.type = type\n        self.color = color\n        self.contains = None\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "ObjectGoal",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class ObjectGoal(WorldObj):\n    def __init__(self, world, index, target_type='ball', reward=1, color=None):\n        if color is None:\n            super().__init__(world, 'objgoal', world.IDX_TO_COLOR[index])\n        else:\n            super().__init__(world, 'objgoal', world.IDX_TO_COLOR[color])\n        self.target_type = target_type\n        self.index = index\n        self.reward = reward\n    def can_overlap(self):",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import ObjectGoal\n```\n\n```python\n\n\n```\n\n```python\nclass ObjectGoal(WorldObj):\n    def __init__(self, world, index, target_type='ball', reward=1, color=None):\n        if color is None:\n            super().__init__(world, 'objgoal', world.IDX_TO_COLOR[index])\n        else:\n            super().__init__(world, 'objgoal', world.IDX_TO_COLOR[color])\n        self.target_type = target_type\n        self.index = index\n        self.reward = reward\n    def can_overlap(self):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Goal",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Goal(WorldObj):\n    def __init__(self, world, index, reward=1, color=None):\n        if color is None:\n            super().__init__(world, 'goal', world.IDX_TO_COLOR[index])\n        else:\n            super().__init__(world, 'goal', world.IDX_TO_COLOR[color])\n        self.index = index\n        self.reward = reward\n    def can_overlap(self):\n        return True",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Goal\n```\n\n```python\n\n\n```\n\n```python\nclass Goal(WorldObj):\n    def __init__(self, world, index, reward=1, color=None):\n        if color is None:\n            super().__init__(world, 'goal', world.IDX_TO_COLOR[index])\n        else:\n            super().__init__(world, 'goal', world.IDX_TO_COLOR[color])\n        self.index = index\n        self.reward = reward\n    def can_overlap(self):\n        return True\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Switch",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Switch(WorldObj):\n    def __init__(self, world):\n        super().__init__(world, 'switch', world.IDX_TO_COLOR[0])\n    def can_overlap(self):\n        return True\n    def render(self, img):\n        fill_coords(img, point_in_rect(0, 1, 0, 1), COLORS[self.color])\nclass Floor(WorldObj):\n    \"\"\"\n    Colored floor tile the agent can walk over",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Switch\n```\n\n```python\n\n\n```\n\n```python\nclass Switch(WorldObj):\n    def __init__(self, world):\n        super().__init__(world, 'switch', world.IDX_TO_COLOR[0])\n    def can_overlap(self):\n        return True\n    def render(self, img):\n        fill_coords(img, point_in_rect(0, 1, 0, 1), COLORS[self.color])\nclass Floor(WorldObj):\n    \"\"\"\n    Colored floor tile the agent can walk over\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Floor",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Floor(WorldObj):\n    \"\"\"\n    Colored floor tile the agent can walk over\n    \"\"\"\n    def __init__(self, world, color='blue'):\n        super().__init__(world, 'floor', color)\n    def can_overlap(self):\n        return True\n    def render(self, r):\n        # Give the floor a pale color",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Floor\n```\n\n```python\n\n\n```\n\n```python\nclass Floor(WorldObj):\n    \"\"\"\n    Colored floor tile the agent can walk over\n    \"\"\"\n    def __init__(self, world, color='blue'):\n        super().__init__(world, 'floor', color)\n    def can_overlap(self):\n        return True\n    def render(self, r):\n        # Give the floor a pale color\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Lava",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Lava(WorldObj):\n    def __init__(self, world):\n        super().__init__(world, 'lava', 'red')\n    def can_overlap(self):\n        return True\n    def render(self, img):\n        c = (255, 128, 0)\n        # Background color\n        fill_coords(img, point_in_rect(0, 1, 0, 1), c)\n        # Little waves",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Lava\n```\n\n```python\n\n\n```\n\n```python\nclass Lava(WorldObj):\n    def __init__(self, world):\n        super().__init__(world, 'lava', 'red')\n    def can_overlap(self):\n        return True\n    def render(self, img):\n        c = (255, 128, 0)\n        # Background color\n        fill_coords(img, point_in_rect(0, 1, 0, 1), c)\n        # Little waves\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Wall",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Wall(WorldObj):\n    def __init__(self, world, color='grey'):\n        super().__init__(world, 'wall', color)\n    def see_behind(self):\n        return False\n    def render(self, img):\n        fill_coords(img, point_in_rect(0, 1, 0, 1), COLORS[self.color])\nclass Door(WorldObj):\n    def __init__(self, world, color, is_open=False, is_locked=False):\n        super().__init__(world, 'door', color)",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Wall\n```\n\n```python\n\n\n```\n\n```python\nclass Wall(WorldObj):\n    def __init__(self, world, color='grey'):\n        super().__init__(world, 'wall', color)\n    def see_behind(self):\n        return False\n    def render(self, img):\n        fill_coords(img, point_in_rect(0, 1, 0, 1), COLORS[self.color])\nclass Door(WorldObj):\n    def __init__(self, world, color, is_open=False, is_locked=False):\n        super().__init__(world, 'door', color)\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Door",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Door(WorldObj):\n    def __init__(self, world, color, is_open=False, is_locked=False):\n        super().__init__(world, 'door', color)\n        self.is_open = is_open\n        self.is_locked = is_locked\n    def can_overlap(self):\n        \"\"\"The agent can only walk over this cell when the door is open\"\"\"\n        return self.is_open\n    def see_behind(self):\n        return self.is_open",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Door\n```\n\n```python\n\n\n```\n\n```python\nclass Door(WorldObj):\n    def __init__(self, world, color, is_open=False, is_locked=False):\n        super().__init__(world, 'door', color)\n        self.is_open = is_open\n        self.is_locked = is_locked\n    def can_overlap(self):\n        \"\"\"The agent can only walk over this cell when the door is open\"\"\"\n        return self.is_open\n    def see_behind(self):\n        return self.is_open\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Key",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Key(WorldObj):\n    def __init__(self, world, color='blue'):\n        super(Key, self).__init__(world, 'key', color)\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        c = COLORS[self.color]\n        # Vertical quad\n        fill_coords(img, point_in_rect(0.50, 0.63, 0.31, 0.88), c)\n        # Teeth",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Key\n```\n\n```python\n\n\n```\n\n```python\nclass Key(WorldObj):\n    def __init__(self, world, color='blue'):\n        super(Key, self).__init__(world, 'key', color)\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        c = COLORS[self.color]\n        # Vertical quad\n        fill_coords(img, point_in_rect(0.50, 0.63, 0.31, 0.88), c)\n        # Teeth\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Ball",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Ball(WorldObj):\n    def __init__(self, world, index=0, reward=1):\n        super(Ball, self).__init__(world, 'ball', world.IDX_TO_COLOR[index])\n        self.index = index\n        self.reward = reward\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        fill_coords(img, point_in_circle(0.5, 0.5, 0.31), COLORS[self.color])\nclass Box(WorldObj):",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Ball\n```\n\n```python\n\n\n```\n\n```python\nclass Ball(WorldObj):\n    def __init__(self, world, index=0, reward=1):\n        super(Ball, self).__init__(world, 'ball', world.IDX_TO_COLOR[index])\n        self.index = index\n        self.reward = reward\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        fill_coords(img, point_in_circle(0.5, 0.5, 0.31), COLORS[self.color])\nclass Box(WorldObj):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Box",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Box(WorldObj):\n    def __init__(self, world, color, contains=None):\n        super(Box, self).__init__(world, 'box', color)\n        self.contains = contains\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        c = COLORS[self.color]\n        # Outline\n        fill_coords(img, point_in_rect(0.12, 0.88, 0.12, 0.88), c)",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Box\n```\n\n```python\n\n\n```\n\n```python\nclass Box(WorldObj):\n    def __init__(self, world, color, contains=None):\n        super(Box, self).__init__(world, 'box', color)\n        self.contains = contains\n    def can_pickup(self):\n        return True\n    def render(self, img):\n        c = COLORS[self.color]\n        # Outline\n        fill_coords(img, point_in_rect(0.12, 0.88, 0.12, 0.88), c)\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Agent",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Agent(WorldObj):\n    def __init__(self, world, index=0, view_size=7):\n        super(Agent, self).__init__(world, 'agent', world.IDX_TO_COLOR[index])\n        self.pos = None\n        self.dir = None\n        self.index = index\n        self.view_size = view_size\n        self.carrying = None\n        self.terminated = False\n        self.started = True",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Agent\n```\n\n```python\n\n\n```\n\n```python\nclass Agent(WorldObj):\n    def __init__(self, world, index=0, view_size=7):\n        super(Agent, self).__init__(world, 'agent', world.IDX_TO_COLOR[index])\n        self.pos = None\n        self.dir = None\n        self.index = index\n        self.view_size = view_size\n        self.carrying = None\n        self.terminated = False\n        self.started = True\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Grid",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Grid:\n    \"\"\"\n    Represent a grid and operations on it\n    \"\"\"\n    # Static cache of pre-renderer tiles\n    tile_cache = {}\n    def __init__(self, width, height):\n        assert width >= 3\n        assert height >= 3\n        self.width = width",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Grid\n```\n\n```python\n\n\n```\n\n```python\nclass Grid:\n    \"\"\"\n    Represent a grid and operations on it\n    \"\"\"\n    # Static cache of pre-renderer tiles\n    tile_cache = {}\n    def __init__(self, width, height):\n        assert width >= 3\n        assert height >= 3\n        self.width = width\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Actions",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class Actions:\n    available=['still', 'left', 'right', 'forward', 'pickup', 'drop', 'toggle', 'done']\n    still = 0\n    # Turn left, turn right, move forward\n    left = 1\n    right = 2\n    forward = 3\n    # Pick up an object\n    pickup = 4\n    # Drop an object",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import Actions\n```\n\n```python\n\n\n```\n\n```python\nclass Actions:\n    available=['still', 'left', 'right', 'forward', 'pickup', 'drop', 'toggle', 'done']\n    still = 0\n    # Turn left, turn right, move forward\n    left = 1\n    right = 2\n    forward = 3\n    # Pick up an object\n    pickup = 4\n    # Drop an object\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "SmallActions",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class SmallActions:\n    available=['still', 'left', 'right', 'forward']\n    # Turn left, turn right, move forward\n    still = 0\n    left = 1\n    right = 2\n    forward = 3\nclass MineActions:\n    available=['still', 'left', 'right', 'forward', 'build']\n    still = 0",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import SmallActions\n```\n\n```python\n\n\n```\n\n```python\nclass SmallActions:\n    available=['still', 'left', 'right', 'forward']\n    # Turn left, turn right, move forward\n    still = 0\n    left = 1\n    right = 2\n    forward = 3\nclass MineActions:\n    available=['still', 'left', 'right', 'forward', 'build']\n    still = 0\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MineActions",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class MineActions:\n    available=['still', 'left', 'right', 'forward', 'build']\n    still = 0\n    left = 1\n    right = 2\n    forward = 3\n    build = 4\nclass MultiGridEnv(gym.Env):\n    \"\"\"\n    2D grid world game environment",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import MineActions\n```\n\n```python\n\n\n```\n\n```python\nclass MineActions:\n    available=['still', 'left', 'right', 'forward', 'build']\n    still = 0\n    left = 1\n    right = 2\n    forward = 3\n    build = 4\nclass MultiGridEnv(gym.Env):\n    \"\"\"\n    2D grid world game environment\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MultiGridEnv",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "class MultiGridEnv(gym.Env):\n    \"\"\"\n    2D grid world game environment\n    \"\"\"\n    metadata = {\n        'render.modes': ['human', 'rgb_array'],\n        'video.frames_per_second': 10\n    }\n    # Enumeration of possible actions\n    def __init__(",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import MultiGridEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MultiGridEnv(gym.Env):\n    \"\"\"\n    2D grid world game environment\n    \"\"\"\n    metadata = {\n        'render.modes': ['human', 'rgb_array'],\n        'video.frames_per_second': 10\n    }\n    # Enumeration of possible actions\n    def __init__(\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TILE_PIXELS",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "TILE_PIXELS = 32\n# Map of color names to RGB values\nCOLORS = {\n    'red': np.array([255, 0, 0]),\n    'green': np.array([0, 255, 0]),\n    'blue': np.array([0, 0, 255]),\n    'purple': np.array([112, 39, 195]),\n    'yellow': np.array([255, 255, 0]),\n    'grey': np.array([100, 100, 100])\n}",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import TILE_PIXELS\n```\n\n```python\n\n\n```\n\n```python\nTILE_PIXELS = 32\n# Map of color names to RGB values\nCOLORS = {\n    'red': np.array([255, 0, 0]),\n    'green': np.array([0, 255, 0]),\n    'blue': np.array([0, 0, 255]),\n    'purple': np.array([112, 39, 195]),\n    'yellow': np.array([255, 255, 0]),\n    'grey': np.array([100, 100, 100])\n}\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "COLORS",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "COLORS = {\n    'red': np.array([255, 0, 0]),\n    'green': np.array([0, 255, 0]),\n    'blue': np.array([0, 0, 255]),\n    'purple': np.array([112, 39, 195]),\n    'yellow': np.array([255, 255, 0]),\n    'grey': np.array([100, 100, 100])\n}\nCOLOR_NAMES = sorted(list(COLORS.keys()))\nclass World:",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import COLORS\n```\n\n```python\n\n\n```\n\n```python\nCOLORS = {\n    'red': np.array([255, 0, 0]),\n    'green': np.array([0, 255, 0]),\n    'blue': np.array([0, 0, 255]),\n    'purple': np.array([112, 39, 195]),\n    'yellow': np.array([255, 255, 0]),\n    'grey': np.array([100, 100, 100])\n}\nCOLOR_NAMES = sorted(list(COLORS.keys()))\nclass World:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "COLOR_NAMES",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "COLOR_NAMES = sorted(list(COLORS.keys()))\nclass World:\n    encode_dim = 6\n    normalize_obs = 1\n    # Used to map colors to integers\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'purple': 3,",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import COLOR_NAMES\n```\n\n```python\n\n\n```\n\n```python\nCOLOR_NAMES = sorted(list(COLORS.keys()))\nclass World:\n    encode_dim = 6\n    normalize_obs = 1\n    # Used to map colors to integers\n    COLOR_TO_IDX = {\n        'red': 0,\n        'green': 1,\n        'blue': 2,\n        'purple': 3,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "STATE_TO_IDX",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "STATE_TO_IDX = {\n    'open': 0,\n    'closed': 1,\n    'locked': 2,\n}\n# Map of agent direction indices to vectors\nDIR_TO_VEC = [\n    # Pointing right (positive X)\n    np.array((1, 0)),\n    # Down (positive Y)",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import STATE_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nSTATE_TO_IDX = {\n    'open': 0,\n    'closed': 1,\n    'locked': 2,\n}\n# Map of agent direction indices to vectors\nDIR_TO_VEC = [\n    # Pointing right (positive X)\n    np.array((1, 0)),\n    # Down (positive Y)\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "DIR_TO_VEC",
-        "kind": 5,
-        "importPath": "gym_airsim.envs.multigrid",
-        "description": "gym_airsim.envs.multigrid",
-        "peekOfCode": "DIR_TO_VEC = [\n    # Pointing right (positive X)\n    np.array((1, 0)),\n    # Down (positive Y)\n    np.array((0, 1)),\n    # Pointing left (negative X)\n    np.array((-1, 0)),\n    # Up (negative Y)\n    np.array((0, -1)),\n]",
-        "detail": "gym_airsim.envs.multigrid",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.multigrid import DIR_TO_VEC\n```\n\n```python\n\n\n```\n\n```python\nDIR_TO_VEC = [\n    # Pointing right (positive X)\n    np.array((1, 0)),\n    # Down (positive Y)\n    np.array((0, 1)),\n    # Pointing left (negative X)\n    np.array((-1, 0)),\n    # Up (negative Y)\n    np.array((0, -1)),\n]\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "Target",
         "kind": 6,
         "importPath": "gym_airsim.envs.Target",
@@ -2673,50 +1964,74 @@
         }
     },
     {
-        "label": "client",
-        "kind": 5,
-        "importPath": "draw_trajectories",
-        "description": "draw_trajectories",
-        "peekOfCode": "client = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()",
-        "detail": "draw_trajectories",
+        "label": "check_pos",
+        "kind": 2,
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "def check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)\nif __name__ == \"__main__\":",
+        "detail": "scripts.track_trajectories",
         "documentation": {
-            "value": "\n```python\nfrom draw_trajectories import client\n```\n\n```python\n\n\n```\n\n```python\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n```\n",
+            "value": "\n```python\nfrom scripts.track_trajectories import check_pos\n```\n\n```python\n\n\n```\n\n```python\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)\nif __name__ == \"__main__\":\n```\n",
             "supportThemeIcons": false
         }
     },
     {
-        "label": "vehicles_names",
-        "kind": 5,
-        "importPath": "draw_trajectories",
-        "description": "draw_trajectories",
-        "peekOfCode": "vehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:",
-        "detail": "draw_trajectories",
+        "label": "signal_handler",
+        "kind": 2,
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "def signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)\nif __name__ == \"__main__\":\n    signal.signal(signal.SIGINT, signal_handler)\n    print('Press Ctrl+C TO STOP')\n    client = airsim.MultirotorClient()\n    # connect to the AirSim simulator\n    print(client.confirmConnection() )",
+        "detail": "scripts.track_trajectories",
         "documentation": {
-            "value": "\n```python\nfrom draw_trajectories import vehicles_names\n```\n\n```python\n\n\n```\n\n```python\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n```\n",
+            "value": "\n```python\nfrom scripts.track_trajectories import signal_handler\n```\n\n```python\n\n\n```\n\n```python\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)\nif __name__ == \"__main__\":\n    signal.signal(signal.SIGINT, signal_handler)\n    print('Press Ctrl+C TO STOP')\n    client = airsim.MultirotorClient()\n    # connect to the AirSim simulator\n    print(client.confirmConnection() )\n```\n",
             "supportThemeIcons": false
         }
     },
     {
-        "label": "trajectories",
+        "label": "timestep",
         "kind": 5,
-        "importPath": "draw_trajectories",
-        "description": "draw_trajectories",
-        "peekOfCode": "trajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] ",
-        "detail": "draw_trajectories",
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "timestep = 0.1 # s\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):",
+        "detail": "scripts.track_trajectories",
         "documentation": {
-            "value": "\n```python\nfrom draw_trajectories import trajectories\n```\n\n```python\n\n\n```\n\n```python\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n```\n",
+            "value": "\n```python\nfrom scripts.track_trajectories import timestep\n```\n\n```python\n\n\n```\n\n```python\ntimestep = 0.1 # s\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n```\n",
             "supportThemeIcons": false
         }
     },
     {
-        "label": "starting_ts",
+        "label": "monitor_timeout",
         "kind": 5,
-        "importPath": "draw_trajectories",
-        "description": "draw_trajectories",
-        "peekOfCode": "starting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n        trajectories[vn].append( [ts,pos])",
-        "detail": "draw_trajectories",
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "monitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')",
+        "detail": "scripts.track_trajectories",
         "documentation": {
-            "value": "\n```python\nfrom draw_trajectories import starting_ts\n```\n\n```python\n\n\n```\n\n```python\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n        trajectories[vn].append( [ts,pos])\n```\n",
+            "value": "\n```python\nfrom scripts.track_trajectories import monitor_timeout\n```\n\n```python\n\n\n```\n\n```python\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "monitor_iterations",
+        "kind": 5,
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "monitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)",
+        "detail": "scripts.track_trajectories",
+        "documentation": {
+            "value": "\n```python\nfrom scripts.track_trajectories import monitor_iterations\n```\n\n```python\n\n\n```\n\n```python\nmonitor_iterations = int(monitor_timeout // timestep)\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "doTimestamp",
+        "kind": 5,
+        "importPath": "scripts.track_trajectories",
+        "description": "scripts.track_trajectories",
+        "peekOfCode": "doTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)",
+        "detail": "scripts.track_trajectories",
+        "documentation": {
+            "value": "\n```python\nfrom scripts.track_trajectories import doTimestamp\n```\n\n```python\n\n\n```\n\n```python\ndoTimestamp = False\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return p,ts\ndef signal_handler(sig, frame):\n    print('You pressed Ctrl+C! Exiting...')\n    utils.pkl_save_obj(trajectories,\"trajectory_\",file_timestamp)\n    sys.exit(0)\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2829,6 +2144,18 @@
         }
     },
     {
+        "label": "actions_timeout",
+        "kind": 5,
+        "importPath": "random_main",
+        "description": "random_main",
+        "peekOfCode": "actions_timeout = 100\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    args = parser.parse_args()\n    # env = gym.make(\"AirSimEnv-v1\")\n    if(args.debug):",
+        "detail": "random_main",
+        "documentation": {
+            "value": "\n```python\nfrom random_main import actions_timeout\n```\n\n```python\n\n\n```\n\n```python\nactions_timeout = 100\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    args = parser.parse_args()\n    # env = gym.make(\"AirSimEnv-v1\")\n    if(args.debug):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "sfp",
         "kind": 5,
         "importPath": "setup",
@@ -2837,126 +2164,6 @@
         "detail": "setup",
         "documentation": {
             "value": "\n```python\nfrom setup import sfp\n```\n\n```python\n\n\n```\n\n```python\nsfp = utils.AIRSIM_SETTINGS_FOLDER + \"settings.json\"\nwith open(sfp, \"r\") as jsonFile:\n    data = json.load(jsonFile)\nprint(data[\"Vehicles\"]) \nfor i,v in enumerate(data[\"Vehicles\"]):\n    gps = utils.init_gps[i]\n    ned = utils.lonlatToAirSim(*gps)\n    v[\"X\"] = ned[0]\n    v[\"Y\"] =  ned[1]\n    # v[\"Z\"] = v[\"Z\"] \n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "check_pos",
-        "kind": 2,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "def check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import check_pos\n```\n\n```python\n\n\n```\n\n```python\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "save_obj",
-        "kind": 2,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "def save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n        return pickle.load(f)\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import save_obj\n```\n\n```python\n\n\n```\n\n```python\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n        return pickle.load(f)\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "load_obj",
-        "kind": 2,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "def load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n        return pickle.load(f)\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import load_obj\n```\n\n```python\n\n\n```\n\n```python\ndef load_obj(name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n        return pickle.load(f)\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "timestep",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "timestep = 0.1 # s\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import timestep\n```\n\n```python\n\n\n```\n\n```python\ntimestep = 0.1 # s\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "monitor_timeout",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "monitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import monitor_timeout\n```\n\n```python\n\n\n```\n\n```python\nmonitor_timeout =  20 * 60 # s\nmonitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "monitor_iterations",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "monitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import monitor_iterations\n```\n\n```python\n\n\n```\n\n```python\nmonitor_iterations = int(monitor_timeout // timestep)\ndef check_pos(vName):\n    p = client.simGetGroundTruthKinematics(vehicle_name = vName).position\n    ts = time.time()\n    print(\"[\",vName,\"]\",(p.x_val,p.y_val,p.z_val) )\n    return (p.x_val,p.y_val,p.z_val),ts\ndef save_obj(obj, name,file_timestamp ):\n    with open(utils.TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef load_obj(name,file_timestamp ):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "client",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "client = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import client\n```\n\n```python\n\n\n```\n\n```python\nclient = airsim.MultirotorClient()\n# connect to the AirSim simulator\nprint(client.confirmConnection() )\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "vehicles_names",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "vehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import vehicles_names\n```\n\n```python\n\n\n```\n\n```python\nvehicles_names = [ vn for vn in utils.g_airsim_settings[\"Vehicles\"] ]\nfile_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "trajectories",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "trajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] ",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import trajectories\n```\n\n```python\n\n\n```\n\n```python\ntrajectories = dict()\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "starting_ts",
-        "kind": 5,
-        "importPath": "track_trajectories",
-        "description": "track_trajectories",
-        "peekOfCode": "starting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n        trajectories[vn].append( [ts,pos])",
-        "detail": "track_trajectories",
-        "documentation": {
-            "value": "\n```python\nfrom track_trajectories import starting_ts\n```\n\n```python\n\n\n```\n\n```python\nstarting_ts = dict()\nfor vn in vehicles_names:\n    trajectories[vn] = []\n    starting_ts[vn] = time.time()\n# while(True):\nfor i in range(0,10):\n    for vn in vehicles_names:\n        pos,ts = check_pos(vn)\n        ts -= starting_ts[vn] \n        trajectories[vn].append( [ts,pos])\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2993,6 +2200,18 @@
         "detail": "train_main",
         "documentation": {
             "value": "\n```python\nfrom train_main import epsilon\n```\n\n```python\n\n\n```\n\n```python\nepsilon = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=4,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n                        help='Log into file (default: %(default)s)')\n    args = parser.parse_args()\n    # env = gym.make(\"AirSimEnv-v1\")\n    if args.debug:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "kind": 6,
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "peekOfCode": "class TrajectoryTrackerClient(MultirotorClient):\n    def __init__(self):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        self.trajectory = []\n        self.episode = 0\n        self.isTracking = False\n        self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\n    def _trackingLoop(self,episode,vName,doTimestamp=False):",
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nfrom trajectoryTrackerClient import TrajectoryTrackerClient\n```\n\n```python\n\n\n```\n\n```python\nclass TrajectoryTrackerClient(MultirotorClient):\n    def __init__(self):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        self.trajectory = []\n        self.episode = 0\n        self.isTracking = False\n        self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\n    def _trackingLoop(self,episode,vName,doTimestamp=False):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3085,10 +2304,10 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def nedToGps( x, y, z):\n    return lonlatToProj(* nedToProj(x, y, z), inverse=True)\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)",
+        "peekOfCode": "def nedToGps( x, y, z):\n    return lonlatToProj(* nedToProj(x, y, z), inverse=True)\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import nedToGps\n```\n\n```python\n\n\n```\n\n```python\ndef nedToGps( x, y, z):\n    return lonlatToProj(* nedToProj(x, y, z), inverse=True)\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
+            "value": "\n```python\nfrom utils import nedToGps\n```\n\n```python\n\n\n```\n\n```python\ndef nedToGps( x, y, z):\n    return lonlatToProj(* nedToProj(x, y, z), inverse=True)\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3097,10 +2316,10 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)",
+        "peekOfCode": "def dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import dronePrint\n```\n\n```python\n\n\n```\n\n```python\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
+            "value": "\n```python\nfrom utils import dronePrint\n```\n\n```python\n\n\n```\n\n```python\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3109,10 +2328,70 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)",
+        "peekOfCode": "def addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import addToDict\n```\n\n```python\n\n\n```\n\n```python\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
+            "value": "\n```python\nfrom utils import addToDict\n```\n\n```python\n\n\n```\n\n```python\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "pkl_save_obj",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:\n            return pickle.load(f)\n    elif name and file_timestamp:\n        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n            return pickle.load(f)",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import pkl_save_obj\n```\n\n```python\n\n\n```\n\n```python\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:\n        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:\n            return pickle.load(f)\n    elif name and file_timestamp:\n        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n            return pickle.load(f)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "pkl_load_obj",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:\n            return pickle.load(f)\n    elif name and file_timestamp:\n        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n            return pickle.load(f)\n    else:\n        raise Exception(\"Specify file name\")\ndef numpy_save(arr,folder_timestamp,filename):",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import pkl_load_obj\n```\n\n```python\n\n\n```\n\n```python\ndef pkl_load_obj(name=None,file_timestamp=None,filename=None):\n    if filename:\n        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:\n            return pickle.load(f)\n    elif name and file_timestamp:\n        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:\n            return pickle.load(f)\n    else:\n        raise Exception(\"Specify file name\")\ndef numpy_save(arr,folder_timestamp,filename):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "numpy_save",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def numpy_save(arr,folder_timestamp,filename):\n    file_path = TRAJECTORIES_FOLDER+\"trajectories_\"+folder_timestamp\n    if not os.path.exists(file_path):\n        os.makedirs(file_path)\n    data = np.asarray(arr)\n    # save to npy file\n    print(\"Saving\",os.path.join(file_path, filename))\n    np.save(os.path.join(file_path, filename) , data)\ndef position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import numpy_save\n```\n\n```python\n\n\n```\n\n```python\ndef numpy_save(arr,folder_timestamp,filename):\n    file_path = TRAJECTORIES_FOLDER+\"trajectories_\"+folder_timestamp\n    if not os.path.exists(file_path):\n        os.makedirs(file_path)\n    data = np.asarray(arr)\n    # save to npy file\n    print(\"Saving\",os.path.join(file_path, filename))\n    np.save(os.path.join(file_path, filename) , data)\ndef position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "position_to_list",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l) -> Vector3r:\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(l[0],l[1],l[2])\ndistance = lambda p1, p2: np.norm(p1-p2)",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import position_to_list\n```\n\n```python\n\n\n```\n\n```python\ndef position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l) -> Vector3r:\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(l[0],l[1],l[2])\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "list_to_position",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def list_to_position(l) -> Vector3r:\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(l[0],l[1],l[2])\ndistance = lambda p1, p2: np.norm(p1-p2)",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import list_to_position\n```\n\n```python\n\n\n```\n\n```python\ndef list_to_position(l) -> Vector3r:\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(l[0],l[1],l[2])\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
             "supportThemeIcons": false
         }
     },

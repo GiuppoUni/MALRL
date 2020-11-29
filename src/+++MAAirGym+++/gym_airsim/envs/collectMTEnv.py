@@ -4,7 +4,6 @@ import eventlet
 import utils
 
 import logging
-from myAirSimClient2 import MyAirSimClient2
 import numpy as np
 import random
 
@@ -14,7 +13,6 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from myAirSimClient import *
 from newMyAirSimClient import lock, newMyAirSimClient
 
 
@@ -91,14 +89,13 @@ class CollectMTEnv(gym.Env):
         num_targets=3,
         n_agents = int(utils.g_config["rl"]["n_agents"]),
         n_actions = 3, step_cost = -1,partial_obs = False,
-        track_trajectory = True):
+        ):
 
         signal.signal(signal.SIGTERM, service_shutdown)
         signal.signal(signal.SIGINT, service_shutdown)
         self.lock = threading.Lock()
         self.threads = {}
 
-        self.track_trajectory = track_trajectory
         
 
             
@@ -162,8 +159,9 @@ class CollectMTEnv(gym.Env):
 
         self.allLogs = dict()
         self.init_logs()
-        if(self.track_trajectory):
-            self.init_tracker()
+
+        # self.myClient.drawTrajectories()
+
 
     def _vec2r_to_numpy_array(self,vec):
         return np.array([vec.x_val, vec.y_val])
@@ -331,17 +329,20 @@ class CollectMTEnv(gym.Env):
             goal = self.goals[agent_i]
             track = self.myClient.goal_direction(goal, now,agent_name) 
             
-            done = True
+
+            # distanceTraj = self.myClient.distanceFromTraj(now)
+
+
+            
             distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
             reward = 0
             if collided == True:
                 reward = -100.0
-            elif collided == 99:
-                reward = 0.0
+                done = True 
             else: 
-                done = False
                 reward, distance = self.computeReward("Drone"+str(agent_i),
                                                     now,goal, track)
+                done = False
         
             # Youuuuu made it
             if distance < 3:
@@ -393,6 +394,7 @@ class CollectMTEnv(gym.Env):
         self.stepN = 0
         self.episodeN += 1
         
+        self._agents_dones = [False for _ in range(self.n_agents)]
             
         print("Resetting...")
         # self.myClient.AirSim_reset()
@@ -421,10 +423,3 @@ class CollectMTEnv(gym.Env):
             self.allLogs[vn]['track'] = [-2]
             self.allLogs[vn]['action'] = [1]
 
-
-    def init_tracker(self):
-        # for an in self.agent_names:
-        #     j= Job(callback = self.myClient.simGetPosition,timer=1,lock = self.lock,vName = an) 
-        #     j.start()
-        #     self.threads["traj_tracker_"+an] = j
-        return

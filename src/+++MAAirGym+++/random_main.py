@@ -1,4 +1,5 @@
 import argparse
+from trajectoryTrackerClient import TrajectoryTrackerClient
 from gym_airsim.envs.collectMTEnv import CollectMTEnv
 
 import gym
@@ -7,18 +8,18 @@ import gym_airsim.envs
 import gym_airsim
 from gym_airsim.envs import AirSimEnv
 
-from navMapWindow import NavMapper
 import utils
 import time
 
 
+actions_timeout = 100
 
 
 if __name__ == '__main__':
 
 
     parser = argparse.ArgumentParser(description='RL for ma-gym')
-    parser.add_argument('--episodes', type=int, default=4,
+    parser.add_argument('--episodes', type=int, default=10,
                         help='episodes (default: %(default)s)')
     parser.add_argument('--debug', type=bool, default=False,
     help='Log into file (default: %(default)s)')
@@ -33,9 +34,10 @@ if __name__ == '__main__':
 
     # TODO replace for variables
     env = CollectMTEnv()
-    
+    trackerClient = TrajectoryTrackerClient()
     #navMapper = NavMapper(env.myClient)
     
+
     print("Starting episodes...")
     for ep_i in range(args.episodes):
         done_n = [False for _ in range(env.n_agents)]
@@ -46,8 +48,13 @@ if __name__ == '__main__':
 
         # env.render()
         
-        # while not all(done_n):
-        for _ in range(0,150): # DEBUG ONLY
+        # trackerClient.start_tracking(ep_i,vName="Drone0")
+        time.sleep(0.01)
+        
+        actions_completed = 0
+
+        while not all(done_n) :
+        # for _ in range(0,150): # DEBUG ONLY
             action_n = env.action_space.sample() # Random actions DEBUG ONLY
             # action_n = [0 for _ in range(env.n_agents)] # DEBUG ONLY
 
@@ -55,10 +62,19 @@ if __name__ == '__main__':
             ep_reward += sum(reward_n)
             # env.render()
             
+            actions_completed +=1
+            
+            if actions_completed == actions_timeout:
+                print("Episode ended: actions timeout reached")
+                break
+
             # navMapper.update_nav_fig()
             time.sleep(0.5)
 
+        trackerClient.stop_tracking()
+
         print("="*40)    
-        print('Episode #{} Reward: {}'.format(ep_i, ep_reward))
+        print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
     env.close()
+
 

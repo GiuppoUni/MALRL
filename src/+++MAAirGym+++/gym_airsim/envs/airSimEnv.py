@@ -1,5 +1,4 @@
 import logging
-from myAirSimClient2 import MyAirSimClient2
 import numpy as np
 import random
 
@@ -9,7 +8,6 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from myAirSimClient import *
 from newMyAirSimClient import newMyAirSimClient
 
 logger = logging.getLogger(__name__)

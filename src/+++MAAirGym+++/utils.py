@@ -1,5 +1,7 @@
 import json
 from os import O_EXCL
+import os
+from airsim.types import Vector3r
 from dotmap import DotMap
 from pyproj import Proj
 
@@ -7,6 +9,7 @@ from configparser import ConfigParser
 import logging
 import datetime
 import numpy as np
+import pickle
 
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
@@ -162,5 +165,38 @@ def addToDict(d: dict,k,v):
         d[k] = []
     d[k].append(v)
 
+
+def pkl_save_obj(obj, name,file_timestamp ):
+    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+def pkl_load_obj(name=None,file_timestamp=None,filename=None):
+    if filename:
+        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:
+            return pickle.load(f)
+    elif name and file_timestamp:
+        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:
+            return pickle.load(f)
+    else:
+        raise Exception("Specify file name")
+
+
+def numpy_save(arr,folder_timestamp,filename):
+    file_path = TRAJECTORIES_FOLDER+"trajectories_"+folder_timestamp
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+    data = np.asarray(arr)
+    # save to npy file
+    print("Saving",os.path.join(file_path, filename))
+    np.save(os.path.join(file_path, filename) , data)
+
+
+def position_to_list(position_vector) -> list:
+    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
+
+def list_to_position(l) -> Vector3r:
+    if len(l) != 3:
+        raise Exception("REQUIRED EXACTLY 3 elements")
+    return Vector3r(l[0],l[1],l[2])
 
 distance = lambda p1, p2: np.norm(p1-p2)

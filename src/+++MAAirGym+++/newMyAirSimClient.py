@@ -1,4 +1,5 @@
-from airsim.types import ImageRequest
+import os
+from airsim.types import ImageRequest, Vector3r
 import numpy as np
 import time
 import math
@@ -63,6 +64,12 @@ class newMyAirSimClient(MultirotorClient):
         
         self.z = -6
 
+        traj_fold=os.listdir(utils.TRAJECTORIES_FOLDER)[0]
+        traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,traj_fold)
+        for tFile in os.listdir(traj_fold):
+            self.draw_numpy_trajectory(os.path.join(traj_fold,tFile))
+
+        # self.trajectories = self._loadPastTrajectories()
 
     def simGetPosition(self,lock,vName):
         if(lock):
@@ -157,7 +164,9 @@ class newMyAirSimClient(MultirotorClient):
         
         collided = False
         if action == 0:
-            start, duration = self.straight(1, 4,vName)
+            # start, duration = self.straight(1, 4,vName)
+            start, duration = self.straight(2, 6,vName)
+
         elif action == 1:         
             start, duration = self.yaw_right(0.8,vName)            
         elif action == 2:
@@ -168,7 +177,8 @@ class newMyAirSimClient(MultirotorClient):
                 return True    
 
         self.moveByVelocityAsync(0, 0, 0, 1,vehicle_name=vName)
-        self.rotateByYawRate(0, 1,vehicle_name=vName)            
+        self.rotateByYawRate(0, 1,vehicle_name=vName)
+            
         
         return collided
     
@@ -282,6 +292,32 @@ class newMyAirSimClient(MultirotorClient):
         #cv2.waitKey(0)
         
         return total
+
+    def distanceFromTraj(self,pos: Vector3r):
+        self
+        return 0
+
+    def _loadPastTrajectories(self):
+        # TODO replace for a specific trajectories file 
+        fn = os.listdir(utils.TRAJECTORIES_FOLDER)[-1]
+        return utils.pkl_load_obj(filename=fn)
+
+    def draw_numpy_trajectory(self,filename):
+        # TODO replace for a specific trajectories file 
+        trajectory =  np.load(filename)
+        # print(trajectory)
+        trajectory = [utils.list_to_position(x) for x in trajectory]
+        self.simPlotLineStrip(trajectory,
+            is_persistent= True)
+
+        return 
+
+
+    def drawTrajectories(self):
+        print(self.trajectories)
+        for episode in self.trajectories:
+            self.simPlotLineStrip(self.trajectories[episode],
+                is_persistent= True)
 
 
     def AirSim_reset(self):
