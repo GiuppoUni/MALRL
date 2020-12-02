@@ -1,6 +1,5 @@
 import argparse
 import datetime
-from gym_airsim.envs.collectEnv import CollectEnv
 from trajectoryTrackerClient import TrajectoryTrackerClient
 from gym_airsim.envs.collectMTEnv import CollectMTEnv
 
@@ -58,36 +57,36 @@ if __name__ == '__main__':
                                         screen_size=(640, 640), 
                                         enable_render=True)
 
-    else:
-        # TODO replace for variables
-        env = CollectEnv(trajColFlag = args.collision_trajectories)
-        trackerClient = TrajectoryTrackerClient()
+    # TODO replace f  or variables
+    env = CollectMTEnv(trajColFlag = args.collision_trajectories)
     
-
+    trackerClient = TrajectoryTrackerClient()
+    #navMapper = NavMapper(env.myClient)
+    
 
     print("Starting episodes...")
     for ep_i in range(args.episodes):
-        done = False
+        done_n = [False for _ in range(env.n_agents)]
         ep_reward = 0
 
         env.seed(ep_i)  
-        obs = env.reset(random_pos = args.random_pos)
+        obs_n = env.reset(random_pos = args.random_pos)
         if(args.env2D):
             env.render()
         
-        if(not args.env2D and args.track_trajectories):
+        if(args.track_trajectories):
             trackerClient.start_tracking(ep_i,vName="Drone0")
             time.sleep(0.01)
         
         n_actions_taken = 0
 
-        while not done :
+        while not all(done_n) :
         # for _ in range(0,150): # DEBUG ONLY
-            action = env.action_space.sample() # Random actions DEBUG ONLY
+            action_n = env.action_space.sample() # Random actions DEBUG ONLY
             # action_n = [0 for _ in range(env.n_agents)] # DEBUG ONLY
 
-            obs, reward, done, info = env.step(action_n)
-            ep_reward += sum(reward)
+            obs_n, reward_n, done_n, info = env.step(action_n)
+            ep_reward += sum(reward_n)
             # env.render()
             
             n_actions_taken +=1
@@ -99,7 +98,7 @@ if __name__ == '__main__':
             # navMapper.update_nav_fig()
             time.sleep(episode_cooldown)
         
-        if(not args.env2D and args.track_trajectories):
+        if(args.track_trajectories):
             trackerClient.stop_tracking()     
 
         print("="*40)    

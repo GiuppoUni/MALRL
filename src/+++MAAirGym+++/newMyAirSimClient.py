@@ -9,6 +9,7 @@ from PIL import Image
 import eventlet
 from eventlet import Timeout
 import multiprocessing as mp
+from sklearn.neighbors import KDTree
 # Change the path below to point to the directoy where you installed the AirSim PythonClient
 #sys.path.append('C:/Users/Kjell/Google Drive/MASTER-THESIS/AirSimpy')
 
@@ -16,6 +17,7 @@ from airsim import MultirotorClient
 import airsim
 import sys 
 import utils
+import gc 
 
 import threading
 
@@ -37,38 +39,22 @@ lock = threading.Lock()
 
 class newMyAirSimClient(MultirotorClient):
 
-    def __init__(self):        
-        self.img1 = None
-        self.img2 = None
+    def __init__(self,trajColFlag):        
 
         MultirotorClient.__init__(self)
         MultirotorClient.confirmConnection(self)
         self.drones_names = [ v for v in utils.g_airsim_settings["Vehicles"] ]
-        def _colorize(idx): 
-
-            if idx == 0:
-                return utils.green_color
-            elif idx==1: 
-                return utils.blue_color
-            else : 
-                return utils.blue_color
 
         for i,dn in enumerate( self.drones_names ):
             self.enableApiControl(True,vehicle_name=dn)
             self.armDisarm(True,vehicle_name=dn)
-            self.simSetTraceLine(_colorize(i)+[0.7],thickness=4.0,vehicle_name=dn)
-            
-        self.home_pos = self.getPosition(vehicle_name="Drone0")
-    
-        self.home_ori = self.getOrientation(vehicle_name="Drone0")
-        
-        self.z = -6
 
-        traj_fold=os.listdir(utils.TRAJECTORIES_FOLDER)[0]
-        traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,traj_fold)
-        for tFile in os.listdir(traj_fold):
-            self.draw_numpy_trajectory(os.path.join(traj_fold,tFile))
+        self.trajColFlag = trajColFlag
 
+        self.z_des = -6
+        self.kdtrees = [] 
+
+        self.drawTrajectories()
         # self.trajectories = self._loadPastTrajectories()
 
     def simGetPosition(self,lock,vName):
@@ -112,7 +98,7 @@ class newMyAirSimClient(MultirotorClient):
         pitch, roll, yaw  = self.getPitchRollYaw(vehicle_name=vName)
         vx = math.cos(yaw) * speed
         vy = math.sin(yaw) * speed
-        self.moveByVelocityZAsync(vx, vy, self.z, duration, DrivetrainType.ForwardOnly, vehicle_name = vName )
+        self.moveByVelocityZAsync(vx, vy, self.z_des, duration, DrivetrainType.ForwardOnly, vehicle_name = vName )
         start = time.time()
         return start, duration
     
@@ -129,19 +115,19 @@ class newMyAirSimClient(MultirotorClient):
        # CRAB ACTIONS
 
     def crab_straight(self, duration, speed,vName):
-        self.client.moveByVelocity(speed, 0, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+        self.client.moveByVelocity(speed, 0, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
     def crab_right(self, duration,vName):
-        self.client.moveByVelocityZ(0, 1, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+        self.client.moveByVelocityZ(0, 1, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
     def crab_left(self, duration,vName):
-        self.client.moveByVelocityZ(0, -1, self.z, duration, DrivetrainType.MaxDegreeOfFreedom,
+        self.client.moveByVelocityZ(0, -1, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
             vehicle_name = vName)        
         start = time.time()
         return start, duration
@@ -150,13 +136,27 @@ class newMyAirSimClient(MultirotorClient):
 
         #check if copter is on level cause sometimes he goes up without a reason
         x = 0
-        while self.getPosition(vehicle_name=vName).z_val < -7.0:
+        cur_pos = self.getPosition(vehicle_name=vName)
+
+
+        if(self.trajColFlag):
+            traj_collisions = self.check_traj_collision(utils.position_to_list(cur_pos),
+                radius = 10,count_only = True,specify_collision = True)
+            print('traj_collisions: ', traj_collisions)
+            
+            if len(traj_collisions) > 0:
+                print("*"*100,"\nPOINT COLLISION\n","*"*100)
+                return True 
+        
+        while cur_pos.z_val < -7.0:
+            print(cur_pos.z_val, "and", x)
             self.moveToZAsync(-6, 3,vName)
             time.sleep(1)
-            print(self.getPosition(vehicle_name=vName).z_val, "and", x)
             x = x + 1
             if x > 10:
+                print("LEVELEZING ATTEMPT TIMEOUT")
                 return True        
+            cur_pos = self.getPosition(vehicle_name=vName)
         
     
         start = time.time()
@@ -174,6 +174,7 @@ class newMyAirSimClient(MultirotorClient):
             
         while duration > time.time() - start:
             if self.simGetCollisionInfo(vehicle_name=vName).has_collided == True:
+                print("OSBTACLE COLLISION")
                 return True    
 
         self.moveByVelocityAsync(0, 0, 0, 1,vehicle_name=vName)
@@ -294,35 +295,65 @@ class newMyAirSimClient(MultirotorClient):
         return total
 
     def distanceFromTraj(self,pos: Vector3r):
-        self
         return 0
-
-    def _loadPastTrajectories(self):
-        # TODO replace for a specific trajectories file 
-        fn = os.listdir(utils.TRAJECTORIES_FOLDER)[-1]
-        return utils.pkl_load_obj(filename=fn)
 
     def draw_numpy_trajectory(self,filename):
         # TODO replace for a specific trajectories file 
-        trajectory =  np.load(filename)
-        # print(trajectory)
-        trajectory = [utils.list_to_position(x) for x in trajectory]
-        self.simPlotLineStrip(trajectory,
-            is_persistent= True)
-
+        try:
+            trajectory =  np.load(filename)
+            # print(trajectory)
+            trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+            self.simPlotLineStrip(trajectory_vecs,
+                is_persistent= True)
+            
+            _tree = KDTree(trajectory)
+            self.kdtrees.append(_tree)
+            
+            # Free some mem
+            del trajectory
+            gc.collect()
+        except:
+            print(filename,"Exception in reading")
+            raise Exception("Exception in reading",filename)
         return 
 
 
     def drawTrajectories(self):
-        print(self.trajectories)
-        for episode in self.trajectories:
-            self.simPlotLineStrip(self.trajectories[episode],
-                is_persistent= True)
+        # files = os.listdir(utils.TRAJECTORIES_FOLDER)
+        # if not files:
+        #     return None
+        # files.sort()
+        # print(files[-1])
+        # traj_fold= files[-1]
+        # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,traj_fold)
+        traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"fixed_traj")
+ 
+        for tFile in os.listdir(traj_fold):
+            self.draw_numpy_trajectory(os.path.join(traj_fold,tFile))
+        print('self.kdtrees: ', self.kdtrees)
+
+
+    def check_traj_collision(self,current_pos,radius,count_only,specify_collision):
+        
+        if count_only:
+            if(specify_collision):
+                collisions = []
+                for idx,_tree in enumerate(self.kdtrees):
+                    res = _tree.query_radius( [current_pos],r=radius,count_only = count_only )
+                    if res > 0:
+                        collisions.append("Trajectory_"+str(idx) )
+                return collisions
+            else:
+                return np.sum([ _tree.query_radius( [current_pos],r=radius,count_only = count_only ) 
+                for _tree in self.kdtrees ])
+        else:
+            for _tree in self.kdtrees:
+                res = _tree.query_radius( [current_pos],r=radius,count_only = count_only ) 
+            
 
 
     def AirSim_reset(self):
 
-        self.reset()
             
         # TODO RESET ALL 
         time.sleep(0.2)
@@ -331,9 +362,22 @@ class newMyAirSimClient(MultirotorClient):
             self.armDisarm(True,vehicle_name=dn)
         time.sleep(1)
         for dn in self.drones_names:
-            self.moveToZAsync(self.z, 3,vehicle_name=dn) 
+            self.moveToZAsync(self.z_des, 3,vehicle_name=dn) 
             time.sleep(1)
-        time.sleep(2)
+
+
+    def disable_trace_lines(self):
+        for i,dn in enumerate(self.drones_names):
+            self.simSetTraceLine([0,0,0,0],
+                thickness=0.0,vehicle_name=dn)
+
+    def enable_trace_lines(self):
+        for i,dn in enumerate(self.drones_names):
+            self.simSetTraceLine(utils._colorize(i)+[0.7],
+                thickness=8.0,vehicle_name=dn)
+
+
+        
     
     @staticmethod
     def toEulerianAngle(q):

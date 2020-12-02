@@ -77,7 +77,7 @@ def service_shutdown(signum, frame):
     raise ServiceExit
 
 
-class CollectMTEnv(gym.Env):
+class CollectEnv(gym.Env):
     """
     Environment in which the agents have to collect the balls
     """

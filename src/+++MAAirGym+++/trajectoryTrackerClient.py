@@ -1,4 +1,4 @@
-from airsim.types import ImageRequest
+from airsim.types import ImageRequest, Vector3r
 import numpy as np
 import time
 import math
@@ -31,7 +31,7 @@ class TrajectoryTrackerClient(MultirotorClient):
         self.episode = 0
         self.isTracking = False
         self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
-
+        self.timestep = 0.1
 
 
 
@@ -41,13 +41,14 @@ class TrajectoryTrackerClient(MultirotorClient):
         self.episode = episode
         starting_ts = time.time()
         while (self.isTracking):
-                    pos,ts = self.check_pos(vName)
-                    ts -= starting_ts 
-                    if doTimestamp:
-                        data = [ts,pos]
-                    else: 
-                        data = pos
-                    self.trajectory.append(data )
+            pos,ts = self.check_pos(vName,ret_list=True)
+            ts -= starting_ts 
+            if doTimestamp:
+                data = [ts,pos]
+            else: 
+                data = pos
+            self.trajectory.append(data )
+            time.sleep(0.1)
 
     def start_tracking(self,episode,vName,doTimestamp=False):
         self.isTracking = True
@@ -57,17 +58,22 @@ class TrajectoryTrackerClient(MultirotorClient):
     def stop_tracking(self):
         self.isTracking = False
         # utils.pkl_save_obj(self.trajectory,"trajectory_" + str(self.episode))
-        self.trajectory = [utils.position_to_list(pos) for pos in self.trajectory]
+        if(type(self.trajectory[0])==Vector3r):
+            self.trajectory = [utils.position_to_list(pos) for pos in self.trajectory]
         utils.numpy_save(self.trajectory,self.folder_timestamp,"trajectory_"+ str(self.episode)+".npy")
 
 
 
 
-    def check_pos(self,vName):
+    def check_pos(self,vName,ret_list=False):
         p = self.simGetGroundTruthKinematics(vehicle_name = vName).position
         ts = time.time()
+        utils.set_offset_position(p)
         # print("[",vName,"]",(p.x_val,p.y_val,p.z_val) )
-        return p,ts
+        if ret_list:
+            return utils.position_to_list(p),ts
+        else:
+            return p,ts
 
     def simGetPosition(self,lock,vName):
         if(lock):

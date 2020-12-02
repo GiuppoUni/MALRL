@@ -39,6 +39,8 @@ DEST = (
 
 
 
+
+
 # GPS init position of uavs
 init_gps = [
     (
@@ -198,5 +200,27 @@ def list_to_position(l) -> Vector3r:
     if len(l) != 3:
         raise Exception("REQUIRED EXACTLY 3 elements")
     return Vector3r(l[0],l[1],l[2])
+
+
+def set_offset_position(pos):
+    _v = g_vehicles["Drone0"]
+    _offset_x = _v["X"] 
+    _offset_y = _v["Y"]
+    _offset_z = _v["Z"]
+    pos.x_val += _offset_x
+    pos.y_val += _offset_y
+    pos.z_val += _offset_z
+
+
+def _colorize(idx): 
+
+    if idx == 0:
+        return green_color
+    elif idx==1: 
+        return blue_color
+    else : 
+        return blue_color
+
+
 
 distance = lambda p1, p2: np.norm(p1-p2)
