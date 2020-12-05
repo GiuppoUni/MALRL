@@ -467,6 +467,17 @@
         }
     },
     {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {
+            "value": "\n```python\nimport typing\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "Image",
         "importPath": "PIL",
         "description": "PIL",
@@ -957,7 +968,7 @@
         }
     },
     {
-        "label": "Maze",
+        "label": "MazeView2D",
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
         "isExtraImport": true,
@@ -968,13 +979,58 @@
         }
     },
     {
-        "label": "MazeView2D",
-        "importPath": "gym_maze.envs.maze_view_2d",
-        "description": "gym_maze.envs.maze_view_2d",
+        "label": "itertools",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_view_2d",
+        "importPath": "itertools",
+        "description": "itertools",
+        "detail": "itertools",
         "documentation": {
-            "value": "\n```python\nimport gym_maze.envs.maze_view_2d\n```\n",
+            "value": "\n```python\nimport itertools\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {
+            "value": "\n```python\nimport sklearn.neighbors\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {
+            "value": "\n```python\nimport sklearn.neighbors\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {
+            "value": "\n```python\nimport sklearn.neighbors\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Maze",
+        "importPath": "maze_view_2d",
+        "description": "maze_view_2d",
+        "isExtraImport": true,
+        "detail": "maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nimport maze_view_2d\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -991,7 +1047,40 @@
         }
     },
     {
+        "label": "Iterable",
+        "importPath": "collections.abc",
+        "description": "collections.abc",
+        "isExtraImport": true,
+        "detail": "collections.abc",
+        "documentation": {
+            "value": "\n```python\nimport collections.abc\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "block",
+        "importPath": "numpy.core.shape_base",
+        "description": "numpy.core.shape_base",
+        "isExtraImport": true,
+        "detail": "numpy.core.shape_base",
+        "documentation": {
+            "value": "\n```python\nimport numpy.core.shape_base\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "*",
+        "importPath": "gym_maze.envs.maze_env",
+        "description": "gym_maze.envs.maze_env",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_env\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeEnv",
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
         "isExtraImport": true,
@@ -1124,28 +1213,6 @@
         }
     },
     {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {
-            "value": "\n```python\nimport sklearn.neighbors\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {
-            "value": "\n```python\nimport sklearn.neighbors\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "pickle",
         "kind": 6,
         "isExtraImport": true,
@@ -1178,6 +1245,130 @@
         "detail": "json",
         "documentation": {
             "value": "\n```python\nimport json\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "gym_maze",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym_maze",
+        "description": "gym_maze",
+        "detail": "gym_maze",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "CollectEnv",
+        "importPath": "gym_airsim.envs.collectEnv",
+        "description": "gym_airsim.envs.collectEnv",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs.collectEnv",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "CollectEnv",
+        "importPath": "gym_airsim.envs.collectEnv",
+        "description": "gym_airsim.envs.collectEnv",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs.collectEnv",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "gym_airsim.envs",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym_airsim.envs",
+        "description": "gym_airsim.envs",
+        "detail": "gym_airsim.envs",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "AirSimEnv",
+        "importPath": "gym_airsim.envs",
+        "description": "gym_airsim.envs",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "AirSimEnv",
+        "importPath": "gym_airsim.envs",
+        "description": "gym_airsim.envs",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "AirSimEnv",
+        "importPath": "gym_airsim.envs",
+        "description": "gym_airsim.envs",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "gym_airsim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym_airsim",
+        "description": "gym_airsim",
+        "detail": "gym_airsim",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -1304,6 +1495,17 @@
         }
     },
     {
+        "label": "to_eularian_angles",
+        "importPath": "airsim.utils",
+        "description": "airsim.utils",
+        "isExtraImport": true,
+        "detail": "airsim.utils",
+        "documentation": {
+            "value": "\n```python\nimport airsim.utils\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
@@ -1328,39 +1530,6 @@
         }
     },
     {
-        "label": "CollectEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "CollectMTEnv",
         "importPath": "gym_airsim.envs.collectMTEnv",
         "description": "gym_airsim.envs.collectMTEnv",
@@ -1379,63 +1548,6 @@
         "detail": "gym_airsim.envs.collectMTEnv",
         "documentation": {
             "value": "\n```python\nimport gym_airsim.envs.collectMTEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "CollectMTEnv",
-        "importPath": "gym_airsim.envs.collectMTEnv",
-        "description": "gym_airsim.envs.collectMTEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectMTEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectMTEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "gym_airsim.envs",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "detail": "gym_airsim.envs",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "AirSimEnv",
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "AirSimEnv",
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "gym_airsim",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "gym_airsim",
-        "description": "gym_airsim",
-        "detail": "gym_airsim",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2304,22 +2416,10 @@
         "kind": 6,
         "importPath": "gym_airsim.envs.collectEnv",
         "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass Job(threading.Thread):",
+        "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass ServiceExit(Exception):",
         "detail": "gym_airsim.envs.collectEnv",
         "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import MultiAgentActionSpace\n```\n\n```python\n\n\n```\n\n```python\nclass MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass Job(threading.Thread):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "Job",
-        "kind": 6,
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "class Job(threading.Thread):\n    def __init__(self,timer = 0.5,callback = None, **kwargs):\n        threading.Thread.__init__(self)\n        self.callback = callback\n        self.timer = timer\n        self.args_dict = kwargs\n        # The shutdown_flag is a threading.Event object that\n        # indicates whether the thread should be terminated.\n        self.shutdown_flag = threading.Event()\n        # ... Other thread setup code here ...",
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import Job\n```\n\n```python\n\n\n```\n\n```python\nclass Job(threading.Thread):\n    def __init__(self,timer = 0.5,callback = None, **kwargs):\n        threading.Thread.__init__(self)\n        self.callback = callback\n        self.timer = timer\n        self.args_dict = kwargs\n        # The shutdown_flag is a threading.Event object that\n        # indicates whether the thread should be terminated.\n        self.shutdown_flag = threading.Event()\n        # ... Other thread setup code here ...\n```\n",
+            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import MultiAgentActionSpace\n```\n\n```python\n\n\n```\n\n```python\nclass MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass ServiceExit(Exception):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2340,10 +2440,10 @@
         "kind": 6,
         "importPath": "gym_airsim.envs.collectEnv",
         "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "class CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        trajColFlag,\n        size=10,\n        width=None,\n        height=None,",
+        "peekOfCode": "class CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    ACTION = [\"LEFT\",\"FRONT\",\"RIGHT\",\"BACK\",]\n    def __init__(\n        self,\n        trajColFlag,\n        size=10,\n        width=None,",
         "detail": "gym_airsim.envs.collectEnv",
         "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import CollectEnv\n```\n\n```python\n\n\n```\n\n```python\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        trajColFlag,\n        size=10,\n        width=None,\n        height=None,\n```\n",
+            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import CollectEnv\n```\n\n```python\n\n\n```\n\n```python\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    ACTION = [\"LEFT\",\"FRONT\",\"RIGHT\",\"BACK\",]\n    def __init__(\n        self,\n        trajColFlag,\n        size=10,\n        width=None,\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2352,10 +2452,10 @@
         "kind": 2,
         "importPath": "gym_airsim.envs.collectEnv",
         "description": "gym_airsim.envs.collectEnv",
-        "peekOfCode": "def service_shutdown(signum, frame):\n    print('Caught signal %d' % signum)\n    raise ServiceExit\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        trajColFlag,",
+        "peekOfCode": "def service_shutdown(signum, frame):\n    print('Caught signal %d' % signum)\n    raise ServiceExit\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    ACTION = [\"LEFT\",\"FRONT\",\"RIGHT\",\"BACK\",]\n    def __init__(\n        self,",
         "detail": "gym_airsim.envs.collectEnv",
         "documentation": {
-            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import service_shutdown\n```\n\n```python\n\n\n```\n\n```python\ndef service_shutdown(signum, frame):\n    print('Caught signal %d' % signum)\n    raise ServiceExit\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    def __init__(\n        self,\n        trajColFlag,\n```\n",
+            "value": "\n```python\nfrom gym_airsim.envs.collectEnv import service_shutdown\n```\n\n```python\n\n\n```\n\n```python\ndef service_shutdown(signum, frame):\n    print('Caught signal %d' % signum)\n    raise ServiceExit\nclass CollectEnv(gym.Env):\n    \"\"\"\n    Environment in which the agents have to collect the balls\n    \"\"\"\n    ACTION = [\"LEFT\",\"FRONT\",\"RIGHT\",\"BACK\",]\n    def __init__(\n        self,\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2448,10 +2548,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\", \"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            self.maze_view = MazeView2D(maze_name=\"OpenAI Gym - Maze (%s)\" % maze_file,",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            print(\"maze from file\")",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\", \"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            self.maze_view = MazeView2D(maze_name=\"OpenAI Gym - Maze (%s)\" % maze_file,\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            print(\"maze from file\")\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2556,10 +2656,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)",
+        "peekOfCode": "class MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom10x10Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom10x10Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2568,10 +2668,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)",
+        "peekOfCode": "class MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), ",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom20x20Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom20x20Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2580,10 +2680,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)",
+        "peekOfCode": "class MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n                                        enable_render=True)\n    env.render()\n    import time",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom30x30Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom30x30Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n                                        enable_render=True)\n    env.render()\n    import time\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2624,14 +2724,218 @@
         }
     },
     {
+        "label": "actions_to_value",
+        "kind": 2,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "def actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:\n        value |= 0x2\n    if \"S\" in actions:\n        value |= 0x4",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import actions_to_value\n```\n\n```python\n\n\n```\n\n```python\ndef actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:\n        value |= 0x2\n    if \"S\" in actions:\n        value |= 0x4\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "add_action",
+        "kind": 2,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "def add_action(value,action):\n    if \"N\" in action:\n        value |= 0x1\n    if \"E\" in action:\n        value |= 0x2\n    if \"S\" in action:\n        value |= 0x4\n    if \"W\" in action:\n        value |= 0x8\n    return value",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import add_action\n```\n\n```python\n\n\n```\n\n```python\ndef add_action(value,action):\n    if \"N\" in action:\n        value |= 0x1\n    if \"E\" in action:\n        value |= 0x2\n    if \"S\" in action:\n        value |= 0x4\n    if \"W\" in action:\n        value |= 0x8\n    return value\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "remove_action",
+        "kind": 2,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "def remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:\n        value &= ~ 0x2\n    if \"S\" in action:\n        value &= ~ 0x4\n    if \"W\" in action:\n        value &= ~ 0x8\n    return value",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import remove_action\n```\n\n```python\n\n\n```\n\n```python\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:\n        value &= ~ 0x2\n    if \"S\" in action:\n        value &= ~ 0x4\n    if \"W\" in action:\n        value &= ~ 0x8\n    return value\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "cell_value",
+        "kind": 2,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "def cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import cell_value\n```\n\n```python\n\n\n```\n\n```python\ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a = np.load(\"maze_samples/maze2d_001.npy\")\nprint(\"BEFORE\")\nprint(a)\ndef actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a\n```\n\n```python\n\n\n```\n\n```python\na = np.load(\"maze_samples/maze2d_001.npy\")\nprint(\"BEFORE\")\nprint(a)\ndef actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a[1,1]",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a[1,1] = 0\na[3,3] = 0\na[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a[1,1]\n```\n\n```python\n\n\n```\n\n```python\na[1,1] = 0\na[3,3] = 0\na[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a[3,3]",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a[3,3] = 0\na[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a[3,3]\n```\n\n```python\n\n\n```\n\n```python\na[3,3] = 0\na[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a[1,3]",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a[1,3]\n```\n\n```python\n\n\n```\n\n```python\na[1,3] = 0\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a[3,1]",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a[3,1]\n```\n\n```python\n\n\n```\n\n```python\na[3,1] = 0\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "av",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "av = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)\nprint(\"AFTER\")",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import av\n```\n\n```python\n\n\n```\n\n```python\nav = actions_to_value\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)\nprint(\"AFTER\")\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)\nprint(\"AFTER\")\nprint(a)",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a\n```\n\n```python\n\n\n```\n\n```python\na = [\n    [av(\"ES\"),av(\"WE\"),av(\"WES\"),av(\"WE\"),av(\"WS\")],\n    [av(\"NS\"),av(\"\"),    av(\"NS\"),  av(\"\"), av(\"NS\")],\n    [av(\"NES\"),av(\"WE\"),av(\"NEWS\"),av(\"WE\"),av(\"NWS\")],\n    [av(\"NS\"),av(\"\"),av(\"NS\"),av(\"\"),av(\"NS\")],\n    [av(\"NE\"),av(\"WE\"),av(\"WEN\"),av(\"WE\"),av(\"WN\")],\n]\na = np.array(a)\nprint(\"AFTER\")\nprint(a)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "a = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a\n```\n\n```python\n\n\n```\n\n```python\na = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "NROWS",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "NROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NROWS\n```\n\n```python\n\n\n```\n\n```python\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "NCOLS",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "NCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NCOLS\n```\n\n```python\n\n\n```\n\n```python\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "OBS_BLOCKS",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "OBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import OBS_BLOCKS\n```\n\n```python\n\n\n```\n\n```python\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "aa",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "aa = [ [cell_value(r,c,obs_blocks=OBS_BLOCKS) for c in range(NCOLS) ] for r in range(NROWS)]\naa = np.array(aa)\nprint('aa BEF: \\n', aa)  \nfor r in range(len(aa)):\n    for c in range( len(aa[0] )):\n        cell = aa[r,c]\n        if r -1 < 0 or  aa[r-1,c] == 0:\n            cell = remove_action( cell,\"N\") \n        if r+1 >= len(aa) or aa[r+1,c] == 0:\n            cell = remove_action( cell,\"S\") ",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import aa\n```\n\n```python\n\n\n```\n\n```python\naa = [ [cell_value(r,c,obs_blocks=OBS_BLOCKS) for c in range(NCOLS) ] for r in range(NROWS)]\naa = np.array(aa)\nprint('aa BEF: \\n', aa)  \nfor r in range(len(aa)):\n    for c in range( len(aa[0] )):\n        cell = aa[r,c]\n        if r -1 < 0 or  aa[r-1,c] == 0:\n            cell = remove_action( cell,\"N\") \n        if r+1 >= len(aa) or aa[r+1,c] == 0:\n            cell = remove_action( cell,\"S\") \n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "aa",
+        "kind": 5,
+        "importPath": "gym_maze.envs.my_maze_generator",
+        "description": "gym_maze.envs.my_maze_generator",
+        "peekOfCode": "aa = np.array(aa)\nprint('aa BEF: \\n', aa)  \nfor r in range(len(aa)):\n    for c in range( len(aa[0] )):\n        cell = aa[r,c]\n        if r -1 < 0 or  aa[r-1,c] == 0:\n            cell = remove_action( cell,\"N\") \n        if r+1 >= len(aa) or aa[r+1,c] == 0:\n            cell = remove_action( cell,\"S\") \n        if c -1 < 0 or  aa[r,c-1] == 0:",
+        "detail": "gym_maze.envs.my_maze_generator",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import aa\n```\n\n```python\n\n\n```\n\n```python\naa = np.array(aa)\nprint('aa BEF: \\n', aa)  \nfor r in range(len(aa)):\n    for c in range( len(aa[0] )):\n        cell = aa[r,c]\n        if r -1 < 0 or  aa[r-1,c] == 0:\n            cell = remove_action( cell,\"N\") \n        if r+1 >= len(aa) or aa[r+1,c] == 0:\n            cell = remove_action( cell,\"S\") \n        if c -1 < 0 or  aa[r,c-1] == 0:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "rng",
         "kind": 5,
         "importPath": "scripts.test_tree",
         "description": "scripts.test_tree",
-        "peekOfCode": "rng = np.random.RandomState(0)\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
+        "peekOfCode": "rng = np.random.RandomState(0)\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
         "detail": "scripts.test_tree",
         "documentation": {
-            "value": "\n```python\nfrom scripts.test_tree import rng\n```\n\n```python\n\n\n```\n\n```python\nrng = np.random.RandomState(0)\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
+            "value": "\n```python\nfrom scripts.test_tree import rng\n```\n\n```python\n\n\n```\n\n```python\nrng = np.random.RandomState(0)\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2640,10 +2944,10 @@
         "kind": 5,
         "importPath": "scripts.test_tree",
         "description": "scripts.test_tree",
-        "peekOfCode": "X = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
+        "peekOfCode": "X = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
         "detail": "scripts.test_tree",
         "documentation": {
-            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
+            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = rng.random_sample((10, 3))  # 10 points in 3 dimensions\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2652,10 +2956,10 @@
         "kind": 5,
         "importPath": "scripts.test_tree",
         "description": "scripts.test_tree",
-        "peekOfCode": "X = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
+        "peekOfCode": "X = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
         "detail": "scripts.test_tree",
         "documentation": {
-            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
+            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = np.vstack( (X,np.array([0.1,0.1,0.1])) )\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2664,10 +2968,10 @@
         "kind": 5,
         "importPath": "scripts.test_tree",
         "description": "scripts.test_tree",
-        "peekOfCode": "X = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
+        "peekOfCode": "X = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
         "detail": "scripts.test_tree",
         "documentation": {
-            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
+            "value": "\n```python\nfrom scripts.test_tree import X\n```\n\n```python\n\n\n```\n\n```python\nX = np.vstack( (X,np.array([-0.1,-0.1,-0.1])) )\n# X = np.array(X)\nprint(X)\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2676,10 +2980,10 @@
         "kind": 5,
         "importPath": "scripts.test_tree",
         "description": "scripts.test_tree",
-        "peekOfCode": "tree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
+        "peekOfCode": "tree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3",
         "detail": "scripts.test_tree",
         "documentation": {
-            "value": "\n```python\nfrom scripts.test_tree import tree\n```\n\n```python\n\n\n```\n\n```python\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=False)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
+            "value": "\n```python\nfrom scripts.test_tree import tree\n```\n\n```python\n\n\n```\n\n```python\ntree = KDTree(X, leaf_size=2)     # doctest: +SKIP\nres =tree.query_radius([[0,0,0]], r=0.3, count_only=True)\nprint(res)\nprint([ X[i] for i in res])  # indices of neighbors within distance 0.3\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2780,6 +3084,102 @@
         }
     },
     {
+        "label": "select_action",
+        "kind": 2,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "def select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import select_action\n```\n\n```python\n\n\n```\n\n```python\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "get_explore_rate",
+        "kind": 2,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "def get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import get_explore_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "get_learning_rate",
+        "kind": 2,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "def get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import get_learning_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "state_to_bucket",
+        "kind": 2,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "def state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import state_to_bucket\n```\n\n```python\n\n\n```\n\n```python\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "custom_random",
+        "kind": 2,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "def custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import custom_random\n```\n\n```python\n\n\n```\n\n```python\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "episode_cooldown",
+        "kind": 5,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ACTION_TO_IDX",
+        "kind": 5,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import ACTION_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "IDX_TO_ACTION",
+        "kind": 5,
+        "importPath": "dqn_main",
+        "description": "dqn_main",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):",
+        "detail": "dqn_main",
+        "documentation": {
+            "value": "\n```python\nfrom dqn_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "DroneAgent",
         "kind": 6,
         "importPath": "Drone",
@@ -2868,10 +3268,10 @@
         "kind": 6,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "class newMyAirSimClient(MultirotorClient):\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n        self.z_des = -6",
+        "peekOfCode": "class newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
         "detail": "newMyAirSimClient",
         "documentation": {
-            "value": "\n```python\nfrom newMyAirSimClient import newMyAirSimClient\n```\n\n```python\n\n\n```\n\n```python\nclass newMyAirSimClient(MultirotorClient):\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n        self.z_des = -6\n```\n",
+            "value": "\n```python\nfrom newMyAirSimClient import newMyAirSimClient\n```\n\n```python\n\n\n```\n\n```python\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2880,10 +3280,22 @@
         "kind": 5,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "lock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
+        "peekOfCode": "lock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
         "detail": "newMyAirSimClient",
         "documentation": {
-            "value": "\n```python\nfrom newMyAirSimClient import lock\n```\n\n```python\n\n\n```\n\n```python\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n```\n",
+            "value": "\n```python\nfrom newMyAirSimClient import lock\n```\n\n```python\n\n\n```\n\n```python\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "custom_random",
+        "kind": 2,
+        "importPath": "random_main",
+        "description": "random_main",
+        "peekOfCode": "def custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')",
+        "detail": "random_main",
+        "documentation": {
+            "value": "\n```python\nfrom random_main import custom_random\n```\n\n```python\n\n\n```\n\n```python\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2892,10 +3304,34 @@
         "kind": 5,
         "importPath": "random_main",
         "description": "random_main",
-        "peekOfCode": "episode_cooldown = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    parser.add_argument('--random-pos',action='store_true',  default=False,",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':",
         "detail": "random_main",
         "documentation": {
-            "value": "\n```python\nfrom random_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    parser.add_argument('--random-pos',action='store_true',  default=False,\n```\n",
+            "value": "\n```python\nfrom random_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ACTION_TO_IDX",
+        "kind": 5,
+        "importPath": "random_main",
+        "description": "random_main",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')",
+        "detail": "random_main",
+        "documentation": {
+            "value": "\n```python\nfrom random_main import ACTION_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "IDX_TO_ACTION",
+        "kind": 5,
+        "importPath": "random_main",
+        "description": "random_main",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,",
+        "detail": "random_main",
+        "documentation": {
+            "value": "\n```python\nfrom random_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3164,6 +3600,18 @@
         }
     },
     {
+        "label": "xy_distance",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def xy_distance(point1, point2):\n    if type(point1) == Vector3r:\n        point1 = [point1.x_val,point1.y_val] \n    if type(point2) == Vector3r:\n        point2 = [point2.x_val,point2.y_val] \n    return   np.linalg.norm(point1 - point2)",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import xy_distance\n```\n\n```python\n\n\n```\n\n```python\ndef xy_distance(point1, point2):\n    if type(point1) == Vector3r:\n        point1 = [point1.x_val,point1.y_val] \n    if type(point2) == Vector3r:\n        point2 = [point2.x_val,point2.y_val] \n    return   np.linalg.norm(point1 - point2)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "AIRSIM_SETTINGS_FOLDER",
         "kind": 5,
         "importPath": "utils",
@@ -3252,10 +3700,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "SRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs",
+        "peekOfCode": "SRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import SRID\n```\n\n```python\n\n\n```\n\n```python\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs\n```\n",
+            "value": "\n```python\nfrom utils import SRID\n```\n\n```python\n\n\n```\n\n```python\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3264,10 +3712,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "ORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs\ninit_gps = [",
+        "peekOfCode": "ORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import ORIGIN\n```\n\n```python\n\n\n```\n\n```python\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs\ninit_gps = [\n```\n",
+            "value": "\n```python\nfrom utils import ORIGIN\n```\n\n```python\n\n\n```\n\n```python\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3276,10 +3724,22 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "DEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0",
+        "peekOfCode": "DEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import DEST\n```\n\n```python\n\n\n```\n\n```python\nDEST = (\n    12.466382,\n    41.902491,\n    80) \n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0\n```\n",
+            "value": "\n```python\nfrom utils import DEST\n```\n\n```python\n\n\n```\n\n```python\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "NEW_TRAJ_PENALTY",
+        "kind": 5,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "NEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0\n    ),\n    (\n        12.457227408885958,",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import NEW_TRAJ_PENALTY\n```\n\n```python\n\n\n```\n\n```python\nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0\n    ),\n    (\n        12.457227408885958,\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3384,10 +3844,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "distance = lambda p1, p2: np.norm(p1-p2)",
+        "peekOfCode": "distance = lambda p1, p2: np.norm(p1-p2)\ndef xy_distance(point1, point2):\n    if type(point1) == Vector3r:\n        point1 = [point1.x_val,point1.y_val] \n    if type(point2) == Vector3r:\n        point2 = [point2.x_val,point2.y_val] \n    return   np.linalg.norm(point1 - point2)",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import distance\n```\n\n```python\n\n\n```\n\n```python\ndistance = lambda p1, p2: np.norm(p1-p2)\n```\n",
+            "value": "\n```python\nfrom utils import distance\n```\n\n```python\n\n\n```\n\n```python\ndistance = lambda p1, p2: np.norm(p1-p2)\ndef xy_distance(point1, point2):\n    if type(point1) == Vector3r:\n        point1 = [point1.x_val,point1.y_val] \n    if type(point2) == Vector3r:\n        point2 = [point2.x_val,point2.y_val] \n    return   np.linalg.norm(point1 - point2)\n```\n",
             "supportThemeIcons": false
         }
     }

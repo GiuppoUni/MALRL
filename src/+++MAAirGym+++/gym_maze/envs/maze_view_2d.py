@@ -3,7 +3,7 @@ import random
 import numpy as np
 import os
 
-
+from collections.abc import Iterable
 class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
@@ -19,9 +19,11 @@ class MazeView2D:
 
         # Load a maze
         if maze_file_path is None:
+            print(" no maze filepath")
             self.__maze = Maze(maze_size=maze_size, has_loops=has_loops, num_portals=num_portals)
         else:
             if not os.path.exists(maze_file_path):
+                print("New maze")
                 dir_path = os.path.dirname(os.path.abspath(__file__))
                 rel_path = os.path.join(dir_path, "maze_samples", maze_file_path)
                 if os.path.exists(rel_path):
@@ -89,13 +91,22 @@ class MazeView2D:
         except Exception:
             pass
 
+    def tr(self,dir):
+        if dir=="N": return "UP"
+        elif dir=="S": return "DOWN"
+        elif dir=="E": return "RIGHT"
+        elif dir=="W": return "LEFT"
+        else: raise ValueError("Not acceptable dir") 
+
+
     def move_robot(self, dir):
         if dir not in self.__maze.COMPASS.keys():
             raise ValueError("dir cannot be %s. The only valid dirs are %s."
                              % (str(dir), str(self.__maze.COMPASS.keys())))
 
+            
         if self.__maze.is_open(self.__robot, dir):
-
+            print("MOVING:", self.tr(dir),"\n")    
             # update the drawing
             self.__draw_robot(transparency=0)
 
@@ -158,14 +169,16 @@ class MazeView2D:
         for x in range(len(self.maze.maze_cells)):
             for y in range (len(self.maze.maze_cells[x])):
                 # check the which walls are open in each cell
+
                 walls_status = self.maze.get_walls_status(self.maze.maze_cells[x, y])
+                # print('walls_status: ', walls_status, "| cell:",x,y)
                 dirs = ""
                 for dir, open in walls_status.items():
                     if open:
                         dirs += dir
                 self.__cover_walls(x, y, dirs)
 
-    def __cover_walls(self, x, y, dirs, colour=(0, 0, 255, 15)):
+    def __cover_walls(self, y, x, dirs, colour=(0, 0, 255, 15)):
 
         if self.__enable_render is False:
             return
@@ -175,7 +188,9 @@ class MazeView2D:
 
         if not isinstance(dirs, str):
             raise TypeError("dirs must be a str.")
-
+        
+        # print("DIRS",dirs,"| cell:",x,y)
+        
         for dir in dirs:
             if dir == "S":
                 line_head = (dx + 1, dy + self.CELL_H)
@@ -209,7 +224,7 @@ class MazeView2D:
 
         self.__colour_cell(self.entrance, colour=colour, transparency=transparency)
 
-    def __draw_goal(self, colour=(150, 0, 0), transparency=235):
+    def __draw_goal(self, colour=(255, 255, 0), transparency=235):
 
         self.__colour_cell(self.goal, colour=colour, transparency=transparency)
 
@@ -239,6 +254,25 @@ class MazeView2D:
         w = int(self.CELL_W + 0.5 - 1)
         h = int(self.CELL_H + 0.5 - 1)
         pygame.draw.rect(self.maze_layer, colour + (transparency,), (x, y, w, h))
+        
+    upto_255 = lambda c : c+2 if c+20<255 else 255
+    def color_visited_cell(self,r,c):
+        cell = [r,c]
+        
+        if not (isinstance(cell, (list, tuple, np.ndarray)) and len(cell) == 2):
+            raise TypeError("cell must a be a tuple, list, or numpy array of size 2")
+
+        x = int(r * self.CELL_W + 0.5 + 1)
+        y = int(c * self.CELL_H + 0.5 + 1)
+        w = int(self.CELL_W + 0.5 - 1)
+        h = int(self.CELL_H + 0.5 - 1)
+
+        cc = self.maze_layer.get_at((x, y))
+        # print('cc: ', cc)
+
+        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MazeView2D.upto_255(cc[3]) ) 
+        
+        pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 
     @property
     def maze(self):
@@ -301,7 +335,9 @@ class Maze:
 
         # Use existing one if exists
         if self.maze_cells is not None:
+            print("not none cells")
             if isinstance(self.maze_cells, (np.ndarray, np.generic)) and len(self.maze_cells.shape) == 2:
+                print("corret 2d array")
                 self.maze_size = tuple(maze_cells.shape)
             else:
                 raise ValueError("maze_cells must be a 2D NumPy array.")
@@ -444,11 +480,18 @@ class Maze:
         x1 = cell_id[0] + self.COMPASS[dir][0]
         y1 = cell_id[1] + self.COMPASS[dir][1]
 
+
         # if cell is still within bounds after the move
         if self.is_within_bound(x1, y1):
+            row = cell_id[1]
+            col = cell_id[0]
             # check if the wall is opened
-            this_wall = bool(self.get_walls_status(self.maze_cells[cell_id[0], cell_id[1]])[dir])
+            this_wall = bool(self.get_walls_status(self.maze_cells[row, col])[dir])
+            print('col: ', col, 'row: ', row )
+            print('self.maze_cell: ', self.maze_cells[row, col])
+            print('this_wall: ', this_wall)
             other_wall = bool(self.get_walls_status(self.maze_cells[x1, y1])[self.__get_opposite_wall(dir)])
+            print('other_wall: ', other_wall)
             return this_wall or other_wall
         return False
 
@@ -486,10 +529,10 @@ class Maze:
     @classmethod
     def get_walls_status(cls, cell):
         walls = {
-            "N" : (cell & 0x1) >> 0,
-            "E" : (cell & 0x2) >> 1,
-            "S" : (cell & 0x4) >> 2,
-            "W" : (cell & 0x8) >> 3,
+            "N" : (cell & 0x1) >> 0, #/1
+            "E" : (cell & 0x2) >> 1, #/2
+            "S" : (cell & 0x4) >> 2, #/4
+            "W" : (cell & 0x8) >> 3, #/8
         }
         return walls
 
@@ -570,5 +613,7 @@ if __name__ == "__main__":
     maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10))
     maze.update()
     input("Enter any key to quit.")
+
+    
 
 

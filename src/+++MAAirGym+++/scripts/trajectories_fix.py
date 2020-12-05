@@ -24,6 +24,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     trajs = os.path.join(TRAJECTORIES_FOLDER,args.folder)
+
+    trajs = args.folder 
     traj_list = os.listdir(trajs)
 
     

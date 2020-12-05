@@ -1,5 +1,7 @@
 
 
+
+
 import eventlet
 import utils
 
@@ -37,32 +39,8 @@ class MultiAgentActionSpace(list):
         """ samples action for each agent from uniform distribution"""
         return [agent_action_space.sample() for agent_action_space in self._agents_action_space]
 
-class Job(threading.Thread):
- 
-    def __init__(self,timer = 0.5,callback = None, **kwargs):
-        threading.Thread.__init__(self)
 
-        self.callback = callback
-        self.timer = timer
-        self.args_dict = kwargs
-        # The shutdown_flag is a threading.Event object that
-        # indicates whether the thread should be terminated.
-        self.shutdown_flag = threading.Event()
- 
-        # ... Other thread setup code here ...
- 
-    def run(self):
-        print('Thread #%s started' % self.ident)
- 
-        while not self.shutdown_flag.is_set():
-            # ... Job code here ...
-            if self.callback:
-                self.callback(**self.args_dict)
-            time.sleep(self.timer)
- 
-        # ... Clean shutdown code here ...
-        print('Thread #%s stopped' % self.ident)
- 
+
  
 class ServiceExit(Exception):
     """
@@ -81,6 +59,9 @@ class CollectEnv(gym.Env):
     """
     Environment in which the agents have to collect the balls
     """
+    
+    ACTION = ["LEFT","FRONT","RIGHT","BACK",]
+
     def __init__(
         self,
         trajColFlag,
@@ -88,9 +69,10 @@ class CollectEnv(gym.Env):
         width=None,
         height=None,
         num_targets=3,
-        n_agents = int(utils.g_config["rl"]["n_agents"]),
-        n_actions = 3, step_cost = -1,partial_obs = False,
+        n_actions = 4, step_cost = -1,partial_obs = False,
+        random_pos = False
         ):
+        
 
         signal.signal(signal.SIGTERM, service_shutdown)
         signal.signal(signal.SIGINT, service_shutdown)
@@ -98,14 +80,8 @@ class CollectEnv(gym.Env):
         self.threads = {}
 
             
-        self.agent_names = [v for v in utils.g_airsim_settings["Vehicles"] ]
-
-        # User Check
-        if(n_agents > len(self.agent_names)):
-            print("[WARNING] Inserted more agents than settings")
-            n_agents = len(self.agent_names)
-        self.n_agents = n_agents
-        self.isThreaded = True if n_agents > 1 else False
+        self.random_pos = random_pos
+     
 
         # left depth, center depth, right depth, yaw
         # self.observation_space = [spaces.Box(low=0, high=255, shape=(30, 100)*n_agents)
@@ -116,8 +92,8 @@ class CollectEnv(gym.Env):
             agent_view_size = 20
             self.states_space = spaces.Box(
                 low=0,
-                high=self.n_agents+len(self.targets),
-                shape=(agent_view_size, agent_view_size, self.n_agents),
+                high=255,
+                shape=(agent_view_size, agent_view_size, 1),
                 dtype='uint8'
             )
 
@@ -128,19 +104,19 @@ class CollectEnv(gym.Env):
               
                 low = 0,
                 high = 255,
-                shape=(self.width, self.height, self.n_agents),
+                shape=(self.width, self.height, 1),
                 dtype='uint8'
             )
         
-        self.states = [np.zeros(2, dtype=np.uint8) for _ in range(n_agents)] 
+        self.state = np.zeros(3, dtype=np.uint8) 
         self.n_actions = n_actions
-        self.action_space = MultiAgentActionSpace([spaces.Discrete(n_actions) for _ in range(n_agents)])
+        self.action_space = spaces.Discrete(n_actions)
 		
 
         self.episodeN = 0
         self.stepN = 0 
         self._step_cost = step_cost
-        self._agents_dones = [ False for _ in range(n_agents)]
+        self._agent_done = False
 
 
         self._seed()
@@ -148,8 +124,14 @@ class CollectEnv(gym.Env):
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
         self.myClient = newMyAirSimClient(trajColFlag=trajColFlag)
         # TODO replace with  allocated targets
-        self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         
+
+        
+
+        self.target_zones = self._get_target_zone()
+
+        self.goal = self.target_zones.pop() 
+
         self.targets = dict()
         self._get_targets()
         # self.myClient.direct_client.takeoffAsync(vehicle_name="Drone0")
@@ -174,7 +156,7 @@ class CollectEnv(gym.Env):
         
         for l in limits_name: 
             pose = self.myClient.simGetObjectPose(l)
-            print(self._vec2r_to_numpy_array(pose.position))
+            print(l , self._vec2r_to_numpy_array(pose.position))
 
 
     def init_random_pos_pool(self,regex = "Init.*"):
@@ -206,6 +188,18 @@ class CollectEnv(gym.Env):
         
         return True 
 
+    def _get_target_zone(self, regex = "TargetZone.*"):
+        targets = self.myClient.simListSceneObjects(regex)
+        targets.sort()
+        
+        targets_positions= []
+        
+        for t in targets: 
+            pose = self.myClient.simGetObjectPose(t)
+            targets_positions.append(  self._vec2r_to_numpy_array(pose.position) )
+        
+        return targets_positions 
+
     def dummy_allocate_targets(self):
         # for t in self.targets:
         pass
@@ -221,9 +215,9 @@ class CollectEnv(gym.Env):
 		# test if getPosition works here liek that
 		# get exact coordiantes of the tip
       
-        distance_now = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
+        distance_now = utils.xy_distance(now,self.goal)
         
-        distance_before = self.allLogs[vehicle_name]['distance'][-1]
+        distance_before = self.allLogs['distance'][-1]
               
         r = -1
         
@@ -240,158 +234,93 @@ class CollectEnv(gym.Env):
         return r, distance_now
 		
     
-    def step(self, agents_actions):
+    def step(self, agent_action):
         self.stepN += 1
-        rewards = [self._step_cost for _ in range(self.n_agents)]
-        info = [None for _ in range(self.n_agents)]
+        reward = self._step_cost 
+
+        info = None 
         toPrint = ""
 
-        if(self.isThreaded):
-            threadPts = [] 
-            collideds= []
-            with concurrent.futures.ThreadPoolExecutor() as executor:
-                for agent_i,action in enumerate(agents_actions):
+        #  single drone case:
+        agent_name = "Drone0"
+
+        print('STEPPING: ')
+        if self._agent_done :
+            print("No action (done): ")
+            #agent_i has done with its task
+            return self.state, reward, self._agent_done, info
+
+        _current_log = self.allLogs
+
+        assert self.action_space.contains(agent_action), "%r (%s) invalid"%(agent_action, type(agent_action))
+        utils.addToDict(_current_log,"action", agent_action)
+    
+        # --- HERE EXECUTE DRONE ACTION ---
+        result = self.myClient.take_action(agent_action,agent_name)
+        collided = result["obs"]
+        #---------------------------------------------
+        
+        now = self.myClient.getPosition(vehicle_name = agent_name)
+
+        track = self.myClient.goal_direction(self.goal, now,agent_name) 
+        
+
+        # distanceTraj = self.myClient.distanceFromTraj(now)
+
+
+        # distance = np.sqrt(np.power((self.goal[0]-now.x_val),2) + np.power((self.goal[1]-now.y_val),2))
+        goal_distance = utils.xy_distance(now,self.goal)
+
+        if collided == True:
+            reward = -100.0
+            done = True 
+        else: 
+            reward, goal_distance = self.computeReward("Drone0",now,self.goal, track)
+            done = False
+
+        if result["total_p"] > 0:
+            if result["collisions_per_traj"]:
+                
+                for idx,traj_key in enumerate( result["collisions_per_traj"] ) :
+                    reward -= 5 * result["collisions_per_traj"][traj_key][0] +  utils.NEW_TRAJ_PENALTY * idx 
                     
-                    agent_name = 'Drone'+str(agent_i)
-                    print('STEPPING: ', agent_name)
-                    if self._agents_dones[agent_i]: 
-                        print("[Drone"+str(agent_i)+"]"+"No action (done): ")
-                        continue    #agent_i has done with its task
+            else:
+                reward = -5 * result["total_p"] 
+    
+        # Youuuuu made it
+        if goal_distance < 3:
+            print( "TARGET ZONE REACHED")
+            done = True
+            reward = 100.0
 
-                    _current_log = self.allLogs[agent_name]
+        #Update reward for agent agent_i th
+        # DEBUG ONLY 
 
-                    assert self.action_space[agent_i].contains(action), "%r (%s) invalid"%(action, type(action))
-                    utils.addToDict(_current_log,"action", action)
-
-                    # --- HERE EXECUTE DRONE ACTION ---
-
-                    future = executor.submit(self.myClient.take_action_threaded, action,self.lock,agent_i,agent_name)
-                    threadPts.append(future)
-                    #---------------------------------------------
-
-
-                # NOTE: DISABLED  SIGINT 
-                for th in concurrent.futures.as_completed(threadPts):
-                    res = th.result()
-                    collideds.append(res)
-                    print("JOINED:", res[0])
-
-            collideds.sort(key=lambda x: x[0])
-            for agent_i,collided in collideds:
-                agent_name = "Drone"+str(agent_i)
-                now = self.myClient.getPosition(vehicle_name = agent_name)
-                goal = list(self.targets.values())[agent_i]
-                track = self.myClient.goal_direction(goal, now,agent_name) 
-                
-                done = True
-                distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
-                reward = 0
-                if collided == True:
-                    reward = -100.0
-                elif collided == 99:
-                    reward = 0.0
-                else: 
-                    done = False
-                    reward, distance = self.computeReward(agent_name,
-                                                        now,goal, track)
-            
-                # Youuuuu made it
-                if distance < 3:
-                    done = True
-                    reward = 100.0
-
-                #Update reward for agent agent_i th
-                rewards[agent_i] = reward
-                self._agents_dones[agent_i] = done 
-
-                utils.addToDict(_current_log,"reward", reward)
-                utils.addToDict(_current_log, 'distance', distance) 
-                utils.addToDict(_current_log, 'track', track)      
-                
-                rewardSum = np.sum(_current_log['reward'])
-                
-                # Terminate the episode on large cumulative amount penalties, 
-                # since drone probably got into an unexpected loop of some sort
-                if rewardSum < -100:
-                    done = True
-
-                toPrint+=("\t uav"+str(agent_i)+": {:.1f}/{:.1f}, {:.0f}, {:.0f} \n".format( reward, rewardSum, track, action))
-                info[agent_i] = {"x_pos" : now.x_val, "y_pos" : now.y_val}
-
-                # assert self.myClient.direct_client.ping()
-                # self.states[agent_i] = self.myClient.getScreenDepthVis(track,vehicle_name = agent_name)
-
-            print(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )
+        utils.addToDict(_current_log,"reward", reward)
+        utils.addToDict(_current_log, 'distance', goal_distance) 
+        utils.addToDict(_current_log, 'track', track)      
         
-        else: #(self.isThreaded == False) single drone case:
-            agent_i = 0    
-            action = agents_actions[agent_i]
-            agent_name = 'Drone'+str(agent_i)
-            print('STEPPING: ', agent_name)
-            if self._agents_dones[agent_i]: 
-                print("[Drone"+str(agent_i)+"]"+"No action (done): ")
-                #agent_i has done with its task
-                return self.states, rewards, self._agents_dones, info
-
-            _current_log = self.allLogs[agent_name]
-
-            assert self.action_space[agent_i].contains(action), "%r (%s) invalid"%(action, type(action))
-            utils.addToDict(_current_log,"action", action)
+        rewardSum = np.sum(_current_log['reward'])
         
-            # --- HERE EXECUTE DRONE ACTION ---
-            collided = self.myClient.take_action(action,agent_name)
-            #---------------------------------------------
-            
-            now = self.myClient.getPosition(vehicle_name = agent_name)
-            goal = self.goals[agent_i]
-            track = self.myClient.goal_direction(goal, now,agent_name) 
-            
+        # Terminate the episode on large cumulative amount penalties, 
+        # since drone probably got into an unexpected loop of some sort
+        if rewardSum < -100:
+            print("REWARD LOWER BOUND REACHED")
+            done = True
 
-            # distanceTraj = self.myClient.distanceFromTraj(now)
+        toPrint+=("\t uav"+": {:.1f}/{:.1f}, {:.0f}, {} \n".format( reward, rewardSum, track, CollectEnv.ACTION[agent_action]) )
+        info = {"x_pos" : now.x_val, "y_pos" : now.y_val}
 
+        # assert self.myClient.direct_client.ping()
+        # self.states[agent_i] = drone.getScreenDepthVis(track)
 
-            
-            distance = np.sqrt(np.power((goal[0]-now.x_val),2) + np.power((goal[1]-now.y_val),2))
-            reward = 0
-            if collided == True:
-                reward = -100.0
-                done = True 
-            else: 
-                reward, distance = self.computeReward("Drone"+str(agent_i),
-                                                    now,goal, track)
-                done = False
-        
-            # Youuuuu made it
-            if distance < 3:
-                done = True
-                reward = 100.0
+        self.state = self._vec2r_to_numpy_array( self.myClient.getPosition("Drone0") )
 
-            #Update reward for agent agent_i th
-            rewards[agent_i] = reward
-            self._agents_dones[agent_i] = done 
+        # self.myClient.wait_joins("STEP")
+        self._agent_done = done 
+        print(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
 
-            utils.addToDict(_current_log,"reward", reward)
-            utils.addToDict(_current_log, 'distance', distance) 
-            utils.addToDict(_current_log, 'track', track)      
-            
-            rewardSum = np.sum(_current_log['reward'])
-            
-            # Terminate the episode on large cumulative amount penalties, 
-            # since drone probably got into an unexpected loop of some sort
-            if rewardSum < -100:
-                done = True
-
-            toPrint+=("\t uav"+str(agent_i)+": {:.1f}/{:.1f}, {:.0f}, {:.0f} \n".format( reward, rewardSum, track, action))
-            info[agent_i] = {"x_pos" : now.x_val, "y_pos" : now.y_val}
-
-            # assert self.myClient.direct_client.ping()
-            # self.states[agent_i] = drone.getScreenDepthVis(track)
-
-            # self.myClient.wait_joins("STEP")
-
-            print(" Episode:{},Step:{}\n \t\t reward/r. sum, track, action: \n".format(self.episodeN, self.stepN) + toPrint )   
-
-        return self.states, rewards, self._agents_dones, info
+        return self.state, reward,self._agent_done , info
 
 
     def addToLog (self, key, value):
@@ -399,7 +328,7 @@ class CollectEnv(gym.Env):
             self.allLogs[key] = []
         self.allLogs[key].append(value)
         
-    def reset(self,random_pos=False):
+    def reset(self):
         """
         Resets the state of the environment and returns an initial observation.
         (It's called also at the beginning)
@@ -412,13 +341,13 @@ class CollectEnv(gym.Env):
         self.stepN = 0
         self.episodeN += 1
         
-        self._agents_dones = [False for _ in range(self.n_agents)]
+        self._agent_done = False 
             
         print("Resetting...")
         # self.myClient.AirSim_reset()
 
 
-        self.goals = [ [221.0, -9.0 + (i*5)] for i in range(self.n_agents)] # global xy coordinates
+        self.goals = [ [1,1,1] ] # global xy coordinates
         self.myClient.pts = []
 
         pose = Pose(self.get_pos_from_pool(), to_quaternion(0, 0, 0) ) 
@@ -426,7 +355,7 @@ class CollectEnv(gym.Env):
 
 
         self.myClient.disable_trace_lines()
-        if random_pos : 
+        if self.random_pos : 
             self.myClient.simSetVehiclePose( pose, ignore_collison=True, vehicle_name = "Drone0")
         
         self.myClient.AirSim_reset()
@@ -436,17 +365,15 @@ class CollectEnv(gym.Env):
 
 
         
-        return self.states
+        return self.state
 
 
 
 
 
     def init_logs(self):
-        # return
-        for vn in self.agent_names:
-            self.allLogs[vn] = { 'reward':[0] }
-            self.allLogs[vn]['distance'] = [221]
-            self.allLogs[vn]['track'] = [-2]
-            self.allLogs[vn]['action'] = [1]
+        self.allLogs = { 'reward':[0] }
+        self.allLogs['distance'] = [221]
+        self.allLogs['track'] = [-2]
+        self.allLogs['action'] = [1]
 
