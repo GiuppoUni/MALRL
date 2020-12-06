@@ -133,7 +133,8 @@ if __name__ == "__main__":
         env = MazeEnv( maze_file = "maze2d_002.npy",                  
             # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                         maze_size=(640, 640), 
-                                        enable_render=True)
+                                        enable_render=True,
+                                        do_track_trajectories=False,num_goals=4)
 
     else:
         # TODO replace for variables
@@ -209,6 +210,7 @@ if __name__ == "__main__":
         total_reward = 0
 
         for t in range(MAX_T):
+            input("Enter any key for next action")
 
             # Select an action
             action = select_action(state_0, explore_rate)
@@ -278,7 +280,7 @@ if __name__ == "__main__":
         # Update parameters
         explore_rate = get_explore_rate(episode)
         learning_rate = get_learning_rate(episode)
-
+        
 
 
     # print("Starting episodes...")

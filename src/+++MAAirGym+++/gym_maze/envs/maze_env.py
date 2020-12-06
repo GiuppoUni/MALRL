@@ -1,3 +1,4 @@
+from operator import mul
 import numpy as np
 
 import gym
@@ -14,17 +15,19 @@ class MazeEnv(gym.Env):
 
     ACTION = ["N","S", "E", "W"]
 
-    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):
+    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):
 
         self.viewer = None
         self.enable_render = enable_render
+        self.num_goals = num_goals
 
         if maze_file:
             print("maze from file")
             self.maze_view = MazeView2D(maze_name="OpenAI Gym - Maze (%s)" % maze_file,
                                         maze_file_path=maze_file,
                                         screen_size=(640, 640), 
-                                        enable_render=enable_render)
+                                        enable_render=enable_render,
+                                        num_goals = self.num_goals)
         elif maze_size:
             if mode == "plus":
                 has_loops = True
@@ -37,7 +40,7 @@ class MazeEnv(gym.Env):
             self.maze_view = MazeView2D(maze_name="OpenAI Gym - Maze (%d x %d)" % maze_size,
                                         maze_size=maze_size, screen_size=(640, 640),
                                         has_loops=has_loops, num_portals=num_portals,
-                                        enable_render=enable_render)
+                                        enable_render=enable_render,num_goals=self.num_goals)
         else:
             raise AttributeError("One must supply either a maze_file path (str) or the maze_size (tuple of length 2)")
 
@@ -56,6 +59,7 @@ class MazeEnv(gym.Env):
         self.steps_beyond_done = None
 
         # Past trajectories variables
+        self.trajColFlag = do_track_trajectories
         self.kdtrees = []
         self.trajectory = []
 
@@ -66,6 +70,7 @@ class MazeEnv(gym.Env):
         # Just need to initialize the relevant attributes
         self.configure()
         
+
 
     def __del__(self):
         if self.enable_render is True:
@@ -79,40 +84,61 @@ class MazeEnv(gym.Env):
         return [seed]
 
     def step(self, action):
+        reward = 0
         if isinstance(action, int):
             self.maze_view.move_robot(self.ACTION[action])
         else:
             self.maze_view.move_robot(action)
 
-        if np.array_equal(self.maze_view.robot, self.maze_view.goal):
-            reward = 1
-            done = True
+        if(self.maze_view.num_goals==1):
+            if np.array_equal(self.maze_view.robot, self.maze_view.goal):
+                reward = 1
+                done = True
+            else:
+                reward = -0.1/(self.maze_size[0]*self.maze_size[1])
+                done = False
         else:
+            # Multiple goals
+            for _goal in self.maze_view.goals:
+                # print('self.maze_view.robot, _goal: ', self.maze_view.robot, _goal)
+                if np.array_equal(self.maze_view.robot, _goal):
+                    reward = 1
+                    self.maze_view.decolor(_goal)
+                    self.maze_view.goals.remove(_goal)
+                    if(self.maze_view.goals==[]):
+                        done = True
+                    else:
+                        done = False
+        if reward < 1 :
             reward = -0.1/(self.maze_size[0]*self.maze_size[1])
             done = False
-
 
             
         self.state = self.maze_view.robot
         moved = any(self.trajectory[-1] != self.state) if len(self.trajectory)>0 else True
         if(moved):
-            self.trajectory.append(list(self.state))
             self.maze_view.color_visited_cell(self.state[0],self.state[1])
-        # self.trajectory.append(self.state)
+            
+            if(self.trajColFlag):
+                self.trajectory.append(list(self.state))
         
-        print('trajectory: ', self.trajectory)
-        print('self.kdtrees: ', self.kdtrees)
+        
+        # print('trajectory: ', self.trajectory)
+        # print('self.kdtrees: ', self.kdtrees)
 
         info = {}
 
         return self.state, reward, done, info
 
     def reset(self):
+        self.maze_view.goals = self.maze_view.saved_goals
+        
         self.maze_view.reset_robot()
         self.state = np.zeros(2)
         self.steps_beyond_done = None
         self.done = False
-        if(self.trajectory!=[]):
+        if(self.trajColFlag and self.trajectory!=[]):
+            # Add points of one trajectory removing also duplicates
             self.trajectory = list(num for num,_ in itertools.groupby(self.trajectory))
             _tree = KDTree(np.array(self.trajectory))
             self.kdtrees.append(_tree)
@@ -204,4 +230,4 @@ if __name__ == "__main__" :
 
     env.render()
     import time
-    time.sleep(120)
+    input("Enter any key to quit.")

@@ -98,8 +98,8 @@ if __name__ == '__main__':
 
         env.seed(ep_i)  
         obs = env.reset()
-       
-        
+
+
         if(not args.env2D and args.track_traj):
             trackerClient.start_tracking(ep_i,vName="Drone0")
             time.sleep(0.01)

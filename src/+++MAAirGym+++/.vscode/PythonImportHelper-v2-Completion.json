@@ -957,6 +957,17 @@
         }
     },
     {
+        "label": "mul",
+        "importPath": "operator",
+        "description": "operator",
+        "isExtraImport": true,
+        "detail": "operator",
+        "documentation": {
+            "value": "\n```python\nimport operator\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "MazeView2D",
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
@@ -2548,10 +2559,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            print(\"maze from file\")",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.viewer = None\n        self.enable_render = enable_render\n        self.num_goals = num_goals\n        if maze_file:",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True):\n        self.viewer = None\n        self.enable_render = enable_render\n        if maze_file:\n            print(\"maze from file\")\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.viewer = None\n        self.enable_render = enable_render\n        self.num_goals = num_goals\n        if maze_file:\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2692,10 +2703,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True):\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)\n        self.clock = pygame.time.Clock()\n        self.__game_over = False\n        self.__enable_render = enable_render",
+        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)",
         "detail": "gym_maze.envs.maze_view_2d",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import MazeView2D\n```\n\n```python\n\n\n```\n\n```python\nclass MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True):\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)\n        self.clock = pygame.time.Clock()\n        self.__game_over = False\n        self.__enable_render = enable_render\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import MazeView2D\n```\n\n```python\n\n\n```\n\n```python\nclass MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2764,10 +2775,10 @@
         "kind": 2,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "def cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):",
+        "peekOfCode": "def cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import cell_value\n```\n\n```python\n\n\n```\n\n```python\ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import cell_value\n```\n\n```python\n\n\n```\n\n```python\ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2860,10 +2871,10 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "a = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):",
+        "peekOfCode": "a = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a\n```\n\n```python\n\n\n```\n\n```python\na = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import a\n```\n\n```python\n\n\n```\n\n```python\na = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2872,10 +2883,10 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "NROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0",
+        "peekOfCode": "NROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NROWS\n```\n\n```python\n\n\n```\n\n```python\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NROWS\n```\n\n```python\n\n\n```\n\n```python\nNROWS = 21\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2884,10 +2895,10 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "NCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:",
+        "peekOfCode": "NCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NCOLS\n```\n\n```python\n\n\n```\n\n```python\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import NCOLS\n```\n\n```python\n\n\n```\n\n```python\nNCOLS = 21\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2896,10 +2907,10 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "OBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15",
+        "peekOfCode": "OBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import OBS_BLOCKS\n```\n\n```python\n\n\n```\n\n```python\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.my_maze_generator import OBS_BLOCKS\n```\n\n```python\n\n\n```\n\n```python\nOBS_BLOCKS = 3\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :\n            return 0\n        else:\n            return 15\n```\n",
             "supportThemeIcons": false
         }
     },

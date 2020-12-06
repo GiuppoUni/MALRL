@@ -8,7 +8,12 @@ class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
-                 has_loops=False, num_portals=0, enable_render=True):
+                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):
+
+        if(num_goals<=0 ):
+            raise ValueError("Error in num_goals parameter")
+
+        self.num_goals = num_goals
 
         # PyGame configurations
         pygame.init()
@@ -16,7 +21,7 @@ class MazeView2D:
         self.clock = pygame.time.Clock()
         self.__game_over = False
         self.__enable_render = enable_render
-
+        
         # Load a maze
         if maze_file_path is None:
             print(" no maze filepath")
@@ -42,7 +47,13 @@ class MazeView2D:
         self.__entrance = np.zeros(2, dtype=int)
 
         # Set the Goal
-        self.__goal = np.array(self.maze_size) - np.array((1, 1))
+        if self.num_goals == 1:        
+            self.__goal = np.array(self.maze_size) - np.array((1, 1))
+        
+        # Set multiple random goals
+        else:
+            self.goals = self.init_goals()
+            self.saved_goals = self.goals
 
         # Create the Robot
         self.__robot = self.entrance
@@ -70,6 +81,19 @@ class MazeView2D:
 
             # show the goal
             self.__draw_goal()
+
+
+    def _get_random_xy(self):
+        r = np.random.choice( np.arange(1,self.maze_size[0]),1 )
+        c = np.random.choice( np.arange(1,self.maze_size[1]),1 )
+        while not any(self.maze.get_walls_status(self.maze.maze_cells[c, r]).values() ):
+            r = np.random.choice( np.arange(1,self.maze_size[0]),1 )
+            c = np.random.choice( np.arange(1,self.maze_size[1]),1 )
+        return [int(r),int(c)]
+
+    def init_goals(self):
+        return [self._get_random_xy() for _ in range(self.num_goals) ]  
+
 
     def update(self, mode="human"):
         try:
@@ -225,8 +249,10 @@ class MazeView2D:
         self.__colour_cell(self.entrance, colour=colour, transparency=transparency)
 
     def __draw_goal(self, colour=(255, 255, 0), transparency=235):
-
-        self.__colour_cell(self.goal, colour=colour, transparency=transparency)
+        if(self.num_goals == 1):
+            self.__colour_cell(self.goal, colour=colour, transparency=transparency)
+        else:
+            [self.__colour_cell( _g,  colour=colour, transparency=transparency) for _g in self.goals]
 
     def __draw_portals(self, transparency=160):
 
@@ -255,6 +281,26 @@ class MazeView2D:
         h = int(self.CELL_H + 0.5 - 1)
         pygame.draw.rect(self.maze_layer, colour + (transparency,), (x, y, w, h))
         
+    def decolor(self,cell):
+        r = cell[0]
+        c = cell[1]
+        
+        if not (isinstance(cell, (list, tuple, np.ndarray)) and len(cell) == 2):
+            raise TypeError("cell must a be a tuple, list, or numpy array of size 2")
+
+        x = int(r * self.CELL_W + 0.5 + 1)
+        y = int(c * self.CELL_H + 0.5 + 1)
+        w = int(self.CELL_W + 0.5 - 1)
+        h = int(self.CELL_H + 0.5 - 1)
+
+        cc = self.maze_layer.get_at((x, y))
+        # print('cc: ', cc)
+
+        rgba_colour = (0,0,0,255)  
+        
+        pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
+
+
     upto_255 = lambda c : c+2 if c+20<255 else 255
     def color_visited_cell(self,r,c):
         cell = [r,c]

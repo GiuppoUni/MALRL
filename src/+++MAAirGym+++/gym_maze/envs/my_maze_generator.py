@@ -85,7 +85,7 @@ NCOLS = 21
 OBS_BLOCKS = 3
 # Each block can be considered 20m x 20m 
 
-def cell_value(r,c,obs_blocks=1):
+def cell_value(r,c,obs_blocks=1,street_blocks=1):
     if(obs_blocks ==1):
         if r %2 ==0 or c %2 ==0:
             return 15
