@@ -1,16 +1,22 @@
 import json
 from os import O_EXCL
+import os
+from typing import Tuple
+from airsim.types import Vector3r
 from dotmap import DotMap
 from pyproj import Proj
 
 from configparser import ConfigParser
 import logging
 import datetime
+import numpy as np
+import pickle
 
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
 CONFIGS_FOLDER = "./configs/"
 LOG_FOLDER = "./logs/"
+TRAJECTORIES_FOLDER = "./trajectories/"
 
 
 with open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:
@@ -33,6 +39,10 @@ DEST = (
     41.902491,
     80) 
 
+
+NEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory
+
+
 # GPS init position of uavs
 init_gps = [
     (
@@ -52,6 +62,13 @@ init_gps = [
         0
         ),
 ]
+
+red_color = [1.0,0.0,0.0]
+green_color = [0.0,1.0,0.0]
+blue_color = [0.0,0.0,1.0]
+
+
+
 
 def initiate_logger():
     logging.basicConfig(filename=LOG_FOLDER+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
@@ -153,3 +170,71 @@ def addToDict(d: dict,k,v):
     if k not in d:
         d[k] = []
     d[k].append(v)
+
+
+def pkl_save_obj(obj, name,file_timestamp ):
+    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+def pkl_load_obj(name=None,file_timestamp=None,filename=None):
+    if filename:
+        with open(TRAJECTORIES_FOLDER +filename, 'rb') as f:
+            return pickle.load(f)
+    elif name and file_timestamp:
+        with open(TRAJECTORIES_FOLDER + name + file_timestamp+ '.pkl', 'rb') as f:
+            return pickle.load(f)
+    else:
+        raise Exception("Specify file name")
+
+
+def numpy_save(arr,folder_timestamp,filename):
+    file_path = TRAJECTORIES_FOLDER+"trajectories_"+folder_timestamp
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+    data = np.asarray(arr)
+    # save to npy file
+    print("Saving",os.path.join(file_path, filename))
+    np.save(os.path.join(file_path, filename) , data)
+
+
+def position_to_list(position_vector) -> list:
+    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
+
+def list_to_position(l) -> Vector3r:
+    if len(l) != 3:
+        raise Exception("REQUIRED EXACTLY 3 elements")
+    return Vector3r(l[0],l[1],l[2])
+
+
+def set_offset_position(pos):
+    _v = g_vehicles["Drone0"]
+    _offset_x = _v["X"] 
+    _offset_y = _v["Y"]
+    _offset_z = _v["Z"]
+    pos.x_val += _offset_x
+    pos.y_val += _offset_y
+    pos.z_val += _offset_z
+
+
+def _colorize(idx): 
+
+    if idx == 0:
+        return green_color
+    elif idx==1: 
+        return blue_color
+    else : 
+        return blue_color
+
+
+
+distance = lambda p1, p2: np.norm(p1-p2)
+
+def xy_distance(point1, point2):
+    if type(point1) == Vector3r:
+        point1 = [point1.x_val,point1.y_val] 
+
+    if type(point2) == Vector3r:
+        point2 = [point2.x_val,point2.y_val] 
+    
+    return   np.linalg.norm(point1 - point2) 
+    

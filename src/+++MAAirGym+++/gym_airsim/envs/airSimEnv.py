@@ -1,5 +1,4 @@
 import logging
-from myAirSimClient2 import MyAirSimClient2
 import numpy as np
 import random
 
@@ -9,16 +8,15 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from myAirSimClient import *
 from newMyAirSimClient import newMyAirSimClient
 
 logger = logging.getLogger(__name__)
 
 import utils
 import sys
-import main
+import concurrent.futures
 
-print = main.logger.info
+# print = main.logger.info
 
 # All coords
 # this format -> (lon,lat,height)
@@ -126,6 +124,10 @@ class AirSimEnv(gym.Env):
             
             # --- HERE EXECUTE DRONE ACTION ---
             # collided,pt = drone.take_action(action)
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(foo, 'world!')
+                return_value = future.result()
+                print(return_value)
             collided = self.myClient.take_action(action,agent_name)
             #---------------------------------------------
             # self.myClient.pts.append(pt)
