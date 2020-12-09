@@ -11,6 +11,8 @@ import logging
 import datetime
 import numpy as np
 import pickle
+import time
+import winsound
 
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
@@ -67,6 +69,11 @@ red_color = [1.0,0.0,0.0]
 green_color = [0.0,1.0,0.0]
 blue_color = [0.0,0.0,1.0]
 
+
+def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):
+    for _ in range(n_beeps):
+        winsound.Beep(frequency, beep_duration)
+        time.sleep(1)
 
 
 

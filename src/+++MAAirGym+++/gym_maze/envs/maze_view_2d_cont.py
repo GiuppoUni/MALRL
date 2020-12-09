@@ -1,20 +1,23 @@
+import math
 import pygame
 import random
 import numpy as np
-import os
+import os   
 
 from collections.abc import Iterable
-class MazeView2D:
+
+class MazeView2DCont:
+    rgba_black = (0,0,0,255)
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
-                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):
+                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):
 
-        # if(num_goals<=0 ):
-        #     raise ValueError("Error in num_goals parameter")
+        if(num_goals<=0 ):
+            raise ValueError("Error in num_goals parameter")
 
         self.num_goals = num_goals
-        self.verbose = verbose
+
         # PyGame configurations
         pygame.init()
         pygame.display.set_caption(maze_name)
@@ -25,17 +28,19 @@ class MazeView2D:
         # Load a maze
         if maze_file_path is None:
             print(" no maze filepath")
-            self.__maze = Maze(maze_size=maze_size, has_loops=has_loops, num_portals=num_portals,verbose = self.verbose)
+            self.__maze = MazeCont(maze_size=maze_size, has_loops=has_loops, num_portals=num_portals)
         else:
             if not os.path.exists(maze_file_path):
                 print("New maze")
                 dir_path = os.path.dirname(os.path.abspath(__file__))
                 rel_path = os.path.join(dir_path, "maze_samples", maze_file_path)
+                # print("OS",os.getcwd() )
+                # print('os.listdir("maze_samples"): ', os.listdir("maze_samples"))
                 if os.path.exists(rel_path):
                     maze_file_path = rel_path
                 else:
-                    raise FileExistsError("Cannot find %s." % maze_file_path)
-            self.__maze = Maze(maze_cells=Maze.load_maze(maze_file_path),verbose = self.verbose)
+                    raise FileExistsError("Cannot find ", maze_file_path)
+            self.__maze = MazeCont(maze_cells=MazeCont.load_maze(maze_file_path))
 
         self.maze_size = self.__maze.maze_size
         if self.__enable_render is True:
@@ -51,13 +56,14 @@ class MazeView2D:
             self.__goal = np.array(self.maze_size) - np.array((1, 1))
         
         # Set multiple random goals
-        elif self.num_goals > 1:
+        else:
             self.goals = self.init_goals()
-            self.saved_goals = self.goals.copy()
+            self.saved_goals = self.goals
 
         # Create the Robot
         self.__robot = self.entrance
-
+        # Track of all positions
+        self.positions= [self.entrance]
 
         if self.__enable_render is True:
             # Create a background
@@ -93,10 +99,13 @@ class MazeView2D:
         return [int(r),int(c)]
 
     def init_goals(self):
-        if self.num_goals > -1:
-            return [self._get_random_xy() for _ in range(self.num_goals) ]  
+        return [self._get_random_xy() for _ in range(self.num_goals) ]  
 
-
+    def update_pos(self,x,y):
+        self.positions.append(self.__robot)
+        self.__robot = np.array([x,y])
+        self.update()
+        
     def update(self, mode="human"):
         try:
             img_output = self.__view_update(mode)
@@ -130,10 +139,9 @@ class MazeView2D:
             raise ValueError("dir cannot be %s. The only valid dirs are %s."
                              % (str(dir), str(self.__maze.COMPASS.keys())))
 
-        moved = False
+            
         if self.__maze.is_open(self.__robot, dir):
-            if(self.verbose):
-                print("MOVING:", self.tr(dir),"\n")    
+            print("MOVING:", self.tr(dir),"\n")    
             # update the drawing
             self.__draw_robot(transparency=0)
 
@@ -143,9 +151,7 @@ class MazeView2D:
             if self.maze.is_portal(self.robot):
                 self.__robot = np.array(self.maze.get_portal(tuple(self.robot)).teleport(tuple(self.robot)))
             self.__draw_robot(transparency=255)
-            moved = True
-            
-        return moved
+
     def reset_robot(self):
 
         self.__draw_robot(transparency=0)
@@ -162,14 +168,14 @@ class MazeView2D:
     def __view_update(self, mode="human"):
         if not self.__game_over:
             # update the robot's position
-            self.screen.blit(self.background, (0, 0))
             self.__draw_entrance()
-            self.__draw_robot()
             self.__draw_goal()
             self.__draw_portals()
+            self.__draw_robot()
 
 
             # update the screen
+            self.screen.blit(self.background, (0, 0))
             self.screen.blit(self.maze_layer,(0, 0))
 
             if mode == "human":
@@ -243,11 +249,19 @@ class MazeView2D:
         if self.__enable_render is False:
             return
         
-        x = int(self.__robot[0] * self.CELL_W + self.CELL_W * 0.5 + 0.5)
-        y = int(self.__robot[1] * self.CELL_H + self.CELL_H * 0.5 + 0.5)
+        x = int(self.__robot[0] * self.CELL_W +0.5)
+        y = int((self.maze_size[1]-1-self.__robot[1]) * self.CELL_H +0.5)
         r = int(min(self.CELL_W, self.CELL_H)/5 + 0.5)
 
+
+
         pygame.draw.circle(self.maze_layer, colour + (transparency,), (x, y), r)
+        if any(self.positions[-1] != self.__robot):
+            ox = int(self.positions[-1][0] * self.CELL_W +0.5)
+            oy = int((self.maze_size[1]-self.positions[-1][1]) * self.CELL_H +0.5)
+            pygame.draw.line(self.maze_layer, MazeView2DCont.rgba_black, (ox,oy), (x,y))
+
+        
 
     def __draw_entrance(self, colour=(0, 0, 150), transparency=235):
 
@@ -256,8 +270,7 @@ class MazeView2D:
     def __draw_goal(self, colour=(255, 255, 0), transparency=235):
         if(self.num_goals == 1):
             self.__colour_cell(self.goal, colour=colour, transparency=transparency)
-        elif self.num_goals > 1:
-            # print("goals",self.goals)
+        else:
             [self.__colour_cell( _g,  colour=colour, transparency=transparency) for _g in self.goals]
 
     def __draw_portals(self, transparency=160):
@@ -306,8 +319,17 @@ class MazeView2D:
         
         pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 
+    def is_in_obstacle(self,x,y):
+        x/=self.CELL_W
+        y/=self.CELL_H
+        x=math.floor(x) 
+        y=math.floor(y)
+        return self.__maze.maze_cells[x,y] == 0
 
-    up_till_255 = lambda c : c+1 if c+1 <255 else 255
+
+
+
+    upto_255 = lambda c : c+2 if c+20<255 else 255
     def color_visited_cell(self,r,c):
         cell = [r,c]
         
@@ -322,7 +344,7 @@ class MazeView2D:
         cc = self.maze_layer.get_at((x, y))
         # print('cc: ', cc)
 
-        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MazeView2D.up_till_255(cc[3]) ) 
+        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MazeView2D.upto_255(cc[3]) ) 
         
         pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 
@@ -367,7 +389,7 @@ class MazeView2D:
         return float(self.SCREEN_H) / float(self.maze.MAZE_H)
 
 
-class Maze:
+class MazeCont:
 
     COMPASS = {
         "N": (0, -1),
@@ -376,7 +398,7 @@ class Maze:
         "W": (-1, 0)
     }
 
-    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):
+    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):
 
         # maze member variables
         self.maze_cells = maze_cells
@@ -384,7 +406,6 @@ class Maze:
         self.__portals_dict = dict()
         self.__portals = []
         self.num_portals = num_portals
-        self.verbose = verbose
 
         # Use existing one if exists
         if self.maze_cells is not None:
@@ -540,12 +561,11 @@ class Maze:
             col = cell_id[0]
             # check if the wall is opened
             this_wall = bool(self.get_walls_status(self.maze_cells[row, col])[dir])
+            print('col: ', col, 'row: ', row )
+            print('self.maze_cell: ', self.maze_cells[row, col])
+            print('this_wall: ', this_wall)
             other_wall = bool(self.get_walls_status(self.maze_cells[x1, y1])[self.__get_opposite_wall(dir)])
-            if(self.verbose):
-                print('col: ', col, 'row: ', row )
-                print('self.maze_cell: ', self.maze_cells[row, col])
-                print('this_wall: ', this_wall)
-                print('other_wall: ', other_wall)
+            print('other_wall: ', other_wall)
             return this_wall or other_wall
         return False
 
@@ -664,7 +684,7 @@ class Portal:
 
 if __name__ == "__main__":
 
-    maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10))
+    maze = MazeView2DCont(screen_size= (640, 640), maze_size=(10,10))
     maze.update()
     input("Enter any key to quit.")
 

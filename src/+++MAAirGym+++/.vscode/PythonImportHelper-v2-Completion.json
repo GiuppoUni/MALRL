@@ -456,6 +456,105 @@
         }
     },
     {
+        "label": "error",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "spaces",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "utils",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "error",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "spaces",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "utils",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "error",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "spaces",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "utils",
+        "importPath": "gym",
+        "description": "gym",
+        "isExtraImport": true,
+        "detail": "gym",
+        "documentation": {
+            "value": "\n```python\nimport gym\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -541,6 +640,39 @@
         "detail": "random",
         "documentation": {
             "value": "\n```python\nimport random\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "seeding",
+        "importPath": "gym.utils",
+        "description": "gym.utils",
+        "isExtraImport": true,
+        "detail": "gym.utils",
+        "documentation": {
+            "value": "\n```python\nimport gym.utils\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "seeding",
+        "importPath": "gym.utils",
+        "description": "gym.utils",
+        "isExtraImport": true,
+        "detail": "gym.utils",
+        "documentation": {
+            "value": "\n```python\nimport gym.utils\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "seeding",
+        "importPath": "gym.utils",
+        "description": "gym.utils",
+        "isExtraImport": true,
+        "detail": "gym.utils",
+        "documentation": {
+            "value": "\n```python\nimport gym.utils\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -968,6 +1100,39 @@
         }
     },
     {
+        "label": "mul",
+        "importPath": "operator",
+        "description": "operator",
+        "isExtraImport": true,
+        "detail": "operator",
+        "documentation": {
+            "value": "\n```python\nimport operator\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "mul",
+        "importPath": "operator",
+        "description": "operator",
+        "isExtraImport": true,
+        "detail": "operator",
+        "documentation": {
+            "value": "\n```python\nimport operator\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeView2D",
+        "importPath": "gym_maze.envs.maze_view_2d",
+        "description": "gym_maze.envs.maze_view_2d",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_view_2d\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "MazeView2D",
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
@@ -1035,6 +1200,39 @@
         }
     },
     {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {
+            "value": "\n```python\nimport sklearn.neighbors\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {
+            "value": "\n```python\nimport sklearn.neighbors\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeView2DCont",
+        "importPath": "gym_maze.envs.maze_view_2d_cont",
+        "description": "gym_maze.envs.maze_view_2d_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_view_2d_cont",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_view_2d_cont\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "Maze",
         "importPath": "maze_view_2d",
         "description": "maze_view_2d",
@@ -1069,6 +1267,39 @@
         }
     },
     {
+        "label": "Iterable",
+        "importPath": "collections.abc",
+        "description": "collections.abc",
+        "isExtraImport": true,
+        "detail": "collections.abc",
+        "documentation": {
+            "value": "\n```python\nimport collections.abc\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Iterable",
+        "importPath": "collections.abc",
+        "description": "collections.abc",
+        "isExtraImport": true,
+        "detail": "collections.abc",
+        "documentation": {
+            "value": "\n```python\nimport collections.abc\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MultiMazeView2D",
+        "importPath": "gym_maze.envs.multi_maze_view_2d",
+        "description": "gym_maze.envs.multi_maze_view_2d",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.multi_maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.multi_maze_view_2d\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "block",
         "importPath": "numpy.core.shape_base",
         "description": "numpy.core.shape_base",
@@ -1081,6 +1312,17 @@
     },
     {
         "label": "*",
+        "importPath": "gym_maze.envs.maze_env",
+        "description": "gym_maze.envs.maze_env",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_env\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeEnv",
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
         "isExtraImport": true,
@@ -1272,61 +1514,6 @@
         }
     },
     {
-        "label": "CollectEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "CollectEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "gym_airsim.envs",
         "kind": 6,
         "isExtraImport": true,
@@ -1380,6 +1567,127 @@
         "detail": "gym_airsim",
         "documentation": {
             "value": "\n```python\nimport gym_airsim\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_env_cont\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_env_cont\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.maze_env_cont\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "DQN",
+        "importPath": "stable_baselines",
+        "description": "stable_baselines",
+        "isExtraImport": true,
+        "detail": "stable_baselines",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "results_plotter",
+        "importPath": "stable_baselines",
+        "description": "stable_baselines",
+        "isExtraImport": true,
+        "detail": "stable_baselines",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "evaluate_policy",
+        "importPath": "stable_baselines.common.evaluation",
+        "description": "stable_baselines.common.evaluation",
+        "isExtraImport": true,
+        "detail": "stable_baselines.common.evaluation",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.common.evaluation\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Monitor",
+        "importPath": "stable_baselines.bench",
+        "description": "stable_baselines.bench",
+        "isExtraImport": true,
+        "detail": "stable_baselines.bench",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.bench\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "load_results",
+        "importPath": "stable_baselines.results_plotter",
+        "description": "stable_baselines.results_plotter",
+        "isExtraImport": true,
+        "detail": "stable_baselines.results_plotter",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.results_plotter\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ts2xy",
+        "importPath": "stable_baselines.results_plotter",
+        "description": "stable_baselines.results_plotter",
+        "isExtraImport": true,
+        "detail": "stable_baselines.results_plotter",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.results_plotter\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "AdaptiveParamNoiseSpec",
+        "importPath": "stable_baselines.common.noise",
+        "description": "stable_baselines.common.noise",
+        "isExtraImport": true,
+        "detail": "stable_baselines.common.noise",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.common.noise\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "BaseCallback",
+        "importPath": "stable_baselines.common.callbacks",
+        "description": "stable_baselines.common.callbacks",
+        "isExtraImport": true,
+        "detail": "stable_baselines.common.callbacks",
+        "documentation": {
+            "value": "\n```python\nimport stable_baselines.common.callbacks\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -1541,6 +1849,72 @@
         }
     },
     {
+        "label": "CollectEnv",
+        "importPath": "gym_airsim.envs.collectEnv",
+        "description": "gym_airsim.envs.collectEnv",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs.collectEnv",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "CollectEnv",
+        "importPath": "gym_airsim.envs.collectEnv",
+        "description": "gym_airsim.envs.collectEnv",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs.collectEnv",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs.collectEnv\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {
+            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MultiMazeEnv",
+        "importPath": "gym_maze.envs.multi_maze_env",
+        "description": "gym_maze.envs.multi_maze_env",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.multi_maze_env",
+        "documentation": {
+            "value": "\n```python\nimport gym_maze.envs.multi_maze_env\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "CollectMTEnv",
         "importPath": "gym_airsim.envs.collectMTEnv",
         "description": "gym_airsim.envs.collectMTEnv",
@@ -1603,6 +1977,18 @@
         "detail": "configparser",
         "documentation": {
             "value": "\n```python\nimport configparser\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "winsound",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "winsound",
+        "description": "winsound",
+        "detail": "winsound",
+        "documentation": {
+            "value": "\n```python\nimport winsound\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2559,142 +2945,22 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.viewer = None\n        self.enable_render = enable_render\n        self.num_goals = num_goals\n        if maze_file:",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False):\n        self.measure_distance = measure_distance\n        self.verbose = verbose",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.viewer = None\n        self.enable_render = enable_render\n        self.num_goals = num_goals\n        if maze_file:\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False):\n        self.measure_distance = measure_distance\n        self.verbose = verbose\n```\n",
             "supportThemeIcons": false
         }
     },
     {
-        "label": "MazeEnvSample5x5",
+        "label": "MazeEnvCont",
         "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvSample5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample5x5, self).__init__(maze_file=\"maze2d_5x5.npy\", enable_render=enable_render)\nclass MazeEnvRandom5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom5x5, self).__init__(maze_size=(5, 5), enable_render=enable_render)\nclass MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "peekOfCode": "class MazeEnvCont(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    SCREEN_WIDTH = 640\n    SCREEN_HEIGHT = 640\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.debug = False\n        self.max_steps = 100\n        self.max_step_size = 10",
+        "detail": "gym_maze.envs.maze_env_cont",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvSample5x5\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvSample5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample5x5, self).__init__(maze_file=\"maze2d_5x5.npy\", enable_render=enable_render)\nclass MazeEnvRandom5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom5x5, self).__init__(maze_size=(5, 5), enable_render=enable_render)\nclass MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom5x5",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom5x5, self).__init__(maze_size=(5, 5), enable_render=enable_render)\nclass MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom5x5\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom5x5(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom5x5, self).__init__(maze_size=(5, 5), enable_render=enable_render)\nclass MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvSample10x10",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvSample10x10\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvSample10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample10x10, self).__init__(maze_file=\"maze2d_10x10.npy\", enable_render=enable_render)\nclass MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom10x10",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom10x10\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom10x10(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10, self).__init__(maze_size=(10, 10), enable_render=enable_render)\nclass MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvSample3x3",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvSample3x3\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvSample3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample3x3, self).__init__(maze_file=\"maze2d_3x3.npy\", enable_render=enable_render)\nclass MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom3x3",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom3x3\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom3x3(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom3x3, self).__init__(maze_size=(3, 3), enable_render=enable_render)\nclass MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvSample100x100",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvSample100x100\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvSample100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvSample100x100, self).__init__(maze_file=\"maze2d_100x100.npy\", enable_render=enable_render)\nclass MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom100x100",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom100x100\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom100x100(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom100x100, self).__init__(maze_size=(100, 100), enable_render=enable_render)\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom10x10Plus",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom10x10Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom10x10Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom10x10Plus, self).__init__(maze_size=(10, 10), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom20x20Plus",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), ",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom20x20Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom20x20Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom20x20Plus, self).__init__(maze_size=(20, 20), mode=\"plus\", enable_render=enable_render)\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "MazeEnvRandom30x30Plus",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n                                        enable_render=True)\n    env.render()\n    import time",
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_env import MazeEnvRandom30x30Plus\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvRandom30x30Plus(MazeEnv):\n    def __init__(self, enable_render=True):\n        super(MazeEnvRandom30x30Plus, self).__init__(maze_size=(30, 30), mode=\"plus\", enable_render=enable_render)\nif __name__ == \"__main__\" :\n    env = MazeEnv( maze_file = \"maze_samples/maze2d_001.npy\",                  \n            # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                        # maze_size=(640, 640), \n                                        enable_render=True)\n    env.render()\n    import time\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_env_cont import MazeEnvCont\n```\n\n```python\n\n\n```\n\n```python\nclass MazeEnvCont(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    SCREEN_WIDTH = 640\n    SCREEN_HEIGHT = 640\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.debug = False\n        self.max_steps = 100\n        self.max_step_size = 10\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2703,10 +2969,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)",
+        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        self.verbose = verbose\n        # PyGame configurations\n        pygame.init()",
         "detail": "gym_maze.envs.maze_view_2d",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import MazeView2D\n```\n\n```python\n\n\n```\n\n```python\nclass MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()\n        pygame.display.set_caption(maze_name)\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import MazeView2D\n```\n\n```python\n\n\n```\n\n```python\nclass MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        self.verbose = verbose\n        # PyGame configurations\n        pygame.init()\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2715,10 +2981,10 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_view_2d",
         "description": "gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):\n        # maze member variables\n        self.maze_cells = maze_cells",
+        "peekOfCode": "class Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):\n        # maze member variables\n        self.maze_cells = maze_cells",
         "detail": "gym_maze.envs.maze_view_2d",
         "documentation": {
-            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import Maze\n```\n\n```python\n\n\n```\n\n```python\nclass Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):\n        # maze member variables\n        self.maze_cells = maze_cells\n```\n",
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import Maze\n```\n\n```python\n\n\n```\n\n```python\nclass Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):\n        # maze member variables\n        self.maze_cells = maze_cells\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -2731,6 +2997,102 @@
         "detail": "gym_maze.envs.maze_view_2d",
         "documentation": {
             "value": "\n```python\nfrom gym_maze.envs.maze_view_2d import Portal\n```\n\n```python\n\n\n```\n\n```python\nclass Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeView2DCont",
+        "kind": 6,
+        "importPath": "gym_maze.envs.maze_view_2d_cont",
+        "description": "gym_maze.envs.maze_view_2d_cont",
+        "peekOfCode": "class MazeView2DCont:\n    rgba_black = (0,0,0,255)\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()",
+        "detail": "gym_maze.envs.maze_view_2d_cont",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d_cont import MazeView2DCont\n```\n\n```python\n\n\n```\n\n```python\nclass MazeView2DCont:\n    rgba_black = (0,0,0,255)\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MazeCont",
+        "kind": 6,
+        "importPath": "gym_maze.envs.maze_view_2d_cont",
+        "description": "gym_maze.envs.maze_view_2d_cont",
+        "peekOfCode": "class MazeCont:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):\n        # maze member variables\n        self.maze_cells = maze_cells",
+        "detail": "gym_maze.envs.maze_view_2d_cont",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d_cont import MazeCont\n```\n\n```python\n\n\n```\n\n```python\nclass MazeCont:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):\n        # maze member variables\n        self.maze_cells = maze_cells\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Portal",
+        "kind": 6,
+        "importPath": "gym_maze.envs.maze_view_2d_cont",
+        "description": "gym_maze.envs.maze_view_2d_cont",
+        "peekOfCode": "class Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:",
+        "detail": "gym_maze.envs.maze_view_2d_cont",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.maze_view_2d_cont import Portal\n```\n\n```python\n\n\n```\n\n```python\nclass Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MultiAgentActionSpace",
+        "kind": 6,
+        "importPath": "gym_maze.envs.multi_maze_env",
+        "description": "gym_maze.envs.multi_maze_env",
+        "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass MultiMazeEnv(gym.Env):",
+        "detail": "gym_maze.envs.multi_maze_env",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.multi_maze_env import MultiAgentActionSpace\n```\n\n```python\n\n\n```\n\n```python\nclass MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass MultiMazeEnv(gym.Env):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MultiMazeEnv",
+        "kind": 6,
+        "importPath": "gym_maze.envs.multi_maze_env",
+        "description": "gym_maze.envs.multi_maze_env",
+        "peekOfCode": "class MultiMazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False,\n        n_agents=1,partial_obs = False,sleep_secs=None):\n        self.n_agents= n_agents",
+        "detail": "gym_maze.envs.multi_maze_env",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.multi_maze_env import MultiMazeEnv\n```\n\n```python\n\n\n```\n\n```python\nclass MultiMazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False,\n        n_agents=1,partial_obs = False,sleep_secs=None):\n        self.n_agents= n_agents\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MultiMazeView2D",
+        "kind": 6,
+        "importPath": "gym_maze.envs.multi_maze_view_2d",
+        "description": "gym_maze.envs.multi_maze_view_2d",
+        "peekOfCode": "class MultiMazeView2D:\n    def __init__(self, n_agents,maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.n_agents = n_agents\n        self.num_goals = num_goals\n        self.verbose = verbose\n        # PyGame configurations",
+        "detail": "gym_maze.envs.multi_maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.multi_maze_view_2d import MultiMazeView2D\n```\n\n```python\n\n\n```\n\n```python\nclass MultiMazeView2D:\n    def __init__(self, n_agents,maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.n_agents = n_agents\n        self.num_goals = num_goals\n        self.verbose = verbose\n        # PyGame configurations\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Maze",
+        "kind": 6,
+        "importPath": "gym_maze.envs.multi_maze_view_2d",
+        "description": "gym_maze.envs.multi_maze_view_2d",
+        "peekOfCode": "class Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):\n        # maze member variables\n        self.maze_cells = maze_cells",
+        "detail": "gym_maze.envs.multi_maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.multi_maze_view_2d import Maze\n```\n\n```python\n\n\n```\n\n```python\nclass Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):\n        # maze member variables\n        self.maze_cells = maze_cells\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Portal",
+        "kind": 6,
+        "importPath": "gym_maze.envs.multi_maze_view_2d",
+        "description": "gym_maze.envs.multi_maze_view_2d",
+        "peekOfCode": "class Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:",
+        "detail": "gym_maze.envs.multi_maze_view_2d",
+        "documentation": {
+            "value": "\n```python\nfrom gym_maze.envs.multi_maze_view_2d import Portal\n```\n\n```python\n\n\n```\n\n```python\nclass Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3095,98 +3457,50 @@
         }
     },
     {
-        "label": "select_action",
-        "kind": 2,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "def select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
-        "detail": "dqn_main",
+        "label": "SaveOnBestTrainingRewardCallback",
+        "kind": 6,
+        "importPath": "baseline_main",
+        "description": "baseline_main",
+        "peekOfCode": "class SaveOnBestTrainingRewardCallback(BaseCallback):\n    \"\"\"\n    Callback for saving a model (the check is done every ``check_freq`` steps)\n    based on the training reward (in practice, we recommend using ``EvalCallback``).\n    :param check_freq: (int)\n    :param log_dir: (str) Path to the folder where the model will be saved.\n      It must contains the file created by the ``Monitor`` wrapper.\n    :param verbose: (int)\n    \"\"\"\n    def __init__(self, check_freq: int, log_dir: str, verbose=1):",
+        "detail": "baseline_main",
         "documentation": {
-            "value": "\n```python\nfrom dqn_main import select_action\n```\n\n```python\n\n\n```\n\n```python\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "get_explore_rate",
-        "kind": 2,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "def get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:",
-        "detail": "dqn_main",
-        "documentation": {
-            "value": "\n```python\nfrom dqn_main import get_explore_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "get_learning_rate",
-        "kind": 2,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "def get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:",
-        "detail": "dqn_main",
-        "documentation": {
-            "value": "\n```python\nfrom dqn_main import get_learning_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "state_to_bucket",
-        "kind": 2,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "def state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]",
-        "detail": "dqn_main",
-        "documentation": {
-            "value": "\n```python\nfrom dqn_main import state_to_bucket\n```\n\n```python\n\n\n```\n\n```python\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "custom_random",
-        "kind": 2,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "def custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')",
-        "detail": "dqn_main",
-        "documentation": {
-            "value": "\n```python\nfrom dqn_main import custom_random\n```\n\n```python\n\n\n```\n\n```python\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n```\n",
+            "value": "\n```python\nfrom baseline_main import SaveOnBestTrainingRewardCallback\n```\n\n```python\n\n\n```\n\n```python\nclass SaveOnBestTrainingRewardCallback(BaseCallback):\n    \"\"\"\n    Callback for saving a model (the check is done every ``check_freq`` steps)\n    based on the training reward (in practice, we recommend using ``EvalCallback``).\n    :param check_freq: (int)\n    :param log_dir: (str) Path to the folder where the model will be saved.\n      It must contains the file created by the ``Monitor`` wrapper.\n    :param verbose: (int)\n    \"\"\"\n    def __init__(self, check_freq: int, log_dir: str, verbose=1):\n```\n",
             "supportThemeIcons": false
         }
     },
     {
         "label": "episode_cooldown",
         "kind": 5,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))",
-        "detail": "dqn_main",
+        "importPath": "baseline_main",
+        "description": "baseline_main",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')",
+        "detail": "baseline_main",
         "documentation": {
-            "value": "\n```python\nfrom dqn_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n```\n",
+            "value": "\n```python\nfrom baseline_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n```\n",
             "supportThemeIcons": false
         }
     },
     {
         "label": "ACTION_TO_IDX",
         "kind": 5,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action",
-        "detail": "dqn_main",
+        "importPath": "baseline_main",
+        "description": "baseline_main",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "detail": "baseline_main",
         "documentation": {
-            "value": "\n```python\nfrom dqn_main import ACTION_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\n```\n",
+            "value": "\n```python\nfrom baseline_main import ACTION_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n```\n",
             "supportThemeIcons": false
         }
     },
     {
         "label": "IDX_TO_ACTION",
         "kind": 5,
-        "importPath": "dqn_main",
-        "description": "dqn_main",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):",
-        "detail": "dqn_main",
+        "importPath": "baseline_main",
+        "description": "baseline_main",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "detail": "baseline_main",
         "documentation": {
-            "value": "\n```python\nfrom dqn_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n```\n",
+            "value": "\n```python\nfrom baseline_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\n# ==================================================================================================\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3295,6 +3609,102 @@
         "detail": "newMyAirSimClient",
         "documentation": {
             "value": "\n```python\nfrom newMyAirSimClient import lock\n```\n\n```python\n\n\n```\n\n```python\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "select_action",
+        "kind": 2,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "def select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import select_action\n```\n\n```python\n\n\n```\n\n```python\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "get_explore_rate",
+        "kind": 2,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "def get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import get_explore_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_explore_rate(t):\n    return max(MIN_EXPLORE_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "get_learning_rate",
+        "kind": 2,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "def get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import get_learning_rate\n```\n\n```python\n\n\n```\n\n```python\ndef get_learning_rate(t):\n    return max(MIN_LEARNING_RATE, min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "state_to_bucket",
+        "kind": 2,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "def state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import state_to_bucket\n```\n\n```python\n\n\n```\n\n```python\ndef state_to_bucket(state):\n    bucket_indice = []\n    for i in range(len(state)):\n        if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n        elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n        else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "custom_random",
+        "kind": 2,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "def custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import custom_random\n```\n\n```python\n\n\n```\n\n```python\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "episode_cooldown",
+        "kind": 5,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ACTION_TO_IDX",
+        "kind": 5,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import ACTION_TO_IDX\n```\n\n```python\n\n\n```\n\n```python\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "IDX_TO_ACTION",
+        "kind": 5,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):",
+        "detail": "qlearn_main",
+        "documentation": {
+            "value": "\n```python\nfrom qlearn_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef select_action(state, explore_rate):\n    # Select a random action\n    if random.random() < explore_rate:\n        action = env.action_space.sample()\n    # Select the action with the highest q\n    else:\n        action = int(np.argmax(q_table[state]))\n    return action\ndef get_explore_rate(t):\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3415,6 +3825,18 @@
         "detail": "trajectoryTrackerClient",
         "documentation": {
             "value": "\n```python\nfrom trajectoryTrackerClient import TrajectoryTrackerClient\n```\n\n```python\n\n\n```\n\n```python\nclass TrajectoryTrackerClient(MultirotorClient):\n    def __init__(self):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        self.trajectory = []\n        self.episode = 0\n        self.isTracking = False\n        self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\n        self.timestep = 0.1\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "play_audio_notification",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)",
+        "detail": "utils",
+        "documentation": {
+            "value": "\n```python\nfrom utils import play_audio_notification\n```\n\n```python\n\n\n```\n\n```python\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3771,10 +4193,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "red_color = [1.0,0.0,0.0]\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')",
+        "peekOfCode": "red_color = [1.0,0.0,0.0]\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import red_color\n```\n\n```python\n\n\n```\n\n```python\nred_color = [1.0,0.0,0.0]\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n```\n",
+            "value": "\n```python\nfrom utils import red_color\n```\n\n```python\n\n\n```\n\n```python\nred_color = [1.0,0.0,0.0]\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3783,10 +4205,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "green_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )",
+        "peekOfCode": "green_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import green_color\n```\n\n```python\n\n\n```\n\n```python\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\n```\n",
+            "value": "\n```python\nfrom utils import green_color\n```\n\n```python\n\n\n```\n\n```python\ngreen_color = [0.0,1.0,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3795,10 +4217,10 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "blue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\n    return logger",
+        "peekOfCode": "blue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',",
         "detail": "utils",
         "documentation": {
-            "value": "\n```python\nfrom utils import blue_color\n```\n\n```python\n\n\n```\n\n```python\nblue_color = [0.0,0.0,1.0]\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\n    return logger\n```\n",
+            "value": "\n```python\nfrom utils import blue_color\n```\n\n```python\n\n\n```\n\n```python\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n```\n",
             "supportThemeIcons": false
         }
     },

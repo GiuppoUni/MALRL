@@ -18,6 +18,7 @@ from gym_airsim.envs import AirSimEnv
 import utils
 import time
 from gym_maze.envs.maze_env import MazeEnv
+from gym_maze.envs.maze_env_cont import MazeEnvCont
 
 
 episode_cooldown = 3
@@ -84,11 +85,17 @@ def custom_random(past_action):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='RL for ma-gym')
-    parser.add_argument('--episodes', type=int, default=10,
+    parser.add_argument('--episodes', type=int, default=100,
+                        help='episodes (default: %(default)s)')
+
+    parser.add_argument('--n-goals', type=int, default=1,
                         help='episodes (default: %(default)s)')
 
     parser.add_argument('--actions-timeout', type=int, default=100,
                         help='episodes (default: %(default)s)')
+
+    parser.add_argument('--n-agents', type=int, default=1,
+                        help='num agents (default: %(default)s)')
 
     # parser.add_argument('--ep-cooldown', type=int, default=1,
     #                     help='episode cooldown time sleeping (default: %(default)s)')
@@ -97,6 +104,12 @@ if __name__ == "__main__":
 
     parser.add_argument( '--debug',action='store_true',  default=False,
         help='Log into file (default: %(default)s)' )
+    
+    parser.add_argument( '--enable-render',action='store_true',  default=False,
+        help='Log into file (default: %(default)s)' )
+    
+    parser.add_argument( '-v',action='store_true',  default=False,
+        help='verbose (default: %(default)s)' )
 
     parser.add_argument('--random-pos',action='store_true',  default=False,
         help='Drones start from random positions exctrateced from pool of 10 (default: %(default)s)')
@@ -133,8 +146,9 @@ if __name__ == "__main__":
         env = MazeEnv( maze_file = "maze2d_002.npy",                  
             # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                         maze_size=(640, 640), 
-                                        enable_render=True,
-                                        do_track_trajectories=False,num_goals=4)
+                                        enable_render=args.enable_render,
+                                        do_track_trajectories=False,num_goals=args.n_goals, measure_distance = True,
+                                        verbose = args.v)
 
     else:
         # TODO replace for variables
@@ -178,161 +192,120 @@ if __name__ == "__main__":
     '''
     Creating a Q-Table for each state-action pair
     '''
-    q_table = np.zeros(NUM_BUCKETS + (NUM_ACTIONS,), dtype=float)
+    if(args.n_agents == 1):
+        # Single agents
+        q_table = np.zeros(NUM_BUCKETS + (NUM_ACTIONS,), dtype=float)
 
-    #=================#
-    #       '''        #
-    # Begin simulation #
-    #       '''        #
-    #=================#
+        #=================#
+        #       '''        #
+        # Begin simulation #
+        #       '''        #
+        #=================#
 
-    # Instantiating the learning related parameters
-    learning_rate = get_learning_rate(0)
-    explore_rate = get_explore_rate(0)
-    discount_factor = 0.99
+        # Instantiating the learning related parameters
+        learning_rate = get_learning_rate(0)
+        explore_rate = get_explore_rate(0)
+        discount_factor = 0.99
 
-    num_streaks = 0
+        num_streaks = 0
 
-    assert type(env) == MazeEnv
+        assert type(env) == MazeEnv
 
-    # Render tha maze
-    if(args.env2D and RENDER_MAZE):
-        env.render()
+        # Render tha maze
+        if(args.env2D and env.enable_render and RENDER_MAZE):
+            env.render()
 
-    print("Learning starting...")
-    for episode in range(args.episodes):
+        print("Learning starting...")
+        for episode in range(args.episodes):
 
-        # Reset the environment
-        obv = env.reset()
+            # Reset the environment
+            obv = env.reset()
 
-        # the initial state
-        state_0 = state_to_bucket(obv)
-        total_reward = 0
+            # the initial state
+            state_0 = state_to_bucket(obv)
+            total_reward = 0
 
-        for t in range(MAX_T):
-            input("Enter any key for next action")
+            
+            for t in range(MAX_T):
+                
+                # Select an action
+                action = select_action(state_0, explore_rate)
 
-            # Select an action
-            action = select_action(state_0, explore_rate)
+                # execute the action
+                obv, reward, done, _ = env.step(action)
 
-            # execute the action
-            obv, reward, done, _ = env.step(action)
+                # Observe the result
+                state = state_to_bucket(obv)
+                total_reward += reward
 
-            # Observe the result
-            state = state_to_bucket(obv)
-            total_reward += reward
+                # Update the Q based on the result
+                best_q = np.amax(q_table[state])
+                q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
 
-            # Update the Q based on the result
-            best_q = np.amax(q_table[state])
-            q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
+                # Setting up for the next iteration
+                state_0 = state
 
-            # Setting up for the next iteration
-            state_0 = state
-
-            # Print data
-            if DEBUG_MODE == 2:
-                print("\nEpisode = %d" % episode)
-                print("t = %d" % t)
-                print("Action: %d" % action)
-                print("State: %s" % str(state))
-                print("Reward: %f" % reward)
-                print("Best Q: %f" % best_q)
-                print("Explore rate: %f" % explore_rate)
-                print("Learning rate: %f" % learning_rate)
-                print("Streaks: %d" % num_streaks)
-                print("")
-
-            elif DEBUG_MODE == 1:
-                if done or t >= MAX_T - 1:
-                    print("\nEpisode = %d" % episode)
+                # Print data
+                if DEBUG_MODE == 2 or args.v:
+                    print("\n-----------------------------------------------")
+                    print("Episode = %d" % episode)
+                    print("-----------------------------------------------")
                     print("t = %d" % t)
+                    print("Action: %d" % action)
+                    print("State: %s" % str(state))
+                    print("Reward: %f" % reward)
+                    print("Total reward: %f" % total_reward)
+                    print("Best Q: %f" % best_q)
                     print("Explore rate: %f" % explore_rate)
                     print("Learning rate: %f" % learning_rate)
                     print("Streaks: %d" % num_streaks)
-                    print("Total reward: %f" % total_reward)
                     print("")
 
-            # Render tha maze
-            if RENDER_MAZE:
-                env.render()
+                elif DEBUG_MODE == 1 :
+                    if done or t >= MAX_T - 1:
+                        print("\nEpisode = %d" % episode)
+                        print("t = %d" % t)
+                        print("Explore rate: %f" % explore_rate)
+                        print("Learning rate: %f" % learning_rate)
+                        print("Streaks: %d" % num_streaks)
+                        print("Total reward: %f" % total_reward)
+                        print("")
 
-            if env.is_game_over():
-                sys.exit()
+                # Render tha maze
+                if env.enable_render:
+                    env.render()
 
-            if done:
-                print("Episode %d finished after %f time steps with total reward = %f (streak %d)."
-                    % (episode, t, total_reward, num_streaks))
+                if env.is_game_over():
+                    sys.exit()
 
-                if t <= SOLVED_T:
-                    num_streaks += 1
-                else:
-                    num_streaks = 0
+                if done:
+                    print("Episode %d finished after %f time steps with total reward = %f (streak %d)."
+                        % (episode, t, total_reward, num_streaks))
+
+                    if t <= SOLVED_T:
+                        num_streaks += 1
+                    else:
+                        num_streaks = 0
+                    break
+
+                elif t >= MAX_T - 1:
+                    print("Episode %d timed out at %d with total reward = %f."
+                        % (episode, t, total_reward))
+
+            # It's considered done when it's solved over 120 times consecutively
+            if num_streaks > STREAK_TO_END:
                 break
 
-            elif t >= MAX_T - 1:
-                print("Episode %d timed out at %d with total reward = %f."
-                    % (episode, t, total_reward))
-
-        # It's considered done when it's solved over 120 times consecutively
-        if num_streaks > STREAK_TO_END:
-            break
-
-        # Update parameters
-        explore_rate = get_explore_rate(episode)
-        learning_rate = get_learning_rate(episode)
-        
-
-
-    # print("Starting episodes...")
-    # for ep_i in range(args.episodes):
-    #     done = False
-    #     ep_reward = 0
-
-    #     env.seed(ep_i)  
-    #     obs = env.reset()
-        
-        
-    #     if(not args.env2D and args.track_traj):
-    #         trackerClient.start_tracking(ep_i,vName="Drone0")
-    #         time.sleep(0.01)
-        
-    #     n_actions_taken = 0
-    #     past_action = None
-
-
-    #     while not done :
-    #     # for _ in range(0,150): # DEBUG ONLY
-    #         if(args.custom_random):
-    #             action = custom_random(past_action)
-    #             past_action = action
-    #         else:
-    #             action = env.action_space.sample() # Random actions DEBUG ONLY            
-    #         # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
-
-    #         obs, reward, done, info = env.step(action)
-    #         ep_reward =  reward
-    #         # env.render()
+            # Update parameters
+            explore_rate = get_explore_rate(episode)
+            learning_rate = get_learning_rate(episode)
             
-    #         n_actions_taken +=1
-            
-    #         if n_actions_taken == args.actions_timeout:
-    #             print("Episode ended: actions timeout reached")
-    #             break
+        print("ENDING OF TRAIN")
+        np.save("results/q_table"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')),q_table )
+        print("Table saved")
 
-    #         if(args.env2D):
-    #             env.render()
+        utils.play_audio_notification()
 
-    #         # navMapper.update_nav_fig()
-    #         if(not args.env2D):
-    #             time.sleep(episode_cooldown)
-    #         else:
-    #             time.sleep(1)
-
-        
-    #     if(not args.env2D and args.track_traj):
-    #         trackerClient.stop_tracking()     
-
-    #     print("="*40)    
-    #     print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
-    # env.close()
-
+    else:
+        # Multi agent
+        pass

@@ -4,15 +4,15 @@ import numpy as np
 import os
 
 from collections.abc import Iterable
-class MazeView2D:
+class MultiMazeView2D:
 
-    def __init__(self, maze_name="Maze2D", maze_file_path=None,
+    def __init__(self, n_agents,maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
                  has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):
 
         # if(num_goals<=0 ):
         #     raise ValueError("Error in num_goals parameter")
-
+        self.n_agents = n_agents
         self.num_goals = num_goals
         self.verbose = verbose
         # PyGame configurations
@@ -43,8 +43,11 @@ class MazeView2D:
             self.screen = pygame.display.set_mode(screen_size)
             self.__screen_size = tuple(map(sum, zip(screen_size, (-1, -1))))
 
-        # Set the starting point
-        self.__entrance = np.zeros(2, dtype=int)
+
+        self.__entrances = [None for _ in range(self.n_agents)]        
+        self.__robots = [None for _ in range(self.n_agents)]
+
+        self.init_robots()
 
         # Set the Goal
         if self.num_goals == 1:        
@@ -55,8 +58,6 @@ class MazeView2D:
             self.goals = self.init_goals()
             self.saved_goals = self.goals.copy()
 
-        # Create the Robot
-        self.__robot = self.entrance
 
 
         if self.__enable_render is True:
@@ -83,6 +84,21 @@ class MazeView2D:
             # show the goal
             self.__draw_goal()
 
+
+
+    def init_robots(self):
+        def get_entrance(i):
+            # TODO make it random
+            if i == 0: return [0,0]
+            elif i==1: return [self.maze_size[0]-1,0]
+            elif i==2: return [0,self.maze_size[1]-1]
+            elif i==3: return [self.maze_size[0]-1,self.maze_size[1]-1]
+            else: return [0,0]
+
+        for i in range(self.n_agents):
+            self.entrances[i] = get_entrance(i)
+            # Create the Robot
+            self.robots[i] = self.entrances[i]
 
     def _get_random_xy(self):
         r = np.random.choice( np.arange(1,self.maze_size[0]),1 )
@@ -125,31 +141,31 @@ class MazeView2D:
         else: raise ValueError("Not acceptable dir") 
 
 
-    def move_robot(self, dir):
+    def move_robot(self, dir,agent_i):
         if dir not in self.__maze.COMPASS.keys():
             raise ValueError("dir cannot be %s. The only valid dirs are %s."
                              % (str(dir), str(self.__maze.COMPASS.keys())))
 
         moved = False
-        if self.__maze.is_open(self.__robot, dir):
+        if self.__maze.is_open(self.__robots[agent_i], dir):
             if(self.verbose):
                 print("MOVING:", self.tr(dir),"\n")    
             # update the drawing
-            self.__draw_robot(transparency=0)
+            self.__draw_robot(transparency=0,agent_i=agent_i)
 
             # move the robot
-            self.__robot += np.array(self.__maze.COMPASS[dir])
+            self.__robots[agent_i] += np.array(self.__maze.COMPASS[dir])
             # if it's in a portal afterward
-            if self.maze.is_portal(self.robot):
-                self.__robot = np.array(self.maze.get_portal(tuple(self.robot)).teleport(tuple(self.robot)))
-            self.__draw_robot(transparency=255)
+            if self.maze.is_portal(self.robots[agent_i]):
+                self.__robots[agent_i] = np.array(self.maze.get_portal(tuple(self.robot)).teleport(tuple(self.robot)))
+            self.__draw_robot(transparency=255,agent_i=agent_i)
             moved = True
             
         return moved
     def reset_robot(self):
 
         self.__draw_robot(transparency=0)
-        self.__robot = np.zeros(2, dtype=int)
+        self.init_robots()
         self.__draw_robot(transparency=255)
 
     def __controller_update(self):
@@ -238,20 +254,28 @@ class MazeView2D:
 
             pygame.draw.line(self.maze_layer, colour, line_head, line_tail)
 
-    def __draw_robot(self, colour=(0, 0, 150), transparency=255):
-
+    def __draw_robot(self, colour=(0, 0, 150), transparency=255,agent_i = None):
+        
         if self.__enable_render is False:
             return
-        
-        x = int(self.__robot[0] * self.CELL_W + self.CELL_W * 0.5 + 0.5)
-        y = int(self.__robot[1] * self.CELL_H + self.CELL_H * 0.5 + 0.5)
-        r = int(min(self.CELL_W, self.CELL_H)/5 + 0.5)
+        if not agent_i: # Then all agents
+            for robot in self.robots:
+                x = int( robot[0] * self.CELL_W + self.CELL_W * 0.5 + 0.5)
+                y = int( robot[1] * self.CELL_H + self.CELL_H * 0.5 + 0.5)
+                r = int(min(self.CELL_W, self.CELL_H)/5 + 0.5)
 
-        pygame.draw.circle(self.maze_layer, colour + (transparency,), (x, y), r)
+                pygame.draw.circle(self.maze_layer, colour + (transparency,), (x, y), r)
+        else:
+            robot = self.robots[agent_i]
+            x = int( robot[0] * self.CELL_W + self.CELL_W * 0.5 + 0.5)
+            y = int( robot[1] * self.CELL_H + self.CELL_H * 0.5 + 0.5)
+            r = int(min(self.CELL_W, self.CELL_H)/5 + 0.5)
+
+            pygame.draw.circle(self.maze_layer, colour + (transparency,), (x, y), r)
 
     def __draw_entrance(self, colour=(0, 0, 150), transparency=235):
 
-        self.__colour_cell(self.entrance, colour=colour, transparency=transparency)
+        self.__colour_cell(self.entrances, colour=colour, transparency=transparency)
 
     def __draw_goal(self, colour=(255, 255, 0), transparency=235):
         if(self.num_goals == 1):
@@ -273,19 +297,20 @@ class MazeView2D:
             for location in portal.locations:
                 self.__colour_cell(location, colour=colour, transparency=transparency)
 
-    def __colour_cell(self, cell, colour, transparency):
+    def __colour_cell(self, cells, colour, transparency):
 
-        if self.__enable_render is False:
-            return
+        for cell in cells:
+            if self.__enable_render is False:
+                return
 
-        if not (isinstance(cell, (list, tuple, np.ndarray)) and len(cell) == 2):
-            raise TypeError("cell must a be a tuple, list, or numpy array of size 2")
+            if not (isinstance(cell, (list, tuple, np.ndarray)) and len(cell) == 2):
+                raise TypeError("cell must a be a tuple, list, or numpy array of size 2")
 
-        x = int(cell[0] * self.CELL_W + 0.5 + 1)
-        y = int(cell[1] * self.CELL_H + 0.5 + 1)
-        w = int(self.CELL_W + 0.5 - 1)
-        h = int(self.CELL_H + 0.5 - 1)
-        pygame.draw.rect(self.maze_layer, colour + (transparency,), (x, y, w, h))
+            x = int(cell[0] * self.CELL_W + 0.5 + 1)
+            y = int(cell[1] * self.CELL_H + 0.5 + 1)
+            w = int(self.CELL_W + 0.5 - 1)
+            h = int(self.CELL_H + 0.5 - 1)
+            pygame.draw.rect(self.maze_layer, colour + (transparency,), (x, y, w, h))
         
     def decolor(self,cell):
         r = cell[0]
@@ -322,7 +347,7 @@ class MazeView2D:
         cc = self.maze_layer.get_at((x, y))
         # print('cc: ', cc)
 
-        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MazeView2D.up_till_255(cc[3]) ) 
+        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MultiMazeView2D.up_till_255(cc[3]) ) 
         
         pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 
@@ -331,12 +356,12 @@ class MazeView2D:
         return self.__maze
 
     @property
-    def robot(self):
-        return self.__robot
+    def robots(self):
+        return self.__robots
 
     @property
-    def entrance(self):
-        return self.__entrance
+    def entrances(self):
+        return self.__entrances
 
     @property
     def goal(self):
@@ -664,7 +689,7 @@ class Portal:
 
 if __name__ == "__main__":
 
-    maze = MazeView2D(screen_size= (500, 500), maze_size=(10,10))
+    maze = MultiMazeView2D(screen_size= (500, 500), maze_size=(10,10))
     maze.update()
     input("Enter any key to quit.")
 

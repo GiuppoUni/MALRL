@@ -46,7 +46,7 @@ while True:
         # now look at 4 horizontal bands (far left, left, right, far right) and see which is most open.
         # the depth map uses black for far away (0) and white for very close (255), so we invert that
         # to get an estimate of distance.
-        bands = np.hsplit(top, [50,100,150,200]);
+        bands = np.hsplit(top, [50,100,150,200])
         maxes = [np.max(x) for x in bands]
         min = np.argmin(maxes)    
         distance = 255 - maxes[min]
