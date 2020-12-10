@@ -1,6 +1,7 @@
 import os
 from airsim.types import ImageRequest, Vector3r
 from airsim.utils import to_eularian_angles
+from matplotlib.pyplot import draw
 import numpy as np
 import time
 import math
@@ -44,7 +45,7 @@ class newMyAirSimClient(MultirotorClient):
 
     deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0
 
-    def __init__(self,trajColFlag):        
+    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        
 
         MultirotorClient.__init__(self)
         MultirotorClient.confirmConnection(self)
@@ -56,13 +57,17 @@ class newMyAirSimClient(MultirotorClient):
 
         self.trajColFlag = trajColFlag
 
-        self.z_des = -6
-        self.z_max = -20
+        self.z_des = -36
+        self.z_max = -40
         self.z_min =  -6
         
         self.kdtrees = [] 
 
-        self.drawTrajectories()
+        self.crabMode = crabMode
+        self.canDrawTrajectories = canDrawTrajectories
+        self.thickness = thickness
+        if(self.canDrawTrajectories):
+            self.drawTrajectories()
         # self.trajectories = self._loadPastTrajectories()
 
     def simGetPosition(self,lock,vName):
@@ -164,20 +169,26 @@ class newMyAirSimClient(MultirotorClient):
     
        # CRAB ACTIONS
 
-    def crab_straight(self, duration, speed,vName):
-        self.client.moveByVelocity(speed, 0, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
+    def crab_up(self, duration=30, speed=30,vName="Drone0"):
+        self.moveByVelocityZAsync(0, -speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_right(self, duration,vName):
-        self.client.moveByVelocityZ(0, 1, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
+    def crab_right(self, duration=30,speed=30,vName="Drone0"):
+        self.moveByVelocityZAsync(speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_left(self, duration,vName):
-        self.client.moveByVelocityZ(0, -1, self.z_des, duration, DrivetrainType.MaxDegreeOfFreedom,
+    def crab_left(self, duration=30,speed=30,vName="Drone0"):
+        self.moveByVelocityZAsync(-speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
+            vehicle_name = vName)        
+        start = time.time()
+        return start, duration
+    
+    def crab_down(self, duration=30,speed=30,vName="Drone0"):
+        self.moveByVelocityZAsync(0, speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)        
         start = time.time()
         return start, duration
@@ -216,21 +227,38 @@ class newMyAirSimClient(MultirotorClient):
         start = time.time()
         duration = 0 
         
-        if action == 0:
-            # start, duration = self.straight(1, 4,vName)
-            start, duration = self.go_left()
-        
-        elif action == 1:         
-            # start, duration = self.yaw_right(0.8,vName)            
-            start, duration = self.go_straight()
+        if(not self.crabMode):
+            if action == 0:
+                # start, duration = self.straight(1, 4,vName)
+                start, duration = self.go_left()
+            
+            elif action == 1:         
+                # start, duration = self.yaw_right(0.8,vName)            
+                start, duration = self.go_straight()
 
-        elif action == 2:
-            # start, duration = self.yaw_left(0.8,vName)
-            start, duration = self.go_right()
+            elif action == 2:
+                # start, duration = self.yaw_left(0.8,vName)
+                start, duration = self.go_right()
 
-        elif action == 3:
-            # start, duration = self.yaw_left(0.8,vName)
-            start, duration = self.go_back()
+            elif action == 3:
+                # start, duration = self.yaw_left(0.8,vName)
+                start, duration = self.go_back()
+        else:
+            if action == 0:
+                # start, duration = self.straight(1, 4,vName)
+                start, duration = self.crab_left()
+            
+            elif action == 1:         
+                # start, duration = self.yaw_right(0.8,vName)            
+                start, duration = self.crab_up()
+
+            elif action == 2:
+                # start, duration = self.yaw_left(0.8,vName)
+                start, duration = self.crab_right()
+
+            elif action == 3:
+                # start, duration = self.yaw_left(0.8,vName)
+                start, duration = self.crab_down()
 
         while duration > time.time() - start:
             if self.simGetCollisionInfo(vehicle_name=vName).has_collided == True:
@@ -325,7 +353,7 @@ class newMyAirSimClient(MultirotorClient):
             # print(trajectory)
             trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
             self.simPlotLineStrip(trajectory_vecs,
-                is_persistent= True)
+                is_persistent= True, thickness = self.thickness)
             
             _tree = KDTree(trajectory)
             self.kdtrees.append(_tree)
@@ -403,7 +431,7 @@ class newMyAirSimClient(MultirotorClient):
     def enable_trace_lines(self):
         for i,dn in enumerate(self.drones_names):
             self.simSetTraceLine(utils._colorize(i)+[0.7],
-                thickness=8.0,vehicle_name=dn)
+                thickness=self.thickness,vehicle_name=dn)
 
 
         

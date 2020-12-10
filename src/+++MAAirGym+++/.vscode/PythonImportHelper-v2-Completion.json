@@ -139,6 +139,17 @@
         }
     },
     {
+        "label": "draw",
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "isExtraImport": true,
+        "detail": "matplotlib.pyplot",
+        "documentation": {
+            "value": "\n```python\nimport matplotlib.pyplot\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
@@ -1355,17 +1366,6 @@
         }
     },
     {
-        "label": "MazeEnv",
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {
-            "value": "\n```python\nimport gym_maze.envs.maze_env\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "Vector3r",
         "importPath": "airsim.types",
         "description": "airsim.types",
@@ -1519,17 +1519,6 @@
         "isExtraImport": true,
         "importPath": "gym_airsim.envs",
         "description": "gym_airsim.envs",
-        "detail": "gym_airsim.envs",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "AirSimEnv",
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "isExtraImport": true,
         "detail": "gym_airsim.envs",
         "documentation": {
             "value": "\n```python\nimport gym_airsim.envs\n```\n",
@@ -1893,17 +1882,6 @@
         }
     },
     {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {
-            "value": "\n```python\nimport trajectoryTrackerClient\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "MultiMazeEnv",
         "importPath": "gym_maze.envs.multi_maze_env",
         "description": "gym_maze.envs.multi_maze_env",
@@ -1915,28 +1893,6 @@
         }
     },
     {
-        "label": "CollectMTEnv",
-        "importPath": "gym_airsim.envs.collectMTEnv",
-        "description": "gym_airsim.envs.collectMTEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectMTEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectMTEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "CollectMTEnv",
-        "importPath": "gym_airsim.envs.collectMTEnv",
-        "description": "gym_airsim.envs.collectMTEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectMTEnv",
-        "documentation": {
-            "value": "\n```python\nimport gym_airsim.envs.collectMTEnv\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
         "label": "AirSimGeoClient",
         "importPath": "airsimgeo",
         "description": "airsimgeo",
@@ -1944,6 +1900,17 @@
         "detail": "airsimgeo",
         "documentation": {
             "value": "\n```python\nimport airsimgeo\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "CollectMTEnv",
+        "importPath": "gym_airsim.envs.collectMTEnv",
+        "description": "gym_airsim.envs.collectMTEnv",
+        "isExtraImport": true,
+        "detail": "gym_airsim.envs.collectMTEnv",
+        "documentation": {
+            "value": "\n```python\nimport gym_airsim.envs.collectMTEnv\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3593,10 +3560,10 @@
         "kind": 6,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "class newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
+        "peekOfCode": "class newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
         "detail": "newMyAirSimClient",
         "documentation": {
-            "value": "\n```python\nfrom newMyAirSimClient import newMyAirSimClient\n```\n\n```python\n\n\n```\n\n```python\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n```\n",
+            "value": "\n```python\nfrom newMyAirSimClient import newMyAirSimClient\n```\n\n```python\n\n\n```\n\n```python\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3605,10 +3572,10 @@
         "kind": 5,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "lock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
+        "peekOfCode": "lock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
         "detail": "newMyAirSimClient",
         "documentation": {
-            "value": "\n```python\nfrom newMyAirSimClient import lock\n```\n\n```python\n\n\n```\n\n```python\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n```\n",
+            "value": "\n```python\nfrom newMyAirSimClient import lock\n```\n\n```python\n\n\n```\n\n```python\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n```\n",
             "supportThemeIcons": false
         }
     },
@@ -3753,18 +3720,6 @@
         "detail": "random_main",
         "documentation": {
             "value": "\n```python\nfrom random_main import IDX_TO_ACTION\n```\n\n```python\n\n\n```\n\n```python\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n```\n",
-            "supportThemeIcons": false
-        }
-    },
-    {
-        "label": "episode_cooldown",
-        "kind": 5,
-        "importPath": "random_main_old",
-        "description": "random_main_old",
-        "peekOfCode": "episode_cooldown = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    parser.add_argument('--random-pos',action='store_true',  default=False,",
-        "detail": "random_main_old",
-        "documentation": {
-            "value": "\n```python\nfrom random_main_old import episode_cooldown\n```\n\n```python\n\n\n```\n\n```python\nepisode_cooldown = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n    help='Log into file (default: %(default)s)')\n    parser.add_argument('--random-pos',action='store_true',  default=False,\n```\n",
             "supportThemeIcons": false
         }
     },

@@ -26,7 +26,7 @@ class DroneAgent:
 
     # FORWARD ONLY ACTIONS
 
-    def straight(self, duration, speed):
+    def straight(self, duration, speed=3,direction="RIGHT"):
         # pitch, roll, yaw  = self.client.getPitchRollYaw(self.vehicle_name)
         # vx = math.cos(yaw) * speed
         # vy = math.sin(yaw) * speed
@@ -35,7 +35,12 @@ class DroneAgent:
         # self.client.wakeup_drone(self.vehicle_name)
         self.client.enableApiControl(True,"Drone0")
         self.client.armDisarm(True,"Drone0")
-        vx,vy,vz = 3,0,0
+        vz = 0
+        if direction=="UP" : vx,vy = 0,speed
+        elif direction=="DOWN" : vx,vy = 0,-speed
+        elif direction=="LEFT" : vx,vy = -speed,0
+        elif direction=="RIGHT": vx,vy = speed,0
+        else: raise ValueError("Wrong direction",direction)
         pointer = self.client.moveByVelocityAsync( vx=vx, vy=vy, vz=vz, duration = duration,vehicle_name = "Drone0")
         start = time.time()
         return start, duration, pointer

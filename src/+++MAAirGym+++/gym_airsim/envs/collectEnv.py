@@ -70,7 +70,10 @@ class CollectEnv(gym.Env):
         height=None,
         num_targets=3,
         n_actions = 4, step_cost = -1,partial_obs = False,
-        random_pos = False
+        random_pos = False,
+        drawTrajectories = False,
+        crabMode = False,
+        thickness = 1400
         ):
         
 
@@ -79,7 +82,7 @@ class CollectEnv(gym.Env):
         self.lock = threading.Lock()
         self.threads = {}
 
-            
+        self.generate_only_traj = crabMode            
         self.random_pos = random_pos
      
 
@@ -122,14 +125,14 @@ class CollectEnv(gym.Env):
         self._seed()
         
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-        self.myClient = newMyAirSimClient(trajColFlag=trajColFlag)
+        self.myClient = newMyAirSimClient(trajColFlag=trajColFlag,
+            canDrawTrajectories=drawTrajectories,crabMode=crabMode,thickness = thickness)
         # TODO replace with  allocated targets
         
 
         
-
+        
         self.target_zones = self._get_target_zone()
-
         self.goal = self.target_zones.pop() 
 
         self.targets = dict()
@@ -288,10 +291,10 @@ class CollectEnv(gym.Env):
                 reward = -5 * result["total_p"] 
     
         # Youuuuu made it
-        if goal_distance < 3:
-            print( "TARGET ZONE REACHED")
-            done = True
-            reward = 100.0
+        if not self.generate_only_traj and goal_distance < 3:
+                print( "TARGET ZONE REACHED")
+                done = True
+                reward = 100.0
 
         #Update reward for agent agent_i th
         # DEBUG ONLY 
@@ -304,7 +307,7 @@ class CollectEnv(gym.Env):
         
         # Terminate the episode on large cumulative amount penalties, 
         # since drone probably got into an unexpected loop of some sort
-        if rewardSum < -100:
+        if not self.generate_only_traj and rewardSum < -100 :
             print("REWARD LOWER BOUND REACHED")
             done = True
 

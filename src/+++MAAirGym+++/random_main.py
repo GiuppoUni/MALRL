@@ -29,6 +29,7 @@ def custom_random(past_action):
     return action
 
 
+
 if __name__ == '__main__':
 
 
@@ -41,15 +42,25 @@ if __name__ == '__main__':
     
     parser.add_argument('--n-agents', type=int, default=1,
                         help='agents (default: %(default)s)')
-
+    
+    parser.add_argument('--thickness', type=int, default=1400,
+                        help='Draw line thickness (default: %(default)s)')
+    
     # parser.add_argument('--ep-cooldown', type=int, default=1,
     #                     help='episode cooldown time sleeping (default: %(default)s)')
 
+    parser.add_argument( '--fixed_action',action='store_true',  default=False,
+        help='Same actions per episode (default: %(default)s)' )
 
-    
     parser.add_argument( '--debug',action='store_true',  default=False,
         help='Log into file (default: %(default)s)' )
     
+    parser.add_argument( '--crab-mode',action='store_true',  default=False,
+        help='Move at fixed yaw (default: %(default)s)' )
+    
+    parser.add_argument('--draw-traj',action='store_true',  default=False,
+        help='Draw past trajectories (red lines) (default: %(default)s)')
+
     parser.add_argument('--random-pos',action='store_true',  default=False,
         help='Drones start from random positions exctrateced from pool of 10 (default: %(default)s)')
 
@@ -61,8 +72,6 @@ if __name__ == '__main__':
 
     parser.add_argument('--custom-random',action='store_true',  default=False,
         help='(default: %(default)s)')
-
-
 
     parser.add_argument('--track-traj',action='store_true',  default=False,
         help='Track trajectories into file (default: %(default)s)')
@@ -96,7 +105,9 @@ if __name__ == '__main__':
     else:
         # TODO replace for variables
         n_actions = 4 if args.can_go_back else 3 
-        env = CollectEnv(trajColFlag = args.col_traj,n_actions=n_actions,random_pos = args.random_pos)
+        env = CollectEnv(trajColFlag = args.col_traj,n_actions=n_actions,
+            random_pos = args.random_pos,drawTrajectories = args.draw_traj,
+            crabMode = args.crab_mode,thickness = args.thickness)
         trackerClient = TrajectoryTrackerClient()
     
     if(args.env2D):
@@ -119,15 +130,18 @@ if __name__ == '__main__':
             n_actions_taken = 0
             past_action = None
 
-
+          
+            if(args.fixed_action):
+                action = np.random.choice([0,1,2,3])
             while not done :
             # for _ in range(0,150): # DEBUG ONLY
-                if(args.custom_random):
-                    action = custom_random(past_action)
-                    past_action = action
-                else:
-                    action = env.action_space.sample() # Random actions DEBUG ONLY            
-                # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
+                if(not args.fixed_action):
+                    if(args.custom_random):
+                        action = custom_random(past_action)
+                        past_action = action
+                    else:
+                        action = env.action_space.sample() # Random actions DEBUG ONLY            
+                         # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
 
                 obs, reward, done, info = env.step(action)
                 ep_reward =  reward
@@ -155,48 +169,48 @@ if __name__ == '__main__':
             print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
         env.close()
 
-    else:
-        print("Starting episodes for multi agents...")
-        for ep_i in range(args.episodes):
-            dones = [False for _ in range(args.n_agents)]
-            ep_rewards = np.zeros(args.n_agents)
+    # else:
+    #     print("Starting episodes for multi agents...")
+    #     for ep_i in range(args.episodes):
+    #         dones = [False for _ in range(args.n_agents)]
+    #         ep_rewards = np.zeros(args.n_agents)
 
-            env.seed(ep_i)  
-            obs = env.reset()
+    #         env.seed(ep_i)  
+    #         obs = env.reset()
 
-            n_actions_taken = 0
-            past_action = None
+    #         n_actions_taken = 0
+    #         past_action = None
 
-            while not all(dones) :
-            # for _ in range(0,150): # DEBUG ONLY
+    #         while not all(dones) :
+    #         # for _ in range(0,150): # DEBUG ONLY
                 
-                actions = env.action_space.sample() # Random actions DEBUG ONLY            
-                # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
+    #             actions = env.action_space.sample() # Random actions DEBUG ONLY            
+    #             # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
 
-                obs, rewards, dones, info = env.step(actions)
-                ep_reward =  sum(rewards)
+    #             obs, rewards, dones, info = env.step(actions)
+    #             ep_reward =  sum(rewards)
                 
-                n_actions_taken +=1
+    #             n_actions_taken +=1
                 
-                if n_actions_taken == args.actions_timeout:
-                    print("Episode ended: actions timeout reached")
-                    break
+    #             if n_actions_taken == args.actions_timeout:
+    #                 print("Episode ended: actions timeout reached")
+    #                 break
 
-                if(args.env2D and env.enable_render ):
-                    env.render()
+    #             if(args.env2D and env.enable_render ):
+    #                 env.render()
 
-                # navMapper.update_nav_fig()
-                # if(not args.env2D):
-                #     time.sleep(episode_cooldown)
-                # else:
-                #     time.sleep(1)
+    #             # navMapper.update_nav_fig()
+    #             # if(not args.env2D):
+    #             #     time.sleep(episode_cooldown)
+    #             # else:
+    #             #     time.sleep(1)
 
             
-            if(not args.env2D and args.track_traj):
-                trackerClient.stop_tracking()     
+    #         if(not args.env2D and args.track_traj):
+    #             trackerClient.stop_tracking()     
 
-            print("="*40)    
-            print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
-        env.close()
+    #         print("="*40)    
+    #         print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
+    #     env.close()
 
 

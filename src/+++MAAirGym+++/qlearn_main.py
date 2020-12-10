@@ -100,8 +100,6 @@ if __name__ == "__main__":
     # parser.add_argument('--ep-cooldown', type=int, default=1,
     #                     help='episode cooldown time sleeping (default: %(default)s)')
 
-
-
     parser.add_argument( '--debug',action='store_true',  default=False,
         help='Log into file (default: %(default)s)' )
     
