@@ -57,8 +57,8 @@ class newMyAirSimClient(MultirotorClient):
 
         self.trajColFlag = trajColFlag
 
-        self.z_des = -36
-        self.z_max = -40
+        self.z_des = -10
+        self.z_max = -20
         self.z_min =  -6
         
         self.kdtrees = [] 
@@ -68,6 +68,9 @@ class newMyAirSimClient(MultirotorClient):
         self.thickness = thickness
         if(self.canDrawTrajectories):
             self.drawTrajectories()
+
+
+
         # self.trajectories = self._loadPastTrajectories()
 
     def simGetPosition(self,lock,vName):
@@ -168,26 +171,25 @@ class newMyAirSimClient(MultirotorClient):
         return start, duration
     
        # CRAB ACTIONS
-
-    def crab_up(self, duration=30, speed=30,vName="Drone0"):
+    def crab_up(self, duration=10, speed=10,vName="Drone0"):
         self.moveByVelocityZAsync(0, -speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_right(self, duration=30,speed=30,vName="Drone0"):
+    def crab_right(self, duration=10,speed=10,vName="Drone0"):
         self.moveByVelocityZAsync(speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_left(self, duration=30,speed=30,vName="Drone0"):
+    def crab_left(self, duration=10,speed=10,vName="Drone0"):
         self.moveByVelocityZAsync(-speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)        
         start = time.time()
         return start, duration
     
-    def crab_down(self, duration=30,speed=30,vName="Drone0"):
+    def crab_down(self, duration=10,speed=10,vName="Drone0"):
         self.moveByVelocityZAsync(0, speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)        
         start = time.time()

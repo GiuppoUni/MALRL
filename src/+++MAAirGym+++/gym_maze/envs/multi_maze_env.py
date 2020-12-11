@@ -289,11 +289,11 @@ class MultiMazeEnv(gym.Env):
         
         #Redraw goals
         if(self.render):
-            # if(self.num_goals < 1 ):
-            #     # Reset all cells
-            #     self.maze_view.maze_layer.fill((0, 0, 0, 0,))
+            if(self.num_goals < 1 ):
+                # Reset all cells
+                self.maze_view.maze_layer.fill((0, 0, 0, 0,))
 
-            self.maze_view.update()
+            # self.maze_view.update()
             
         return self.states
 

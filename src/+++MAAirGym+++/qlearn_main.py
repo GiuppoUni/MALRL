@@ -20,6 +20,8 @@ import time
 from gym_maze.envs.maze_env import MazeEnv
 from gym_maze.envs.maze_env_cont import MazeEnvCont
 
+import signal
+import sys
 
 episode_cooldown = 3
 
@@ -27,7 +29,7 @@ ACTION_TO_IDX = {"LEFT":0, "FRONT":1, "RIGHT":2,"BACK" : 3}
 IDX_TO_ACTION =  {0:"LEFT",1:"FRONT",2:"RIGHT",3:"BACK"}
 
 
-
+STD_MAZE = "maze2d_002.npy"
 
 def select_action(state, explore_rate):
     # Select a random action
@@ -84,6 +86,9 @@ def custom_random(past_action):
 
 if __name__ == "__main__":
 
+    SEED = 12
+
+
     parser = argparse.ArgumentParser(description='RL for ma-gym')
     parser.add_argument('--episodes', type=int, default=100,
                         help='episodes (default: %(default)s)')
@@ -93,6 +98,10 @@ if __name__ == "__main__":
 
     parser.add_argument('--actions-timeout', type=int, default=100,
                         help='episodes (default: %(default)s)')
+
+    parser.add_argument("--n-trajs",type=int, default=5,
+                         help='num trajs to track (default: %(default)s)')
+
 
     parser.add_argument('--n-agents', type=int, default=1,
                         help='num agents (default: %(default)s)')
@@ -121,7 +130,8 @@ if __name__ == "__main__":
     parser.add_argument('--custom-random',action='store_true',  default=False,
         help='(default: %(default)s)')
 
-
+    parser.add_argument('--slow',action='store_true',  default=False,
+        help='(default: %(default)s)')
 
     parser.add_argument('--track-traj',action='store_true',  default=False,
         help='Track trajectories into file (default: %(default)s)')
@@ -129,8 +139,13 @@ if __name__ == "__main__":
     parser.add_argument('--col-traj', action='store_true', default=False,
     help='Track trajectories into file (default: %(default)s)')
 
+    parser.add_argument('--load-qtable', type=str, 
+        help='qtable file (default: %(default)s)')
 
+    parser.add_argument('--load-maze', type=str, 
+        help='maze file (default: %(default)s)')
 
+    
 
     args = parser.parse_args()
 
@@ -141,12 +156,16 @@ if __name__ == "__main__":
         print = logger.info
 
     if(args.env2D):
-        env = MazeEnv( maze_file = "maze2d_002.npy",                  
+        if(args.load_maze):
+            maze_file = args.load_maze
+        else:
+            maze_file = STD_MAZE
+        env = MazeEnv( maze_file = maze_file,                  
             # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                         maze_size=(640, 640), 
                                         enable_render=args.enable_render,
-                                        do_track_trajectories=False,num_goals=args.n_goals, measure_distance = True,
-                                        verbose = args.v)
+                                        do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,
+                                        verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED)
 
     else:
         # TODO replace for variables
@@ -185,14 +204,28 @@ if __name__ == "__main__":
     STREAK_TO_END = 100
     SOLVED_T = np.prod(MAZE_SIZE, dtype=int)
     DEBUG_MODE = 0
-    RENDER_MAZE = True
 
     '''
     Creating a Q-Table for each state-action pair
     '''
+    qtable = []
+    def signal_handler(sig, frame):
+        print('You pressed Ctrl+C!\nSaving...')
+        if(not args.load_qtable):
+            print("ENDING OF TRAIN")
+            np.save("results/q_table"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')),q_table )
+            print("Table saved")
+        sys.exit(0)
+    signal.signal(signal.SIGINT, signal_handler)
+    print('Press Ctrl+C to stop')
+
     if(args.n_agents == 1):
-        # Single agents
-        q_table = np.zeros(NUM_BUCKETS + (NUM_ACTIONS,), dtype=float)
+        
+        if(args.load_qtable ):
+            q_table = np.load(args.load_qtable)
+        else:
+            # Single agents
+            q_table = np.zeros(NUM_BUCKETS + (NUM_ACTIONS,), dtype=float)
 
         #=================#
         #       '''        #
@@ -210,7 +243,7 @@ if __name__ == "__main__":
         assert type(env) == MazeEnv
 
         # Render tha maze
-        if(args.env2D and env.enable_render and RENDER_MAZE):
+        if(args.env2D and env.enable_render ):
             env.render()
 
         print("Learning starting...")
@@ -218,7 +251,7 @@ if __name__ == "__main__":
 
             # Reset the environment
             obv = env.reset()
-
+            env.seed(episode)
             # the initial state
             state_0 = state_to_bucket(obv)
             total_reward = 0
@@ -277,8 +310,9 @@ if __name__ == "__main__":
                     sys.exit()
 
                 if done:
-                    print("Episode %d finished after %f time steps with total reward = %f (streak %d)."
-                        % (episode, t, total_reward, num_streaks))
+                    # print("Episode %d finished after %f time steps with total reward = %f (streak %d)."
+                    #     % (episode, t, total_reward, num_streaks))
+                    print("%d,%f,%f" % (episode, t, total_reward))
 
                     if t <= SOLVED_T:
                         num_streaks += 1
@@ -290,19 +324,24 @@ if __name__ == "__main__":
                     print("Episode %d timed out at %d with total reward = %f."
                         % (episode, t, total_reward))
 
-            # It's considered done when it's solved over 120 times consecutively
-            if num_streaks > STREAK_TO_END:
-                break
+                if(args.slow):
+                    time.sleep(1)
+
+            # # It's considered done when it's solved over 120 times consecutively
+            # if num_streaks > STREAK_TO_END:
+            #     break
 
             # Update parameters
             explore_rate = get_explore_rate(episode)
             learning_rate = get_learning_rate(episode)
             
-        print("ENDING OF TRAIN")
-        np.save("results/q_table"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')),q_table )
-        print("Table saved")
+        if(not args.load_qtable):
+            print("ENDING OF TRAIN")
+            np.save("results/q_table"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')),q_table )
+            print("Table saved")
 
         utils.play_audio_notification()
+
 
     else:
         # Multi agent

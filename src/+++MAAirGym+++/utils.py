@@ -66,7 +66,7 @@ init_gps = [
 ]
 
 red_color = [1.0,0.0,0.0]
-green_color = [0.0,1.0,0.0]
+green_color = [0.0,0.5,0.0]
 blue_color = [0.0,0.0,1.0]
 
 

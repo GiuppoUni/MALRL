@@ -124,4 +124,4 @@ for r in range(len(aa)):
           
 
 print('aa AFT: \n', aa)
-np.save("maze_samples/maze2d_002.npy",aa)
+np.save("maze_samples/maze2d_004.npy",aa)

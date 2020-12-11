@@ -8,13 +8,17 @@ class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
-                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):
+                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True,
+                 random_pos=False,np_random=None,n_trajs=None):
 
         # if(num_goals<=0 ):
         #     raise ValueError("Error in num_goals parameter")
-
+        self.random_pos = random_pos
         self.num_goals = num_goals
         self.verbose = verbose
+        self.np_random = np_random
+        self.n_trajs = n_trajs
+
         # PyGame configurations
         pygame.init()
         pygame.display.set_caption(maze_name)
@@ -43,20 +47,36 @@ class MazeView2D:
             self.screen = pygame.display.set_mode(screen_size)
             self.__screen_size = tuple(map(sum, zip(screen_size, (-1, -1))))
 
-        # Set the starting point
-        self.__entrance = np.zeros(2, dtype=int)
+       
 
         # Set the Goal
         if self.num_goals == 1:        
             self.__goal = np.array(self.maze_size) - np.array((1, 1))
+            self.goals = [self.__goal]
         
         # Set multiple random goals
         elif self.num_goals > 1:
             self.goals = self.init_goals()
             self.saved_goals = self.goals.copy()
 
+
+        if self.random_pos:
+            # Set the starting point
+            _arr= self.get_init_pool()
+            self.np_random.shuffle( _arr )
+            if(self.n_trajs and len(_arr)-self.n_trajs>0):
+                self.random_init_pool = _arr[0:self.n_trajs]  
+                print('self.random_init_pool: ', self.random_init_pool)
+            else:
+                self.random_init_pool = _arr 
+            self.__entrance = self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
+
+            # it s set on reset
+        else:
+            self.__entrance = np.zeros(2)
+
         # Create the Robot
-        self.__robot = self.entrance
+        self.__robot = self.entrance.copy()
 
 
         if self.__enable_render is True:
@@ -71,33 +91,49 @@ class MazeView2D:
             # show the maze
             self.__draw_maze()
 
-            # show the portals
-            self.__draw_portals()
+            # # show the portals
+            # self.__draw_portals()
 
-            # show the robot
-            self.__draw_robot()
+            # # show the robot
+            # self.__draw_robot()
 
-            # show the entrance
-            self.__draw_entrance()
+            # # show the entrance
+            # self.__draw_entrance()
 
-            # show the goal
-            self.__draw_goal()
-
+            # # show the goal
+            # self.__draw_goal()
+    
+    def get_init_pool(self):
+        rnd= np.where((self.maze.maze_cells!=0) & 
+        ((self.maze.maze_cells == 7)|(self.maze.maze_cells == 15) |(self.maze.maze_cells  ==13 )) )
+        
+        rs= rnd[0]
+        cs= rnd[1]
+        arr = np.array( [[rs[i],cs[i]] for i in range(len(rs)) ] )
+                
+        np.setdiff1d(arr, self.goals) 
+        return arr
 
     def _get_random_xy(self):
-        r = np.random.choice( np.arange(1,self.maze_size[0]),1 )
-        c = np.random.choice( np.arange(1,self.maze_size[1]),1 )
+        r = self.np_random.choice( np.arange(1,self.maze_size[0]),1 )
+        c = self.np_random.choice( np.arange(1,self.maze_size[1]),1 )
         while not any(self.maze.get_walls_status(self.maze.maze_cells[c, r]).values() ):
-            r = np.random.choice( np.arange(1,self.maze_size[0]),1 )
-            c = np.random.choice( np.arange(1,self.maze_size[1]),1 )
+            r = self.np_random.choice( np.arange(1,self.maze_size[0]),1 )
+            c = self.np_random.choice( np.arange(1,self.maze_size[1]),1 )
         return [int(r),int(c)]
 
     def init_goals(self):
         if self.num_goals > -1:
             return [self._get_random_xy() for _ in range(self.num_goals) ]  
 
+    def resetEntrance(self):
+        if self.__enable_render: self.decolor(self.__entrance)
+        self.__entrance =  self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
+
+  
 
     def update(self, mode="human"):
+        
         try:
             img_output = self.__view_update(mode)
             self.__controller_update()
@@ -146,11 +182,11 @@ class MazeView2D:
             moved = True
             
         return moved
-    def reset_robot(self):
-
-        self.__draw_robot(transparency=0)
-        self.__robot = np.zeros(2, dtype=int)
-        self.__draw_robot(transparency=255)
+    def reset_robot(self,rend):
+        
+        if rend: self.__draw_robot(transparency=0)
+        self.__robot = self.entrance.copy()
+        # if rend: self.__draw_robot(transparency=255)
 
     def __controller_update(self):
         if not self.__game_over:
@@ -163,7 +199,11 @@ class MazeView2D:
         if not self.__game_over:
             # update the robot's position
             self.screen.blit(self.background, (0, 0))
+            
             self.__draw_entrance()
+            # print('__draw_entrance: ', self.__entrance)
+            # print('__draw_entrance: ', self.robot)
+            
             self.__draw_robot()
             self.__draw_goal()
             self.__draw_portals()
@@ -250,7 +290,6 @@ class MazeView2D:
         pygame.draw.circle(self.maze_layer, colour + (transparency,), (x, y), r)
 
     def __draw_entrance(self, colour=(0, 0, 150), transparency=235):
-
         self.__colour_cell(self.entrance, colour=colour, transparency=transparency)
 
     def __draw_goal(self, colour=(255, 255, 0), transparency=235):
@@ -302,7 +341,7 @@ class MazeView2D:
         cc = self.maze_layer.get_at((x, y))
         # print('cc: ', cc)
 
-        rgba_colour = (0,0,0,255)  
+        rgba_colour = (255,255,255,255)  
         
         pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 
@@ -320,9 +359,9 @@ class MazeView2D:
         h = int(self.CELL_H + 0.5 - 1)
 
         cc = self.maze_layer.get_at((x, y))
-        # print('cc: ', cc)
+        # print('cc: ', cc) 
 
-        rgba_colour = (120,0,0,30) if cc[0] == 0  else (120,0,0, MazeView2D.up_till_255(cc[3]) ) 
+        rgba_colour = (120,0,0,30) if cc[0] == 0 or cc[0:2]== (255,255)  else (120,0,0, MazeView2D.up_till_255(cc[3]) ) 
         
         pygame.draw.rect(self.maze_layer, rgba_colour , (x, y, w, h))
 

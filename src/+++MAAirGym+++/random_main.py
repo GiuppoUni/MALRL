@@ -49,7 +49,7 @@ if __name__ == '__main__':
     # parser.add_argument('--ep-cooldown', type=int, default=1,
     #                     help='episode cooldown time sleeping (default: %(default)s)')
 
-    parser.add_argument( '--fixed_action',action='store_true',  default=False,
+    parser.add_argument( '--fixed-action',action='store_true',  default=False,
         help='Same actions per episode (default: %(default)s)' )
 
     parser.add_argument( '--debug',action='store_true',  default=False,
@@ -135,6 +135,7 @@ if __name__ == '__main__':
                 action = np.random.choice([0,1,2,3])
             while not done :
             # for _ in range(0,150): # DEBUG ONLY
+                action = env.action_space.sample()
                 if(not args.fixed_action):
                     if(args.custom_random):
                         action = custom_random(past_action)
@@ -142,6 +143,11 @@ if __name__ == '__main__':
                     else:
                         action = env.action_space.sample() # Random actions DEBUG ONLY            
                          # action = 0 if n_actions_taken % 2 == 0 else 1 # DEBUG ONLY
+                if(not args.can_go_back and args.crab_mode and past_action is not None):
+                    # Check if Left -> Right and vic or Up -> Down and vic
+                    while(action +2 == past_action or action -2 == past_action):
+                        action = env.action_space.sample()
+                past_action = action
 
                 obs, reward, done, info = env.step(action)
                 ep_reward =  reward

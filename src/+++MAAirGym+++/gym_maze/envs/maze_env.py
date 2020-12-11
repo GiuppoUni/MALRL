@@ -4,6 +4,7 @@ import numpy as np
 import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
+from tensorflow.python.ops.gen_linalg_ops import Qr
 from gym_maze.envs.maze_view_2d import MazeView2D
 import itertools
 from sklearn.neighbors import KDTree
@@ -68,7 +69,8 @@ class MazeEnv(gym.Env):
     VISTED_TO_IDX = {"visited":16}
 
     def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,
-        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False):
+        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, 
+        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None):
         
         self.measure_distance = measure_distance
         self.verbose = verbose
@@ -77,7 +79,11 @@ class MazeEnv(gym.Env):
         self.num_goals = num_goals
         self.human_mode = human_mode
         self.chosen_goal = None
-        
+        self.random_pos = random_pos
+        self.n_trajs = n_trajs
+
+        self.seed(seed_num)
+
 
         if maze_file:
             print("maze from file")
@@ -85,22 +91,27 @@ class MazeEnv(gym.Env):
                                         maze_file_path=maze_file,
                                         screen_size=(640, 640), 
                                         enable_render=enable_render,
-                                        num_goals = self.num_goals,verbose = self.verbose)
-        elif maze_size:
-            if mode == "plus":
-                has_loops = True
-                num_portals = int(round(min(maze_size)/3))
-            else:
-                print("not plus")
-                has_loops = False
-                num_portals = 0
-            print("maze_sized")
-            self.maze_view = MazeView2D(maze_name="OpenAI Gym - Maze (%d x %d)" % maze_size,
-                                        maze_size=maze_size, screen_size=(640, 640),
-                                        has_loops=has_loops, num_portals=num_portals,
-                                        enable_render=enable_render,num_goals=self.num_goals,verbose = self.verbose)
+                                        num_goals = self.num_goals,random_pos = random_pos,
+                                        verbose = self.verbose,np_random=self.np_random,
+                                        n_trajs = n_trajs)
+        # elif maze_size:
+        #     if mode == "plus":
+        #         has_loops = True
+        #         num_portals = int(round(min(maze_size)/3))
+        #     else:
+        #         print("not plus")
+        #         has_loops = False
+        #         num_portals = 0
+        #     print("maze_sized")
+        #     self.maze_view = MazeView2D(maze_name="OpenAI Gym - Maze (%d x %d)" % maze_size,
+        #                                 maze_size=maze_size, screen_size=(640, 640),
+        #                                 has_loops=has_loops, num_portals=num_portals,
+        #                                 enable_render=enable_render,num_goals=self.num_goals,
+        #                                 verbose = self.verbose,random_pos = random_pos,np_random=self.np_random)
         else:
             raise AttributeError("One must supply either a maze_file path (str) or the maze_size (tuple of length 2)")
+
+        # Set random
 
         self.maze_size = self.maze_view.maze_size
 
@@ -121,20 +132,25 @@ class MazeEnv(gym.Env):
         self.kdtrees = []
         self.trajectory = []
 
+
+        # if(self.measure_distance):
+        #     self.assign_goal()
+        self.covered_cells = self.maze_view.maze.maze_cells.copy()
+        # print('self.covered_cells = self.maze_view.copy()', self.covered_cells )
+        
+        # Remove goals from init
+        # print('self.random_init_pool: ', self.random_init_pool)
+
         # Simulation related variables.
-        self.seed()
         self.reset()
 
         # Just need to initialize the relevant attributes
         self.configure()
-        # if(self.measure_distance):
-        #     self.assign_goal()
-        self.covered_cells = self.maze_view.maze.maze_cells.copy()
-        
-        print('self.covered_cells = self.maze_view.copy()', self.covered_cells )
+      
 
     # def assign_goal(self):
     #     self.maze_view.robot
+  
 
     def __del__(self):
         if self.enable_render is True:
@@ -144,7 +160,7 @@ class MazeEnv(gym.Env):
         self.display = display
 
     def seed(self, seed=None):
-        self.np_random, seed = seeding.np_random(seed)
+        self.np_random, seed = seeding.np_random(int(seed))
         return [seed]
 
     def get_n_to_be_covered(self):
@@ -173,13 +189,14 @@ class MazeEnv(gym.Env):
                 if np.array_equal(self.maze_view.robot, _goal):
                     reward = 1
                     if(self.enable_render):
-                        self.maze_view.decolor(_goal)
+                        self.maze_view.color_visited_cell(_goal[0],_goal[1])
                     self.maze_view.goals.remove(_goal)
                     
             if reward < 1 : # Not found any goal
                 reward = -0.1/(self.maze_size[0]*self.maze_size[1])
                 done = False
             if(self.maze_view.goals==[]):
+
                 done = True
             else:
 
@@ -209,7 +226,7 @@ class MazeEnv(gym.Env):
         return reward,done
 
     def step(self, action):
-        
+        # print('self.maze_view.goals: ', self.maze_view.goals)
         if isinstance(action, int) or isinstance(action, np.int64):
             if(self.human_mode):
                 my_action = int(input("Action (0 N,1 S,2 E,3 W, -1 random):"))
@@ -220,8 +237,9 @@ class MazeEnv(gym.Env):
             _moved = self.maze_view.move_robot(action)
 
         reward, done = self.compute_reward(moved=_moved)
-            
+
         self.state = self.maze_view.robot
+        
         moved = any(self.trajectory[-1] != self.state) if len(self.trajectory)>0 else True
 
         if(moved):
@@ -242,12 +260,9 @@ class MazeEnv(gym.Env):
     def reset(self):
         if(self.num_goals > 1):
             self.maze_view.goals = self.maze_view.saved_goals.copy()
-            print('self.maze_view.saved_goals: ', self.maze_view.saved_goals)
             
 
-        
-        self.maze_view.reset_robot()
-        self.state = np.zeros(2)
+
         self.steps_beyond_done = None
         self.done = False
         if(self.trajColFlag and self.trajectory!=[]):
@@ -260,13 +275,20 @@ class MazeEnv(gym.Env):
             self.covered_cells = self.maze_view.maze.maze_cells.copy()
         
         #Redraw goals
+        if(self.random_pos):
+            self.state = self.maze_view.entrance 
+            self.maze_view.resetEntrance()
+        else:
+            self.state = np.zeros(2)
+
         if(self.enable_render):
             if(self.num_goals < 1 ):
                 # Reset all cells
                 self.maze_view.maze_layer.fill((0, 0, 0, 0,))
 
-            self.maze_view.update()
-            
+
+        self.maze_view.reset_robot(rend=self.enable_render)
+        
         return self.state
 
     def is_game_over(self):
