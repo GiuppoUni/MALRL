@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('--n-agents', type=int, default=1,
                         help='agents (default: %(default)s)')
     
-    parser.add_argument('--thickness', type=int, default=140,
+    parser.add_argument('--thickness', type=int, default=1400,
                         help='Draw line thickness (default: %(default)s)')
     
     # parser.add_argument('--ep-cooldown', type=int, default=1,

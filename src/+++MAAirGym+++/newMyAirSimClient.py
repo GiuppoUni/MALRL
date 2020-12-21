@@ -20,8 +20,10 @@ import airsim
 import sys 
 import utils
 import gc 
-
+import pandas
 import threading
+from scipy.interpolate import interp1d
+
 
 class DrivetrainType:
     MaxDegreeOfFreedom = 0
@@ -171,25 +173,25 @@ class newMyAirSimClient(MultirotorClient):
         return start, duration
     
        # CRAB ACTIONS
-    def crab_up(self, duration=10, speed=10,vName="Drone0"):
+    def crab_up(self, duration=12, speed=12,vName="Drone0"):
         self.moveByVelocityZAsync(0, -speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_right(self, duration=10,speed=10,vName="Drone0"):
+    def crab_right(self, duration=12,speed=12,vName="Drone0"):
         self.moveByVelocityZAsync(speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)
         start = time.time()
         return start, duration
     
-    def crab_left(self, duration=10,speed=10,vName="Drone0"):
+    def crab_left(self, duration=12,speed=12,vName="Drone0"):
         self.moveByVelocityZAsync(-speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)        
         start = time.time()
         return start, duration
     
-    def crab_down(self, duration=10,speed=10,vName="Drone0"):
+    def crab_down(self, duration=12,speed=12,vName="Drone0"):
         self.moveByVelocityZAsync(0, speed, self.z_des, duration, DrivetrainType.ForwardOnly,
             vehicle_name = vName)        
         start = time.time()
@@ -350,35 +352,36 @@ class newMyAirSimClient(MultirotorClient):
 
     def draw_numpy_trajectory(self,filename):
         # TODO replace for a specific trajectories file 
-        try:
-            trajectory =  np.load(filename)
-            # print(trajectory)
-            trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
-            self.simPlotLineStrip(trajectory_vecs,
-                is_persistent= True, thickness = self.thickness)
+        # try:
+        # trajectory =  np.load(filename)
+        if(filename[-3:]=="csv"):
+            trajectory = np.array(pandas.read_csv(filename,delimiter=",",usecols=[1,2,3]) )
+            trajectory = utils.myInterpolate(trajectory,n_samples = 100)
+        elif filename[-3:]=="npy":
+            trajectory = np.load(filename)
             
-            _tree = KDTree(trajectory)
-            self.kdtrees.append(_tree)
-            
-            # Free some mem
-            del trajectory
-            gc.collect()
-        except:
-            print(filename,"Exception in reading")
-            raise Exception("Exception in reading",filename)
+        print(trajectory)
+        trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+        self.simPlotLineStrip(trajectory_vecs,
+            is_persistent= True, thickness = self.thickness)
+        
+        _tree = KDTree(trajectory)
+        self.kdtrees.append(_tree)
+        
+        # Free some mem
+        del trajectory
+        del trajectory_vecs
+        gc.collect()
+        # except Exception as e:
+        #     print(filename,"Exception in reading")
+        #     raise Exception("Exception in reading",filename,e)
         return 
 
 
     def drawTrajectories(self):
-        # files = os.listdir(utils.TRAJECTORIES_FOLDER)
-        # if not files:
-        #     return None
-        # files.sort()
-        # print(files[-1])
-        # traj_fold= files[-1]
-        # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,traj_fold)
-        traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"fixed_traj")
- 
+
+        # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"csv")
+        traj_fold = "./qtrajectories/interpolated/"
         for tFile in os.listdir(traj_fold):
             self.draw_numpy_trajectory(os.path.join(traj_fold,tFile))
         print('self.kdtrees: ', self.kdtrees)

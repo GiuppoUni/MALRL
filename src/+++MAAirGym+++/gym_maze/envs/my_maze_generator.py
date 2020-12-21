@@ -80,9 +80,9 @@ print(actions_to_value("NEWS"),actions_to_value(""))
 np.save("maze_samples/maze2d_001.npy",a)
 
 
-NROWS = 21
-NCOLS = 21
-OBS_BLOCKS = 3
+NROWS = 43
+NCOLS = 43
+OBS_BLOCKS = 6
 # Each block can be considered 20m x 20m 
 
 def cell_value(r,c,obs_blocks=1,street_blocks=1):

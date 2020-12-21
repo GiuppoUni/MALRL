@@ -1,5 +1,5 @@
-import numpy as np
 import sys
+import numpy as np
 import math
 import random
 
@@ -10,6 +10,7 @@ import argparse
 import datetime
 from gym_airsim.envs.collectEnv import CollectEnv
 from trajectoryTrackerClient import TrajectoryTrackerClient
+
 
 import gym_airsim.envs
 import gym_airsim
@@ -29,7 +30,7 @@ ACTION_TO_IDX = {"LEFT":0, "FRONT":1, "RIGHT":2,"BACK" : 3}
 IDX_TO_ACTION =  {0:"LEFT",1:"FRONT",2:"RIGHT",3:"BACK"}
 
 
-STD_MAZE = "maze2d_004.npy"
+STD_MAZE = "maze2d_002.npy"
 
 INTERACTIVE = False
 OUT_FORMAT = "csv"
@@ -151,7 +152,7 @@ if __name__ == "__main__":
         fixed_init_pos_list = df.to_numpy()
         # print('fixed_goals: ', fixed_goals)
 
-    def main(mode, fixed_init_pos=None, trainedQtable=None):
+    def main(mode,method=None, fixed_init_pos=None, trainedQtable=None):
 
         if(args.env2D):
             if(args.load_maze):
@@ -172,6 +173,9 @@ if __name__ == "__main__":
             n_actions = 4 if args.can_go_back else 3 
             env = CollectEnv(trajColFlag = args.col_traj,n_actions=n_actions,random_pos = args.random_pos)
             trackerClient = TrajectoryTrackerClient()
+
+
+
 
         '''
         Defining the environment related constants
@@ -290,10 +294,8 @@ if __name__ == "__main__":
 
             # Instantiating the learning related parameters
             learning_rate = get_learning_rate(0)
-            print('learning_rate: ', learning_rate)
             explore_rate = get_explore_rate(0)
-            print('explore_rate: ', explore_rate)
-            discount_factor = 1
+            discount_factor = 0.99
 
             num_streaks = 0
 
@@ -347,11 +349,19 @@ if __name__ == "__main__":
 
                     # Update the Q based on the result
                     best_q = np.amax(q_table[state])
-                    # Regular Q-Learning
-                    # q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
-                    # Q-Routing
-                    q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
-                    
+                    if method == "q_learning":
+                        q_table[state_0 + (action,)] += learning_rate * (reward + 
+                            discount_factor * (best_q) - q_table[state_0 + (action,)])
+
+                    elif method == 'sarsa': 
+                        a_prime = np.argmax(np.cumsum(q_table[obv,:]) > np.random.random())
+                        index_prime = s_prime + (a_prime,) 
+                        q_table[index] +=  self.alpha * \
+                            (r + gam*q[index_prime] - self.q[index])
+                    elif method is None and mode=="test":
+                        pass 
+                    else:
+                        raise Exception("Invalid method provided")
                     # Setting up for the next iteration
                     state_0 = state
 
@@ -446,7 +456,7 @@ if __name__ == "__main__":
 
     if(fixed_init_pos_list is not None):
         for fixed_init_pos in fixed_init_pos_list:
-            qtable = main(mode = "train",fixed_init_pos=fixed_init_pos)
+            qtable = main(mode = "train",method = "q_learning",fixed_init_pos=fixed_init_pos)
             main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos)
     # else:
     #     qtable = train()

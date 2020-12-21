@@ -10,54 +10,6 @@ import itertools
 from sklearn.neighbors import KDTree
 import time
 
-# class myBox(spaces.Box):
-    
-#     def __init__(self, low, high, shape=None, dtype=np.float32):
-    
-#         super(myBox, self).__init__(low, high, shape, dtype)
-
-    
-#     def sample(self):
-#         """
-#         Generates a single random sample inside of the Box.
-
-#         In creating a sample of the box, each coordinate is sampled according to
-#         the form of the interval:
-
-#         * [a, b] : uniform distribution
-#         * [a, oo) : shifted exponential distribution
-#         * (-oo, b] : shifted negative exponential distribution
-#         * (-oo, oo) : normal distribution
-#         """
-#         high = self.high if self.dtype.kind == 'f' \
-#                 else self.high.astype('int64') + 1
-#         sample = np.empty(self.shape)
-
-#         # Masking arrays which classify the coordinates according to interval
-#         # type
-#         unbounded   = ~self.bounded_below & ~self.bounded_above
-#         upp_bounded = ~self.bounded_below &  self.bounded_above
-#         low_bounded =  self.bounded_below & ~self.bounded_above
-#         bounded     =  self.bounded_below &  self.bounded_above
-
-
-#         # Vectorized sampling by interval type
-#         sample[unbounded] = self.np_random.normal(
-#                 size=unbounded[unbounded].shape)
-
-#         sample[low_bounded] = self.np_random.exponential(
-#             size=low_bounded[low_bounded].shape) + self.low[low_bounded]
-
-#         sample[upp_bounded] = -self.np_random.exponential(
-#             size=upp_bounded[upp_bounded].shape) + self.high[upp_bounded]
-
-#         sample[bounded] = self.np_random.uniform(low=self.low[bounded],
-#                                             high=high[bounded],
-#                                             size=bounded[bounded].shape)
-#         if self.dtype.kind == 'i':
-#             sample = np.floor(sample)
-
-#         return sample.astype(self.dtype)
 
 
 class MazeEnv(gym.Env):
@@ -70,17 +22,22 @@ class MazeEnv(gym.Env):
 
     def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,
         do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, 
-        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None):
+        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None,
+        fixed_goals = None, fixed_init_pos = None):
         
         self.measure_distance = measure_distance
         self.verbose = verbose
         self.viewer = None
         self.enable_render = enable_render
         self.num_goals = num_goals
+        
+        if(fixed_goals is not None):
+            self.num_goals = len(fixed_goals)
         self.human_mode = human_mode
         self.chosen_goal = None
         self.random_pos = random_pos
         self.n_trajs = n_trajs
+
 
         self.seed(seed_num)
 
@@ -93,7 +50,8 @@ class MazeEnv(gym.Env):
                                         enable_render=enable_render,
                                         num_goals = self.num_goals,random_pos = random_pos,
                                         verbose = self.verbose,np_random=self.np_random,
-                                        n_trajs = n_trajs)
+                                        n_trajs = n_trajs, fixed_goals = fixed_goals,
+                                        fixed_init_pos =fixed_init_pos)
         # elif maze_size:
         #     if mode == "plus":
         #         has_loops = True
@@ -117,7 +75,7 @@ class MazeEnv(gym.Env):
 
         # forward or backward in each dimension
         self.action_space = spaces.Discrete(2*len(self.maze_size))
-
+        # print('self.action_space: ', self.action_space)
         # observation is the x, y coordinate of the grid
         low = np.zeros(len(self.maze_size), dtype=int)
         high =  np.array(self.maze_size, dtype=int) - np.ones(len(self.maze_size), dtype=int)
@@ -132,7 +90,7 @@ class MazeEnv(gym.Env):
         self.kdtrees = []
         self.trajectory = []
 
-
+        self.final_points = []
         # if(self.measure_distance):
         #     self.assign_goal()
         self.covered_cells = self.maze_view.maze.maze_cells.copy()
@@ -171,29 +129,36 @@ class MazeEnv(gym.Env):
     def compute_reward(self,moved):
         reward = 0
         if(self.num_goals==1):
-            # Single goal mode
+            # Single goal modeù
+            
+            if not moved:
+                return -0.1,False
             if np.array_equal(self.maze_view.robot, self.maze_view.goal):
-                reward = 1
+                # Found goal
+                reward = 1000
                 done = True
             else:
-                reward = -0.1/(self.maze_size[0]*self.maze_size[1])
+                # Not found goal
+                reward = -1/(self.maze_size[0]*self.maze_size[1])
                 done = False
-            if not moved:
-                reward -= 1.5
 
             
         elif self.num_goals > 1:
             # Multiple goals mode
+            if not moved:
+                return -5,False
+            
             for _goal in self.maze_view.goals:
                 # print('self.maze_view.robot, _goal: ', self.maze_view.robot, _goal)
                 if np.array_equal(self.maze_view.robot, _goal):
-                    reward = 1
                     if(self.enable_render):
                         self.maze_view.color_visited_cell(_goal[0],_goal[1])
-                    self.maze_view.goals.remove(_goal)
-                    
+                    reward = 300
+                    self.maze_view.goals.remove( _goal )
+                    break
+
             if reward < 1 : # Not found any goal
-                reward = -0.1/(self.maze_size[0]*self.maze_size[1])
+                reward = -1/(self.maze_size[0]*self.maze_size[1])
                 done = False
             if(self.maze_view.goals==[]):
 
@@ -231,31 +196,34 @@ class MazeEnv(gym.Env):
             if(self.human_mode):
                 my_action = int(input("Action (0 N,1 S,2 E,3 W, -1 random):"))
                 action = my_action if my_action != -1 else action
+            
+            # print('action: ', action)
             _moved = self.maze_view.move_robot(self.ACTION[action])
         else:
             print('type(action): ', type(action))
             _moved = self.maze_view.move_robot(action)
 
+
         reward, done = self.compute_reward(moved=_moved)
 
-        self.state = self.maze_view.robot
+        self.state = [ int(x) for x in self.maze_view.robot]
         
-        moved = any(self.trajectory[-1] != self.state) if len(self.trajectory)>0 else True
-
-        if(moved):
+        
+        if(_moved):
             if(self.enable_render):
                 self.maze_view.color_visited_cell(self.state[0],self.state[1])
             
             if(self.trajColFlag):
                 self.trajectory.append(list(self.state))
-        
+                self.final_points.append(list(self.state))
         
         # print('trajectory: ', self.trajectory)
         # print('self.kdtrees: ', self.kdtrees)
 
-        info = {}
+        info = {"moved": _moved }
 
-        return self.state, reward, done, info
+        # print('self.state: ', self.state,_moved)
+        return self.maze_view.robot, reward, done, info
 
     def reset(self):
         if(self.num_goals > 1):
@@ -300,6 +268,8 @@ class MazeEnv(gym.Env):
 
         return self.maze_view.update(mode)
 
+    def set_render(self):
+        self.enable_render = True
 
 
 if __name__ == "__main__" :

@@ -18,7 +18,7 @@ import winsound
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
 CONFIGS_FOLDER = "./configs/"
 LOG_FOLDER = "./logs/"
-TRAJECTORIES_FOLDER = "./trajectories/"
+TRAJECTORIES_FOLDER = "./qtrajectories/"
 
 
 with open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:
@@ -70,10 +70,10 @@ green_color = [0.0,0.5,0.0]
 blue_color = [0.0,0.0,1.0]
 
 
-def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=500):
+def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):
     for _ in range(n_beeps):
         winsound.Beep(frequency, beep_duration)
-        time.sleep(1)
+        time.sleep(0.1)
 
 
 
@@ -208,9 +208,13 @@ def position_to_list(position_vector) -> list:
     return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
 
 def list_to_position(l) -> Vector3r:
+    x = int(l[0]*20)
+    y = int(l[1]*20)
+    z = int(l[2]*20)
+
     if len(l) != 3:
         raise Exception("REQUIRED EXACTLY 3 elements")
-    return Vector3r(l[0],l[1],l[2])
+    return Vector3r(x,y,z)
 
 
 def set_offset_position(pos):
@@ -245,3 +249,31 @@ def xy_distance(point1, point2):
     
     return   np.linalg.norm(point1 - point2) 
     
+
+def myInterpolate(arr, n_samples=10 ):
+    res = []
+    for i,p in enumerate(arr):
+        if(i+1 >= len(arr)):
+            break
+        x1,y1,z1 = p[0], p[1], p[2]
+        x2,y2,z2 = arr[i+1][0], arr[i+1][1], arr[i+1][2] 
+    
+        step_length = max(abs(x2-x1),abs(y2-y1)) / n_samples
+        for i in range(n_samples):
+            if(x2 > x1):
+                # Moved on the right
+                new_p = [x1 + i * step_length, y1,z1]
+            elif (x1 > x2):
+                # Moved left
+                new_p = [x2 + i * step_length, y1,z1]
+            elif (y2 > y1):
+                # Moved left
+                new_p = [x1, y1 + i * step_length,z1]
+            elif (y1 > y2):
+                # Moved left
+                new_p = [x1, y2 + i * step_length,z1]
+            else:
+                raise Exception("Uncommmon points")
+            res.append(new_p)
+    
+    return np.array(res)

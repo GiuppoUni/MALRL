@@ -9,12 +9,17 @@ class MazeView2D:
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
                  has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True,
-                 random_pos=False,np_random=None,n_trajs=None):
+                 random_pos=False,np_random=None,n_trajs=None, fixed_goals = None,
+                 fixed_init_pos = None):
 
         # if(num_goals<=0 ):
         #     raise ValueError("Error in num_goals parameter")
         self.random_pos = random_pos
-        self.num_goals = num_goals
+        self.fixed_goals = fixed_goals 
+        if(fixed_goals is not None):
+            self.num_goals = len(fixed_goals)
+        else:
+            self.num_goals = num_goals
         self.verbose = verbose
         self.np_random = np_random
         self.n_trajs = n_trajs
@@ -51,9 +56,13 @@ class MazeView2D:
 
         # Set the Goal
         if self.num_goals == 1:        
-            self.__goal = np.array(self.maze_size) - np.array((1, 1))
+            if(self.fixed_goals is None):
+                self.__goal = np.array(self.maze_size) - np.array((1, 1))
+            else:
+                self.__goal = np.array(self.fixed_goals)[0]
             self.goals = [self.__goal]
-        
+
+            
         # Set multiple random goals
         elif self.num_goals > 1:
             self.goals = self.init_goals()
@@ -123,9 +132,15 @@ class MazeView2D:
         return [int(r),int(c)]
 
     def init_goals(self):
-        if self.num_goals > -1:
-            return [self._get_random_xy() for _ in range(self.num_goals) ]  
+        if self.num_goals > 0:
+            # Not covering
+            if(self.fixed_goals is None):
+                return [self._get_random_xy() for _ in range(self.num_goals) ]  
+            else:
+                return [ [cell[0],cell[1]] for cell  in self.fixed_goals ]  
 
+        else:
+            return []
     def resetEntrance(self):
         if self.__enable_render: self.decolor(self.__entrance)
         self.__entrance =  self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
@@ -569,15 +584,18 @@ class Maze:
 
     def is_open(self, cell_id, dir):
         # check if it would be out-of-bound
-        x1 = cell_id[0] + self.COMPASS[dir][0]
-        y1 = cell_id[1] + self.COMPASS[dir][1]
+        
+        x1 = int(cell_id[0] + self.COMPASS[dir][0])
+        y1 = int(cell_id[1] + self.COMPASS[dir][1])
 
 
         # if cell is still within bounds after the move
         if self.is_within_bound(x1, y1):
-            row = cell_id[1]
-            col = cell_id[0]
+            row = int(cell_id[1])
+            col = int(cell_id[0])
             # check if the wall is opened
+
+            # print('self.get_walls_status(self.maze_cells[row, col])[dir]: ', row, col,self.maze_cells )
             this_wall = bool(self.get_walls_status(self.maze_cells[row, col])[dir])
             other_wall = bool(self.get_walls_status(self.maze_cells[x1, y1])[self.__get_opposite_wall(dir)])
             if(self.verbose):
