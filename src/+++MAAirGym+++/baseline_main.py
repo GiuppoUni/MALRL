@@ -1,3 +1,11 @@
+"""
+    Baseline wrapper with monitor to train, monitor, test, benchmark
+    different baseline RL algos (best for discrete non img: A2C)
+    
+    ISSUE: even with lot of episodes reward increased in training
+    but testing predicted path is not sub-optimal
+"""
+
 import os
 import sys
 import numpy as np

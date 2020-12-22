@@ -1,3 +1,8 @@
+"""
+    SOLO 2D MAZE, RL algo per avere  qlearning vs sarsa vs eSarsa
+    ISSUE: Too exploration few exploitation
+"""
+
 import os
 import sys
 import numpy as np
@@ -326,7 +331,7 @@ ACTION_TO_IDX = {"LEFT":0, "FRONT":1, "RIGHT":2,"BACK" : 3}
 IDX_TO_ACTION =  {0:"LEFT",1:"FRONT",2:"RIGHT",3:"BACK"}
 
 
-STD_MAZE = "maze2d_002.npy"
+STD_MAZE = "maze2d_004.npy"
 
 INTERACTIVE = False
 OUT_FORMAT = "csv"
@@ -337,7 +342,7 @@ maze_file = STD_MAZE
 mode = "train"
 
 
-
+# Approccio 1 RL per init SOLO 2D 
 for fixed_init_pos in fixed_init_pos_list:
         
     env = MazeEnv( maze_file = maze_file,                  

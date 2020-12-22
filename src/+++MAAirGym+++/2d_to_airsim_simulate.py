@@ -1,9 +1,10 @@
-import argparse
-import datetime
+"""
+        Scipt that takes trajectories obtained from qlearning in 2D 
+        transform them into 3D trajectories and save them
+        after applying "avoid_collision" algorithm  
+"""
+
 from gym_airsim.envs.collectEnv import CollectEnv
-
-
-import gym_airsim
 from gym_airsim.envs import AirSimEnv
 import utils
 import time
@@ -34,4 +35,3 @@ for idx,traj in enumerate(trajs3d):
         df.index.name = "index"
         df.to_csv("trajectories_3d/csv/"+traj_files_list[idx])
 
-        

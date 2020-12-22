@@ -263,14 +263,6 @@
         "documentation": {}
     },
     {
-        "label": "MultirotorClient",
-        "importPath": "airsim",
-        "description": "airsim",
-        "isExtraImport": true,
-        "detail": "airsim",
-        "documentation": {}
-    },
-    {
         "label": "Proj",
         "importPath": "pyproj",
         "description": "pyproj",
@@ -441,14 +433,6 @@
     },
     {
         "label": "ImageDraw",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
         "importPath": "PIL",
         "description": "PIL",
         "isExtraImport": true,
@@ -764,14 +748,6 @@
         "documentation": {}
     },
     {
-        "label": "Timeout",
-        "importPath": "eventlet",
-        "description": "eventlet",
-        "isExtraImport": true,
-        "detail": "eventlet",
-        "documentation": {}
-    },
-    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -1048,22 +1024,6 @@
         "documentation": {}
     },
     {
-        "label": "MazeEnv",
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnv",
-        "importPath": "gym_maze.envs.maze_env",
-        "description": "gym_maze.envs.maze_env",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env",
-        "documentation": {}
-    },
-    {
         "label": "pandas",
         "kind": 6,
         "isExtraImport": true,
@@ -1108,22 +1068,6 @@
     },
     {
         "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
-        "documentation": {}
-    },
-    {
-        "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
-        "documentation": {}
-    },
-    {
-        "label": "ImageRequest",
         "importPath": "airsim.types",
         "description": "airsim.types",
         "isExtraImport": true,
@@ -1223,31 +1167,6 @@
         "documentation": {}
     },
     {
-        "label": "CollectEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {}
-    },
-    {
-        "label": "CollectEnv",
-        "importPath": "gym_airsim.envs.collectEnv",
-        "description": "gym_airsim.envs.collectEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectEnv",
-        "documentation": {}
-    },
-    {
-        "label": "gym_airsim",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "gym_airsim",
-        "description": "gym_airsim",
-        "detail": "gym_airsim",
-        "documentation": {}
-    },
-    {
         "label": "gym_airsim.envs",
         "kind": 6,
         "isExtraImport": true,
@@ -1270,111 +1189,6 @@
         "description": "gym_airsim.envs",
         "isExtraImport": true,
         "detail": "gym_airsim.envs",
-        "documentation": {}
-    },
-    {
-        "label": "AirSimEnv",
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs",
-        "documentation": {}
-    },
-    {
-        "label": "AirSimEnv",
-        "importPath": "gym_airsim.envs",
-        "description": "gym_airsim.envs",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs",
-        "documentation": {}
-    },
-    {
-        "label": "MultiMazeEnv",
-        "importPath": "gym_maze.envs.multi_maze_env",
-        "description": "gym_maze.envs.multi_maze_env",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.multi_maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "gym_maze",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "gym_maze",
-        "description": "gym_maze",
-        "detail": "gym_maze",
         "documentation": {}
     },
     {
@@ -1402,11 +1216,53 @@
         "documentation": {}
     },
     {
+        "label": "gym_maze",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym_maze",
+        "description": "gym_maze",
+        "detail": "gym_maze",
+        "documentation": {}
+    },
+    {
+        "label": "gym_airsim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gym_airsim",
+        "description": "gym_airsim",
+        "detail": "gym_airsim",
+        "documentation": {}
+    },
+    {
         "label": "check_env",
         "importPath": "stable_baselines.common.env_checker",
         "description": "stable_baselines.common.env_checker",
         "isExtraImport": true,
         "detail": "stable_baselines.common.env_checker",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
         "documentation": {}
     },
     {
@@ -1619,30 +1475,6 @@
         "documentation": {}
     },
     {
-        "label": "array",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "arange",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "uint8",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
         "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
@@ -1658,6 +1490,22 @@
         "importPath": "gc",
         "description": "gc",
         "detail": "gc",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
         "documentation": {}
     },
     {
@@ -1692,22 +1540,6 @@
         "description": "mpl_toolkits",
         "isExtraImport": true,
         "detail": "mpl_toolkits",
-        "documentation": {}
-    },
-    {
-        "label": "CollectMTEnv",
-        "importPath": "gym_airsim.envs.collectMTEnv",
-        "description": "gym_airsim.envs.collectMTEnv",
-        "isExtraImport": true,
-        "detail": "gym_airsim.envs.collectMTEnv",
-        "documentation": {}
-    },
-    {
-        "label": "NavMapper",
-        "importPath": "navMapWindow",
-        "description": "navMapWindow",
-        "isExtraImport": true,
-        "detail": "navMapWindow",
         "documentation": {}
     },
     {
@@ -2960,105 +2792,6 @@
         "documentation": {}
     },
     {
-        "label": "custom_random",
-        "kind": 2,
-        "importPath": "airsim_avoid_traj",
-        "description": "airsim_avoid_traj",
-        "peekOfCode": "def custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,\n                        help='episodes (default: %(default)s)')",
-        "detail": "airsim_avoid_traj",
-        "documentation": {}
-    },
-    {
-        "label": "episode_cooldown",
-        "kind": 5,
-        "importPath": "airsim_avoid_traj",
-        "description": "airsim_avoid_traj",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':",
-        "detail": "airsim_avoid_traj",
-        "documentation": {}
-    },
-    {
-        "label": "ACTION_TO_IDX",
-        "kind": 5,
-        "importPath": "airsim_avoid_traj",
-        "description": "airsim_avoid_traj",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')",
-        "detail": "airsim_avoid_traj",
-        "documentation": {}
-    },
-    {
-        "label": "IDX_TO_ACTION",
-        "kind": 5,
-        "importPath": "airsim_avoid_traj",
-        "description": "airsim_avoid_traj",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\ndef custom_random(past_action):\n    action = env.action_space.sample() # Random actions DEBUG ONLY            \n    if(past_action and past_action != ACTION_TO_IDX[\"FRONT\"] ):\n        while(action == past_action):\n            action = env.action_space.sample() # Random actions DEBUG ONLY                    \n    return action\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=10,",
-        "detail": "airsim_avoid_traj",
-        "documentation": {}
-    },
-    {
-        "label": "episode_cooldown",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "ACTION_TO_IDX",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "IDX_TO_ACTION",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "STD_MAZE",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "STD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "INTERACTIVE",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "OUT_FORMAT",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "OUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
-        "label": "SEED",
-        "kind": 5,
-        "importPath": "all_main",
-        "description": "all_main",
-        "peekOfCode": "SEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,",
-        "detail": "all_main",
-        "documentation": {}
-    },
-    {
         "label": "SaveOnBestTrainingRewardCallback",
         "kind": 6,
         "importPath": "baseline_main",
@@ -3513,7 +3246,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "df = pandas.read_csv(\"init_pos.csv\", index_col='name')\n# print(df)\nfixed_init_pos_list = df.to_numpy()\n# print('fixed_goals: ', fixed_goals)\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"",
+        "peekOfCode": "df = pandas.read_csv(\"init_pos.csv\", index_col='name')\n# print(df)\nfixed_init_pos_list = df.to_numpy()\n# print('fixed_goals: ', fixed_goals)\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3522,7 +3255,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "fixed_init_pos_list = df.to_numpy()\n# print('fixed_goals: ', fixed_goals)\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000",
+        "peekOfCode": "fixed_init_pos_list = df.to_numpy()\n# print('fixed_goals: ', fixed_goals)\nepisode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3531,7 +3264,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3540,7 +3273,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D ",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3549,7 +3282,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  ",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3558,7 +3291,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "STD_MAZE = \"maze2d_002.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),",
+        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  ",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3567,7 +3300,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), ",
+        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3576,7 +3309,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "OUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,",
+        "peekOfCode": "OUT_FORMAT = \"csv\"\nSEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), ",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3585,7 +3318,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "SEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,",
+        "peekOfCode": "SEED = 12\nTIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3594,7 +3327,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "TIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,\n                                            verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,",
+        "peekOfCode": "TIMESTEPS = 100000\nmaze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3603,7 +3336,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "maze_file = STD_MAZE\nmode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,\n                                            verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,\n                                            fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos)",
+        "peekOfCode": "maze_file = STD_MAZE\nmode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,\n                                            verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3612,7 +3345,7 @@
         "kind": 5,
         "importPath": "sarsa_main",
         "description": "sarsa_main",
-        "peekOfCode": "mode = \"train\"\nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,\n                                            verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,\n                                            fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos)\n    MAZE_SIZE = tuple((env.observation_space.high + np.ones(env.observation_space.shape)).astype(int))",
+        "peekOfCode": "mode = \"train\"\n# Approccio 1 RL per init SOLO 2D \nfor fixed_init_pos in fixed_init_pos_list:\n    env = MazeEnv( maze_file = maze_file,                  \n                # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                            maze_size=(640, 640), \n                                            enable_render= args.enable_render if(mode==\"train\") else True,\n                                            do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,\n                                            verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,\n                                            fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos)",
         "detail": "sarsa_main",
         "documentation": {}
     },
@@ -3621,7 +3354,7 @@
         "kind": 5,
         "importPath": "setup",
         "description": "setup",
-        "peekOfCode": "sfp = utils.AIRSIM_SETTINGS_FOLDER + \"settings.json\"\nwith open(sfp, \"r\") as jsonFile:\n    data = json.load(jsonFile)\nprint(data[\"Vehicles\"]) \nfor i,v in enumerate(data[\"Vehicles\"]):\n    gps = utils.init_gps[i]\n    ned = utils.lonlatToAirSim(*gps)\n    v[\"X\"] = ned[0]\n    v[\"Y\"] =  ned[1]\n    # v[\"Z\"] = v[\"Z\"] ",
+        "peekOfCode": "sfp = utils.AIRSIM_SETTINGS_FOLDER + \"settings.json\"\nwith open(sfp, \"r\") as jsonFile:\n    data = json.load(jsonFile)\nprint(data[\"Vehicles\"]) \n#  Set uavs positions based on gps positions specified inside utils module\nfor i,v in enumerate(data[\"Vehicles\"]):\n    gps = utils.init_gps[i]\n    ned = utils.lonlatToAirSim(*gps)\n    v[\"X\"] = ned[0]\n    v[\"Y\"] =  ned[1]",
         "detail": "setup",
         "documentation": {}
     },
@@ -3803,42 +3536,6 @@
         "description": "simple_algo",
         "peekOfCode": "fig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):\n    z_t = [ [t,z] for t,z in enumerate(zs[i])]\n    print(z_t)\n    plt.plot(*zip(*z_t),\"-o\")\nplt.show()",
         "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "alpha",
-        "kind": 5,
-        "importPath": "train_main",
-        "description": "train_main",
-        "peekOfCode": "alpha = 0.1\ngamma = 0.6\nepsilon = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=4,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n                        help='Log into file (default: %(default)s)')\n    args = parser.parse_args()",
-        "detail": "train_main",
-        "documentation": {}
-    },
-    {
-        "label": "gamma",
-        "kind": 5,
-        "importPath": "train_main",
-        "description": "train_main",
-        "peekOfCode": "gamma = 0.6\nepsilon = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=4,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n                        help='Log into file (default: %(default)s)')\n    args = parser.parse_args()\n    # env = gym.make(\"AirSimEnv-v1\")",
-        "detail": "train_main",
-        "documentation": {}
-    },
-    {
-        "label": "epsilon",
-        "kind": 5,
-        "importPath": "train_main",
-        "description": "train_main",
-        "peekOfCode": "epsilon = 0.1\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=4,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--debug', type=bool, default=False,\n                        help='Log into file (default: %(default)s)')\n    args = parser.parse_args()\n    # env = gym.make(\"AirSimEnv-v1\")\n    if args.debug:",
-        "detail": "train_main",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "kind": 6,
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "peekOfCode": "class TrajectoryTrackerClient(MultirotorClient):\n    def __init__(self):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        self.trajectory = []\n        self.episode = 0\n        self.isTracking = False\n        self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\n        self.timestep = 0.1",
-        "detail": "trajectoryTrackerClient",
         "documentation": {}
     },
     {

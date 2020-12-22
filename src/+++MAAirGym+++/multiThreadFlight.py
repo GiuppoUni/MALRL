@@ -1,3 +1,10 @@
+"""
+    Script test on 2 Drones (but extendable to n>2) 
+    for multi drones path following using multi threading
+    ISSUE: ???
+"""
+
+
 import airsim,time,threading
 import numpy as np
 
@@ -103,7 +110,7 @@ if __name__ == "__main__":
     client.reset()
 
 
-
+    # ONLY FOR 2 but exdendable 
     for i in [0,1]:
         d.append(threading.Thread(target=move_drone, args=[i]))    
         d[i].start()
