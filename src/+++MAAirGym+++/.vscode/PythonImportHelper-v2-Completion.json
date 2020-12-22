@@ -681,15 +681,7 @@
         "documentation": {}
     },
     {
-        "label": "lock",
-        "importPath": "newMyAirSimClient",
-        "description": "newMyAirSimClient",
-        "isExtraImport": true,
-        "detail": "newMyAirSimClient",
-        "documentation": {}
-    },
-    {
-        "label": "newMyAirSimClient",
+        "label": "DrivetrainType",
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
         "isExtraImport": true,
@@ -706,6 +698,30 @@
     },
     {
         "label": "newMyAirSimClient",
+        "importPath": "newMyAirSimClient",
+        "description": "newMyAirSimClient",
+        "isExtraImport": true,
+        "detail": "newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "newMyAirSimClient",
+        "description": "newMyAirSimClient",
+        "isExtraImport": true,
+        "detail": "newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "newMyAirSimClient",
+        "importPath": "newMyAirSimClient",
+        "description": "newMyAirSimClient",
+        "isExtraImport": true,
+        "detail": "newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "DrivetrainType",
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
         "isExtraImport": true,

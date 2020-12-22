@@ -15,7 +15,7 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from newMyAirSimClient import lock, newMyAirSimClient
+from newMyAirSimClient import DrivetrainType, lock, newMyAirSimClient
 
 import time
 import utils
@@ -178,6 +178,7 @@ class CollectEnv(gym.Env):
         
     def printTargets(self):
         print('Env targets: ', self.targets)
+    
         
     def _get_targets(self,regex="TargetB.*"):
         targets = self.myClient.simListSceneObjects(regex)

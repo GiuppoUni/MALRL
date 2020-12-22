@@ -1,5 +1,9 @@
 import argparse
 import datetime
+from newMyAirSimClient import DrivetrainType
+import os
+
+import pandas
 from gym_airsim.envs.collectEnv import CollectEnv
 from trajectoryTrackerClient import TrajectoryTrackerClient
 
@@ -98,7 +102,7 @@ if __name__ == '__main__':
     trackerClient = TrajectoryTrackerClient()
 
 
-    if(args.n_agents ==1):
+    if(args.n_agents ==1 and not args.follow_traj):
         print("Starting episodes...")
         for ep_i in range(args.episodes):
             done = False
@@ -149,5 +153,19 @@ if __name__ == '__main__':
             print("="*40)    
             print('Episode #{} Reward: {}'.format(ep_i+1, ep_reward))
         env.close()
+
+    elif  args.follow_traj:
+        traj_fold = "./trajectories_3d/csv/"
+        tFile=os.listdir(traj_fold)[0]
+        trajectory = np.array(pandas.read_csv(traj_fold+tFile,delimiter=",",usecols=[1,2,3]) )
+        trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+        print("FOLLOWING trajectory:",trajectory)
+        print("\t num. of points:", np.shape(trajectory)[0] )
+        # for t in range(0,trajectory.shape[0]):
+        
+        env.myClient.moveOnPathAsync(
+            trajectory_vecs,
+            10,
+            adaptive_lookahead=1,vehicle_name="Drone0")
 
     

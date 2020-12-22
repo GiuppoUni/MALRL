@@ -416,7 +416,7 @@ if __name__ == "__main__":
                         time.sleep(1)
 
                 # It's considered done when it's solved over 120 times consecutively
-                if num_streaks > STREAK_TO_END:
+                if not args.episodes and num_streaks > STREAK_TO_END:
                     break
 
                 # Update parameters
@@ -429,8 +429,8 @@ if __name__ == "__main__":
                 print("Table saved")
             
             if(mode =="test"):
-                outfile ="q_traj_"+str(fixed_init_pos[0]) +str(fixed_init_pos[1])+\
-                    str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
+                outfile ="q_traj-"+str(fixed_init_pos[0]) +str(fixed_init_pos[1])+\
+                    +"-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
                 toBeSaved = np.array(qtrajectory,dtype=int)
                 print('Saving in : ', outfile)
                 
