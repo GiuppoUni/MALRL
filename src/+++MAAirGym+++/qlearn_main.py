@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import sys
 import math
@@ -22,6 +23,7 @@ from gym_maze.envs.maze_env_cont import MazeEnvCont
 import signal
 import sys
 import pandas
+import shutil
 
 episode_cooldown = 3
 
@@ -33,6 +35,8 @@ STD_MAZE = "maze2d_004.npy"
 
 INTERACTIVE = False
 OUT_FORMAT = "csv"
+TRAJECTORIES_FOLDER = "qtrajectories/csv/" 
+TRAJECTORIES_3D_FOLDER = "trajectories_3d/csv/"
 
 SEED = 12
 
@@ -114,7 +118,10 @@ if __name__ == "__main__":
 
     # env = gym.make("AirSimEnv-v1")
 
-    
+    # Resetting folders
+    for f in os.listdir(TRAJECTORIES_FOLDER):
+        os.remove(TRAJECTORIES_FOLDER+f)
+
 
     if(args.debug):
         logger = utils.initiate_logger()
@@ -144,7 +151,7 @@ if __name__ == "__main__":
         df = pandas.read_csv("fixed_goals.csv", index_col='name')
         # print(df)
         fixed_goals = df.to_numpy()
-        if(len(fixed_goals)<1):
+        if(len(fixed_goals) < 1):
             raise Exception("Inavalid num of goals")
         df = pandas.read_csv("init_pos.csv", index_col='name')
         # print(df)
@@ -425,17 +432,18 @@ if __name__ == "__main__":
                 outfile ="q_traj_"+str(fixed_init_pos[0]) +str(fixed_init_pos[1])+\
                     str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
                 toBeSaved = np.array(qtrajectory,dtype=int)
-                # print('toBeSaved: ', toBeSaved)
+                print('Saving in : ', outfile)
                 
                 if(OUT_FORMAT == "csv"):
 
                     # print('toBeSaved: ', toBeSaved)
                     df = pandas.DataFrame({'x_pos': toBeSaved[:, 0], 'y_pos': toBeSaved[:, 1]})
-                    df["z_pos"] = -10
-                    df.to_csv("qtrajectories/csv/"+outfile+".csv")
+                    # df["z_pos"] = -10
+                    df.index.name = "index"
+                    df.to_csv(TRAJECTORIES_FOLDER+outfile+".csv")
 
                 elif(OUT_FORMAT == "npy"):
-                    np.save("qtrajectories/npy/"+outfile,toBeSaved )
+                    np.save(TRAJECTORIES_FOLDER+outfile,toBeSaved )
                 else:
                     raise Exception("Invalid out format:",OUT_FORMAT)
             utils.play_audio_notification()
@@ -448,6 +456,33 @@ if __name__ == "__main__":
         for fixed_init_pos in fixed_init_pos_list:
             qtable = main(mode = "train",fixed_init_pos=fixed_init_pos)
             main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos)
+    print("Trained and tested")
+
+
+    print("Loading generated trajectories")
+    traj_files_list = os.listdir(TRAJECTORIES_FOLDER)
+    trajs = []
+    for tf in traj_files_list:
+        df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=",",index_col="index")
+        # print(df)
+        traj = df.to_numpy()
+        trajs.append(traj)
+
+    # print(trajs)
+
+    print("Transforming 2D trajs into 3D trajs")
+    trees = utils.build_trees(trajs)
+    trajs3d, zs = utils.avoid_collision(trajs,trees,-5,-50,5,3)
+    for f in os.listdir(TRAJECTORIES_3D_FOLDER):
+        os.remove(TRAJECTORIES_3D_FOLDER+f)
+    for idx,traj in enumerate(trajs3d):
+        traj = np.array(traj)
+        df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],
+        'z_pos': traj[:, 2]})
+        df.index.name = "index"
+        df.to_csv("trajectories_3d/csv/"+traj_files_list[idx])
+
+                
     # else:
     #     qtable = train()
     #     test(qtable)         

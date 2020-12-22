@@ -356,11 +356,12 @@ class newMyAirSimClient(MultirotorClient):
         # trajectory =  np.load(filename)
         if(filename[-3:]=="csv"):
             trajectory = np.array(pandas.read_csv(filename,delimiter=",",usecols=[1,2,3]) )
-            trajectory = utils.myInterpolate(trajectory,n_samples = 100)
+            # trajectory = utils.myInterpolate(trajectory,n_samples = 100)
+            # trajectory = np.array(pandas.read_csv(filename,delimiter=",",index_col="index") )
         elif filename[-3:]=="npy":
             trajectory = np.load(filename)
             
-        print(trajectory)
+        print("Drawing trajectory:",trajectory)
         trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
         self.simPlotLineStrip(trajectory_vecs,
             is_persistent= True, thickness = self.thickness)
@@ -381,7 +382,7 @@ class newMyAirSimClient(MultirotorClient):
     def drawTrajectories(self):
 
         # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"csv")
-        traj_fold = "./qtrajectories/interpolated/"
+        traj_fold = "./trajectories_3d/csv/"
         for tFile in os.listdir(traj_fold):
             self.draw_numpy_trajectory(os.path.join(traj_fold,tFile))
         print('self.kdtrees: ', self.kdtrees)

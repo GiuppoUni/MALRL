@@ -1,4 +1,5 @@
 import json
+import math
 from os import O_EXCL
 import os
 from typing import Tuple
@@ -13,6 +14,7 @@ import numpy as np
 import pickle
 import time
 import winsound
+from sklearn.neighbors import KDTree
 
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
@@ -210,7 +212,7 @@ def position_to_list(position_vector) -> list:
 def list_to_position(l) -> Vector3r:
     x = int(l[0]*20)
     y = int(l[1]*20)
-    z = int(l[2]*20)
+    z = int(l[2])
 
     if len(l) != 3:
         raise Exception("REQUIRED EXACTLY 3 elements")
@@ -275,5 +277,125 @@ def myInterpolate(arr, n_samples=10 ):
             else:
                 raise Exception("Uncommmon points")
             res.append(new_p)
-    
+
     return np.array(res)
+
+
+
+
+
+def myInterpolate2D(trajs, n_samples=10,step_size=20 ):
+    res = []
+    for arr in trajs:
+        res_t = []
+        for i,p in enumerate(arr):
+     
+            if(i+1 >= len(arr)):
+                break
+            x1,y1 = p[0], p[1]
+            x2,y2 = arr[i+1][0], arr[i+1][1] 
+            # if(i==0):
+            #     res_t.append([x1,y1])
+            length = max(abs(x2-x1),abs(y2-y1))
+            samples = math.floor(length/step_size)  
+            print("|||")
+            for i in range(samples):
+                if(x2 > x1):
+                    # Moved on the right
+                    new_p = [x1 + i*step_size , y1]
+                elif (x1 > x2):
+                    # Moved left
+                    new_p = [x1 - i*step_size  , y2]
+                elif (y2 > y1):
+                    # Moved left
+                    new_p = [x1, y1 + i*step_size ]
+                elif (y1 > y2):
+                    # Moved left
+                    new_p = [x2, y1 - i*step_size ]
+                else:
+                    raise Exception("Uncommmon points")
+                print('new_p: ', new_p)
+                res_t.append(new_p)
+            if(length % step_size != 0):
+                # last_step = length - step_size * samples
+                print("last")
+ 
+                if(x2 > x1):
+                    # Moved on the right
+                    new_p = [x2, y1]
+                elif (x1 > x2):
+                    # Moved left
+                    new_p = [x1, y2]
+                elif (y2 > y1):
+                    # Moved left
+                    new_p = [x1, y2]
+                elif (y1 > y2):
+                    # Moved left
+                    new_p = [x2, y1]
+                else:
+                    raise Exception("Uncommmon points")
+                print('new_pL: ', new_p)
+                res_t.append(new_p)
+            
+            
+
+        res.append(res_t)
+    return res
+            
+
+
+def build_trees(trajectories):
+    _trees = []
+    for traj in trajectories:
+        _trees.append(KDTree(np.array(traj)))
+    return _trees
+
+
+
+def avoid_collision(trajectories,trees,max_height,min_height,
+    sep_h,min_safe_points,radius=30,simpleMode=True):
+    
+    Tmax = max([len(traj) for traj in trajectories])
+    drones = range(len(trajectories))
+    points = {}
+    zs=[[] for d in drones] 
+    trajs_3d =[[] for d in drones] 
+    colliding_trajs = dict()
+    for d in drones:
+        for t in range(len(trajectories[d])):
+            point = tuple(trajectories[d][t])
+            n_safe_points = 0
+            res = 0
+            for idx,_tree in enumerate(trees): 
+                if(idx == d):
+                    # E' quella attuale
+                    continue
+                res = _tree.query_radius( [point],r=radius,count_only = True )
+                if res > 0:
+                    print("Collisions with","Trajectory_"+str(idx))
+                    print("\tcomputed from trajectory ",d,", point", point)
+                    if(d not in colliding_trajs):
+                        colliding_trajs[d]=[idx]
+                    elif idx not in colliding_trajs[d]:
+                        colliding_trajs[d].append(idx)
+                  
+                        
+            if not simpleMode and res == 0:
+                # TODO count and cooldown
+                n_safe_points +=1
+            if(n_safe_points >= min_safe_points):
+                colliding_trajs[d] = []
+
+            print("colliding_trajs",colliding_trajs)
+            if(d not in colliding_trajs or colliding_trajs[d]==[]):
+                new_z = max_height
+            else:
+                priorities = [d]+colliding_trajs[d]
+                priorities.sort()
+                offset = priorities.index(d)
+                new_z = max_height - offset * sep_h 
+                if new_z < min_height:
+                    raise Exception("Out of height bounds")
+            trajs_3d[d].append(list(point)+[new_z])
+            zs[d].append(new_z)
+    return trajs_3d,zs

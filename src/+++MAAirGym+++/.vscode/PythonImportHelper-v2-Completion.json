@@ -911,6 +911,22 @@
         "documentation": {}
     },
     {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
         "label": "MazeView2DCont",
         "importPath": "gym_maze.envs.maze_view_2d_cont",
         "description": "gym_maze.envs.maze_view_2d_cont",
@@ -1167,67 +1183,11 @@
         "documentation": {}
     },
     {
-        "label": "MultiMazeEnv",
-        "importPath": "gym_maze.envs.multi_maze_env",
-        "description": "gym_maze.envs.multi_maze_env",
+        "label": "CollectEnv",
+        "importPath": "gym_airsim.envs.collectEnv",
+        "description": "gym_airsim.envs.collectEnv",
         "isExtraImport": true,
-        "detail": "gym_maze.envs.multi_maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MultiMazeEnv",
-        "importPath": "gym_maze.envs.multi_maze_env",
-        "description": "gym_maze.envs.multi_maze_env",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.multi_maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
+        "detail": "gym_airsim.envs.collectEnv",
         "documentation": {}
     },
     {
@@ -1263,35 +1223,12 @@
         "documentation": {}
     },
     {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
+        "label": "gym_airsim",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
+        "importPath": "gym_airsim",
+        "description": "gym_airsim",
+        "detail": "gym_airsim",
         "documentation": {}
     },
     {
@@ -1336,12 +1273,83 @@
         "documentation": {}
     },
     {
-        "label": "gym_airsim",
-        "kind": 6,
+        "label": "MultiMazeEnv",
+        "importPath": "gym_maze.envs.multi_maze_env",
+        "description": "gym_maze.envs.multi_maze_env",
         "isExtraImport": true,
-        "importPath": "gym_airsim",
-        "description": "gym_airsim",
-        "detail": "gym_airsim",
+        "detail": "gym_maze.envs.multi_maze_env",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "MazeEnvCont",
+        "importPath": "gym_maze.envs.maze_env_cont",
+        "description": "gym_maze.envs.maze_env_cont",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env_cont",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
         "documentation": {}
     },
     {
@@ -1634,6 +1642,15 @@
         "importPath": "gc",
         "description": "gc",
         "detail": "gc",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
         "documentation": {}
     },
     {
@@ -2900,6 +2917,33 @@
         "documentation": {}
     },
     {
+        "label": "traj_files_list",
+        "kind": 5,
+        "importPath": "2d_to_airsim_simulate",
+        "description": "2d_to_airsim_simulate",
+        "peekOfCode": "traj_files_list = os.listdir(TRAJECTORIES_FOLDER)\ntrajs = []\nfor tf in traj_files_list:\n        df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=\",\",index_col=\"index\")\n        # print(df)\n        traj = df.to_numpy()\n        trajs.append(traj)\nprint(trajs)\ntrees = utils.build_trees(trajs)\ntrajs3d, zs = utils.avoid_collision(trajs,trees,300,0,20,3)",
+        "detail": "2d_to_airsim_simulate",
+        "documentation": {}
+    },
+    {
+        "label": "trajs",
+        "kind": 5,
+        "importPath": "2d_to_airsim_simulate",
+        "description": "2d_to_airsim_simulate",
+        "peekOfCode": "trajs = []\nfor tf in traj_files_list:\n        df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=\",\",index_col=\"index\")\n        # print(df)\n        traj = df.to_numpy()\n        trajs.append(traj)\nprint(trajs)\ntrees = utils.build_trees(trajs)\ntrajs3d, zs = utils.avoid_collision(trajs,trees,300,0,20,3)\nfor idx,traj in enumerate(trajs3d):",
+        "detail": "2d_to_airsim_simulate",
+        "documentation": {}
+    },
+    {
+        "label": "trees",
+        "kind": 5,
+        "importPath": "2d_to_airsim_simulate",
+        "description": "2d_to_airsim_simulate",
+        "peekOfCode": "trees = utils.build_trees(trajs)\ntrajs3d, zs = utils.avoid_collision(trajs,trees,300,0,20,3)\nfor idx,traj in enumerate(trajs3d):\n        traj = np.array(traj)\n        df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],\n        'z_pos': traj[:, 2]})\n        df.index.name = \"index\"\n        df.to_csv(\"trajectories_3d/csv/\"+traj_files_list[idx])",
+        "detail": "2d_to_airsim_simulate",
+        "documentation": {}
+    },
+    {
         "label": "custom_random",
         "kind": 2,
         "importPath": "airsim_avoid_traj",
@@ -3228,7 +3272,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,",
+        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3237,7 +3281,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3246,7 +3290,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3255,7 +3299,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')",
+        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3264,7 +3308,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,",
+        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3273,7 +3317,25 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "OUT_FORMAT = \"csv\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "peekOfCode": "OUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')",
+        "detail": "qlearn_main",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_FOLDER",
+        "kind": 5,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,",
+        "detail": "qlearn_main",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_3D_FOLDER",
+        "kind": 5,
+        "importPath": "qlearn_main",
+        "description": "qlearn_main",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3570,7 +3632,7 @@
         "kind": 2,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,max_height,min_height,sep_h,radius=30):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    trajs_3d =[[] for d in drones] ",
+        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3579,7 +3641,7 @@
         "kind": 2,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "def avoid_collision(trajectories,max_height,min_height,sep_h,radius=30):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    trajs_3d =[[] for d in drones] \n    colliding_trajs = []\n    for d in drones:\n        for t in range(len(trajectories[d])):\n            point = tuple(trajectories[d][t])\n            for idx,_tree in enumerate(TREES): ",
+        "peekOfCode": "def avoid_collision(trajectories,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    zs=[[] for d in drones] \n    trajs_3d =[[] for d in drones] \n    colliding_trajs = dict()\n    for d in drones:\n        for t in range(len(trajectories[d])):",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3615,7 +3677,25 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "SEED = 668\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = 5\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=100\n    xs = []\n    ys = []",
+        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):",
+        "detail": "simple_algo",
+        "documentation": {}
+    },
+    {
+        "label": "N_POINTS",
+        "kind": 5,
+        "importPath": "simple_algo",
+        "description": "simple_algo",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []",
+        "detail": "simple_algo",
+        "documentation": {}
+    },
+    {
+        "label": "STEP_SIZE",
+        "kind": 5,
+        "importPath": "simple_algo",
+        "description": "simple_algo",
+        "peekOfCode": "STEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3624,7 +3704,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "n_drones = 5\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=100\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))",
+        "peekOfCode": "n_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3633,7 +3713,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "step = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=100\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))",
+        "peekOfCode": "step = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3642,7 +3722,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "trajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=100\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))\n        else:",
+        "peekOfCode": "trajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))\n        else:",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3651,7 +3731,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "trajs = myInterpolate2D(trajs)\nfig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d = avoid_collision(trajs,10,0,2,50)\nfig = plt.figure()\nax = plt.axes(projection='3d')",
+        "peekOfCode": "trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)\nfig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3660,7 +3740,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "fig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d = avoid_collision(trajs,10,0,2,50)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):",
+        "peekOfCode": "fig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3669,16 +3749,16 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "TREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d = avoid_collision(trajs,10,0,2,50)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')",
+        "peekOfCode": "TREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')",
         "detail": "simple_algo",
         "documentation": {}
     },
     {
-        "label": "trajs_3d",
+        "label": "trajs_3d,zs",
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "trajs_3d = avoid_collision(trajs,10,0,2,50)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nplt.show()",
+        "peekOfCode": "trajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3687,7 +3767,7 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "fig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nplt.show()",
+        "peekOfCode": "fig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3696,7 +3776,16 @@
         "kind": 5,
         "importPath": "simple_algo",
         "description": "simple_algo",
-        "peekOfCode": "ax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nplt.show()",
+        "peekOfCode": "ax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):\n    z_t = [ [t,z] for t,z in enumerate(zs[i])]",
+        "detail": "simple_algo",
+        "documentation": {}
+    },
+    {
+        "label": "fig",
+        "kind": 5,
+        "importPath": "simple_algo",
+        "description": "simple_algo",
+        "peekOfCode": "fig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):\n    z_t = [ [t,z] for t,z in enumerate(zs[i])]\n    print(z_t)\n    plt.plot(*zip(*z_t),\"-o\")\nplt.show()",
         "detail": "simple_algo",
         "documentation": {}
     },
@@ -3867,7 +3956,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2]*20)\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
+        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
         "detail": "utils",
         "documentation": {}
     },
@@ -3876,7 +3965,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2]*20)\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]\n    _offset_x = _v[\"X\"] ",
+        "peekOfCode": "def list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]\n    _offset_x = _v[\"X\"] ",
         "detail": "utils",
         "documentation": {}
     },
@@ -3904,6 +3993,33 @@
         "importPath": "utils",
         "description": "utils",
         "peekOfCode": "def myInterpolate(arr, n_samples=10 ):\n    res = []\n    for i,p in enumerate(arr):\n        if(i+1 >= len(arr)):\n            break\n        x1,y1,z1 = p[0], p[1], p[2]\n        x2,y2,z2 = arr[i+1][0], arr[i+1][1], arr[i+1][2] \n        step_length = max(abs(x2-x1),abs(y2-y1)) / n_samples\n        for i in range(n_samples):\n            if(x2 > x1):",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "myInterpolate2D",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    res = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break\n            x1,y1 = p[0], p[1]\n            x2,y2 = arr[i+1][0], arr[i+1][1] \n            # if(i==0):",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "build_trees",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,trees,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "avoid_collision",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def avoid_collision(trajectories,trees,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    zs=[[] for d in drones] \n    trajs_3d =[[] for d in drones] \n    colliding_trajs = dict()\n    for d in drones:\n        for t in range(len(trajectories[d])):",
         "detail": "utils",
         "documentation": {}
     },

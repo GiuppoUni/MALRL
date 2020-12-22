@@ -8,6 +8,7 @@ import random
 import scipy.interpolate
 import utils
 from sklearn.neighbors import KDTree
+from sklearn.neighbors import KDTree
 
 
 
@@ -105,16 +106,20 @@ def build_trees(trajectories):
     return _trees
 
 
-def avoid_collision(trajectories,max_height,min_height,sep_h,radius=30):
+def avoid_collision(trajectories,max_height,min_height,
+    sep_h,min_safe_points,radius=30,simpleMode=True):
+    
     Tmax = max([len(traj) for traj in trajectories])
     drones = range(len(trajectories))
     points = {}
+    zs=[[] for d in drones] 
     trajs_3d =[[] for d in drones] 
-    colliding_trajs = []
+    colliding_trajs = dict()
     for d in drones:
         for t in range(len(trajectories[d])):
             point = tuple(trajectories[d][t])
-            
+            n_safe_points = 0
+            res = 0
             for idx,_tree in enumerate(TREES): 
                 if(idx == d):
                     # E' quella attuale
@@ -124,18 +129,30 @@ def avoid_collision(trajectories,max_height,min_height,sep_h,radius=30):
                     print("Collisions with","Trajectory_"+str(idx))
                     print("\tcomputed from trajectory ",d,", point", point)
                     if(d not in colliding_trajs):
-                        colliding_trajs.append(d)
+                        colliding_trajs[d]=[idx]
+                    elif idx not in colliding_trajs[d]:
+                        colliding_trajs[d].append(idx)
+                  
+                        
+            if not simpleMode and res == 0:
+                # TODO count and cooldown
+                n_safe_points +=1
+            if(n_safe_points >= min_safe_points):
+                colliding_trajs[d] = []
 
-            if(d not in colliding_trajs):
+            print("colliding_trajs",colliding_trajs)
+            if(d not in colliding_trajs or colliding_trajs[d]==[]):
                 new_z = max_height
             else:
-                offset = colliding_trajs.index(d)
-                new_z = max_height - offset * sep_h
+                priorities = [d]+colliding_trajs[d]
+                priorities.sort()
+                offset = priorities.index(d)
+                new_z = max_height - offset * sep_h 
                 if new_z < min_height:
                     raise Exception("Out of height bounds")
             trajs_3d[d].append(list(point)+[new_z])
-
-    return trajs_3d
+            zs[d].append(new_z)
+    return trajs_3d,zs
 
     #         if point not in points:
     #             new_z = max_height
@@ -187,14 +204,18 @@ trajectories = [d1,d2]
 
 # plt.show()
 SEED = 668
+N_DRONES=5
+N_POINTS = 100
+STEP_SIZE = 20
+
 random.seed(SEED)
 np.random.seed(seed=SEED)
 
-n_drones = 5
+n_drones = N_DRONES
 step = 120
 trajs = [[] for i in range(n_drones)]
 for i in range(n_drones):
-    n_points=100
+    n_points=N_POINTS
     xs = []
     ys = []
     for j in range(n_points):
@@ -225,7 +246,7 @@ print('trajs: ', trajs)
 plt.title("not interpolated" )
 # plt.show()
 
-trajs = myInterpolate2D(trajs)
+trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)
 fig = plt.figure()
 for i in range(n_drones):
     plt.plot(*zip(*trajs[i]),"-o")
@@ -234,7 +255,8 @@ plt.title("interpolated" )
 TREES = build_trees(trajs)
 
 # trajs_3d = allocate_height(trajs,10,0,2)
-trajs_3d = avoid_collision(trajs,10,0,2,50)
+trajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,
+    min_safe_points=3,radius = 20,simpleMode=False)
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
@@ -245,4 +267,15 @@ for i in range(n_drones):
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
+
+
+fig = plt.figure()
+plt.title("height" )
+
+for i in range(n_drones):
+    z_t = [ [t,z] for t,z in enumerate(zs[i])]
+    print(z_t)
+    plt.plot(*zip(*z_t),"-o")
+
+
 plt.show()
