@@ -1,3 +1,4 @@
+import itertools
 import os
 import numpy as np
 import sys
@@ -10,7 +11,6 @@ import gym_maze
 import argparse
 import datetime
 from gym_airsim.envs.collectEnv import CollectEnv
-from trajectoryTrackerClient import TrajectoryTrackerClient
 
 import gym_airsim.envs
 import gym_airsim
@@ -19,13 +19,16 @@ import utils
 import time
 from gym_maze.envs.maze_env import MazeEnv
 from gym_maze.envs.maze_env_cont import MazeEnvCont
+from trajectoryTrackerClient import TrajectoryTrackerClient
 
 import signal
 import sys
 import pandas
 import shutil
+import queue
+import trajs_utils 
 
-episode_cooldown = 3
+
 
 ACTION_TO_IDX = {"LEFT":0, "FRONT":1, "RIGHT":2,"BACK" : 3}
 IDX_TO_ACTION =  {0:"LEFT",1:"FRONT",2:"RIGHT",3:"BACK"}
@@ -50,9 +53,6 @@ if __name__ == "__main__":
     parser.add_argument('--n-goals', type=int, default=1,
                         help='episodes (default: %(default)s)')
 
-    parser.add_argument('--actions-timeout', type=int, default=100,
-                        help='episodes (default: %(default)s)')
-
     parser.add_argument("--n-trajs",type=int, default=5,
                          help='num trajs to track (default: %(default)s)')
 
@@ -60,12 +60,8 @@ if __name__ == "__main__":
     parser.add_argument('--n-agents', type=int, default=1,
                         help='num agents (default: %(default)s)')
 
-
-    
-
-
-    # parser.add_argument('--ep-cooldown', type=int, default=1,
-    #                     help='episode cooldown time sleeping (default: %(default)s)')
+    parser.add_argument('--n-steps', type=int, default=0,
+                        help='enforce n-steps qlearning (default: %(default)s)')
 
     parser.add_argument( '--debug',action='store_true',  default=False,
         help='Log into file (default: %(default)s)' )
@@ -90,6 +86,9 @@ if __name__ == "__main__":
 
     parser.add_argument('--slow',action='store_true',  default=False,
         help='(default: %(default)s)')
+    
+    parser.add_argument('--avoid-traj',action='store_true',  default=False,
+        help='reward on avoiding previous trajs path (default: %(default)s)')
 
     parser.add_argument('--load-mode',action='store_true',  default=False,
         help='(default: %(default)s)')
@@ -99,6 +98,9 @@ if __name__ == "__main__":
 
     parser.add_argument('--col-traj', action='store_true', default=False,
     help='Track trajectories into file (default: %(default)s)')
+
+    parser.add_argument('--log-reward', action='store_true', default=False,
+    help='log reward file in out (default: %(default)s)')
 
     parser.add_argument('--load-qtable', type=str, 
         help='qtable file (default: %(default)s)')
@@ -112,6 +114,7 @@ if __name__ == "__main__":
 
     parser.add_argument('--load-init-pos', type=str, 
         help='maze file (default: %(default)s)')
+
 
 
     args = parser.parse_args()
@@ -157,8 +160,12 @@ if __name__ == "__main__":
         # print(df)
         fixed_init_pos_list = df.to_numpy()
         # print('fixed_goals: ', fixed_goals)
+    
+    
 
-    def main(mode, fixed_init_pos=None, trainedQtable=None):
+    def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):
+        if(mode in ["train","test"]): pass
+        else: raise Exception("Invalid mode")
 
         if(args.env2D):
             if(args.load_maze):
@@ -172,13 +179,16 @@ if __name__ == "__main__":
                                             enable_render=args.enable_render if(mode=="train") else True,
                                             do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,
                                             verbose = args.v,n_trajs=args.n_trajs,random_pos = args.random_pos,seed_num = SEED,
-                                            fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos)
+                                            fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos,
+                                            visited_cells = visited_cells)
 
         else:
             # TODO replace for variables
             n_actions = 4 if args.can_go_back else 3 
             env = CollectEnv(trajColFlag = args.col_traj,n_actions=n_actions,random_pos = args.random_pos)
             trackerClient = TrajectoryTrackerClient()
+
+        
 
         '''
         Defining the environment related constants
@@ -300,7 +310,7 @@ if __name__ == "__main__":
             print('learning_rate: ', learning_rate)
             explore_rate = get_explore_rate(0)
             print('explore_rate: ', explore_rate)
-            discount_factor = 1
+            discount_factor = 0.99
 
             num_streaks = 0
 
@@ -323,22 +333,27 @@ if __name__ == "__main__":
             else:
                 raise Exception("Invalid Mode")
             
+            if(args.log_reward):
+                logOutfile ="logs/log-"+str(fixed_init_pos[0]) +str(fixed_init_pos[1])+\
+                                    "-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt"
+                rewLogFile=open(logOutfile, 'w')
             
+            qtrajectory = []
             for episode in range(n_episodes):
 
                 # Reset the environment
                 obv = env.reset()
                 env.seed(episode)
                 # the initial state
-                state_0 = state_to_bucket(obv)
+                old_state = state_to_bucket(obv)
                 total_reward = 0
 
                 qtrajectory = []
-                
+                last_s_a_queue = []
                 for t in range(MAX_T):
                     
                     # Select an action
-                    action = select_action(state_0, explore_rate)
+                    action = select_action(old_state, explore_rate)
 
                     # execute the action
                     obv, reward, done, info = env.step(action)
@@ -351,17 +366,24 @@ if __name__ == "__main__":
                     # Observe the result
                     state = state_to_bucket(obv)
                     total_reward += reward
+                    
+                    # Update queue
+                
 
                     # Update the Q based on the result
                     best_q = np.amax(q_table[state])
-                    # Regular Q-Learning
-                    # q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
-                    # Q-Routing
-                    q_table[state_0 + (action,)] += learning_rate * (reward + discount_factor * (best_q) - q_table[state_0 + (action,)])
+                    
+                    
+                    # Q-Routing UPDATE
+                    q_table[old_state + (action,)] += learning_rate * (reward +
+                        discount_factor * (best_q) - q_table[old_state + (action,)])
                     
                     # Setting up for the next iteration
-                    state_0 = state
-
+                    old_state = state
+                    if(args.n_steps > 0 ):
+                        if(len(last_s_a_queue)>= args.n_steps):
+                            last_s_a_queue.pop(0)
+                        last_s_a_queue += [ [state,action] ]
                     
 
                     # Print data
@@ -401,6 +423,18 @@ if __name__ == "__main__":
                         # print("Episode %d finished after %f time steps with total reward = %f (streak %d)."
                         #     % (episode, t, total_reward, num_streaks))
                         print("%d,%f,%f" % (episode, t, total_reward))
+                        if(args.log_reward):  rewLogFile.write("%d,%f,%f\n" % (episode, t, total_reward))
+ 
+                        # NOTE: Q-Routing N-STEPS 
+                        for idx in range(len(last_s_a_queue)):
+                            if(idx+1==len(last_s_a_queue)): break
+                            cur_s, cur_a= last_s_a_queue[idx][0], last_s_a_queue[idx][1]
+                            next_s,next_a = last_s_a_queue[idx+1][0], last_s_a_queue[idx+1][1]
+                            td_best_q = q_table[next_s + (next_a,) ]
+
+                            q_table[cur_s + (next_a,)] += learning_rate * (reward + 
+                                discount_factor * (td_best_q) - q_table[ next_s + (next_a,)])
+
 
                         if t <= SOLVED_T:
                             num_streaks += 1
@@ -423,14 +457,18 @@ if __name__ == "__main__":
                 explore_rate = get_explore_rate(episode)
                 learning_rate = get_learning_rate(episode)
                 
+            # EPISODES ENDED
+            if(args.log_reward): rewLogFile.close()
+            
             if(not args.load_qtable):
                 print("ENDING OF TRAIN")
                 np.save("results/q_table"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')),q_table )
                 print("Table saved")
-            
+
             if(mode =="test"):
+                utils.play_audio_notification()
                 outfile ="q_traj-"+str(fixed_init_pos[0]) +str(fixed_init_pos[1])+\
-                    +"-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
+                    "-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
                 toBeSaved = np.array(qtrajectory,dtype=int)
                 print('Saving in : ', outfile)
                 
@@ -446,16 +484,29 @@ if __name__ == "__main__":
                     np.save(TRAJECTORIES_FOLDER+outfile,toBeSaved )
                 else:
                     raise Exception("Invalid out format:",OUT_FORMAT)
-            utils.play_audio_notification()
+            # utils.play_audio_notification()
 
-            return q_table
+            return q_table,qtrajectory
 
-
+        else:
+            raise Exception("args.n_agents "+str(args.n_agents)+" not supported")
 
     if(fixed_init_pos_list is not None):
+        visited_cells = []
+        trajs = []
         for fixed_init_pos in fixed_init_pos_list:
-            qtable = main(mode = "train",fixed_init_pos=fixed_init_pos)
-            main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos)
+            qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos)
+            _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,visited_cells = visited_cells)
+            
+            trajs.append(traj)
+            
+            if(args.avoid_traj):
+                visited_cells += list(num for num,_ in itertools.groupby(traj)) 
+                visited_cells = list(num for num,_ in itertools.groupby(visited_cells))
+            # Plot trajectories obtained till now in 2D
+            trajs_utils.plot_trajs(trajs)
+            trajs_utils.height_algo(trajs)
+
     print("Trained and tested")
 
 

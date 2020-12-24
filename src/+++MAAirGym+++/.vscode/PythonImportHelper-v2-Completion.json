@@ -263,6 +263,14 @@
         "documentation": {}
     },
     {
+        "label": "MultirotorClient",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
         "label": "Proj",
         "importPath": "pyproj",
         "description": "pyproj",
@@ -433,6 +441,14 @@
     },
     {
         "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
         "importPath": "PIL",
         "description": "PIL",
         "isExtraImport": true,
@@ -748,6 +764,14 @@
         "documentation": {}
     },
     {
+        "label": "Timeout",
+        "importPath": "eventlet",
+        "description": "eventlet",
+        "isExtraImport": true,
+        "detail": "eventlet",
+        "documentation": {}
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -852,14 +876,6 @@
         "importPath": "itertools",
         "description": "itertools",
         "detail": "itertools",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
         "documentation": {}
     },
     {
@@ -1068,6 +1084,22 @@
     },
     {
         "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "ImageRequest",
         "importPath": "airsim.types",
         "description": "airsim.types",
         "isExtraImport": true,
@@ -1475,6 +1507,30 @@
         "documentation": {}
     },
     {
+        "label": "array",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "arange",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "uint8",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
         "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
@@ -1518,11 +1574,46 @@
         "documentation": {}
     },
     {
+        "label": "queue",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "queue",
+        "description": "queue",
+        "detail": "queue",
+        "documentation": {}
+    },
+    {
+        "label": "trajs_utils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
         "label": "AirSimGeoClient",
         "importPath": "airsimgeo",
         "description": "airsimgeo",
         "isExtraImport": true,
         "detail": "airsimgeo",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "OrderedDict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
         "documentation": {}
     },
     {
@@ -2283,7 +2374,7 @@
         "kind": 6,
         "importPath": "gym_maze.envs.maze_env",
         "description": "gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, \n        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None,\n        fixed_goals = None, fixed_init_pos = None):",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, \n        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None,\n        fixed_goals = None, fixed_init_pos = None,visited_cells = []):",
         "detail": "gym_maze.envs.maze_env",
         "documentation": {}
     },
@@ -3017,15 +3108,6 @@
         "documentation": {}
     },
     {
-        "label": "episode_cooldown",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "episode_cooldown = 3\nACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
         "label": "ACTION_TO_IDX",
         "kind": 5,
         "importPath": "qlearn_main",
@@ -3075,7 +3157,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,",
+        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3084,7 +3166,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,\n                         help='num trajs to track (default: %(default)s)')",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3093,7 +3175,7 @@
         "kind": 5,
         "importPath": "qlearn_main",
         "description": "qlearn_main",
-        "peekOfCode": "SEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--actions-timeout', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,",
+        "peekOfCode": "SEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,\n                         help='num trajs to track (default: %(default)s)')\n    parser.add_argument('--n-agents', type=int, default=1,",
         "detail": "qlearn_main",
         "documentation": {}
     },
@@ -3359,183 +3441,264 @@
         "documentation": {}
     },
     {
+        "label": "TrajectoryTrackerClient",
+        "kind": 6,
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "peekOfCode": "class TrajectoryTrackerClient(MultirotorClient):\n    def __init__(self):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        self.trajectory = []\n        self.episode = 0\n        self.isTracking = False\n        self.folder_timestamp =str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))\n        self.timestep = 0.1",
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "generate_flight_id",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def generate_flight_id():\n    # Generate a unique ID for a flight.\n    id = uuid.uuid1()\n    flight_id = id.fields[0]\n    return flight_id\ndef flights_points( data, file_name):\n    # 'data' is an ordered list represented in this way --> [ [flights_IDs], [number_waypoints_sequence], \n    #    [crossingg_waypoints_times], [flights_levels], [Latitudes], [Longitutes] ].\n    # This method take 'data' as input and put it into a .csv file (by creating it) according to the Eurocontrol standard template.\n    header = True",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "flights_points",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def flights_points( data, file_name):\n    # 'data' is an ordered list represented in this way --> [ [flights_IDs], [number_waypoints_sequence], \n    #    [crossingg_waypoints_times], [flights_levels], [Latitudes], [Longitutes] ].\n    # This method take 'data' as input and put it into a .csv file (by creating it) according to the Eurocontrol standard template.\n    header = True\n    d = {}\n    fields = len(COLUMNS_NAMES)\n    for flight in data:\n        for field in range(fields):\n            d[COLUMNS_NAMES[field]] = flight[field]",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "data_to_csv",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def data_to_csv(data,filename,header=True):\n   d={}\n   fields = len(COLUMNS_NAMES)\n   for row in data:\n        for field in range(fields):\n            if COLUMNS_NAMES[field] not in d:\n               d[COLUMNS_NAMES[field]] = [row[field]]\n            else:\n               d[COLUMNS_NAMES[field]].append( row[field])\n   df = pd.DataFrame.from_dict(d)",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "create_eurocontrol_file",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def create_eurocontrol_file(trajs,dimensions,filename,header = True):\n   if(dimensions <2 or dimensions >3): raise Exception(\"Only 2D or 3D\")\n   d = {}\n   offset=3\n   for traj in trajs:\n      id = generate_flight_id()\n      for i in range(len(traj)):\n         # Time over is N/A right now\n         row = [id,i,None]\n         for field in range(0,len(fields)):",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "extract_waypoints_from_flights_points_csv",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def extract_waypoints_from_flights_points_csv( file_name):\n    # Read a .csv file (according to the Eurocontrol standard template) and return a dictionary in which each key is a flight ID and\n    # the corresponding values are the Z,Y,X coordinates of the crossed waypoints for that considered flight. \n    n_names = len(COLUMNS_NAMES)\n    file = pd.read_csv(file_name, header=0)\n    flights_and_coords = [[] for i in range(4)] # 4 = flightID + Z + Y + X\n    flights_and_coords[0] = file[COLUMNS_NAMES[0]].values\n    flights_and_coords[1] = file[COLUMNS_NAMES[3]].values\n    flights_and_coords[2] = file[COLUMNS_NAMES[4]].values\n    flights_and_coords[3] = file[COLUMNS_NAMES[5]].values",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "COLUMNS_NAMES",
+        "kind": 5,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "COLUMNS_NAMES = ['ECTRL ID',\n                'Sequence Number',\n                'Time Over',\n                'Flight Level', # Actually is Z coordinate\n                'Latitude',     # Actually is Y coordinate\n                'Longitude']    # Actually is X coordinate\nFILE_DIR = \"eurocontrol/\"\ndef generate_flight_id():\n    # Generate a unique ID for a flight.\n    id = uuid.uuid1()",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "FILE_DIR",
+        "kind": 5,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "FILE_DIR = \"eurocontrol/\"\ndef generate_flight_id():\n    # Generate a unique ID for a flight.\n    id = uuid.uuid1()\n    flight_id = id.fields[0]\n    return flight_id\ndef flights_points( data, file_name):\n    # 'data' is an ordered list represented in this way --> [ [flights_IDs], [number_waypoints_sequence], \n    #    [crossingg_waypoints_times], [flights_levels], [Latitudes], [Longitutes] ].\n    # This method take 'data' as input and put it into a .csv file (by creating it) according to the Eurocontrol standard template.",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
         "label": "myInterpolate2D",
         "kind": 2,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "def myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    res = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break\n            x1,y1 = p[0], p[1]\n            x2,y2 = arr[i+1][0], arr[i+1][1] \n            # if(i==0):",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break\n            x1,y1 = p[0], p[1]\n            x2,y2 = arr[i+1][0], arr[i+1][1] \n            # if(i==0):",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
         "label": "allocate_height",
         "kind": 2,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
         "peekOfCode": "def allocate_height(trajectories,max_height,min_height,sep_h):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    trajs_3d =[[] for d in drones] \n    for d in drones:\n        for t in range(len(trajectories[d])):\n            point = tuple(trajectories[d][t])\n            if point not in points:\n                new_z = max_height",
-        "detail": "simple_algo",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
         "label": "build_trees",
         "kind": 2,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef check_trees_collision(fId,point,trees,radius):\n    n_collisions = 0\n    for idx,_tree in enumerate(trees): \n        if(idx == fId):\n            # E' quella attuale",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "avoid_collision",
+        "label": "check_trees_collision",
         "kind": 2,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "def avoid_collision(trajectories,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    zs=[[] for d in drones] \n    trajs_3d =[[] for d in drones] \n    colliding_trajs = dict()\n    for d in drones:\n        for t in range(len(trajectories[d])):",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def check_trees_collision(fId,point,trees,radius):\n    n_collisions = 0\n    for idx,_tree in enumerate(trees): \n        if(idx == fId):\n            # E' quella attuale\n            continue\n        n_collisions = _tree.query_radius( [point],r=radius,count_only = True )\n        if(n_collisions > 0):\n            return n_collisions\n    return n_collisions",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "d1",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "d1 = [[0,0],[0,1],[0,2],[0,3],[0,4]]\nd2 = [[1,0],[2,0],[2,1],[2,2],[2,3],[1,3],[0,3],[0,4]]\ntrajectories = [d1,d2]\n# # plt.scatter([p[0] for p in d1 ], [p[1] for p in d1 ])\n# plt.plot(*zip(*d1),\"-o\")\n# plt.plot([p[0] for p in d2 ], [p[1] for p in d2 ],\"-o\")\n# plt.show()\n# fig = plt.figure()\n# ax = plt.axes(projection='3d')\n# d1_3d = [[p[0],p[1],10] for p in d1]",
-        "detail": "simple_algo",
+        "label": "complex_avoid_collision_in_busy_space",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def complex_avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    print(\"Started col avoidance in busy space...\")\n    # First remove the points not interesting by height constraints\n    assigned_points = []\n    for traj in assigned_trajs:\n        for p in traj:\n            if min_height<=p[2]<=max_height : assigned_points.append(p)\n    zs = [[] for t in range(len(trajs_2d))]\n    trajs_3d =   []",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "d2",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "d2 = [[1,0],[2,0],[2,1],[2,2],[2,3],[1,3],[0,3],[0,4]]\ntrajectories = [d1,d2]\n# # plt.scatter([p[0] for p in d1 ], [p[1] for p in d1 ])\n# plt.plot(*zip(*d1),\"-o\")\n# plt.plot([p[0] for p in d2 ], [p[1] for p in d2 ],\"-o\")\n# plt.show()\n# fig = plt.figure()\n# ax = plt.axes(projection='3d')\n# d1_3d = [[p[0],p[1],10] for p in d1]\n# d2_3d = [[p[0],p[1],10] for p in d2]",
-        "detail": "simple_algo",
+        "label": "avoid_collision_in_busy_space",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    '''\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 2d: [x,y]  for i-th flight\n    - read only assigned_trajs are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 3d: [x,y,z]  for i-th flight (they are assumed to be generated compatible with this algo)\n    - trees are built using build_trees function, they are k-d trees \n    - max_height,min_height are bounds for allocation, it starts from max and allocates towards min\n    - sep_h is the amount of height separating two trajectories with same x,y",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "trajectories",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "trajectories = [d1,d2]\n# # plt.scatter([p[0] for p in d1 ], [p[1] for p in d1 ])\n# plt.plot(*zip(*d1),\"-o\")\n# plt.plot([p[0] for p in d2 ], [p[1] for p in d2 ],\"-o\")\n# plt.show()\n# fig = plt.figure()\n# ax = plt.axes(projection='3d')\n# d1_3d = [[p[0],p[1],10] for p in d1]\n# d2_3d = [[p[0],p[1],10] for p in d2]\n# ax.plot(*zip(*d1_3d))",
-        "detail": "simple_algo",
+        "label": "avoid_collision_in_empty_space",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def avoid_collision_in_empty_space(trajectories,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    \"\"\"\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n    - pij is a point j-th in 2d: [x,y] or 3d: [x,y,z] for i-th flight\n    - trees are built using build_trees are k-d trees \n    - max_height,min_height are bounds for allocation, it starts from max and allocates towards min\n    - sep_h is the amount of height separating two trajectories with same x,y\n    - min_safe_points is used in simpleMode False, it counts amount of contiguos point out of collision space\n    - radius for collision check using trees",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "random_trajs",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def random_trajs():\n    n_drones = N_DRONES\n    step = 120\n    trajs = [[] for i in range(n_drones)]\n    for i in range(n_drones):\n        n_points=N_POINTS\n        xs = []\n        ys = []\n        for j in range(n_points):\n            if xs == []:",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "plot_trajs",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def plot_trajs(trajs):\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n        # for j in range(len(trajs[i])):\n        #     if(j+1>=len(trajs[i])): break\n        #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )\n    print('trajs: ', trajs)\n    # plt.grid()\n    plt.title(\"not interpolated\" )\n    plt.show()",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "interpolate_trajs",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def interpolate_trajs(trajs):\n    trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)\n    fig = plt.figure()\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n    plt.title(\"interpolated\" )\n    plt.show()\n    return trajs\ndef height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "height_algo",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)\n    trajs_3d,zs = avoid_collision_in_empty_space(trajs,trees,300,0,sep_h=20,\n        min_safe_points=3,radius = 20,simpleMode=False)\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs_3d[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_action",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def get_action(s0,s1):\n    x0,y0 = s0[0],s0[1]\n    x1,y1 = s1[0],s1[1]\n    if(x1 > x0): return AINDEX[\"E\"]\n    elif(x0 > x1): return AINDEX[\"W\"]\n    elif(y1 > y0): return AINDEX[\"N\"]\n    elif(y0 > y1): return AINDEX[\"S\"]\n    # else: raise Exception(\"NOT MOVED NOT ACCEPTABLE\")\n    else: return -1\ndef are_opposite_actions(a1,a2):",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "are_opposite_actions",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def are_opposite_actions(a1,a2):\n    return a1!=a2 \\\n        and ( (ACTION[a1]==\"N\" and ACTION[a2] ==\"S\") or  \n            (ACTION[a1]==\"S\" and ACTION[a2] ==\"N\") or \n            (ACTION[a1]==\"E\" and ACTION[a2] ==\"W\") or  \n            (ACTION[a1]==\"W\" and ACTION[a2] ==\"E\") )  \ndef fix_traj(trajs):\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "fix_traj",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def fix_traj(trajs):\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None\n        history = dict()\n        j=0\n        while(j < len(trajs[i]) ):\n            # Current trajectory is trajs[i]\n            # Controllo se fuori dal bound quindi sarebbe primo stato e vado avanti\n            s = tuple(trajs[i][j])",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "plot_3d",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def plot_3d(trajs):\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')\n    ax.set_zlabel('Z Label')\n    plt.title(\"3d plot\" )\n    plt.show()",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "plot_z",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def plot_z(zs):\n    fig = plt.figure()\n    for i in range(len(zs)):\n        z_t = [ [t,z] for t,z in enumerate(zs[i])]\n        print(z_t)\n        plt.plot(*zip(*z_t),\"-o\")\n    plt.title(\"height\" )\n    plt.show()\nif __name__ == \"__main__\":\n    d1 = [[0,0],[1,0],[2,0],[1,0],[2,0],[1,0],[0,0],[0,1],[0,2],[0,1],[0,0],[0,1],[0,2],[0,3],[0,4]]",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
         "label": "SEED",
         "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
         "label": "N_POINTS",
         "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
         "label": "STEP_SIZE",
         "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "STEP_SIZE = 20\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\nn_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "n_drones",
+        "label": "ACTION",
         "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "n_drones = N_DRONES\nstep = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "step",
+        "label": "AINDEX",
         "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "step = 120\ntrajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "trajs",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "trajs = [[] for i in range(n_drones)]\nfor i in range(n_drones):\n    n_points=N_POINTS\n    xs = []\n    ys = []\n    for j in range(n_points):\n        if xs == []:\n            xs.append(random.randrange(200,320,1))\n            ys.append(random.randrange(200, 320,1 ))\n        else:",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "trajs",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)\nfig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "fig",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "fig = plt.figure()\nfor i in range(n_drones):\n    plt.plot(*zip(*trajs[i]),\"-o\")\nplt.title(\"interpolated\" )\nTREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "TREES",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "TREES = build_trees(trajs)\n# trajs_3d = allocate_height(trajs,10,0,2)\ntrajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "trajs_3d,zs",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "trajs_3d,zs = avoid_collision(trajs,300,0,sep_h=20,\n    min_safe_points=3,radius = 20,simpleMode=False)\nfig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "fig",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "fig = plt.figure()\nax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "ax",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "ax = plt.axes(projection='3d')\nfor i in range(n_drones):\n    ax.plot(*zip(*trajs_3d[i]))\nax.set_xlabel('X Label')\nax.set_ylabel('Y Label')\nax.set_zlabel('Z Label')\nfig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):\n    z_t = [ [t,z] for t,z in enumerate(zs[i])]",
-        "detail": "simple_algo",
-        "documentation": {}
-    },
-    {
-        "label": "fig",
-        "kind": 5,
-        "importPath": "simple_algo",
-        "description": "simple_algo",
-        "peekOfCode": "fig = plt.figure()\nplt.title(\"height\" )\nfor i in range(n_drones):\n    z_t = [ [t,z] for t,z in enumerate(zs[i])]\n    print(z_t)\n    plt.plot(*zip(*z_t),\"-o\")\nplt.show()",
-        "detail": "simple_algo",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break",
+        "detail": "trajs_utils",
         "documentation": {}
     },
     {

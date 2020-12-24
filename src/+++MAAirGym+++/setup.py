@@ -1,3 +1,8 @@
+"""
+    Script to take gps coordinates from utils and write them as NED coo
+    rdinates inside Airsim settings file 
+"""
+
 import json
 import utils
 from airsimgeo import AirSimGeoClient

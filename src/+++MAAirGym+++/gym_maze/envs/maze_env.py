@@ -23,8 +23,9 @@ class MazeEnv(gym.Env):
     def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,
         do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, 
         measure_distance = False,n_trajs = None,random_pos = False,seed_num = None,
-        fixed_goals = None, fixed_init_pos = None):
+        fixed_goals = None, fixed_init_pos = None,visited_cells = []):
         
+        self.visited_cells = visited_cells
         self.measure_distance = measure_distance
         self.verbose = verbose
         self.viewer = None
@@ -138,8 +139,11 @@ class MazeEnv(gym.Env):
                 reward = 1000
                 done = True
             else:
-                # Not found goal
-                reward = -1/(self.maze_size[0]*self.maze_size[1])
+                #  Not found goal
+                if self.maze_view.robot.tolist() in self.visited_cells:
+                    reward = -5
+                else:
+                    reward = -1/(self.maze_size[0]*self.maze_size[1])
                 done = False
 
             
