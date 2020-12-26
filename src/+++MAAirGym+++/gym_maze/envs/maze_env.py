@@ -133,7 +133,7 @@ class MazeEnv(gym.Env):
             # Single goal modeù
             
             if not moved:
-                return -0.1,False
+                return -1,False
             if np.array_equal(self.maze_view.robot, self.maze_view.goal):
                 # Found goal
                 reward = 1000
