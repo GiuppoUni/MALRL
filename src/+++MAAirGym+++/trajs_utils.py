@@ -264,13 +264,13 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
                         if(is_colliding):
                             break
                     if(is_colliding):
-                        # Ho trovato almeno una collisione con traiettorie preesistenti su stesso z
+                        # Ho trovato almeno una collisione con traiettorie fisse su stesso z
                         proposed_heights[z].remove(fid)
                         new_z = z - sep_h
                         if(new_z < min_height):
                             raise Exception("Out of min height bound")
                         proposed_heights[z].append(fid)
-                        # Ora devo controllare sia che non collida con le busy sia che non collida con le proposed
+                        # Ora devo controllare sia che non collida con le busy sia che non collida con le proposed su new_z    
                         _vertical_allocate(assigned_heights,trajs_2d,proposed_heights,static_trees,min_height)
             
     # # Now we need to distanciate considering also 3d pre existing trajectories
@@ -425,7 +425,7 @@ def interpolate_trajs(trajs):
 def height_algo(trajs):
 
     # trajs_3d = allocate_height(trajs,10,0,2)
-    trajs_3d,zs = avoid_collision_in_empty_space(trajs,trees,300,0,sep_h=20,
+    trajs_3d,zs = avoid_collision_in_empty_space(trajs,0,300,sep_h=20,
         min_safe_points=3,radius = 20,simpleMode=False)
 
     fig = plt.figure()
@@ -470,6 +470,9 @@ def are_opposite_actions(a1,a2):
 
 
 def fix_traj(trajs):
+    """
+    Remove states going back (indecisions in agent)
+    """
     for i in range(len(trajs)):
         last_action = None
         last_state = None

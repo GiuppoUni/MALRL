@@ -133,7 +133,7 @@ class MazeEnv(gym.Env):
             # Single goal modeù
             
             if not moved:
-                return -1,False
+                return -0.1,False
             if np.array_equal(self.maze_view.robot, self.maze_view.goal):
                 # Found goal
                 reward = 1000
@@ -143,7 +143,7 @@ class MazeEnv(gym.Env):
                 if self.maze_view.robot.tolist() in self.visited_cells:
                     reward = -5
                 else:
-                    reward = -1/(self.maze_size[0]*self.maze_size[1])
+                    reward = -0.1/(self.maze_size[0]*self.maze_size[1])
                 done = False
 
             

@@ -209,9 +209,9 @@ def numpy_save(arr,folder_timestamp,filename):
 def position_to_list(position_vector) -> list:
     return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
 
-def list_to_position(l) -> Vector3r:
-    x = int(l[0]*20)
-    y = int(l[1]*20)
+def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
+    x = int(l[0]*wcell_in_meters)
+    y = int(l[1]*hcell_in_meters)
     z = int(l[2])
 
     if len(l) != 3:
@@ -352,7 +352,7 @@ def build_trees(trajectories):
 
 
 
-def avoid_collision(trajectories,trees,max_height,min_height,
+def avoid_collision(trajectories,trees,min_height,max_height,
     sep_h,min_safe_points,radius=30,simpleMode=True):
     
     Tmax = max([len(traj) for traj in trajectories])

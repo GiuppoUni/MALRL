@@ -8,7 +8,7 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from newMyAirSimClient import newMyAirSimClient
+from newMyAirSimClient import NewMyAirSimClient
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +57,7 @@ class AirSimEnv(gym.Env):
         self._seed()
         
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-        self.myClient = newMyAirSimClient()
+        self.myClient = NewMyAirSimClient()
         # TODO replace with  allocated targets
         self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         

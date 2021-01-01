@@ -15,7 +15,7 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from newMyAirSimClient import DrivetrainType, lock, newMyAirSimClient
+from newMyAirSimClient import DrivetrainType, lock, NewMyAirSimClient
 
 import time
 import utils
@@ -125,7 +125,7 @@ class CollectEnv(gym.Env):
         self._seed()
         
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-        self.myClient = newMyAirSimClient(trajColFlag=trajColFlag,
+        self.myClient = NewMyAirSimClient(trajColFlag=trajColFlag,
             canDrawTrajectories=drawTrajectories,crabMode=crabMode,thickness = thickness)
         # TODO replace with  allocated targets
         

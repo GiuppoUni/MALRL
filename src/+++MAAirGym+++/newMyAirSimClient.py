@@ -43,7 +43,7 @@ lock = threading.Lock()
 
 
 
-class newMyAirSimClient(MultirotorClient):
+class NewMyAirSimClient(MultirotorClient):
 
     deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0
 
@@ -380,7 +380,6 @@ class newMyAirSimClient(MultirotorClient):
 
 
     def drawTrajectories(self):
-
         # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"csv")
         traj_fold = "./trajectories_3d/csv/"
         for tFile in os.listdir(traj_fold):
@@ -389,7 +388,6 @@ class newMyAirSimClient(MultirotorClient):
 
 
     def check_traj_collision(self,current_pos,radius,count_only,specify_collision):
-        
         total_points = 0
         points_per_traj = None
         if count_only:

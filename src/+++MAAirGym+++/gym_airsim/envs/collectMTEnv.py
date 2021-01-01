@@ -13,7 +13,7 @@ from gym.utils import seeding
 from gym.spaces import Tuple, Box, Discrete, MultiDiscrete, Dict
 from gym.spaces.box import Box
 
-from newMyAirSimClient import lock, newMyAirSimClient
+from newMyAirSimClient import lock, NewMyAirSimClient
 
 import time
 import utils
@@ -146,7 +146,7 @@ class CollectMTEnv(gym.Env):
         self._seed()
         
         # self.myClient = MyAirSimClient2(utils.SRID,utils.ORIGIN,ip="127.1.1.1")
-        self.myClient = newMyAirSimClient(trajColFlag=trajColFlag)
+        self.myClient = NewMyAirSimClient(trajColFlag=trajColFlag)
         # TODO replace with  allocated targets
         self.goals = [ [221.0, -9.0 + (i*5)] for i in range(n_agents)] # global xy coordinates
         

@@ -673,7 +673,7 @@
         "documentation": {}
     },
     {
-        "label": "newMyAirSimClient",
+        "label": "NewMyAirSimClient",
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
         "isExtraImport": true,
@@ -697,7 +697,7 @@
         "documentation": {}
     },
     {
-        "label": "newMyAirSimClient",
+        "label": "NewMyAirSimClient",
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
         "isExtraImport": true,
@@ -713,7 +713,23 @@
         "documentation": {}
     },
     {
-        "label": "newMyAirSimClient",
+        "label": "NewMyAirSimClient",
+        "importPath": "newMyAirSimClient",
+        "description": "newMyAirSimClient",
+        "isExtraImport": true,
+        "detail": "newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "NewMyAirSimClient",
+        "importPath": "newMyAirSimClient",
+        "description": "newMyAirSimClient",
+        "isExtraImport": true,
+        "detail": "newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "NewMyAirSimClient",
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
         "isExtraImport": true,
@@ -876,6 +892,22 @@
         "importPath": "itertools",
         "description": "itertools",
         "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
         "documentation": {}
     },
     {
@@ -1466,6 +1498,82 @@
         "documentation": {}
     },
     {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "TrajectoryTrackerClient",
+        "importPath": "trajectoryTrackerClient",
+        "description": "trajectoryTrackerClient",
+        "isExtraImport": true,
+        "detail": "trajectoryTrackerClient",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
+        "label": "queue",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "queue",
+        "description": "queue",
+        "detail": "queue",
+        "documentation": {}
+    },
+    {
+        "label": "trajs_utils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib",
+        "description": "matplotlib",
+        "detail": "matplotlib",
+        "documentation": {}
+    },
+    {
+        "label": "mplot3d",
+        "importPath": "mpl_toolkits",
+        "description": "mpl_toolkits",
+        "isExtraImport": true,
+        "detail": "mpl_toolkits",
+        "documentation": {}
+    },
+    {
+        "label": "mplot3d",
+        "importPath": "mpl_toolkits",
+        "description": "mpl_toolkits",
+        "isExtraImport": true,
+        "detail": "mpl_toolkits",
+        "documentation": {}
+    },
+    {
+        "label": "mplot3d",
+        "importPath": "mpl_toolkits",
+        "description": "mpl_toolkits",
+        "isExtraImport": true,
+        "detail": "mpl_toolkits",
+        "documentation": {}
+    },
+    {
         "label": "airsim,time,threading",
         "kind": 6,
         "isExtraImport": true,
@@ -1549,49 +1657,6 @@
         "documentation": {}
     },
     {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "TrajectoryTrackerClient",
-        "importPath": "trajectoryTrackerClient",
-        "description": "trajectoryTrackerClient",
-        "isExtraImport": true,
-        "detail": "trajectoryTrackerClient",
-        "documentation": {}
-    },
-    {
-        "label": "shutil",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "shutil",
-        "description": "shutil",
-        "detail": "shutil",
-        "documentation": {}
-    },
-    {
-        "label": "queue",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "queue",
-        "description": "queue",
-        "detail": "queue",
-        "documentation": {}
-    },
-    {
-        "label": "trajs_utils",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "detail": "trajs_utils",
-        "documentation": {}
-    },
-    {
         "label": "AirSimGeoClient",
         "importPath": "airsimgeo",
         "description": "airsimgeo",
@@ -1614,23 +1679,6 @@
         "description": "collections",
         "isExtraImport": true,
         "detail": "collections",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib",
-        "description": "matplotlib",
-        "detail": "matplotlib",
-        "documentation": {}
-    },
-    {
-        "label": "mplot3d",
-        "importPath": "mpl_toolkits",
-        "description": "mpl_toolkits",
-        "isExtraImport": true,
-        "detail": "mpl_toolkits",
         "documentation": {}
     },
     {
@@ -2527,7 +2575,7 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "a = np.load(\"maze_samples/maze2d_001.npy\")\nprint(\"BEFORE\")\nprint(a)\ndef actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:",
+        "peekOfCode": "a = np.load(\"gym_maze/envs/maze_samples/maze2d_001.npy\")\nprint(\"BEFORE\")\nprint(a)\ndef actions_to_value(actions = None):\n    value = 0x0\n    if not actions:\n        return value \n    if \"N\" in actions:\n        value |= 0x1\n    if \"E\" in actions:",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {}
     },
@@ -2590,7 +2638,7 @@
         "kind": 5,
         "importPath": "gym_maze.envs.my_maze_generator",
         "description": "gym_maze.envs.my_maze_generator",
-        "peekOfCode": "a = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"maze_samples/maze2d_001.npy\",a)\nNROWS = 43\nNCOLS = 43\nOBS_BLOCKS = 6\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):",
+        "peekOfCode": "a = np.array(a)\nprint(\"AFTER\")\nprint(a)\nprint(actions_to_value(\"NEWS\"),actions_to_value(\"\"))\nnp.save(\"gym_maze/envs/maze_samples/maze2d_001.npy\",a)\nNROWS = 43\nNCOLS = 43\nOBS_BLOCKS = 6\n# Each block can be considered 20m x 20m \ndef cell_value(r,c,obs_blocks=1,street_blocks=1):",
         "detail": "gym_maze.envs.my_maze_generator",
         "documentation": {}
     },
@@ -3036,6 +3084,96 @@
         "documentation": {}
     },
     {
+        "label": "main",
+        "kind": 2,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), \n                                    enable_render=args.render_train if(mode==\"train\") else args.render_test,",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "IDX_TO_ACTION",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "STD_MAZE",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "INTERACTIVE",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "OUT_FORMAT",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "OUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_FOLDER",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  ",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_3D_FOLDER",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "SEED",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "SEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), ",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_3D_FOLDER",
+        "kind": 5,
+        "importPath": "layer2",
+        "description": "layer2",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument('-sx', type=int,required=True,\n                     help='Starting x coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('-sy', type=int,required=True,\n                     help='Starting y coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,\n                     help='Speed value')\n   # parser.add_argument( '--debug',action='store_true',  default=False,",
+        "detail": "layer2",
+        "documentation": {}
+    },
+    {
+        "label": "TRAJECTORIES_3D_FOLDER",
+        "kind": 5,
+        "importPath": "layer3",
+        "description": "layer3",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument('--lat', type=float,required=True,\n                     help='Starting latitude coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--lon', type=float,required=True,\n                     help='Starting longitude coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,\n                     help='Speed value')\n   args = parser.parse_args()",
+        "detail": "layer3",
+        "documentation": {}
+    },
+    {
         "label": "myjoint_TAKEOFF",
         "kind": 2,
         "importPath": "multiThreadFlight",
@@ -3085,16 +3223,16 @@
         "kind": 6,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "class AirSimImageType:    \n    Scene = 0\n    DepthPlanner = 1\n    DepthPerspective = 2\n    DepthVis = 3\n    DisparityNormalized = 4\n    Segmentation = 5\n    SurfaceNormals = 6\nlock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):",
+        "peekOfCode": "class AirSimImageType:    \n    Scene = 0\n    DepthPlanner = 1\n    DepthPerspective = 2\n    DepthVis = 3\n    DisparityNormalized = 4\n    Segmentation = 5\n    SurfaceNormals = 6\nlock = threading.Lock()\nclass NewMyAirSimClient(MultirotorClient):",
         "detail": "newMyAirSimClient",
         "documentation": {}
     },
     {
-        "label": "newMyAirSimClient",
+        "label": "NewMyAirSimClient",
         "kind": 6,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "class newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
+        "peekOfCode": "class NewMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
         "detail": "newMyAirSimClient",
         "documentation": {}
     },
@@ -3103,80 +3241,8 @@
         "kind": 5,
         "importPath": "newMyAirSimClient",
         "description": "newMyAirSimClient",
-        "peekOfCode": "lock = threading.Lock()\nclass newMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
+        "peekOfCode": "lock = threading.Lock()\nclass NewMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
         "detail": "newMyAirSimClient",
-        "documentation": {}
-    },
-    {
-        "label": "ACTION_TO_IDX",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "ACTION_TO_IDX = {\"LEFT\":0, \"FRONT\":1, \"RIGHT\":2,\"BACK\" : 3}\nIDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "IDX_TO_ACTION",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "STD_MAZE",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "INTERACTIVE",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "OUT_FORMAT",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "OUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "TRAJECTORIES_FOLDER",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "TRAJECTORIES_3D_FOLDER",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,\n                         help='num trajs to track (default: %(default)s)')",
-        "detail": "qlearn_main",
-        "documentation": {}
-    },
-    {
-        "label": "SEED",
-        "kind": 5,
-        "importPath": "qlearn_main",
-        "description": "qlearn_main",
-        "peekOfCode": "SEED = 12\nif __name__ == \"__main__\":\n    parser = argparse.ArgumentParser(description='RL for ma-gym')\n    parser.add_argument('--episodes', type=int, default=100,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument('--n-goals', type=int, default=1,\n                        help='episodes (default: %(default)s)')\n    parser.add_argument(\"--n-trajs\",type=int, default=5,\n                         help='num trajs to track (default: %(default)s)')\n    parser.add_argument('--n-agents', type=int, default=1,",
-        "detail": "qlearn_main",
         "documentation": {}
     },
     {
@@ -3477,15 +3543,6 @@
         "documentation": {}
     },
     {
-        "label": "create_eurocontrol_file",
-        "kind": 2,
-        "importPath": "trajectory_formatter",
-        "description": "trajectory_formatter",
-        "peekOfCode": "def create_eurocontrol_file(trajs,dimensions,filename,header = True):\n   if(dimensions <2 or dimensions >3): raise Exception(\"Only 2D or 3D\")\n   d = {}\n   offset=3\n   for traj in trajs:\n      id = generate_flight_id()\n      for i in range(len(traj)):\n         # Time over is N/A right now\n         row = [id,i,None]\n         for field in range(0,len(fields)):",
-        "detail": "trajectory_formatter",
-        "documentation": {}
-    },
-    {
         "label": "extract_waypoints_from_flights_points_csv",
         "kind": 2,
         "importPath": "trajectory_formatter",
@@ -3495,11 +3552,38 @@
         "documentation": {}
     },
     {
+        "label": "create_eurocontrol_file2",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def create_eurocontrol_file2(trajs,filename,header = True):\n   if(trajs is None): raise Exception(\"Invalid input\")\n   if( trajs == [] or trajs[0] is None or \n      trajs[0] == []  or trajs[0][0] is None or \n      trajs[0][0] == [] ): \n      raise Exception(\"Invalid input\")\n   dimensions = len(trajs[0][0])\n   if(dimensions <2 or dimensions >3): raise Exception(\"Only 2D or 3D, received\", dimensions)\n   offset=3\n   print(\"Found\",len(trajs),\"trajectories with dimensions of num.:\", dimensions)",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "create_eurocontrol_file",
+        "kind": 2,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "def create_eurocontrol_file(trajs,dimensions,filename,header = True):\n   if(dimensions <2 or dimensions >3): raise Exception(\"Only 2D or 3D\")\n   d = {}\n   offset=3\n   for traj in trajs:\n      id = generate_flight_id()\n      for i in range(len(traj)):\n         # Time over is N/A right now\n         row = [id,i,None]\n         for field in range(0,len(fields)):",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
         "label": "COLUMNS_NAMES",
         "kind": 5,
         "importPath": "trajectory_formatter",
         "description": "trajectory_formatter",
-        "peekOfCode": "COLUMNS_NAMES = ['ECTRL ID',\n                'Sequence Number',\n                'Time Over',\n                'Flight Level', # Actually is Z coordinate\n                'Latitude',     # Actually is Y coordinate\n                'Longitude']    # Actually is X coordinate\nFILE_DIR = \"eurocontrol/\"\ndef generate_flight_id():\n    # Generate a unique ID for a flight.\n    id = uuid.uuid1()",
+        "peekOfCode": "COLUMNS_NAMES = ['ECTRL ID',\n                'Sequence Number',\n                'Time Over',\n                'Flight Level', # Actually is Z coordinate\n                'Latitude',     # Actually is Y coordinate\n                'Longitude']    # Actually is X coordinate\nCOLUMNS_NAMES2 = ['id',\n                'time',\n                'x',\n                'y', ",
+        "detail": "trajectory_formatter",
+        "documentation": {}
+    },
+    {
+        "label": "COLUMNS_NAMES2",
+        "kind": 5,
+        "importPath": "trajectory_formatter",
+        "description": "trajectory_formatter",
+        "peekOfCode": "COLUMNS_NAMES2 = ['id',\n                'time',\n                'x',\n                'y', \n                'z',     \n               #  'th', #NA\n               #  \"tv\", #NA\n               #  \"rv\", #NA\n               ] \nFILE_DIR = \"eurocontrol/\"",
         "detail": "trajectory_formatter",
         "documentation": {}
     },
@@ -3607,7 +3691,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)\n    trajs_3d,zs = avoid_collision_in_empty_space(trajs,trees,300,0,sep_h=20,\n        min_safe_points=3,radius = 20,simpleMode=False)\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs_3d[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')",
+        "peekOfCode": "def height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)\n    trajs_3d,zs = avoid_collision_in_empty_space(trajs,0,300,sep_h=20,\n        min_safe_points=3,radius = 20,simpleMode=False)\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs_3d[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3625,7 +3709,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def are_opposite_actions(a1,a2):\n    return a1!=a2 \\\n        and ( (ACTION[a1]==\"N\" and ACTION[a2] ==\"S\") or  \n            (ACTION[a1]==\"S\" and ACTION[a2] ==\"N\") or \n            (ACTION[a1]==\"E\" and ACTION[a2] ==\"W\") or  \n            (ACTION[a1]==\"W\" and ACTION[a2] ==\"E\") )  \ndef fix_traj(trajs):\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None",
+        "peekOfCode": "def are_opposite_actions(a1,a2):\n    return a1!=a2 \\\n        and ( (ACTION[a1]==\"N\" and ACTION[a2] ==\"S\") or  \n            (ACTION[a1]==\"S\" and ACTION[a2] ==\"N\") or \n            (ACTION[a1]==\"E\" and ACTION[a2] ==\"W\") or  \n            (ACTION[a1]==\"W\" and ACTION[a2] ==\"E\") )  \ndef fix_traj(trajs):\n    \"\"\"\n    Remove states going back (indecisions in agent)\n    \"\"\"",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3634,7 +3718,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def fix_traj(trajs):\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None\n        history = dict()\n        j=0\n        while(j < len(trajs[i]) ):\n            # Current trajectory is trajs[i]\n            # Controllo se fuori dal bound quindi sarebbe primo stato e vado avanti\n            s = tuple(trajs[i][j])",
+        "peekOfCode": "def fix_traj(trajs):\n    \"\"\"\n    Remove states going back (indecisions in agent)\n    \"\"\"\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None\n        history = dict()\n        j=0\n        while(j < len(trajs[i]) ):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3832,7 +3916,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
+        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
         "detail": "utils",
         "documentation": {}
     },
@@ -3841,7 +3925,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def list_to_position(l) -> Vector3r:\n    x = int(l[0]*20)\n    y = int(l[1]*20)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]\n    _offset_x = _v[\"X\"] ",
+        "peekOfCode": "def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]\n    _offset_x = _v[\"X\"] ",
         "detail": "utils",
         "documentation": {}
     },
@@ -3886,7 +3970,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,trees,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}",
+        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef avoid_collision(trajectories,trees,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}",
         "detail": "utils",
         "documentation": {}
     },
@@ -3895,7 +3979,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def avoid_collision(trajectories,trees,max_height,min_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    zs=[[] for d in drones] \n    trajs_3d =[[] for d in drones] \n    colliding_trajs = dict()\n    for d in drones:\n        for t in range(len(trajectories[d])):",
+        "peekOfCode": "def avoid_collision(trajectories,trees,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    zs=[[] for d in drones] \n    trajs_3d =[[] for d in drones] \n    colliding_trajs = dict()\n    for d in drones:\n        for t in range(len(trajectories[d])):",
         "detail": "utils",
         "documentation": {}
     },

@@ -3,9 +3,7 @@ import os
 
 from numpy.core.shape_base import block
 
-os.chdir(os.path.normpath("C:\\Users\\gioca\\Desktop\\Repos\\AirSim-PredictiveManteinance\\src\\+++MAAirGym+++\\gym_maze\\envs\\"))
-
-a = np.load("maze_samples/maze2d_001.npy")
+a = np.load("gym_maze/envs/maze_samples/maze2d_001.npy")
 
 
 print("BEFORE")
@@ -77,7 +75,7 @@ print("AFTER")
 print(a)
 
 print(actions_to_value("NEWS"),actions_to_value(""))
-np.save("maze_samples/maze2d_001.npy",a)
+np.save("gym_maze/envs/maze_samples/maze2d_001.npy",a)
 
 
 NROWS = 43
@@ -124,4 +122,4 @@ for r in range(len(aa)):
           
 
 print('aa AFT: \n', aa)
-np.save("maze_samples/maze2d_004.npy",aa)
+np.save("gym_maze/envs/maze_samples/maze2d_004.npy",aa)
