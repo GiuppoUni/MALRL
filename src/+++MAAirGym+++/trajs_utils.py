@@ -116,6 +116,28 @@ def build_trees(trajectories):
         _trees.append(KDTree(np.array(traj)))
     return _trees
 
+def build_tree_dict(trajectories,fixed_h = None):
+    if(trajectories is None or trajectories==[]):
+        return {},{}
+    _trees = dict()
+    _tree_by_id = dict()
+    dimensions = len(trajectories[0][0])
+    for idx,traj in enumerate(trajectories):
+        arr2d = np.array( traj )
+        if(dimensions==3):
+            arr2d = np.delete( arr2d ,np.s_[2:3], axis=1)
+        treeObj = KDTree( arr2d )
+        if fixed_h is None:
+            # insert into static dic
+            _d_insert(_trees, traj[0][2], treeObj )
+        else:
+            #insert into dynamic dic
+            # print('arr2d: ', arr2d)
+            _d_insert( _trees,fixed_h,  (idx,treeObj )  )
+        _tree_by_id[idx]=treeObj
+    return _trees,_tree_by_id
+
+
 def check_trees_collision(fId,point,trees,radius):
     n_collisions = 0
     for idx,_tree in enumerate(trees): 
@@ -184,7 +206,7 @@ def _vertical_allocate(a_heights:dict,p_trajs,p_heights:dict,trees,mh):
     pass
 
 def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
-    sep_h,min_safe_points,radius=30,simpleMode=True):
+    sep_h,min_safe_points,radius=30,simpleMode=True,n_pool_traj=3):
     
     '''
     - trajectories are [[p11,p12,...],[p21,p22,...],...]
@@ -205,13 +227,14 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
     assigned_heights = dict()
     static_trees = build_trees(assigned_trajs)
     for ffid in assigned_trajs:
-        zref = ffid[0][2] #first point [0] third coo. [2]
+        zref = ffid[0][2] #first point <-[0], third coo. (z) <- [2]
         _d_insert(assigned_heights,zref,ffid)
     
     trees_2d = build_trees(trajs_2d)
 
     trajs_3d = [[] for t in range(len(trajs_2d))]
    
+    # k = who, v = collides with who
     colliding_trajs = dict()
     for ti,traj in enumerate(trajs_2d):
         traj_3d=[]
@@ -241,12 +264,14 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
         trajs_3d[fId] = [ p+[new_z] for p in trajs_2d[fId] ]
         _d_insert(proposed_heights,new_z,fId)        
 
-    # Allocate remaining trajs (not colliding)
+    # Allocate remaining trajs (not colliding) in a z under all colliding
     not_colliding_fids= set( range(len(trajs_2d))) - set(priorities) 
     for fId in not_colliding_fids:
         safe_z = max_height - len(priorities) * sep_h 
         trajs_3d[fId] = [ p+[safe_z] for p in trajs_2d[fId] ]
         _d_insert(proposed_heights,safe_z,fId)        
+
+    # A questo punto ho: le nuove tutte non collidenti, ognuna su un asse 
 
     # Check on same height collision bwin 2d in input and 3d preexisting
     for z in proposed_heights:
@@ -293,6 +318,104 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
     #                     colliding_trajs[ti].append(idx)
 
     return trajs_3d
+
+
+
+def avoid_collision_complex(new_trajs_2d,min_height,max_height,
+    sep_h,assigned_trajs=[],radius=10, n_col_points=None,
+    n_point_pool=None, n_trajs_pool=None,seed=None,
+    threshold = 100):
+    
+    """
+    ASSUMPTIONS
+    - assigned_trajs follows this convention
+    - 
+    """
+
+    if(new_trajs_2d == []): return []
+    if(seed is not None): random.seed(seed)
+    
+    static_trees,stree_by_id = build_tree_dict( assigned_trajs )
+    # print('static_trees: ', static_trees)
+
+    if(n_trajs_pool is None or not 0<n_trajs_pool<=len(new_trajs_2d) ):
+        trajs_pool = new_trajs_2d
+    else: 
+        new_trajs_2d = [(idx,t) for idx,t in enumerate(new_trajs_2d)]
+        trajs_pool = random.sample(new_trajs_2d,n_trajs_pool) 
+        # TODO controlla che siano forzati e gestisci il fatto che sono una tupla ora
+
+    mobile_trees,tree_by_id = build_tree_dict(trajs_pool,fixed_h=max_height)
+    # print('mobile_trees: ', mobile_trees)
+      
+    proposed_heights = dict()
+    for i in range(len(trajs_pool)):
+        proposed_heights[i] = max_height
+    
+    for fligth_id,t2d in enumerate(trajs_pool):
+        assigned = False
+        while(not assigned):
+            n_problematic = 0 # number of problematic points
+            for point in t2d:
+                n_collisions=0 # number of collision for single point with other trajs
+                # print('proposed_heights[nfid]: ', proposed_heights[nfid])
+               
+                if(proposed_heights[fligth_id] in static_trees.keys()):
+                    for _tree in static_trees[proposed_heights[fligth_id]]:
+                        n_collisions += _tree.query_radius( [ point ],r=radius,count_only = True )
+                        if n_collisions > 0:
+                            n_problematic+=1
+                            break
+
+                if(proposed_heights[fligth_id] in mobile_trees.keys()):
+                    print(' checking mobile trees at z: ',proposed_heights[fligth_id],"for flight",fligth_id)
+                    for tid,_tree in mobile_trees[proposed_heights[fligth_id]]:
+                        print("\t checking tid",tid)
+                        if tid == fligth_id: # sono io, certo che colliderei quindi skip
+                            continue
+                        n_collisions += _tree.query_radius( [ point ],r=radius,count_only = True )
+                        if n_collisions > 0:
+                            n_problematic += 1
+                            print("\t n_problematic",n_problematic)
+                            break
+                
+                # Se qui o dopo aver scansionato tutti o dopo break
+                if n_problematic > threshold:
+                    # print('\t COLLISIONE at: ', proposed_heights[nfid],"with ", tid)
+                    print('\t COLLISIONI at: ', proposed_heights[fligth_id] )
+                    # print('\t mobile_trees[proposed_heights[nfid]]: ', mobile_trees[proposed_heights[nfid]])
+                    # print("\t removing" ,(nfid,tree_by_id[nfid]),"from",mobile_trees[proposed_heights[nfid]])
+                    print('mobile_trees: ', mobile_trees)
+                    mobile_trees[proposed_heights[fligth_id]].remove( (fligth_id,tree_by_id[fligth_id]) ) 
+                    proposed_heights[fligth_id] -= sep_h
+                    if(proposed_heights[fligth_id] < min_height): raise Exception("Out of min h bound ")
+                    _d_insert(mobile_trees,proposed_heights[fligth_id],(fligth_id,tree_by_id[fligth_id]))
+                    break
+                        
+
+                
+            if(n_problematic < threshold):
+                print("\t ASSIGNED z",proposed_heights[fligth_id])
+                assigned = True
+                
+                    
+    final_trajs = []
+    for fligth_id in proposed_heights.keys():
+        height = proposed_heights[fligth_id]
+        print('height: ', height)
+        print("p",new_trajs_2d[fligth_id][0])
+        print("p",new_trajs_2d[fligth_id][0] + [height] )
+        
+        final_trajs.append( [p+[height] for p in new_trajs_2d[fligth_id]] )
+    
+    return final_trajs
+
+def print_z_head(arr):
+    print("heights are:")
+    for idx,t in enumerate(arr):
+        print("\t id:",idx,"z",t[0][2])
+    
+
 
 def avoid_collision_in_empty_space(trajectories,min_height,max_height,
     sep_h,min_safe_points,radius=30,simpleMode=True):
@@ -402,6 +525,7 @@ def random_trajs():
     return trajs
 
 def plot_trajs(trajs):
+    # PLOT 2D NOT INTERPOl
     for i in range(len(trajs)):
         plt.plot(*zip(*trajs[i]),"-o")
         # for j in range(len(trajs[i])):
@@ -512,6 +636,7 @@ def fix_traj(trajs):
 
 
 
+    
 
 def plot_3d(trajs):
     fig = plt.figure()
@@ -519,6 +644,10 @@ def plot_3d(trajs):
 
     for i in range(len(trajs)):
         ax.plot(*zip(*trajs[i]))
+    
+
+    # ax.set_box_aspect([1,1,1]) # IMPORTANT - this is the new, key line
+
 
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
@@ -539,22 +668,35 @@ def plot_z(zs):
     plt.title("height" )
     plt.show()
 
+def np_remove_z(arr):
+    return np.delete( np.array( arr ),np.s_[2:3], axis=1)
 
 if __name__ == "__main__":
     d1 = [[0,0],[1,0],[2,0],[1,0],[2,0],[1,0],[0,0],[0,1],[0,2],[0,1],[0,0],[0,1],[0,2],[0,3],[0,4]]
     
     d2 = [[1,0],[2,0],[2,1],[2,2],[2,3],[1,3],[0,3],[0,4]]
     
-    d3 = [[4,0],[4,1],[4,2],[4,3],[3,3],[2,3],[1,3],[0,3]]
+    d3 = [[4,0,1],[4,1,1],[4,2,1],[4,3,1],[3,3,1],[2,3,1],[1,3,1],[0,3,1]]
     
-    d4 = [[5,0],[5,1],[5,2],[5,3],[4,3],[3,3],[3,2],[3,1],[3,0]]
+    d4 = [[5,0,1],[5,1,1],[5,2,1],[5,3,1],[4,3,1],[3,3,1],[3,2,1],[3,1,1],[3,0,1]]
+
     trajectories = [d1,d2]
+    d3 = np.array(d3)
+    d3[:,1] += 3
+    d3[:,0] += 2
+    d5 = np.copy(d3)
+    d5[:,1] -= 1
+    d5[:,0] -= 5
+    d5 = np_remove_z(d5).tolist()
+    d3 = d3.tolist()
+    trajs2d = [d5]
     trajs3d = [d3,d4]
 
+    
     # Caso complesso dove le traiettorie non le ho generate io con avoid in empty
     # d3d = [ [ p+[random.randint(0,10)] for p in [ traj for traj in d1]] ]
-    d3d,zds = avoid_collision_in_empty_space(trajs3d,0,100,10,3)
-    print('d3d: ', d3d)
+    # d3d,zds = avoid_collision_in_empty_space(trajs3d,0,100,10,3)
+    # print('d3d: ', d3d)
 
     # trajs  = random_trajs()
     # plot_trajs(trajectories)
@@ -563,10 +705,18 @@ if __name__ == "__main__":
     # print('fixed trajs: ', trajs)
     print('trajectories: ', trajectories)
     utils.myInterpolate2D(trajectories)
-    trajs_3d = avoid_collision_in_busy_space(trajectories,[],min_height=0,max_height=100,sep_h=20,radius=5,min_safe_points=3)
-    print('trajs_3d,zs: ', trajs_3d)
+    # trajs_3d = avoid_collision_in_busy_space(trajectories,[],min_height=0,max_height=100,sep_h=20,radius=5,min_safe_points=3)
+    # print('trajs_3d,zs: ', trajs_3d)
     
-    plot_3d(trajs_3d)
+    # plot_3d(trajs3d)
+    trajs2d = [  np.delete( np.array( t ),np.s_[2:3], axis=1).tolist() for t in trajs2d]
+    print('trajs3d: ', trajs3d)
+    print('trajs2d: ', trajs2d)
+    plot_3d(trajs3d)
+    assigned_trajs3d = avoid_collision_complex(trajs2d,trajs3d,min_height=5,max_height=50,sep_h=2,radius=1)
+    print('assigned_trajs3d: ', assigned_trajs3d)
+    plot_3d(assigned_trajs3d+trajs3d)
+    
     # plot_z(zs)
 
     # trajs = interpolate_trajs(trajs)

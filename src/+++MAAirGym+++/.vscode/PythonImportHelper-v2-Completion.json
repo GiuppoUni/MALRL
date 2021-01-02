@@ -3619,7 +3619,16 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef check_trees_collision(fId,point,trees,radius):\n    n_collisions = 0\n    for idx,_tree in enumerate(trees): \n        if(idx == fId):\n            # E' quella attuale",
+        "peekOfCode": "def build_trees(trajectories):\n    _trees = []\n    for traj in trajectories:\n        _trees.append(KDTree(np.array(traj)))\n    return _trees\ndef build_tree_dict(trajectories,fixed_h = None):\n    if(trajectories is None or trajectories==[]):\n        return {},{}\n    _trees = dict()\n    _tree_by_id = dict()",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "build_tree_dict",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def build_tree_dict(trajectories,fixed_h = None):\n    if(trajectories is None or trajectories==[]):\n        return {},{}\n    _trees = dict()\n    _tree_by_id = dict()\n    dimensions = len(trajectories[0][0])\n    for idx,traj in enumerate(trajectories):\n        arr2d = np.array( traj )\n        if(dimensions==3):\n            arr2d = np.delete( arr2d ,np.s_[2:3], axis=1)",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3646,7 +3655,25 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    '''\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 2d: [x,y]  for i-th flight\n    - read only assigned_trajs are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 3d: [x,y,z]  for i-th flight (they are assumed to be generated compatible with this algo)\n    - trees are built using build_trees function, they are k-d trees \n    - max_height,min_height are bounds for allocation, it starts from max and allocates towards min\n    - sep_h is the amount of height separating two trajectories with same x,y",
+        "peekOfCode": "def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True,n_pool_traj=3):\n    '''\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 2d: [x,y]  for i-th flight\n    - read only assigned_trajs are [[p11,p12,...],[p21,p22,...],...]\n      pij is a point j-th in 3d: [x,y,z]  for i-th flight (they are assumed to be generated compatible with this algo)\n    - trees are built using build_trees function, they are k-d trees \n    - max_height,min_height are bounds for allocation, it starts from max and allocates towards min\n    - sep_h is the amount of height separating two trajectories with same x,y",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "avoid_collision_complex",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def avoid_collision_complex(new_trajs_2d,min_height,max_height,\n    sep_h,assigned_trajs=[],radius=10, n_col_points=None,\n    n_point_pool=None, n_trajs_pool=None,seed=None,\n    threshold = 100):\n    \"\"\"\n    ASSUMPTIONS\n    - assigned_trajs follows this convention\n    - \n    \"\"\"\n    if(new_trajs_2d == []): return []",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "print_z_head",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def print_z_head(arr):\n    print(\"heights are:\")\n    for idx,t in enumerate(arr):\n        print(\"\\t id:\",idx,\"z\",t[0][2])\ndef avoid_collision_in_empty_space(trajectories,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    \"\"\"\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n    - pij is a point j-th in 2d: [x,y] or 3d: [x,y,z] for i-th flight\n    - trees are built using build_trees are k-d trees ",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3673,7 +3700,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_trajs(trajs):\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n        # for j in range(len(trajs[i])):\n        #     if(j+1>=len(trajs[i])): break\n        #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )\n    print('trajs: ', trajs)\n    # plt.grid()\n    plt.title(\"not interpolated\" )\n    plt.show()",
+        "peekOfCode": "def plot_trajs(trajs):\n    # PLOT 2D NOT INTERPOl\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n        # for j in range(len(trajs[i])):\n        #     if(j+1>=len(trajs[i])): break\n        #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )\n    print('trajs: ', trajs)\n    # plt.grid()\n    plt.title(\"not interpolated\" )",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3727,7 +3754,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_3d(trajs):\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')\n    ax.set_zlabel('Z Label')\n    plt.title(\"3d plot\" )\n    plt.show()",
+        "peekOfCode": "def plot_3d(trajs):\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs[i]))\n    # ax.set_box_aspect([1,1,1]) # IMPORTANT - this is the new, key line\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')\n    ax.set_zlabel('Z Label')\n    plt.title(\"3d plot\" )",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3736,7 +3763,16 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_z(zs):\n    fig = plt.figure()\n    for i in range(len(zs)):\n        z_t = [ [t,z] for t,z in enumerate(zs[i])]\n        print(z_t)\n        plt.plot(*zip(*z_t),\"-o\")\n    plt.title(\"height\" )\n    plt.show()\nif __name__ == \"__main__\":\n    d1 = [[0,0],[1,0],[2,0],[1,0],[2,0],[1,0],[0,0],[0,1],[0,2],[0,1],[0,0],[0,1],[0,2],[0,3],[0,4]]",
+        "peekOfCode": "def plot_z(zs):\n    fig = plt.figure()\n    for i in range(len(zs)):\n        z_t = [ [t,z] for t,z in enumerate(zs[i])]\n        print(z_t)\n        plt.plot(*zip(*z_t),\"-o\")\n    plt.title(\"height\" )\n    plt.show()\ndef np_remove_z(arr):\n    return np.delete( np.array( arr ),np.s_[2:3], axis=1)",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "np_remove_z",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def np_remove_z(arr):\n    return np.delete( np.array( arr ),np.s_[2:3], axis=1)\nif __name__ == \"__main__\":\n    d1 = [[0,0],[1,0],[2,0],[1,0],[2,0],[1,0],[0,0],[0,1],[0,2],[0,1],[0,0],[0,1],[0,2],[0,3],[0,4]]\n    d2 = [[1,0],[2,0],[2,1],[2,2],[2,3],[1,3],[0,3],[0,4]]\n    d3 = [[4,0,1],[4,1,1],[4,2,1],[4,3,1],[3,3,1],[2,3,1],[1,3,1],[0,3,1]]\n    d4 = [[5,0,1],[5,1,1],[5,2,1],[5,3,1],[4,3,1],[3,3,1],[3,2,1],[3,1,1],[3,0,1]]\n    trajectories = [d1,d2]\n    d3 = np.array(d3)\n    d3[:,1] += 3",
         "detail": "trajs_utils",
         "documentation": {}
     },

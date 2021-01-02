@@ -377,6 +377,9 @@ if __name__ == "__main__":
     
     parser.add_argument( '--render-test',action='store_true',  default=False,
         help='Log into file (default: %(default)s)' )
+
+    parser.add_argument( '--skip-train',action='store_true',  default=False,
+        help='Skip train phase (default: %(default)s)' )
     
     parser.add_argument( '--show-plot',action='store_true',  default=False,
         help='Show generate trajectories each time (default: %(default)s)' )
@@ -426,66 +429,66 @@ if __name__ == "__main__":
         np.random.seed(seed=SEED)
 
 
-
-    # Resetting folders
-    for f in os.listdir(TRAJECTORIES_FOLDER):
-        os.remove(TRAJECTORIES_FOLDER+f)
-
-
-    if(args.debug):
-        logger = utils.initiate_logger()
-        print = logger.info
+    if(not args.skip_train):
+        # Resetting folders
+        for f in os.listdir(TRAJECTORIES_FOLDER):
+            os.remove(TRAJECTORIES_FOLDER+f)
 
 
-    if(args.load_goals):
-        df = pandas.read_csv(args.load_goals, index_col='name')
+        if(args.debug):
+            logger = utils.initiate_logger()
+            print = logger.info
+
+
+        if(args.load_goals):
+            df = pandas.read_csv(args.load_goals, index_col='name')
+            # print(df)
+            fixed_goals = df.to_numpy()
+            if(len(fixed_goals)<1):
+                raise Exception("Inavalid num of goals")
+            # print('fixed_goals: ', fixed_goals)
+        else:
+            fixed_goals = None
+
+
+        if(args.load_init_pos ):
+            df = pandas.read_csv(args.load_init_pos, index_col='name')
+            # print(df)
+            fixed_init_pos_list = df.to_numpy()
+            # print('fixed_goals: ', fixed_goals)
+        else:
+            fixed_init_pos_list = None
+
+
+        df = pandas.read_csv("fixed_goals.csv", index_col='name')
         # print(df)
         fixed_goals = df.to_numpy()
-        if(len(fixed_goals)<1):
-            raise Exception("Inavalid num of goals")
-        # print('fixed_goals: ', fixed_goals)
-    else:
-        fixed_goals = None
-
-
-    if(args.load_init_pos ):
-        df = pandas.read_csv(args.load_init_pos, index_col='name')
+        assert(len(fixed_goals) > 0)
+        df = pandas.read_csv("init_pos.csv", index_col='name')
         # print(df)
         fixed_init_pos_list = df.to_numpy()
+        assert(len(fixed_init_pos_list) > 0)
         # print('fixed_goals: ', fixed_goals)
-    else:
-        fixed_init_pos_list = None
 
-    
-    df = pandas.read_csv("fixed_goals.csv", index_col='name')
-    # print(df)
-    fixed_goals = df.to_numpy()
-    assert(len(fixed_goals) > 0)
-    df = pandas.read_csv("init_pos.csv", index_col='name')
-    # print(df)
-    fixed_init_pos_list = df.to_numpy()
-    assert(len(fixed_init_pos_list) > 0)
-    # print('fixed_goals: ', fixed_goals)
-
-    if(fixed_init_pos_list is not None):
-        visited_cells = []
-        trajs = []
-        for fixed_init_pos in fixed_init_pos_list:
-            qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos)
-            _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,visited_cells = visited_cells)
-            
-            trajs.append(traj)
-            
-            if(args.avoid_traj):
-                # Remove duplicates from single traj
-                visited_cells += list(num for num,_ in itertools.groupby(traj)) 
-                # Remove duplicates from all trajs
-                visited_cells = list(num for num,_ in itertools.groupby(visited_cells))
-            
-            # Plot trajectories obtained till now in 2D
+        if(fixed_init_pos_list is not None):
+            visited_cells = []
+            trajs = []
+            for fixed_init_pos in fixed_init_pos_list:
+                qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos)
+                _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,visited_cells = visited_cells)
+                
+                trajs.append(traj)
+                
+                if(args.avoid_traj):
+                    # Remove duplicates from single traj
+                    visited_cells += list(num for num,_ in itertools.groupby(traj)) 
+                    # Remove duplicates from all trajs
+                    visited_cells = list(num for num,_ in itertools.groupby(visited_cells))
+                
+                # Plot trajectories obtained till now in 2D
 
 
-    print("Trained and tested")
+        print("Trained and tested")
 
 
     print("Loading generated trajectories")
@@ -494,18 +497,27 @@ if __name__ == "__main__":
     for tf in traj_files_list:
         df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=",",index_col="index")
         # print(df)
-        traj = df.to_numpy()
+        traj = df.to_numpy().tolist()
         trajs.append(traj)
 
     # print(trajs)
 
     print("Transforming 2D trajs into 3D trajs")
     # trees = utils.build_trees(trajs)
-    trajs3d, zs = trajs_utils.avoid_collision_in_empty_space(trajs,-50,-5,5,3)
+    # trajs3d, zs = trajs_utils.avoid_collision_in_empty_space(trajs,-50,-5,5,3)
+    # trajs_utils.plot_trajs(trajs)
+    trajs3d = trajs_utils.avoid_collision_complex(trajs[2:4],min_height=-50,max_height=-5,sep_h = 1,radius=10)
+    # trajs_utils.plot_trajs(trajs[0:2])
+    # trajs_utils.plot_trajs([ trajs_utils.np_remove_z(t) for t in trajs3d[2:] ])
+    ntrajs3d = trajs_utils.avoid_collision_complex(trajs[0:2],assigned_trajs=trajs3d,min_height=-50,
+        max_height=-5,sep_h = 1,radius=1,threshold=150)
+    
+    trajs_utils.plot_3d(ntrajs3d+trajs3d)
+
     # Remove old trajectories files 
     for f in os.listdir(TRAJECTORIES_3D_FOLDER):
         os.remove(TRAJECTORIES_3D_FOLDER+f)
-    for idx,traj in enumerate(trajs3d):
+    for idx,traj in enumerate(ntrajs3d):
         traj = np.array(traj)
         df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],
         'z_pos': traj[:, 2]})
@@ -514,4 +526,4 @@ if __name__ == "__main__":
         print("saved to","trajectories_3d/csv/"+traj_files_list[idx])
 
     trajs_utils.plot_trajs(trajs)
-    trajs_utils.height_algo(trajs)
+    # trajs_utils.height_algo(trajs)
