@@ -344,78 +344,6 @@
         "documentation": {}
     },
     {
-        "label": "error",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "utils",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "error",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "utils",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "error",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "spaces",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
-        "label": "utils",
-        "importPath": "gym",
-        "description": "gym",
-        "isExtraImport": true,
-        "detail": "gym",
-        "documentation": {}
-    },
-    {
         "label": "Union",
         "importPath": "typing",
         "description": "typing",
@@ -470,30 +398,6 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
-        "documentation": {}
-    },
-    {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
-        "documentation": {}
-    },
-    {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
-        "documentation": {}
-    },
-    {
-        "label": "seeding",
-        "importPath": "gym.utils",
-        "description": "gym.utils",
-        "isExtraImport": true,
-        "detail": "gym.utils",
         "documentation": {}
     },
     {
@@ -838,35 +742,11 @@
         "documentation": {}
     },
     {
-        "label": "mul",
-        "importPath": "operator",
-        "description": "operator",
-        "isExtraImport": true,
-        "detail": "operator",
-        "documentation": {}
-    },
-    {
-        "label": "mul",
-        "importPath": "operator",
-        "description": "operator",
-        "isExtraImport": true,
-        "detail": "operator",
-        "documentation": {}
-    },
-    {
         "label": "Qr",
         "importPath": "tensorflow.python.ops.gen_linalg_ops",
         "description": "tensorflow.python.ops.gen_linalg_ops",
         "isExtraImport": true,
         "detail": "tensorflow.python.ops.gen_linalg_ops",
-        "documentation": {}
-    },
-    {
-        "label": "MazeView2D",
-        "importPath": "gym_maze.envs.maze_view_2d",
-        "description": "gym_maze.envs.maze_view_2d",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_view_2d",
         "documentation": {}
     },
     {
@@ -951,30 +831,6 @@
         "documentation": {}
     },
     {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "MazeView2DCont",
-        "importPath": "gym_maze.envs.maze_view_2d_cont",
-        "description": "gym_maze.envs.maze_view_2d_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_view_2d_cont",
-        "documentation": {}
-    },
-    {
         "label": "Maze",
         "importPath": "maze_view_2d",
         "description": "maze_view_2d",
@@ -997,30 +853,6 @@
         "description": "collections.abc",
         "isExtraImport": true,
         "detail": "collections.abc",
-        "documentation": {}
-    },
-    {
-        "label": "Iterable",
-        "importPath": "collections.abc",
-        "description": "collections.abc",
-        "isExtraImport": true,
-        "detail": "collections.abc",
-        "documentation": {}
-    },
-    {
-        "label": "Iterable",
-        "importPath": "collections.abc",
-        "description": "collections.abc",
-        "isExtraImport": true,
-        "detail": "collections.abc",
-        "documentation": {}
-    },
-    {
-        "label": "MultiMazeView2D",
-        "importPath": "gym_maze.envs.multi_maze_view_2d",
-        "description": "gym_maze.envs.multi_maze_view_2d",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.multi_maze_view_2d",
         "documentation": {}
     },
     {
@@ -1322,14 +1154,6 @@
         "documentation": {}
     },
     {
-        "label": "MazeEnvCont",
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "isExtraImport": true,
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
         "label": "DQN",
         "importPath": "stable_baselines",
         "description": "stable_baselines",
@@ -1498,6 +1322,98 @@
         "documentation": {}
     },
     {
+        "label": "pylab",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pylab",
+        "description": "pylab",
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "arange",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "uint8",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "arange",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "uint8",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "trajs_utils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "setSeed",
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "isExtraImport": true,
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "contextlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
         "label": "TrajectoryTrackerClient",
         "importPath": "trajectoryTrackerClient",
         "description": "trajectoryTrackerClient",
@@ -1529,15 +1445,6 @@
         "importPath": "queue",
         "description": "queue",
         "detail": "queue",
-        "documentation": {}
-    },
-    {
-        "label": "trajs_utils",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "detail": "trajs_utils",
         "documentation": {}
     },
     {
@@ -1591,54 +1498,6 @@
         "documentation": {}
     },
     {
-        "label": "array",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "arange",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "uint8",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "array",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "arange",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
-        "label": "uint8",
-        "importPath": "pylab",
-        "description": "pylab",
-        "isExtraImport": true,
-        "detail": "pylab",
-        "documentation": {}
-    },
-    {
         "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
@@ -1679,6 +1538,14 @@
         "description": "collections",
         "isExtraImport": true,
         "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "poisson",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
         "documentation": {}
     },
     {
@@ -2427,15 +2294,6 @@
         "documentation": {}
     },
     {
-        "label": "MazeEnvCont",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_env_cont",
-        "description": "gym_maze.envs.maze_env_cont",
-        "peekOfCode": "class MazeEnvCont(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    SCREEN_WIDTH = 640\n    SCREEN_HEIGHT = 640\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,do_track_trajectories=False,num_goals = 1):\n        self.debug = False\n        self.max_steps = 100\n        self.max_step_size = 10",
-        "detail": "gym_maze.envs.maze_env_cont",
-        "documentation": {}
-    },
-    {
         "label": "MazeView2D",
         "kind": 6,
         "importPath": "gym_maze.envs.maze_view_2d",
@@ -2460,78 +2318,6 @@
         "description": "gym_maze.envs.maze_view_2d",
         "peekOfCode": "class Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:",
         "detail": "gym_maze.envs.maze_view_2d",
-        "documentation": {}
-    },
-    {
-        "label": "MazeView2DCont",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_view_2d_cont",
-        "description": "gym_maze.envs.maze_view_2d_cont",
-        "peekOfCode": "class MazeView2DCont:\n    rgba_black = (0,0,0,255)\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1):\n        if(num_goals<=0 ):\n            raise ValueError(\"Error in num_goals parameter\")\n        self.num_goals = num_goals\n        # PyGame configurations\n        pygame.init()",
-        "detail": "gym_maze.envs.maze_view_2d_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MazeCont",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_view_2d_cont",
-        "description": "gym_maze.envs.maze_view_2d_cont",
-        "peekOfCode": "class MazeCont:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0):\n        # maze member variables\n        self.maze_cells = maze_cells",
-        "detail": "gym_maze.envs.maze_view_2d_cont",
-        "documentation": {}
-    },
-    {
-        "label": "Portal",
-        "kind": 6,
-        "importPath": "gym_maze.envs.maze_view_2d_cont",
-        "description": "gym_maze.envs.maze_view_2d_cont",
-        "peekOfCode": "class Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:",
-        "detail": "gym_maze.envs.maze_view_2d_cont",
-        "documentation": {}
-    },
-    {
-        "label": "MultiAgentActionSpace",
-        "kind": 6,
-        "importPath": "gym_maze.envs.multi_maze_env",
-        "description": "gym_maze.envs.multi_maze_env",
-        "peekOfCode": "class MultiAgentActionSpace(list):\n    def __init__(self, agents_action_space):\n        for x in agents_action_space:\n            assert isinstance(x, gym.spaces.space.Space)\n        super(MultiAgentActionSpace, self).__init__(agents_action_space)\n        self._agents_action_space = agents_action_space\n    def sample(self):\n        \"\"\" samples action for each agent from uniform distribution\"\"\"\n        return [agent_action_space.sample() for agent_action_space in self._agents_action_space]\nclass MultiMazeEnv(gym.Env):",
-        "detail": "gym_maze.envs.multi_maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MultiMazeEnv",
-        "kind": 6,
-        "importPath": "gym_maze.envs.multi_maze_env",
-        "description": "gym_maze.envs.multi_maze_env",
-        "peekOfCode": "class MultiMazeEnv(gym.Env):\n    metadata = {\n        \"render.modes\": [\"human\", \"rgb_array\"],\n    }\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISTED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,\n        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, measure_distance = False,\n        n_agents=1,partial_obs = False,sleep_secs=None):\n        self.n_agents= n_agents",
-        "detail": "gym_maze.envs.multi_maze_env",
-        "documentation": {}
-    },
-    {
-        "label": "MultiMazeView2D",
-        "kind": 6,
-        "importPath": "gym_maze.envs.multi_maze_view_2d",
-        "description": "gym_maze.envs.multi_maze_view_2d",
-        "peekOfCode": "class MultiMazeView2D:\n    def __init__(self, n_agents,maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.n_agents = n_agents\n        self.num_goals = num_goals\n        self.verbose = verbose\n        # PyGame configurations",
-        "detail": "gym_maze.envs.multi_maze_view_2d",
-        "documentation": {}
-    },
-    {
-        "label": "Maze",
-        "kind": 6,
-        "importPath": "gym_maze.envs.multi_maze_view_2d",
-        "description": "gym_maze.envs.multi_maze_view_2d",
-        "peekOfCode": "class Maze:\n    COMPASS = {\n        \"N\": (0, -1),\n        \"E\": (1, 0),\n        \"S\": (0, 1),\n        \"W\": (-1, 0)\n    }\n    def __init__(self, maze_cells=None, maze_size=(10,10), has_loops=True, num_portals=0,verbose = True):\n        # maze member variables\n        self.maze_cells = maze_cells",
-        "detail": "gym_maze.envs.multi_maze_view_2d",
-        "documentation": {}
-    },
-    {
-        "label": "Portal",
-        "kind": 6,
-        "importPath": "gym_maze.envs.multi_maze_view_2d",
-        "description": "gym_maze.envs.multi_maze_view_2d",
-        "peekOfCode": "class Portal:\n    def __init__(self, *locations):\n        self.__locations = []\n        for location in locations:\n            if isinstance(location, (tuple, list)):\n                self.__locations.append(tuple(location))\n            else:\n                raise ValueError(\"location must be a list or a tuple.\")\n    def teleport(self, cell):\n        if cell in self.locations:",
-        "detail": "gym_maze.envs.multi_maze_view_2d",
         "documentation": {}
     },
     {
@@ -2773,7 +2559,7 @@
         "kind": 5,
         "importPath": "results.plot",
         "description": "results.plot",
-        "peekOfCode": "x = []\ny = []\nwith open('rewards.csv','r') as csvfile:\n    plots = csv.reader(csvfile, delimiter=',')\n    for i,row in enumerate(plots):\n        if(i==0):\n            continue\n        x.append(int(row[0]))\n        y.append( float(row[1]))\n# plt.plot(x,y, label='Loaded from file!')",
+        "peekOfCode": "x = []\ny = []\nwith open('rewards.csv','r') as csvfile:\n    plots = csv.reader(csvfile, delimiter=',')\n    for i,row in enumerate(plots):\n        if(i==0 or row[0]==\"E\"):\n            continue\n        x.append(int(row[0]))\n        y.append( float(row[1]))\n# plt.plot(x,y, label='Loaded from file!')",
         "detail": "results.plot",
         "documentation": {}
     },
@@ -2782,7 +2568,7 @@
         "kind": 5,
         "importPath": "results.plot",
         "description": "results.plot",
-        "peekOfCode": "y = []\nwith open('rewards.csv','r') as csvfile:\n    plots = csv.reader(csvfile, delimiter=',')\n    for i,row in enumerate(plots):\n        if(i==0):\n            continue\n        x.append(int(row[0]))\n        y.append( float(row[1]))\n# plt.plot(x,y, label='Loaded from file!')\nplt.plot(x,y)",
+        "peekOfCode": "y = []\nwith open('rewards.csv','r') as csvfile:\n    plots = csv.reader(csvfile, delimiter=',')\n    for i,row in enumerate(plots):\n        if(i==0 or row[0]==\"E\"):\n            continue\n        x.append(int(row[0]))\n        y.append( float(row[1]))\n# plt.plot(x,y, label='Loaded from file!')\nplt.plot(x,y)",
         "detail": "results.plot",
         "documentation": {}
     },
@@ -3084,11 +2870,56 @@
         "documentation": {}
     },
     {
+        "label": "a_logger",
+        "kind": 5,
+        "importPath": "collisionTester",
+        "description": "collisionTester",
+        "peekOfCode": "a_logger = logging.getLogger(\"collisionTesterLog\")\na_logger.setLevel(logging.DEBUG)\noutput_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED",
+        "detail": "collisionTester",
+        "documentation": {}
+    },
+    {
+        "label": "output_file_handler",
+        "kind": 5,
+        "importPath": "collisionTester",
+        "description": "collisionTester",
+        "peekOfCode": "output_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )",
+        "detail": "collisionTester",
+        "documentation": {}
+    },
+    {
+        "label": "stdout_handler",
+        "kind": 5,
+        "importPath": "collisionTester",
+        "description": "collisionTester",
+        "peekOfCode": "stdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )\ntolerances = [0,0.05]",
+        "detail": "collisionTester",
+        "documentation": {}
+    },
+    {
+        "label": "tolerances",
+        "kind": 5,
+        "importPath": "collisionTester",
+        "description": "collisionTester",
+        "peekOfCode": "tolerances = [0,0.05]\nn_iteration = [10,10,50,50,100,100]\nfor j in range(6):\n   assigned_trajs3d = []\n   outs=0\n   zeroStart=time.time()\n   for i in range(n_iteration[j]):\n      # with open(os.devnull, \"w\") as f, contextlib.redirect_stdout(f):\n      start = time.time()\n      trajs2d = trajs_utils.random_gen_2d(0,1000,0,1000,",
+        "detail": "collisionTester",
+        "documentation": {}
+    },
+    {
+        "label": "n_iteration",
+        "kind": 5,
+        "importPath": "collisionTester",
+        "description": "collisionTester",
+        "peekOfCode": "n_iteration = [10,10,50,50,100,100]\nfor j in range(6):\n   assigned_trajs3d = []\n   outs=0\n   zeroStart=time.time()\n   for i in range(n_iteration[j]):\n      # with open(os.devnull, \"w\") as f, contextlib.redirect_stdout(f):\n      start = time.time()\n      trajs2d = trajs_utils.random_gen_2d(0,1000,0,1000,\n      step=120,n_trajs=10)",
+        "detail": "collisionTester",
+        "documentation": {}
+    },
+    {
         "label": "main",
         "kind": 2,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), \n                                    enable_render=args.render_train if(mode==\"train\") else args.render_test,",
+        "peekOfCode": "def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), \n                                    enable_render=args.render_train if(mode in [\"train\",\"random\"]) else args.render_test,",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3097,7 +2928,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\",1:\"FRONT\",2:\"RIGHT\",3:\"BACK\"}\nSTD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nRANDOM_TRAJECTORIES_FOLDER = \"rtrajectories/csv/\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3106,7 +2937,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze",
+        "peekOfCode": "STD_MAZE = \"maze2d_004.npy\"\nINTERACTIVE = False\nOUT_FORMAT = \"csv\"\nRANDOM_TRAJECTORIES_FOLDER = \"rtrajectories/csv/\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3115,7 +2946,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:",
+        "peekOfCode": "INTERACTIVE = False\nOUT_FORMAT = \"csv\"\nRANDOM_TRAJECTORIES_FOLDER = \"rtrajectories/csv/\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3124,7 +2955,16 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "OUT_FORMAT = \"csv\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE",
+        "peekOfCode": "OUT_FORMAT = \"csv\"\nRANDOM_TRAJECTORIES_FOLDER = \"rtrajectories/csv/\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:",
+        "detail": "layer1",
+        "documentation": {}
+    },
+    {
+        "label": "RANDOM_TRAJECTORIES_FOLDER",
+        "kind": 5,
+        "importPath": "layer1",
+        "description": "layer1",
+        "peekOfCode": "RANDOM_TRAJECTORIES_FOLDER = \"rtrajectories/csv/\"\nTRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3133,7 +2973,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  ",
+        "peekOfCode": "TRAJECTORIES_FOLDER = \"qtrajectories/csv/\" \nTRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  ",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3142,7 +2982,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nSEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3151,7 +2991,7 @@
         "kind": 5,
         "importPath": "layer1",
         "description": "layer1",
-        "peekOfCode": "SEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = []):\n    assert(mode in [\"train\",\"test\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), ",
+        "peekOfCode": "SEED = random.randint(0,int(10e6))\ndef main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_trajectory = None):\n    assert(mode in [\"train\",\"test\",\"random\"])\n    if(args.load_maze):\n        maze_file = args.load_maze\n    else:\n        maze_file = STD_MAZE\n    env = MazeEnv( maze_file = maze_file,                  \n        # maze_file=\"maze\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),\n                                    maze_size=(640, 640), ",
         "detail": "layer1",
         "documentation": {}
     },
@@ -3597,20 +3437,29 @@
         "documentation": {}
     },
     {
+        "label": "setSeed",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)\n    return SEED\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "setRandomSeed",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)\n    return SEED\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
         "label": "myInterpolate2D",
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
         "peekOfCode": "def myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break\n            x1,y1 = p[0], p[1]\n            x2,y2 = arr[i+1][0], arr[i+1][1] \n            # if(i==0):",
-        "detail": "trajs_utils",
-        "documentation": {}
-    },
-    {
-        "label": "allocate_height",
-        "kind": 2,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "peekOfCode": "def allocate_height(trajectories,max_height,min_height,sep_h):\n    Tmax = max([len(traj) for traj in trajectories])\n    drones = range(len(trajectories))\n    points = {}\n    trajs_3d =[[] for d in drones] \n    for d in drones:\n        for t in range(len(trajectories[d])):\n            point = tuple(trajectories[d][t])\n            if point not in points:\n                new_z = max_height",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3664,7 +3513,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def avoid_collision_complex(new_trajs_2d,min_height,max_height,\n    sep_h,assigned_trajs=[],radius=10, n_col_points=None,\n    n_point_pool=None, n_trajs_pool=None,seed=None,\n    threshold = 100):\n    \"\"\"\n    ASSUMPTIONS\n    - assigned_trajs follows this convention\n    - \n    \"\"\"\n    if(new_trajs_2d == []): return []",
+        "peekOfCode": "def avoid_collision_complex(new_trajs_2d,min_height,max_height,\n    sep_h,assigned_trajs=[],radius=10, n_trajs_pool=None,seed=None,\n    tolerance = 0):\n    \"\"\"\n    ASSUMPTIONS\n    - assigned_trajs follows this convention\n    - threshold value is the max value of problematic points before traj\n    is considered colliding \n    \"\"\"\n    print(\"Loaded\" ,len(assigned_trajs),\"fixed trajectories\")",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3673,34 +3522,25 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def print_z_head(arr):\n    print(\"heights are:\")\n    for idx,t in enumerate(arr):\n        print(\"\\t id:\",idx,\"z\",t[0][2])\ndef avoid_collision_in_empty_space(trajectories,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    \"\"\"\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n    - pij is a point j-th in 2d: [x,y] or 3d: [x,y,z] for i-th flight\n    - trees are built using build_trees are k-d trees ",
+        "peekOfCode": "def print_z_head(arr):\n    print(\"heights are:\")\n    for idx,t in enumerate(arr):\n        print(\"\\t id:\",idx,\"z\",t[0][2])\nfrom scipy.stats import poisson\ndef random_gen_2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=None,n_trajs=5):\n    \"\"\"\n    normal to choose action with (mean=0,std=1)\n    \"\"\"\n    n_drones = n_trajs",
         "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "avoid_collision_in_empty_space",
+        "label": "random_gen_2d",
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def avoid_collision_in_empty_space(trajectories,min_height,max_height,\n    sep_h,min_safe_points,radius=30,simpleMode=True):\n    \"\"\"\n    - trajectories are [[p11,p12,...],[p21,p22,...],...]\n    - pij is a point j-th in 2d: [x,y] or 3d: [x,y,z] for i-th flight\n    - trees are built using build_trees are k-d trees \n    - max_height,min_height are bounds for allocation, it starts from max and allocates towards min\n    - sep_h is the amount of height separating two trajectories with same x,y\n    - min_safe_points is used in simpleMode False, it counts amount of contiguos point out of collision space\n    - radius for collision check using trees",
+        "peekOfCode": "def random_gen_2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=None,n_trajs=5):\n    \"\"\"\n    normal to choose action with (mean=0,std=1)\n    \"\"\"\n    n_drones = n_trajs\n    trajs = [[] for i in range(n_drones)]\n    if( n_points is None):\n        n_constant = False\n    else:\n        n_constant = True",
         "detail": "trajs_utils",
         "documentation": {}
     },
     {
-        "label": "random_trajs",
+        "label": "umb_random_gen2d",
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def random_trajs():\n    n_drones = N_DRONES\n    step = 120\n    trajs = [[] for i in range(n_drones)]\n    for i in range(n_drones):\n        n_points=N_POINTS\n        xs = []\n        ys = []\n        for j in range(n_points):\n            if xs == []:",
-        "detail": "trajs_utils",
-        "documentation": {}
-    },
-    {
-        "label": "plot_trajs",
-        "kind": 2,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "peekOfCode": "def plot_trajs(trajs):\n    # PLOT 2D NOT INTERPOl\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n        # for j in range(len(trajs[i])):\n        #     if(j+1>=len(trajs[i])): break\n        #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )\n    print('trajs: ', trajs)\n    # plt.grid()\n    plt.title(\"not interpolated\" )",
+        "peekOfCode": "def umb_random_gen2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=100,n_trajs=5):\n    n_drones = n_trajs\n    trajs = [[] for i in range(n_drones)]\n    for i in range(n_drones):\n        if(n_points==None):\n            n_points = random.randrange(xmin, xmax+1,1 )\n        xs = []\n        ys = []\n        if(zmin is not None and zmax is not None):\n            z_value = random.randrange(zmin, zmax+1,1 )",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3709,16 +3549,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def interpolate_trajs(trajs):\n    trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)\n    fig = plt.figure()\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n    plt.title(\"interpolated\" )\n    plt.show()\n    return trajs\ndef height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)",
-        "detail": "trajs_utils",
-        "documentation": {}
-    },
-    {
-        "label": "height_algo",
-        "kind": 2,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "peekOfCode": "def height_algo(trajs):\n    # trajs_3d = allocate_height(trajs,10,0,2)\n    trajs_3d,zs = avoid_collision_in_empty_space(trajs,0,300,sep_h=20,\n        min_safe_points=3,radius = 20,simpleMode=False)\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs_3d[i]))\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')",
+        "peekOfCode": "def interpolate_trajs(trajs,doPlot=False):\n    trajs = myInterpolate2D(trajs,step_size=STEP_SIZE)\n    if(doPlot):\n        fig = plt.figure()\n        for i in range(len(trajs)):\n            plt.plot(*zip(*trajs[i]),\"-o\")\n        plt.title(\"interpolated\" )\n        plt.show()\n    return trajs\n# def height_algo(trajs):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3736,7 +3567,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def are_opposite_actions(a1,a2):\n    return a1!=a2 \\\n        and ( (ACTION[a1]==\"N\" and ACTION[a2] ==\"S\") or  \n            (ACTION[a1]==\"S\" and ACTION[a2] ==\"N\") or \n            (ACTION[a1]==\"E\" and ACTION[a2] ==\"W\") or  \n            (ACTION[a1]==\"W\" and ACTION[a2] ==\"E\") )  \ndef fix_traj(trajs):\n    \"\"\"\n    Remove states going back (indecisions in agent)\n    \"\"\"",
+        "peekOfCode": "def are_opposite_actions(a1,a2):\n    return a1!=a2 \\\n        and ( (ACTION[a1]==\"N\" and ACTION[a2] ==\"S\") or  \n            (ACTION[a1]==\"S\" and ACTION[a2] ==\"N\") or \n            (ACTION[a1]==\"E\" and ACTION[a2] ==\"W\") or  \n            (ACTION[a1]==\"W\" and ACTION[a2] ==\"E\") )  \ndef fix_traj(trajs):\n    \"\"\"\n        Remove states going back (indecisions in agent)\n    \"\"\"",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3745,7 +3576,16 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def fix_traj(trajs):\n    \"\"\"\n    Remove states going back (indecisions in agent)\n    \"\"\"\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None\n        history = dict()\n        j=0\n        while(j < len(trajs[i]) ):",
+        "peekOfCode": "def fix_traj(trajs):\n    \"\"\"\n        Remove states going back (indecisions in agent)\n    \"\"\"\n    for i in range(len(trajs)):\n        last_action = None\n        last_state = None\n        history = dict()\n        j=0\n        while(j < len(trajs[i]) ):",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "plot_2d",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def plot_2d(trajs):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    for i in range(len(trajs)):\n        plt.plot(*zip(*trajs[i]),\"-o\")\n        # for j in range(len(trajs[i])):\n        #     if(j+1>=len(trajs[i])): break\n        #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )\n    print('trajs: ', trajs)\n    # plt.grid()\n    plt.title(\"not interpolated\" )",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3754,7 +3594,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_3d(trajs):\n    fig = plt.figure()\n    ax = plt.axes(projection='3d')\n    for i in range(len(trajs)):\n        ax.plot(*zip(*trajs[i]))\n    # ax.set_box_aspect([1,1,1]) # IMPORTANT - this is the new, key line\n    ax.set_xlabel('X Label')\n    ax.set_ylabel('Y Label')\n    ax.set_zlabel('Z Label')\n    plt.title(\"3d plot\" )",
+        "peekOfCode": "def plot_3d(trajs,also2d=False,doSave=False,name=\"\"): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        ax.plot(*zip(*trajs[i]))\n        ax.text(trajs[i][0][0], trajs[i][0][1], trajs[i][0][2], str(i),fontsize=6, color='black')",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3763,7 +3603,16 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_z(zs):\n    fig = plt.figure()\n    for i in range(len(zs)):\n        z_t = [ [t,z] for t,z in enumerate(zs[i])]\n        print(z_t)\n        plt.plot(*zip(*z_t),\"-o\")\n    plt.title(\"height\" )\n    plt.show()\ndef np_remove_z(arr):\n    return np.delete( np.array( arr ),np.s_[2:3], axis=1)",
+        "peekOfCode": "def plot_z(trajs, second_axis,doSave=False,name=\"\"):\n    \"\"\" 2D plot of zs depending second_axis (z = f(second_axis)) \"\"\"\n    if not (0 <= second_axis <= 1 ): raise Exception(\"Invalid axis\")\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.add_subplot(111)\n    plt.grid()\n    for id,t in enumerate( trajs ):\n        t = [ [p[second_axis],p[2]] for p in t]\n        plt.plot(*zip(* t ),\"-o\")\n        ax.text(t[0][0], t[0][1], str(id), style='italic')",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "plot_z_id",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def plot_z_id(zs):\n    \"\"\" 2D plot of zs depending on fligth id \"\"\"\n    fig = plt.figure()\n    for i in range(len(zs)):\n        z_t = [ [t,z] for t,z in enumerate(zs[i])]\n        print(z_t)\n        plt.plot(*zip(*z_t),\"-o\")\n    plt.title(\"height\" )\n    plt.show()\ndef np_remove_z(arr):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3781,7 +3630,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []",
+        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3790,7 +3639,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3799,7 +3648,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3808,7 +3657,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -3817,7 +3666,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nrandom.seed(SEED)\nnp.random.seed(seed=SEED)\ndef myInterpolate2D(trajs, n_samples=10,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
         "detail": "trajs_utils",
         "documentation": {}
     },

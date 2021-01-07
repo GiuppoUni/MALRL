@@ -44,20 +44,23 @@ if __name__ == "__main__":
 
    l_files = os.listdir(TRAJECTORIES_3D_FOLDER)
    trajectory_file = None
+   x,y = None,None
    for f in l_files:
-      print(f)
-      try:
-         x = int( f[f.find("x_")+len("x_"):f.find("_y_")] )
-         y =  int( f[f.find("_y_")+len("_y_"): f.find("_y_")+f[f.find("_y_"):].find("-")] )
-         # print('x: ', x)
-         # print('y: ', y)
+      if( f[-4:]==".csv" ):
+         print("Reading:",f)
+         with open(TRAJECTORIES_3D_FOLDER+f,"r") as fin:
+            lr= fin.readlines()
+            x = int( lr[1].split(",")[1] )
+            y = int( lr[1].split(",")[2] )
+            # print('x: ', x)
+            # print('y: ', y)
 
-      except ValueError as e:
-         print('Not valid filename for',f,e)
-         continue         
+         
       if(x==s_x and y==s_y):
          trajectory_file = f
 
+   if(x is None or y is None):
+      raise Exception("Invalid Initial positions",s_x,s_y)
    trajectory = None
    if(trajectory_file):
       df = pandas.read_csv(TRAJECTORIES_3D_FOLDER+trajectory_file,delimiter=",",index_col="index")
@@ -76,11 +79,15 @@ if __name__ == "__main__":
    asClient = NewMyAirSimClient(trajColFlag=False,
             canDrawTrajectories=True,crabMode=True,thickness = 140)
 
-   asClient.moveOnPathAsync(
+   pointer = asClient.moveOnPathAsync(
       trajectory_vecs,
       args.velocity,
       adaptive_lookahead=1,vehicle_name="Drone0")
 
+   print("UAV following trajectory...")
+   pointer.join()
+   print("UAV completed its mission.")
+   
 
 
                                        

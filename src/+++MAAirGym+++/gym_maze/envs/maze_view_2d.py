@@ -16,10 +16,8 @@ class MazeView2D:
         #     raise ValueError("Error in num_goals parameter")
         self.random_pos = random_pos
         self.fixed_goals = fixed_goals 
-        if(fixed_goals is not None):
-            self.num_goals = len(fixed_goals)
-        else:
-            self.num_goals = num_goals
+    
+        self.num_goals = num_goals
         self.verbose = verbose
         self.np_random = np_random
         self.n_trajs = n_trajs
@@ -55,11 +53,18 @@ class MazeView2D:
        
 
         # Set the Goal
+        print('num_goals: ', num_goals)
+        self.__goal = None
         if self.num_goals == 1:        
+            print('=========================================')
             if(self.fixed_goals is None):
                 self.__goal = np.array(self.maze_size) - np.array((1, 1))
             else:
-                self.__goal = np.array(self.fixed_goals)[0]
+                if( len(self.fixed_goals) == 1):
+                    self.__goal = np.array(self.fixed_goals)[0]
+                else:
+                    idx = self.np_random.choice(range(len(fixed_goals)) )
+                    self.__goal =  np.array(self.fixed_goals[idx]) 
             self.goals = [self.__goal]
 
             

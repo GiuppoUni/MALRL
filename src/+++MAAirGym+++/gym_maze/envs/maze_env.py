@@ -32,8 +32,6 @@ class MazeEnv(gym.Env):
         self.enable_render = enable_render
         self.num_goals = num_goals
         
-        if(fixed_goals is not None):
-            self.num_goals = len(fixed_goals)
         self.human_mode = human_mode
         self.chosen_goal = None
         self.random_pos = random_pos
@@ -133,7 +131,7 @@ class MazeEnv(gym.Env):
             # Single goal modeù
             
             if not moved:
-                return -0.1,False
+                return -0.5,False
             if np.array_equal(self.maze_view.robot, self.maze_view.goal):
                 # Found goal
                 reward = 1000
@@ -141,9 +139,10 @@ class MazeEnv(gym.Env):
             else:
                 #  Not found goal
                 if self.maze_view.robot.tolist() in self.visited_cells:
-                    reward = -5
+                    reward = -1
                 else:
-                    reward = -0.1/(self.maze_size[0]*self.maze_size[1])
+                    # Should be lower than not moved case
+                    reward = -0.5/(self.maze_size[0]*self.maze_size[1])
                 done = False
 
             

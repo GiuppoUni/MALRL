@@ -44,7 +44,10 @@ if __name__ == "__main__":
    pose = asClient.simGetObjectPose(s0)
    asClient.simSetVehiclePose( pose, ignore_collison=True, vehicle_name = "Drone0")
                 
-
+   
+   trajectory = np.array( trajs_utils.fix_traj([list(trajectory)])[0] )
+   trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+   
    asClient.moveOnPathAsync(
       trajectory_vecs,
       args.velocity,
