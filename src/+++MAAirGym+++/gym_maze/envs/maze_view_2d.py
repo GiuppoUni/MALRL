@@ -4,6 +4,7 @@ import numpy as np
 import os
 
 from collections.abc import Iterable
+from gym_maze.__init__ import fixed_init_pos_list
 class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
@@ -16,7 +17,8 @@ class MazeView2D:
         #     raise ValueError("Error in num_goals parameter")
         self.random_pos = random_pos
         self.fixed_goals = fixed_goals 
-    
+        self.fixed_init_pos = fixed_init_pos
+        
         self.num_goals = num_goals
         self.verbose = verbose
         self.np_random = np_random
@@ -86,6 +88,8 @@ class MazeView2D:
             self.__entrance = self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
 
             # it s set on reset
+        elif self.fixed_init_pos is not None:
+            self.__entrance = self.fixed_init_pos
         else:
             self.__entrance = np.zeros(2)
 

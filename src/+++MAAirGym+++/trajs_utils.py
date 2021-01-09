@@ -49,7 +49,7 @@ def myInterpolate2D(trajs, n_samples=10,step_size=20 ):
             #     res_t.append([x1,y1])
             length = max(abs(x2-x1),abs(y2-y1))
             samples = math.floor(length/step_size)  
-            print("|||")
+            # print("|||")
             for i in range(samples):
                 if(x2 > x1):
                     # Moved on the right
@@ -65,11 +65,11 @@ def myInterpolate2D(trajs, n_samples=10,step_size=20 ):
                     new_p = [x2, y1 - i*step_size ]
                 else:
                     raise Exception("Uncommmon points")
-                print('new_p: ', new_p)
+                # print('new_p: ', new_p)
                 res_t.append(new_p)
             if(length % step_size != 0):
                 # last_step = length - step_size * samples
-                print("last")
+                # print("last")
  
                 if(x2 > x1):
                     # Moved on the right
@@ -85,7 +85,7 @@ def myInterpolate2D(trajs, n_samples=10,step_size=20 ):
                     new_p = [x2, y1]
                 else:
                     raise Exception("Uncommmon points")
-                print('new_pL: ', new_p)
+                # print('new_pL: ', new_p)
                 res_t.append(new_p)
             
             
@@ -684,16 +684,28 @@ def plot_2d(trajs):
     plt.show()
     
 
-def plot_3d(trajs,also2d=False,doSave=False,name=""): 
+def plot_3d(trajs,also2d=False,doSave=False,name="",exploded=False): 
     """ 3D plot of trajectories trajs = [t1,...,tn] """
     fig = plt.figure(figsize=(20,10))
     ax = fig.gca(projection='3d')
     # fig = matplotlib.pyplot.gcf()
     # fig.set_size_inches(18.5, 10.5)
+    altitudes = dict()
     for i in range(len(trajs)):
         # print("xs",xs[-10:],"ys",ys[-10:],"zs",zs[-10:])
-        ax.plot(*zip(*trajs[i]))
-        ax.text(trajs[i][0][0], trajs[i][0][1], trajs[i][0][2], str(i),fontsize=6, color='black')
+        if(exploded):
+            if    trajs[i][0][2] not in altitudes:
+                altitudes[trajs[i][0][2]] = [i]
+            else:
+                altitudes[trajs[i][0][2]].append(i)
+            xs,ys,zs =[ p[0] for p in trajs[i] ],[ p[1] for p in  trajs[i] ],\
+                [ p[2]+1/((altitudes[trajs[i][0][2]].index(i)%10) +1) for p in  trajs[i] ]
+
+            ax.plot(*zip(*trajs[i]))
+            ax.text(trajs[i][0][0], trajs[i][0][1], trajs[i][0][2], str(i),fontsize=6, color='black')
+        else:
+            ax.plot(*zip(*trajs[i]))
+            ax.text(trajs[i][0][0], trajs[i][0][1], trajs[i][0][2], str(i),fontsize=6, color='black')
 
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')

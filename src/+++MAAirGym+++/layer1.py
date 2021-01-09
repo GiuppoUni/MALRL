@@ -25,7 +25,7 @@ import sys
 import pandas
 import shutil
 import queue
-import trajs_utils 
+import trajs_utils
 
 
 
@@ -40,8 +40,7 @@ RANDOM_TRAJECTORIES_FOLDER = "rtrajectories/csv/"
 TRAJECTORIES_FOLDER = "qtrajectories/csv/" 
 TRAJECTORIES_3D_FOLDER = "trajectories_3d/csv/"
 
-SEED = random.randint(0,int(10e6))
-
+EXPERIMENT_DATE =  datetime.datetime.now().strftime('%Y-%m-%d--%H-%M')
 
 
 
@@ -57,7 +56,7 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
     env = MazeEnv( maze_file = maze_file,                  
         # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                     maze_size=(640, 640), 
-                                    enable_render=args.render_train if(mode in ["train","random"]) else args.render_test,
+                                    enable_render= ( args.render_train if(mode in ["train","random"]) else args.render_test ),
                                     do_track_trajectories=True,num_goals=args.n_goals, measure_distance = True,
                                     verbose = args.v,n_trajs=args.n_random_init,random_pos = args.random_pos,seed_num = SEED,
                                     fixed_goals = fixed_goals,fixed_init_pos = fixed_init_pos,
@@ -89,10 +88,9 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
     # MAX_T = np.prod(MAZE_SIZE, dtype=int) * 100
     MAX_T = 10000
     
-    print('MAX_T: ', MAX_T)
 
     STREAK_TO_END = 100
-    SOLVED_T = np.prod(MAZE_SIZE, dtype=int)
+    SOLVED_T = 10
     DEBUG_MODE = 0
 
 
@@ -163,9 +161,7 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
 
         # Instantiating the learning related parameters
         learning_rate = get_learning_rate(0)
-        print('learning_rate: ', learning_rate)
         explore_rate = get_explore_rate(0)
-        print('explore_rate: ', explore_rate)
         discount_factor = 0.99
 
         num_streaks = 0
@@ -176,9 +172,16 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
         if(env.enable_render ):
             env.render()
 
-        print("Learning starting...") 
-        print("Init pose:", fixed_init_pos  )
-        print("env.maze_size",env.maze_size)
+        if(mode in ["train","random"]):
+            print("Seed:",SEED)
+            print("Learning starting...") 
+            print('learning_rate: ', learning_rate)
+            print('explore_rate: ', explore_rate)
+            print("Init pose:", fixed_init_pos  )
+            print("Goal pose:", fixed_goals  )
+            print('MAX_T: ', MAX_T)
+
+            # print("env.maze_size",env.maze_size)
         
         if(mode in ["train","random"]):
             n_episodes = args.episodes
@@ -220,7 +223,8 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
 
                     # execute the action
                     obv, reward, done, info = env.step(action)
-                    
+                    # print('observation: ', obv)
+
                     if(mode=="test" and info["moved"]==True):
                         # Append to trajectory
                         # print("obv,qtrajectory",obv,qtrajectory)
@@ -332,7 +336,7 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
                 print("Table saved")
 
             if(mode =="test"):
-                utils.play_audio_notification()
+                # utils.play_audio_notification()
                 outfile ="q_traj-"+str(i_trajectory)+"-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))
                 toBeSaved = np.array(qtrajectory,dtype=int)
                 print('Saving in : ', outfile)
@@ -404,6 +408,21 @@ def main(mode, fixed_init_pos=None, trainedQtable=None,visited_cells = [],i_traj
         raise Exception("args.n_agents "+str(args.n_agents)+" not yet supported")
 
 
+def cell_value(r,c,obs_blocks=1,street_blocks=1):
+    if(obs_blocks ==1):
+        if r %2 ==0 or c %2 ==0:
+            return 15
+        elif r != 0 and c !=0 and r != NROWS -1 and c != NCOLS -1 :
+            return 0
+        else:
+            return 15
+    else:
+        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):
+            return 15
+        else:
+            return 0
+
+
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Layer 1')
@@ -444,7 +463,10 @@ if __name__ == "__main__":
     
     parser.add_argument( '-v',action='store_true',  default=False,
         help='verbose (default: %(default)s)' )
-
+    
+    parser.add_argument( '--randomInitGoal',action='store_true',  default=False,
+        help='Random init and goal per episode (default: %(default)s)' )
+    
     parser.add_argument('--random-pos',action='store_true',  default=False,
         help='Drones start from random positions exctrateced from pool of 10 (default: %(default)s)')
 
@@ -482,13 +504,32 @@ if __name__ == "__main__":
 
     # env = gym.make("AirSimEnv-v1")
 
+    SEED = random.randint(0,int(10e6))
+
     if(args.seed):
         SEED = args.seed
         random.seed(SEED)
         np.random.seed(seed=SEED)
 
-         
+    NROWS = 43
+    NCOLS = 43
 
+    # dummyMaze = [ [cell_value(r,c,obs_blocks=6) for c in range(43) ] for r in range(43)]
+    # dummyMaze = np.array(dummyMaze)
+    # rnd= np.where((dummyMaze!=0) & 
+    # ((dummyMaze == 7)|(dummyMaze == 15) |(dummyMaze  ==13 )) )
+    # rs= rnd[0]
+    # cs= rnd[1]
+    # goodCells = np.array( [[rs[i],cs[i]] for i in range(len(rs)) ] )
+
+    goodCells = []
+    for r in range(NROWS):
+        for c in range(NCOLS):
+            if( r % 7==0 or c % 7==0):
+                goodCells.append([r,c])
+
+    outs = 0
+    trajsWithAltitude = []
 
     if(not args.skip_train):
         # Resetting folders
@@ -526,19 +567,59 @@ if __name__ == "__main__":
             if(not args.random_mode):
                 visited_cells = []
                 trajs = []
-                for i_trajectory,fixed_init_pos in enumerate(fixed_init_pos_list):
-                    fixed_goals = [ goals_pool[i_trajectory % len(goals_pool)] ]
-                    # print('fixed_goals: ', fixed_goals)
-                    qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos,visited_cells = visited_cells,i_trajectory = i_trajectory)
-                    _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,i_trajectory = i_trajectory)
-                    
+
+                if(args.randomInitGoal):
+                    n_run = 20
+                else:
+                    n_run = len(fixed_init_pos_list)
+
+
+
+                for i_run in range(1,n_run+1):
+                    if(args.randomInitGoal):
+                        np.random.shuffle(goodCells)
+                        # print(goodCells)
+                        fixed_init_pos = goodCells[0]
+                        print('fixed_init_pos: ', fixed_init_pos)
+                        fixed_goals = [goodCells[1]]
+                        print('fixed_goals: ', fixed_goals)
+                        print("Running i_run",i_run)
+
+                    else:
+                        # GOALS AND INIT FROM LIST
+                        fixed_init_pos = fixed_init_pos_list[i_run]
+                        fixed_goals = [ goals_pool[i_run % len(goals_pool)] ]
+                        # print('fixed_goals: ', fixed_goals)
+                    qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos,visited_cells = visited_cells,i_trajectory = i_run)
+                    _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,i_trajectory = i_run)
+                    print('traj: ', traj[0:3])
                     trajs.append(traj)
                     
                     # Remove duplicates from single traj
                     visited_cells += list(num for num,_ in itertools.groupby(traj)) 
                     # Remove duplicates from all trajs
                     visited_cells = list(num for num,_ in itertools.groupby(visited_cells))
+
+                    
+
+
+                    if(i_run % 5 ==0 ):
+                        # gtrajs = trajs_utils.fix_traj(trajs)
+
+                        gtrajs = trajs_utils.interpolate_trajs(trajs)
+                        
+                        # gtrajs = trajs
+                        gtrajs = [ [ list(p) for p in t]  for t in gtrajs]
+
+                        trajs3d, i_outs = trajs_utils.avoid_collision_complex(gtrajs,assigned_trajs=trajsWithAltitude,min_height=-50,max_height=-5,sep_h = 1,radius=10, tolerance=0.20)
+                        outs += i_outs
+                        for t in trajs3d:
+                            trajsWithAltitude.append(t)
+
+                        trajs = []
+
             else:
+                # RANDOM MODE
                 visited_cells = []
                 trajs = []
                 for i_trajectory,fixed_init_pos in enumerate(fixed_init_pos_list):
@@ -546,51 +627,68 @@ if __name__ == "__main__":
                     _,traj = main(mode = "random",fixed_init_pos=fixed_init_pos,visited_cells = visited_cells,i_trajectory = i_trajectory)                    
                     trajs.append(traj)
                 
-        print("Trained and tested")
+            print("Trained and tested runs",i_run)
+            utils.play_audio_notification()
+
+            trajs_utils.plot_3d(trajsWithAltitude,also2d=False,name="test"+"3d",exploded=False)
+            trajs_utils.plot_z(trajsWithAltitude,second_axis=0,name="test"+"xz")
+            trajs_utils.plot_z(trajsWithAltitude,second_axis=1,name="test"+"yz")
+
+        # for f in os.listdir(TRAJECTORIES_3D_FOLDER):
+        #     os.remove(TRAJECTORIES_3D_FOLDER+f)
+        for idx,traj in enumerate(trajsWithAltitude):
+            traj = np.array(traj)
+            df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],
+            'z_pos': traj[:, 2]})
+            df.index.name = "index"
+            filepath = "trajectories_3d/csv/"+"trajWithAltitude-"+str(EXPERIMENT_DATE)+str(idx)+".csv" 
+            df.to_csv(filepath)
+            print("saved to",filepath)
 
 
-    print("Loading generated trajectories")
-    traj_files_list = os.listdir(TRAJECTORIES_FOLDER)
-    trajs = []
-    for tf in traj_files_list:
-        print("Reading:",tf)
-        df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=",",index_col="index")
-        # print(df)
-        traj = df.to_numpy().tolist()
-        trajs.append(traj)
+    else:
+        print("Loading generated trajectories")
+        # traj_files_list = os.listdir(TRAJECTORIES_FOLDER)
+        # trajs = []
+        # for tf in traj_files_list:
+        #     print("Reading:",tf)
+        #     df = pandas.read_csv(TRAJECTORIES_FOLDER+tf,delimiter=",",index_col="index")
+        #     # print(df)
+        #     traj = df.to_numpy().tolist()
+        #     trajs.append(traj)
 
-    # print(trajs)
+        # # print(trajs)
 
-    print("Transforming 2D trajs into 3D trajs")
-    # # trees = utils.build_trees(trajs)
-    # # trajs3d, zs = trajs_utils.avoid_collision_in_empty_space(trajs,-50,-5,5,3)
-    # # trajs_utils.plot_2d(trajs)
-    # trajs3d = trajs_utils.avoid_collision_complex(trajs[2:4],min_height=-50,max_height=-5,sep_h = 1,radius=10)
-    # # trajs_utils.plot_2d(trajs[0:2])
-    # # trajs_utils.plot_2d([ trajs_utils.np_remove_z(t) for t in trajs3d[2:] ])
-    # ntrajs3d = trajs_utils.avoid_collision_complex(trajs[0:2],assigned_trajs=trajs3d,min_height=-50,
-    #     max_height=-5,sep_h = 1,radius=1,threshold=150)
-    
-    # trajs_utils.plot_3d(ntrajs3d+trajs3d)
+        # print("Transforming 2D trajs into 3D trajs")
+        # # # trees = utils.build_trees(trajs)
+        # # # trajs3d, zs = trajs_utils.avoid_collision_in_empty_space(trajs,-50,-5,5,3)
+        # # # trajs_utils.plot_2d(trajs)
+        # # trajs3d = trajs_utils.avoid_collision_complex(trajs[2:4],min_height=-50,max_height=-5,sep_h = 1,radius=10)
+        # # # trajs_utils.plot_2d(trajs[0:2])
+        # # # trajs_utils.plot_2d([ trajs_utils.np_remove_z(t) for t in trajs3d[2:] ])
+        # # ntrajs3d = trajs_utils.avoid_collision_complex(trajs[0:2],assigned_trajs=trajs3d,min_height=-50,
+        # #     max_height=-5,sep_h = 1,radius=1,threshold=150)
+        
+        # # trajs_utils.plot_3d(ntrajs3d+trajs3d)
 
-    trajs3d = trajs_utils.avoid_collision_complex(trajs,min_height=-50,max_height=-5,sep_h = 1,radius=10)
+        # trajs3d = trajs_utils.avoid_collision_complex(trajs,min_height=-50,max_height=-5,sep_h = 1,radius=10)
 
 
 
-    # Remove old trajectories files 
-    for f in os.listdir(TRAJECTORIES_3D_FOLDER):
-        os.remove(TRAJECTORIES_3D_FOLDER+f)
-    for idx,traj in enumerate(trajs3d):
-        traj = np.array(traj)
-        df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],
-        'z_pos': traj[:, 2]})
-        df.index.name = "index"
-        df.to_csv("trajectories_3d/csv/"+traj_files_list[idx])
-        print("saved to","trajectories_3d/csv/"+traj_files_list[idx])
+        # # Remove old trajectories files 
+        # for f in os.listdir(TRAJECTORIES_3D_FOLDER):
+        #     os.remove(TRAJECTORIES_3D_FOLDER+f)
+        # for idx,traj in enumerate(trajs3d):
+        #     traj = np.array(traj)
+        #     df = pandas.DataFrame({'x_pos': traj[:, 0], 'y_pos': traj[:, 1],
+        #     'z_pos': traj[:, 2]})
+        #     df.index.name = "index"
+        #     df.to_csv("trajectories_3d/csv/"+traj_files_list[idx])
+        #     print("saved to","trajectories_3d/csv/"+traj_files_list[idx])
 
-    trajs_utils.plot_3d(trajs3d)
+        # trajs_utils.plot_3d(trajs3d)
 
-    trajs_utils.plot_2d(trajs)
-    # trajs_utils.height_algo(trajs)
+        # trajs_utils.plot_2d(trajs)
+        # # trajs_utils.height_algo(trajs)
 
-    
+        

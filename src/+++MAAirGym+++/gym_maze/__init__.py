@@ -11,19 +11,19 @@ df = pandas.read_csv("init_pos.csv", index_col='name')
 # print(df)
 fixed_init_pos_list = df.to_numpy()
 
-register(
-     id='uav-maze-v0',
-     entry_point='gym_maze.envs:MazeEnv',
-     max_episode_steps=1000,
-kwargs={
-    "maze_file":"maze2d_004.npy",
-    "enable_render":False,
-    "do_track_trajectories":True,"num_goals":None, "measure_distance" : True,
-    "verbose" : False,"n_trajs":1,"random_pos" : False,"seed_num" : 12,
-    "fixed_goals" : fixed_goals,
-    "fixed_init_pos": fixed_init_pos_list[0]
-}
-)
+# register(
+#      id='uav-maze-v0',
+#      entry_point='gym_maze.envs:MazeEnv',
+#      max_episode_steps=1000,
+# kwargs={
+#     "maze_file":"maze2d_004.npy",
+#     "enable_render":False,
+#     "do_track_trajectories":True,"num_goals":None, "measure_distance" : True,
+#     "verbose" : False,"n_trajs":1,"random_pos" : False,"seed_num" : 12,
+#     "fixed_goals" : fixed_goals,
+#     "fixed_init_pos": fixed_init_pos_list[0]
+# }
+# )
 
 
 
