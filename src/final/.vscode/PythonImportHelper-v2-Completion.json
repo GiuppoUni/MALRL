@@ -1,5 +1,239 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "O_EXCL",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "ImageRequest",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "to_eularian_angles",
+        "importPath": "airsim.utils",
+        "description": "airsim.utils",
+        "isExtraImport": true,
+        "detail": "airsim.utils",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "draw",
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "isExtraImport": true,
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "pylab",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pylab",
+        "description": "pylab",
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "array",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "arange",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "uint8",
+        "importPath": "pylab",
+        "description": "pylab",
+        "isExtraImport": true,
+        "detail": "pylab",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "eventlet",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "eventlet",
+        "description": "eventlet",
+        "detail": "eventlet",
+        "documentation": {}
+    },
+    {
+        "label": "Timeout",
+        "importPath": "eventlet",
+        "description": "eventlet",
+        "isExtraImport": true,
+        "detail": "eventlet",
+        "documentation": {}
+    },
+    {
+        "label": "multiprocessing",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "KDTree",
+        "importPath": "sklearn.neighbors",
+        "description": "sklearn.neighbors",
+        "isExtraImport": true,
+        "detail": "sklearn.neighbors",
+        "documentation": {}
+    },
+    {
+        "label": "airsim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "airsim",
+        "description": "airsim",
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "MultirotorClient",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
         "label": "Vector3r",
         "importPath": "airsim",
         "description": "airsim",
@@ -13,6 +247,68 @@
         "description": "airsim",
         "isExtraImport": true,
         "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "utils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "utils",
+        "description": "utils",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "gc",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gc",
+        "description": "gc",
+        "detail": "gc",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "scipy.interpolate",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scipy.interpolate",
+        "description": "scipy.interpolate",
+        "detail": "scipy.interpolate",
+        "documentation": {}
+    },
+    {
+        "label": "interp1d",
+        "importPath": "scipy.interpolate",
+        "description": "scipy.interpolate",
+        "isExtraImport": true,
+        "detail": "scipy.interpolate",
         "documentation": {}
     },
     {
@@ -37,15 +333,6 @@
         "description": "operator",
         "isExtraImport": true,
         "detail": "operator",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -123,55 +410,6 @@
         "documentation": {}
     },
     {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "KDTree",
-        "importPath": "sklearn.neighbors",
-        "description": "sklearn.neighbors",
-        "isExtraImport": true,
-        "detail": "sklearn.neighbors",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
         "label": "pygame",
         "kind": 6,
         "isExtraImport": true,
@@ -187,23 +425,6 @@
         "importPath": "random",
         "description": "random",
         "detail": "random",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "O_EXCL",
-        "importPath": "os",
-        "description": "os",
-        "isExtraImport": true,
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -255,15 +476,6 @@
         "documentation": {}
     },
     {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -308,39 +520,12 @@
         "documentation": {}
     },
     {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "math",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "math",
-        "description": "math",
-        "detail": "math",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
         "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "utils",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "utils",
-        "description": "utils",
-        "detail": "utils",
         "documentation": {}
     },
     {
@@ -379,15 +564,6 @@
         "documentation": {}
     },
     {
-        "label": "matplotlib.pyplot",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
-        "documentation": {}
-    },
-    {
         "label": "mplot3d",
         "importPath": "mpl_toolkits",
         "description": "mpl_toolkits",
@@ -409,15 +585,6 @@
         "description": "mpl_toolkits",
         "isExtraImport": true,
         "detail": "mpl_toolkits",
-        "documentation": {}
-    },
-    {
-        "label": "scipy.interpolate",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "scipy.interpolate",
-        "description": "scipy.interpolate",
-        "detail": "scipy.interpolate",
         "documentation": {}
     },
     {
@@ -431,10 +598,10 @@
     },
     {
         "label": "NewMyAirSimClient",
-        "importPath": "newMyAirSimClient",
-        "description": "newMyAirSimClient",
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
         "isExtraImport": true,
-        "detail": "newMyAirSimClient",
+        "detail": "airsimgeo.newMyAirSimClient",
         "documentation": {}
     },
     {
@@ -443,15 +610,6 @@
         "description": "newMyAirSimClient",
         "isExtraImport": true,
         "detail": "newMyAirSimClient",
-        "documentation": {}
-    },
-    {
-        "label": "pylab",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pylab",
-        "description": "pylab",
-        "detail": "pylab",
         "documentation": {}
     },
     {
@@ -470,6 +628,14 @@
         "importPath": "contextlib",
         "description": "contextlib",
         "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "QUIT",
+        "importPath": "pygame.constants",
+        "description": "pygame.constants",
+        "isExtraImport": true,
+        "detail": "pygame.constants",
         "documentation": {}
     },
     {
@@ -495,14 +661,6 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
         "documentation": {}
     },
     {
@@ -537,6 +695,42 @@
         "importPath": "winsound",
         "description": "winsound",
         "detail": "winsound",
+        "documentation": {}
+    },
+    {
+        "label": "DrivetrainType",
+        "kind": 6,
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
+        "peekOfCode": "class DrivetrainType:\n    MaxDegreeOfFreedom = 0\n    ForwardOnly = 1\nclass AirSimImageType:    \n    Scene = 0\n    DepthPlanner = 1\n    DepthPerspective = 2\n    DepthVis = 3\n    DisparityNormalized = 4\n    Segmentation = 5",
+        "detail": "airsimgeo.newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "AirSimImageType",
+        "kind": 6,
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
+        "peekOfCode": "class AirSimImageType:    \n    Scene = 0\n    DepthPlanner = 1\n    DepthPerspective = 2\n    DepthVis = 3\n    DisparityNormalized = 4\n    Segmentation = 5\n    SurfaceNormals = 6\nlock = threading.Lock()\nclass NewMyAirSimClient(MultirotorClient):",
+        "detail": "airsimgeo.newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "NewMyAirSimClient",
+        "kind": 6,
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
+        "peekOfCode": "class NewMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)\n        self.trajColFlag = trajColFlag",
+        "detail": "airsimgeo.newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "kind": 5,
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
+        "peekOfCode": "lock = threading.Lock()\nclass NewMyAirSimClient(MultirotorClient):\n    deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0\n    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow):        \n        MultirotorClient.__init__(self)\n        MultirotorClient.confirmConnection(self)\n        self.drones_names = [ v for v in utils.g_airsim_settings[\"Vehicles\"] ]\n        for i,dn in enumerate( self.drones_names ):\n            self.enableApiControl(True,vehicle_name=dn)\n            self.armDisarm(True,vehicle_name=dn)",
+        "detail": "airsimgeo.newMyAirSimClient",
         "documentation": {}
     },
     {
@@ -1120,7 +1314,7 @@
         "kind": 5,
         "importPath": "layer2",
         "description": "layer2",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument('-sx', type=int,required=True,\n                     help='Starting x coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('-sy', type=int,required=True,\n                     help='Starting y coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,\n                     help='Speed value')\n   # parser.add_argument( '--debug',action='store_true',  default=False,",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,",
         "detail": "layer2",
         "documentation": {}
     },
@@ -1377,11 +1571,20 @@
         "documentation": {}
     },
     {
+        "label": "convert2airsim",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\ndef plot_xy(trajs,fids,doSave=False,date=\"\"):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        xs = [ p[0] for p in trajs[i] ]\n        ys = [ p[1] for p in trajs[i] ]\n        if trajs[i][0][2] not in fPerHeights:\n            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
         "label": "plot_xy",
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_xy(trajs,fids):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        xs = [ p[0] for p in trajs[i] ]\n        ys = [ p[1] for p in trajs[i] ]\n        if trajs[i][0][2] not in fPerHeights:\n            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]\n        else:\n            fPerHeights[trajs[i][0][2]].append(  (xs,ys,fids[i]) )",
+        "peekOfCode": "def plot_xy(trajs,fids,doSave=False,date=\"\"):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        xs = [ p[0] for p in trajs[i] ]\n        ys = [ p[1] for p in trajs[i] ]\n        if trajs[i][0][2] not in fPerHeights:\n            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]\n        else:\n            fPerHeights[trajs[i][0][2]].append(  (xs,ys,fids[i]) )",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1390,7 +1593,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        if(exploded):",
+        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\"): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        if(exploded):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1426,7 +1629,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED",
+        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1435,7 +1638,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1444,7 +1647,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1453,7 +1656,7 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1462,7 +1665,16 @@
         "kind": 5,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "FIGS_FOLDER",
+        "kind": 5,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "FIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1597,7 +1809,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
+        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*2)\n    y = int(l[1]*2)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")",
         "detail": "utils",
         "documentation": {}
     },
@@ -1606,7 +1818,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]\n    _offset_x = _v[\"X\"] ",
+        "peekOfCode": "def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*2)\n    y = int(l[1]*2)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
         "detail": "utils",
         "documentation": {}
     },

@@ -484,7 +484,7 @@ if __name__ == "__main__":
             # Setting up for the next iteration
             old_state = state
             if(args.nsteps > 0 ):
-                  if(len(last_s_a_queue)>= args.n_steps):
+                  if(len(last_s_a_queue)>= args.nsteps):
                      last_s_a_queue.pop(0)
                   last_s_a_queue += [ [state,action] ]
 
@@ -637,7 +637,9 @@ if __name__ == "__main__":
    if(args.plot3d):
       print("OUTS:",outs)
       print("Start PLOTTING...")
-      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,name="test"+"3d",exploded=False)
-      trajs_utils.plot_xy(trajsWithAltitude,fids)
-      trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=0,name="test"+"xz")
-      trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=1,name="test"+"yz")
+      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=True,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
+      trajs_utils.plot_xy(trajsWithAltitude,fids,doSave=True,date=EXPERIMENT_DATE)
+      # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=0,name="test"+"xz")
+      # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=1,name="test"+"yz")
+   
+   print("DONE.")

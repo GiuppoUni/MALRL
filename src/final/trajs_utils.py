@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 import random
 import pandas
+from pygame.constants import QUIT
 
 import scipy.interpolate
 import utils
@@ -19,7 +20,7 @@ STEP_SIZE = 20
 ACTION = ["N","S", "E", "W"]
 AINDEX = {"N":0,"S":1, "E":2, "W":3}
 
-
+FIGS_FOLDER = "generatedFigs"
 # random.seed(SEED)
 # np.random.seed(seed=SEED)
 
@@ -680,7 +681,13 @@ def fix_traj(trajs):
     return trajs
 
 
-def plot_xy(trajs,fids):
+
+def convert2airsim(trajs):
+    
+    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]
+ 
+
+def plot_xy(trajs,fids,doSave=False,date=""):
     """ 2D plot of trajectories trajs = [t1,...,tn] """
 
     fPerHeights = dict()
@@ -693,6 +700,8 @@ def plot_xy(trajs,fids):
             fPerHeights[trajs[i][0][2]].append(  (xs,ys,fids[i]) )
     
     sorted_dict = dict(sorted(fPerHeights.items()))
+    outDir =  os.path.join(FIGS_FOLDER, date)
+    # os.makedirs( outDir)
     for z in sorted_dict:
         fig = plt.figure(figsize =  (20,10))
         ax = plt.gca()
@@ -712,10 +721,16 @@ def plot_xy(trajs,fids):
             ax.text(t[0][0], t[1][0], str(t[2]),fontsize=12, color='black')
 
 
-        plt.show()
 
 
-def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False): 
+        if(doSave):
+            plt.savefig(os.path.join( outDir,"altitude_"+str(z)+".png"))
+        else:
+            plt.show()
+
+
+
+def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False,date=""): 
     """ 3D plot of trajectories trajs = [t1,...,tn] """
     fig = plt.figure(figsize=(20,10))
     ax = fig.gca(projection='3d')
@@ -743,8 +758,13 @@ def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False):
     ax.set_zlabel('Z Label (m)')
 
     plt.title("3d plot" )
+
+    outDir =  os.path.join(FIGS_FOLDER, date)
+
+    os.makedirs( outDir)
+
     if(doSave):
-        plt.savefig(name+".png")
+        plt.savefig(os.path.join( outDir ,name+".png"))
     else:
         plt.show()
 

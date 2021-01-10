@@ -210,8 +210,10 @@ def position_to_list(position_vector) -> list:
     return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
 
 def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
-    x = int(l[0]*wcell_in_meters)
-    y = int(l[1]*hcell_in_meters)
+    # x = int(l[0]*wcell_in_meters)
+    # y = int(l[1]*hcell_in_meters)
+    x = int(l[0]*2)
+    y = int(l[1]*2)
     z = int(l[2])
 
     if len(l) != 3:
