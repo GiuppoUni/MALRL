@@ -1,3 +1,4 @@
+from layer1mod import SCALE_SIZE
 import math
 import os
 import matplotlib
@@ -45,7 +46,7 @@ def checkTrajsCorrectness(trajs,dimensions=2):
 def fromCellsToMeters(trajs,scale_factor):
     assert(trajs); assert(trajs[0]); assert(trajs[0][0]); assert(len(trajs[0][0])==2) 
 
-    return [ [ [ p[0]*scale_factor,p[1]*scale_factor] for p in traj] for traj in trajs]
+    return [ [ [ scale_factor/2+ p[0]*scale_factor, scale_factor/2+ p[1]*scale_factor] for p in traj] for traj in trajs]
 
 
 
@@ -352,12 +353,12 @@ def avoid_collision_complex(new_trajs_2d,fids,min_height,max_height,
    
 
 
-    mobile_trees,tree_by_id = build_tree_dict(new_trajs_2d,fixed_h=max_height)
+    mobile_trees,tree_by_id = build_tree_dict(new_trajs_2d,fixed_h=min_height)
     # print('mobile_trees: ', mobile_trees)
       
     proposed_heights = dict()
     for i in range(len(new_trajs_2d)):
-        proposed_heights[i] = max_height
+        proposed_heights[i] = min_height
     
     for fligth_id,t2d in enumerate(new_trajs_2d):
         assigned = False
@@ -386,7 +387,7 @@ def avoid_collision_complex(new_trajs_2d,fids,min_height,max_height,
                 if ns_problematic >= threshold:
                     mobile_trees[proposed_heights[fligth_id]].remove( (fligth_id,tree_by_id[fligth_id]) ) 
                     old_proposed_heights = proposed_heights[fligth_id] 
-                    proposed_heights[fligth_id] -= sep_h
+                    proposed_heights[fligth_id] += sep_h
                     if(proposed_heights[fligth_id] < min_height): 
                         print("[ERR REFUSED FOR FIXED] Out of min h bound ",fligth_id)
                         del mobile_trees[old_proposed_heights] 
@@ -418,7 +419,7 @@ def avoid_collision_complex(new_trajs_2d,fids,min_height,max_height,
                     # print('\t COLLISIONI at: ', proposed_heights[fligth_id] )
                     mobile_trees[proposed_heights[fligth_id]].remove( (fligth_id,tree_by_id[fligth_id]) ) 
                     old_proposed_heights = proposed_heights[fligth_id] 
-                    proposed_heights[fligth_id] -= sep_h
+                    proposed_heights[fligth_id] += sep_h
                     if(proposed_heights[fligth_id] < min_height): 
                         print("[ERR REFUSED FOR MOBILE] Out of min h bound ",fligth_id)
                         del mobile_trees[old_proposed_heights] 
@@ -687,17 +688,29 @@ def convert2airsim(trajs):
     return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]
  
 
-def plot_xy(trajs,fids,doSave=False,date=""):
+
+
+
+def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date="",isCell=False):
     """ 2D plot of trajectories trajs = [t1,...,tn] """
 
     fPerHeights = dict()
     for i in range(len(trajs)):
-        xs = [ p[0] for p in trajs[i] ]
-        ys = [ p[1] for p in trajs[i] ]
-        if trajs[i][0][2] not in fPerHeights:
-            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]
+        if(fids is None):
+            idx = i
         else:
-            fPerHeights[trajs[i][0][2]].append(  (xs,ys,fids[i]) )
+            idx = fids[i]
+        if(isCell):
+            xs = [ p[0]+cell_size/2 for p in trajs[i] ]
+            ys = [ p[1]+cell_size/2 for p in trajs[i] ]
+        else:
+            xs = [ p[0] for p in trajs[i] ]
+            ys = [ p[1] for p in trajs[i] ]
+
+        if trajs[i][0][2] not in fPerHeights:
+            fPerHeights[trajs[i][0][2]] = [(xs,ys,idx)]
+        else:
+            fPerHeights[trajs[i][0][2]].append(  (xs,ys,idx) )
     
     sorted_dict = dict(sorted(fPerHeights.items()))
     outDir =  os.path.join(FIGS_FOLDER, date)
@@ -705,16 +718,26 @@ def plot_xy(trajs,fids,doSave=False,date=""):
     for z in sorted_dict:
         fig = plt.figure(figsize =  (20,10))
         ax = plt.gca()
-        
-        plt.xlabel('X Label (m)')
-        plt.ylabel('Y Label (m)')
+        plt.xlabel('X Label'+ (' (m)' if not isCell else '(cell index) ') )
+        plt.ylabel('Y Label'+ (' (m)' if not isCell else '(cell index) ') )
         # plt.grid()
         plt.title("XY plane - Z: "+str(z)+" m" )
+        plt.xticks(range(0, 43*cell_size,cell_size) )
+        plt.xlim(0,43*cell_size)
+        plt.ylim(0,43*cell_size)
+        plt.yticks(range(0, 43*cell_size,cell_size) )
+        ax.invert_yaxis()
 
         for t in fPerHeights[z]:
-            
+            # dinamico ma inutile (so max e min)
+            # plt.xticks(range(min(t[0]), max(t[0])+1,10))
+            # plt.yticks(range(min(t[1]), max(t[1])+1,10))
 
-            plt.plot(t[0],t[1],"-")
+            plt.grid()
+            if(doScatter):
+                plt.scatter(t[0],t[1],s=dotSize*10)
+            else:
+                plt.plot(t[0],t[1],"-")
             # for j in range(len(trajs[i])):
             #     if(j+1>=len(trajs[i])): break
             #     plt.arrow(*trajs[i][j],*trajs[i][j+1],  head_width = 0.2, )
@@ -730,10 +753,10 @@ def plot_xy(trajs,fids,doSave=False,date=""):
 
 
 
-def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False,date=""): 
+def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False,date="",isCell): 
     """ 3D plot of trajectories trajs = [t1,...,tn] """
     fig = plt.figure(figsize=(20,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.gca(projection='3d').invert_yaxis()
     # fig = matplotlib.pyplot.gcf()
     # fig.set_size_inches(18.5, 10.5)
     altitudes = dict()
@@ -753,9 +776,9 @@ def plot_3d(trajs,ids,also2d=False,doSave=False,name="",exploded=False,date=""):
             ax.plot(*zip(*trajs[i]))
             ax.text(trajs[i][0][0], trajs[i][0][1], trajs[i][0][2], str(ids[i]),fontsize=6, color='black')
 
-    ax.set_xlabel('X Label (m)')
-    ax.set_ylabel('Y Label (m)')
-    ax.set_zlabel('Z Label (m)')
+    ax.set_xlabel('X Label' + (' (m)' if not isCell else (" (cell index)")))
+    ax.set_ylabel('Y Label' + (' (m)' if not isCell else (" (cell index)")))
+    ax.set_zlabel('Z Label' + (' (m)' if not isCell else (" (cell index)")))
 
     plt.title("3d plot" )
 

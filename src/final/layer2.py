@@ -1,6 +1,11 @@
 import argparse
+import datetime
+import logging
 import math
 import sys
+from time import sleep
+from airsim.types import Pose
+from airsim.utils import to_quaternion
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,6 +22,18 @@ from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
 TRAJECTORIES_3D_FOLDER = "generatedData/3dL2/csv/"
+
+
+# if(args.debug):
+logging.basicConfig(filename=utils.LOG_FOLDER+"L2log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+                        filemode='w',
+                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.INFO)
+
+
+logger = logging.getLogger('RL Layer2')
+logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
 
 if __name__ == "__main__":
    parser = argparse.ArgumentParser(description='Layer 2')
@@ -94,15 +111,28 @@ if __name__ == "__main__":
    
    # Create AirSim client
    asClient = NewMyAirSimClient(trajColFlag=False,
-            canDrawTrajectories=True,crabMode=True,thickness = 140,trajs2draw=other_trajectories,traj2follow=[])
+            canDrawTrajectories=True,crabMode=True,thickness = 140,trajs2draw=other_trajectories,traj2follow=trajectory)
    
+
+   asClient.disable_trace_lines()
+
+   pose = Pose(utils.list_to_position(trajectory[0]), to_quaternion(0, 0, 0) ) 
+   asClient.simSetVehiclePose(pose,True,"Drone0")        
+
    asClient.enable_trace_lines()
+
    pointer = asClient.moveToZAsync(-50,20)
    pointer.join()
+
    pointer = asClient.moveOnPathAsync(
       trajectory_vecs,
       args.velocity,
       adaptive_lookahead=1,vehicle_name="Drone0")
+
+
+   for i in range(0,500):
+      sleep(1)
+      logger.info( ","+ str(i)+","+", ".join([ str(x) for x in utils.position_to_list( asClient.getPosition("Drone0"))]) )
 
    print("UAV following trajectory...")
    pointer.join()

@@ -353,6 +353,7 @@ if __name__ == "__main__":
    if(env.enable_render ):
          env.render()
 
+   print("EXPERIMENT DATE:",EXPERIMENT_DATE)
    print("Seed:",SEED)
    print("Learning starting...") 
 

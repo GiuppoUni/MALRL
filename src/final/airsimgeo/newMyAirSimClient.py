@@ -352,7 +352,7 @@ class NewMyAirSimClient(MultirotorClient):
     def distanceFromTraj(self,pos: Vector3r):
         return 0
 
-    def draw_numpy_trajectory(self,trajectory):
+    def draw_numpy_trajectory(self,trajectory,color= utils.red_color+[0.7]):
         # TODO replace for a specific trajectories file 
         # try:
         # trajectory =  np.load(filename)
@@ -365,7 +365,7 @@ class NewMyAirSimClient(MultirotorClient):
             
         print("Drawing trajectory:",trajectory)
         trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
-        self.simPlotLineStrip(trajectory_vecs,
+        self.simPlotLineStrip(trajectory_vecs,color_rgba=color,
             is_persistent= True, thickness = self.thickness)
         
         # _tree = KDTree(trajectory)
@@ -385,6 +385,9 @@ class NewMyAirSimClient(MultirotorClient):
         # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"csv")
         for t in self.trajs2draw:
             self.draw_numpy_trajectory(np.array(t))
+
+        self.draw_numpy_trajectory(np.array(self.traj2follow),utils.orange_color+[0.3])
+
         # print('self.kdtrees: ', self.kdtrees)
 
 
@@ -429,14 +432,14 @@ class NewMyAirSimClient(MultirotorClient):
 
 
     def disable_trace_lines(self):
-        for i,dn in enumerate(self.drones_names):
-            self.simSetTraceLine([0,0,0,0],
-                thickness=0.0,vehicle_name=dn)
+        # for i,dn in enumerate(self.drones_names):
+        self.simSetTraceLine([0,0,0,0],
+                thickness=0.0,vehicle_name="Drone0")
 
     def enable_trace_lines(self):
-        for i,dn in enumerate(self.drones_names):
-            self.simSetTraceLine(utils.green_color+[0.7],
-                thickness=self.thickness*2,vehicle_name=dn)
+        # for i,dn in enumerate(self.drones_names):
+        self.simSetTraceLine(utils.green_color+[0.7],
+            thickness=self.thickness*2,vehicle_name="Drone0")
 
 
         

@@ -70,7 +70,7 @@ init_gps = [
 red_color = [1.0,0.0,0.0]
 green_color = [0.0,0.5,0.0]
 blue_color = [0.0,0.0,1.0]
-
+orange_color =[255/255, 102/255, 0]
 
 def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):
     for _ in range(n_beeps):

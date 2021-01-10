@@ -33,6 +33,22 @@
         "documentation": {}
     },
     {
+        "label": "Pose",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "Pose",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
         "label": "Vector3r",
         "importPath": "airsim.types",
         "description": "airsim.types",
@@ -42,6 +58,22 @@
     },
     {
         "label": "to_eularian_angles",
+        "importPath": "airsim.utils",
+        "description": "airsim.utils",
+        "isExtraImport": true,
+        "detail": "airsim.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
+        "importPath": "airsim.utils",
+        "description": "airsim.utils",
+        "isExtraImport": true,
+        "detail": "airsim.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
         "importPath": "airsim.utils",
         "description": "airsim.utils",
         "isExtraImport": true,
@@ -80,6 +112,22 @@
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
         "detail": "time",
         "documentation": {}
     },
@@ -606,10 +654,10 @@
     },
     {
         "label": "NewMyAirSimClient",
-        "importPath": "newMyAirSimClient",
-        "description": "newMyAirSimClient",
+        "importPath": "airsimgeo.newMyAirSimClient",
+        "description": "airsimgeo.newMyAirSimClient",
         "isExtraImport": true,
-        "detail": "newMyAirSimClient",
+        "detail": "airsimgeo.newMyAirSimClient",
         "documentation": {}
     },
     {
@@ -628,6 +676,22 @@
         "importPath": "contextlib",
         "description": "contextlib",
         "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "SCALE_SIZE",
+        "importPath": "layer1mod",
+        "description": "layer1mod",
+        "isExtraImport": true,
+        "detail": "layer1mod",
         "documentation": {}
     },
     {
@@ -1314,7 +1378,16 @@
         "kind": 5,
         "importPath": "layer2",
         "description": "layer2",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L2log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
+        "detail": "layer2",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "layer2",
+        "description": "layer2",
+        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
         "detail": "layer2",
         "documentation": {}
     },
@@ -1323,7 +1396,16 @@
         "kind": 5,
         "importPath": "layer3",
         "description": "layer3",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"trajectories_3d/csv/\"\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument('--lat', type=float,required=True,\n                     help='Starting latitude coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--lon', type=float,required=True,\n                     help='Starting longitude coordinate of agent to choose correct trajectory to follow')\n   parser.add_argument('--velocity',default = 10, type=float,required=False,\n                     help='Speed value')\n   args = parser.parse_args()",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L2log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
+        "detail": "layer3",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "layer3",
+        "description": "layer3",
+        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
         "detail": "layer3",
         "documentation": {}
     },
@@ -1409,6 +1491,24 @@
         "documentation": {}
     },
     {
+        "label": "df",
+        "kind": 5,
+        "importPath": "tempScript",
+        "description": "tempScript",
+        "peekOfCode": "df = pd.read_csv( \"C:/Users/gioca/Desktop/Repos/AirSim-PredictiveManteinance/src/final/generatedData/2dL1/qTrajs2D-D-10-01-2021-H-11-44-22-/traj2d_0.csv\" ,\ndelimiter=\",\",index_col=\"index\")\n            # print(df)\nt=df.to_numpy() \ntt=t.tolist()\ntrajs_utils.plot_xy([ [ [p[0],p[1],10]for p in tt] ],cell_size=1,doScatter=True,isCell=True)\ntt2=trajs_utils.fix_traj([tt])\nprint('tt2: ', tt2)\ntrajs_utils.plot_xy([     [ [p[0],p[1],10] for p in tt2[0]] ] ,cell_size=1,doScatter=True  ,isCell=True )\n# 2d int",
+        "detail": "tempScript",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "tempScript",
+        "description": "tempScript",
+        "peekOfCode": "df = pd.read_csv( \"generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-11-44-22-/3dtraj0.csv\" ,\ndelimiter=\",\",index_col=\"index\")\n            # print(df)\nt=df.to_numpy() \ntt=t.tolist()\ntrajs_utils.plot_xy([tt],cell_size=20,dotSize=0.5,doScatter=True)\n# trajs_utils.plot_3d([ [ [p[0],p[1],10]for p in tt] ])",
+        "detail": "tempScript",
+        "documentation": {}
+    },
+    {
         "label": "setSeed",
         "kind": 2,
         "importPath": "trajs_utils",
@@ -1431,7 +1531,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def checkTrajsCorrectness(trajs,dimensions=2):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); \n    for t in trajs:\n        for p in t: \n            assert(len(p)==2) \ndef fromCellsToMeters(trajs,scale_factor):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); assert(len(trajs[0][0])==2) \n    return [ [ [ p[0]*scale_factor,p[1]*scale_factor] for p in traj] for traj in trajs]\ndef myInterpolate2D(trajs,step_size=20 ):\n    n_collisions = []",
+        "peekOfCode": "def checkTrajsCorrectness(trajs,dimensions=2):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); \n    for t in trajs:\n        for p in t: \n            assert(len(p)==2) \ndef fromCellsToMeters(trajs,scale_factor):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); assert(len(trajs[0][0])==2) \n    return [ [ [ scale_factor/2+ p[0]*scale_factor, scale_factor/2+ p[1]*scale_factor] for p in traj] for traj in trajs]\ndef myInterpolate2D(trajs,step_size=20 ):\n    n_collisions = []",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1440,7 +1540,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def fromCellsToMeters(trajs,scale_factor):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); assert(len(trajs[0][0])==2) \n    return [ [ [ p[0]*scale_factor,p[1]*scale_factor] for p in traj] for traj in trajs]\ndef myInterpolate2D(trajs,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break",
+        "peekOfCode": "def fromCellsToMeters(trajs,scale_factor):\n    assert(trajs); assert(trajs[0]); assert(trajs[0][0]); assert(len(trajs[0][0])==2) \n    return [ [ [ scale_factor/2+ p[0]*scale_factor, scale_factor/2+ p[1]*scale_factor] for p in traj] for traj in trajs]\ndef myInterpolate2D(trajs,step_size=20 ):\n    n_collisions = []\n    for arr in trajs:\n        res_t = []\n        for i,p in enumerate(arr):\n            if(i+1 >= len(arr)):\n                break",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1575,7 +1675,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\ndef plot_xy(trajs,fids,doSave=False,date=\"\"):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        xs = [ p[0] for p in trajs[i] ]\n        ys = [ p[1] for p in trajs[i] ]\n        if trajs[i][0][2] not in fPerHeights:\n            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]",
+        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(fids is None):\n            idx = i\n        else:\n            idx = fids[i]",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1584,7 +1684,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_xy(trajs,fids,doSave=False,date=\"\"):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        xs = [ p[0] for p in trajs[i] ]\n        ys = [ p[1] for p in trajs[i] ]\n        if trajs[i][0][2] not in fPerHeights:\n            fPerHeights[trajs[i][0][2]] = [(xs,ys,fids[i])]\n        else:\n            fPerHeights[trajs[i][0][2]].append(  (xs,ys,fids[i]) )",
+        "peekOfCode": "def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(fids is None):\n            idx = i\n        else:\n            idx = fids[i]\n        if(isCell):\n            xs = [ p[0]+cell_size/2 for p in trajs[i] ]",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1593,7 +1693,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\"): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        if(exploded):",
+        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\",isCell): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d').invert_yaxis()\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        if(exploded):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1989,7 +2089,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "red_color = [1.0,0.0,0.0]\ngreen_color = [0.0,0.5,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',",
+        "peekOfCode": "red_color = [1.0,0.0,0.0]\ngreen_color = [0.0,0.5,0.0]\nblue_color = [0.0,0.0,1.0]\norange_color =[255/255, 102/255, 0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",",
         "detail": "utils",
         "documentation": {}
     },
@@ -1998,7 +2098,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "green_color = [0.0,0.5,0.0]\nblue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',",
+        "peekOfCode": "green_color = [0.0,0.5,0.0]\nblue_color = [0.0,0.0,1.0]\norange_color =[255/255, 102/255, 0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',",
         "detail": "utils",
         "documentation": {}
     },
@@ -2007,7 +2107,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "blue_color = [0.0,0.0,1.0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',",
+        "peekOfCode": "blue_color = [0.0,0.0,1.0]\norange_color =[255/255, 102/255, 0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',",
         "detail": "utils",
         "documentation": {}
     },
