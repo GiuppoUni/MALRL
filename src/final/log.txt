@@ -1,0 +1,169 @@
+pygame 2.0.0 (SDL 2.0.12, python 3.6.10)
+Hello from the pygame community. https://www.pygame.org/contribute.html
+SEED 999
+fixed_init_pos:  [35, 21]
+maze from file
+New maze
+not none cells
+corret 2d array
+num_goals:  1
+=========================================
+DECAY_FACTOR:  184.9
+Press Ctrl+C to stop
+Seed: 999
+Learning starting...
+MAX_T:  10000
+||||||||||||||||||||||||||||| GENERATING 0 |||||||||||||||||||||||||||||
+learning_rate:  0.8
+explore_rate:  0.8
+0,4455.000000,87.288534
+1,1116.000000,775.319632
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,9408.000000,-781.081666
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 1
+||||||||||||||||||||||||||||| GENERATING 1 |||||||||||||||||||||||||||||
+fixed_init_pos:  [35, 2]
+fixed_goals:  [[40, 14]]
+self.visited_cells:  0
+learning_rate:  0.8
+explore_rate:  0.8
+0,4358.000000,-2127.043537
+1,3364.000000,-618.267983
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,8352.000000,-1516.125744
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 2
+||||||||||||||||||||||||||||| GENERATING 2 |||||||||||||||||||||||||||||
+fixed_init_pos:  [15, 42]
+fixed_goals:  [[3, 0]]
+self.visited_cells:  460
+learning_rate:  0.8
+explore_rate:  0.8
+0,5824.000000,-3130.575717
+1,2825.000000,-238.259870
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,4229.000000,-2043.040833
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 3
+2D interpolation completed.
+Altitude assignment started...
+Loaded 0 fixed trajectories
+fligth_id:  0 -6
+fligth_id:  1 -5
+fligth_id:  2 -5
+gtrajs 3
+mtrajs 3
+trajwith 0
+trajwith 3
+saved traj 0  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 1  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 2  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+||||||||||||||||||||||||||||| GENERATING 3 |||||||||||||||||||||||||||||
+fixed_init_pos:  [2, 28]
+fixed_goals:  [[42, 41]]
+self.visited_cells:  494
+learning_rate:  0.8
+explore_rate:  0.8
+0,2472.000000,500.601406
+1,5971.000000,-181.476203
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,1898.000000,642.679827
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 1
+||||||||||||||||||||||||||||| GENERATING 4 |||||||||||||||||||||||||||||
+fixed_init_pos:  [21, 30]
+fixed_goals:  [[38, 42]]
+self.visited_cells:  183
+learning_rate:  0.8
+explore_rate:  0.8
+0,9999.000000,-2379.023526,stopped
+
+1,2335.000000,4.271769
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,9999.000000,-2467.028664,stopped
+
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 2
+||||||||||||||||||||||||||||| GENERATING 5 |||||||||||||||||||||||||||||
+fixed_init_pos:  [13, 7]
+fixed_goals:  [[13, 0]]
+self.visited_cells:  502
+learning_rate:  0.8
+explore_rate:  0.8
+0,313.000000,764.500000
+1,6495.000000,-2868.811790
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,33.000000,974.500000
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 3
+2D interpolation completed.
+Altitude assignment started...
+Loaded 3 fixed trajectories
+fligth_id:  0 -7
+fligth_id:  1 -8
+fligth_id:  2 -5
+gtrajs 3
+mtrajs 3
+trajwith 3
+trajwith 3
+saved traj 0  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 1  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 2  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+||||||||||||||||||||||||||||| GENERATING 6 |||||||||||||||||||||||||||||
+fixed_init_pos:  [40, 14]
+fixed_goals:  [[42, 40]]
+self.visited_cells:  502
+learning_rate:  0.8
+explore_rate:  0.8
+0,4523.000000,58.285830
+1,8043.000000,-533.346403
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,3140.000000,414.967009
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 1
+||||||||||||||||||||||||||||| GENERATING 7 |||||||||||||||||||||||||||||
+fixed_init_pos:  [3, 0]
+fixed_goals:  [[7, 13]]
+self.visited_cells:  321
+learning_rate:  0.8
+explore_rate:  0.8
+0,620.000000,567.990265
+1,9999.000000,-3544.693077,stopped
+
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,938.000000,517.928069
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 2
+||||||||||||||||||||||||||||| GENERATING 8 |||||||||||||||||||||||||||||
+fixed_init_pos:  [42, 41]
+fixed_goals:  [[14, 29]]
+self.visited_cells:  354
+learning_rate:  0.8
+explore_rate:  0.8
+0,3975.000000,-808.348567
+1,2122.000000,400.202812
+>>>>>>>>>>>>>>>TESTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2,5408.000000,-416.293672
+Saving in :  generatedData/2dL1/qTrajs2D-D-10-01-2021-H-09-33-18-
+trajs 3
+2D interpolation completed.
+Altitude assignment started...
+Loaded 6 fixed trajectories
+fligth_id:  0 -9
+fligth_id:  1 -7
+fligth_id:  2 -10
+gtrajs 3
+mtrajs 3
+trajwith 6
+trajwith 3
+saved traj 0  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 1  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+saved traj 2  in 3d to generatedData/3dL2/csv/trajs3D-D-10-01-2021-H-09-33-18-
+Trained and tested runs 9
+OUTS: 0
+Start PLOTTING...
+You pressed Ctrl+C!
+Saving...
+ENDING OF TRAIN
+Table saved
