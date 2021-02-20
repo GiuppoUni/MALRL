@@ -1,6 +1,6 @@
-# AirSim-PredictiveManteinance
- AirSim based multi uav predictive manteinance application using reinforcement learning
-
+# **Repository in construction...**
+# MALRL
+Multiple Abstraction Layers Reinforcement Learning (MALRL) is a framework developed as a Master Thesis project in Engineering in Computer Science at Sapienza University of Rome, supervised by Prof. Luca Iocchi.
 
 
 
