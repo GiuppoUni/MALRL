@@ -5,7 +5,6 @@ import os
 from typing import Tuple
 from airsim.types import Vector3r
 from dotmap import DotMap
-from pyproj import Proj
 
 from configparser import ConfigParser
 import logging
@@ -30,18 +29,34 @@ g_vehicles = g_airsim_settings["Vehicles"]
 g_config = ConfigParser()
 g_config.read(CONFIGS_FOLDER + 'config.ini')
 
+"""
+       Assumes that the simulation environment (unreal) is in the coordinate system specified
+        by the srid but offset by the origin specified.
+        Arguments:
+            srid {str} -- EPSG SRID string. Example "EPSG:3857"
+            origin {list} -- [Longitude, Latitude, Height]
+            kwargs -- Any keyword arguments forwared to AirSim
+"""
+
+
 map_filename = "overlayMap.png"
 
 SRID = "EPSG:5555"
 
-ORIGIN = (
-    12.457480,
-    41.902243,
-    0 )
+# ORIGIN = (
+# 2.178855691482311,
+# 41.411225748657294,
+# 0)
+
+ORIGIN = (2.174432,41.404572,0)
+O_THETA = 0
 DEST = (
     12.466382,
     41.902491,
     80) 
+
+
+
 
 
 NEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory
@@ -139,38 +154,33 @@ def read_cfg(config_filename='configs/map_config.cfg', verbose=False):
     return cfg
 
 
-env_cfg = read_cfg(config_filename = CONFIGS_FOLDER + 'map_config.cfg')
 
-o_x = env_cfg["o_x"]
-o_y = env_cfg["o_y"]
-o_z = env_cfg["o_z"]
+# def projToAirSim( x, y, z):
+#     x_airsim = (x + ORIGIN_X ) 
+#     y_airsim = (y - ORIGIN_Y) 
+#     z_airsim = (-z + ORIGIN_Z) 
+#     return (x_airsim, -y_airsim, z_airsim)
 
-def projToAirSim( x, y, z):
-    x_airsim = (x + o_x ) 
-    y_airsim = (y - o_y) 
-    z_airsim = (-z + o_z) 
-    return (x_airsim, -y_airsim, z_airsim)
+# def lonlatToProj( lon, lat, z, inverse=False):
+#     proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)
+#     return proj_coords + (z,)
 
-def lonlatToProj( lon, lat, z, inverse=False):
-    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)
-    return proj_coords + (z,)
-
-def lonlatToAirSim( lon, lat, z):
-    return projToAirSim(*lonlatToProj(lon, lat, z)   )
+# def lonlatToAirSim( lon, lat, z):
+#     return projToAirSim(*lonlatToProj(lon, lat, z)   )
 
 
-def nedToProj( x, y, z):
-    """
-    Converts NED coordinates to the projected map coordinates
-    Takes care of offset origin, inverted z, as well as inverted y axis
-    """
-    x_proj = x + o_x
-    y_proj = -y + o_y
-    z_proj = -z + o_z
-    return (x_proj, y_proj, z_proj)
+# def nedToProj( x, y, z):
+#     """
+#     Converts NED coordinates to the projected map coordinates
+#     Takes care of offset origin, inverted z, as well as inverted y axis
+#     """
+#     x_proj = x + ORIGIN_X
+#     y_proj = -y + ORIGIN_Y
+#     z_proj = -z + ORIGIN_Z
+#     return (x_proj, y_proj, z_proj)
 
-def nedToGps( x, y, z):
-    return lonlatToProj(* nedToProj(x, y, z), inverse=True)
+# def nedToGps( x, y, z):
+#     return lonlatToProj(* nedToProj(x, y, z), inverse=True)
 
 def dronePrint(idx,s):
     print("[Drone"+str(idx)+"]",s)
@@ -209,16 +219,30 @@ def numpy_save(arr,folder_timestamp,filename):
 def position_to_list(position_vector) -> list:
     return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
 
-def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
+def list_to_position(l,wcell_in_meters=2,hcell_in_meters=2) -> Vector3r:
     # x = int(l[0]*wcell_in_meters)
     # y = int(l[1]*hcell_in_meters)
-    x = int(l[0]*2)
-    y = int(l[1]*2)
+    x = int(l[0]*wcell_in_meters)
+    y = int(l[1]*hcell_in_meters)
+    if(len(l)>2):
+        z = int(l[2])
+    else:
+        z = -50
+    # if len(l) != 3:
+    #     raise Exception("REQUIRED EXACTLY 3 elements")
+    return Vector3r(x,y,z)
+
+def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
+    # x = int(l[0]*wcell_in_meters)
+    # y = int(l[1]*hcell_in_meters)
+    x = int(l[0])
+    y = int(l[1])
     z = int(l[2])
 
     if len(l) != 3:
         raise Exception("REQUIRED EXACTLY 3 elements")
     return Vector3r(x,y,z)
+
 
 
 def set_offset_position(pos):
@@ -401,3 +425,16 @@ def avoid_collision(trajectories,trees,min_height,max_height,
             trajs_3d[d].append(list(point)+[new_z])
             zs[d].append(new_z)
     return trajs_3d,zs
+
+
+
+def lonLatFromRotation(theta,phi,r_lon,r_lat):
+    lon = math.atan2( math.sin(r_lon), math.tan(r_lat)* math.sin(theta) + math.cos(r_lon)* math.cos(theta)) - phi
+    lat = math.asin( math.cos(theta) * math.sin(r_lat) - math.cos(r_lon) * math.sin(theta) * math.cos(r_lat) )
+    return lon,lat
+
+if __name__=="__main__":
+    lon,lat=2.1833298597595303, 41.409602234016496
+    print(lonLatFromRotation(-5.41052,0,lon,lat))    
+
+    res1,res2 = 2.179982, 41.403179 

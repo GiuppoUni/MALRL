@@ -1,0 +1,1776 @@
+[
+    {
+        "label": "setup_path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "setup_path",
+        "description": "setup_path",
+        "detail": "setup_path",
+        "documentation": {}
+    },
+    {
+        "label": "airsim",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "airsim",
+        "description": "airsim",
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "Quaternionr",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "Pose",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "Value",
+        "importPath": "cntk.core",
+        "description": "cntk.core",
+        "isExtraImport": true,
+        "detail": "cntk.core",
+        "documentation": {}
+    },
+    {
+        "label": "he_uniform",
+        "importPath": "cntk.initializer",
+        "description": "cntk.initializer",
+        "isExtraImport": true,
+        "detail": "cntk.initializer",
+        "documentation": {}
+    },
+    {
+        "label": "Sequential",
+        "importPath": "cntk.layers",
+        "description": "cntk.layers",
+        "isExtraImport": true,
+        "detail": "cntk.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Convolution2D",
+        "importPath": "cntk.layers",
+        "description": "cntk.layers",
+        "isExtraImport": true,
+        "detail": "cntk.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Dense",
+        "importPath": "cntk.layers",
+        "description": "cntk.layers",
+        "isExtraImport": true,
+        "detail": "cntk.layers",
+        "documentation": {}
+    },
+    {
+        "label": "default_options",
+        "importPath": "cntk.layers",
+        "description": "cntk.layers",
+        "isExtraImport": true,
+        "detail": "cntk.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Signature",
+        "importPath": "cntk.layers.typing",
+        "description": "cntk.layers.typing",
+        "isExtraImport": true,
+        "detail": "cntk.layers.typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tensor",
+        "importPath": "cntk.layers.typing",
+        "description": "cntk.layers.typing",
+        "isExtraImport": true,
+        "detail": "cntk.layers.typing",
+        "documentation": {}
+    },
+    {
+        "label": "adam",
+        "importPath": "cntk.learners",
+        "description": "cntk.learners",
+        "isExtraImport": true,
+        "detail": "cntk.learners",
+        "documentation": {}
+    },
+    {
+        "label": "learning_rate_schedule",
+        "importPath": "cntk.learners",
+        "description": "cntk.learners",
+        "isExtraImport": true,
+        "detail": "cntk.learners",
+        "documentation": {}
+    },
+    {
+        "label": "momentum_schedule",
+        "importPath": "cntk.learners",
+        "description": "cntk.learners",
+        "isExtraImport": true,
+        "detail": "cntk.learners",
+        "documentation": {}
+    },
+    {
+        "label": "UnitType",
+        "importPath": "cntk.learners",
+        "description": "cntk.learners",
+        "isExtraImport": true,
+        "detail": "cntk.learners",
+        "documentation": {}
+    },
+    {
+        "label": "TensorBoardProgressWriter",
+        "importPath": "cntk.logging",
+        "description": "cntk.logging",
+        "isExtraImport": true,
+        "detail": "cntk.logging",
+        "documentation": {}
+    },
+    {
+        "label": "abs",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "argmax",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "element_select",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "less",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "relu",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "reduce_max",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "reduce_sum",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "square",
+        "importPath": "cntk.ops",
+        "description": "cntk.ops",
+        "isExtraImport": true,
+        "detail": "cntk.ops",
+        "documentation": {}
+    },
+    {
+        "label": "CloneMethod",
+        "importPath": "cntk.ops.functions",
+        "description": "cntk.ops.functions",
+        "isExtraImport": true,
+        "detail": "cntk.ops.functions",
+        "documentation": {}
+    },
+    {
+        "label": "Function",
+        "importPath": "cntk.ops.functions",
+        "description": "cntk.ops.functions",
+        "isExtraImport": true,
+        "detail": "cntk.ops.functions",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "cntk.train",
+        "description": "cntk.train",
+        "isExtraImport": true,
+        "detail": "cntk.train",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "pprint",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pprint",
+        "description": "pprint",
+        "detail": "pprint",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "tempfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tempfile",
+        "description": "tempfile",
+        "detail": "tempfile",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "rospy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "rospy",
+        "description": "rospy",
+        "detail": "rospy",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "sensor_msgs.msg",
+        "description": "sensor_msgs.msg",
+        "isExtraImport": true,
+        "detail": "sensor_msgs.msg",
+        "documentation": {}
+    },
+    {
+        "label": "CameraInfo",
+        "importPath": "sensor_msgs.msg",
+        "description": "sensor_msgs.msg",
+        "isExtraImport": true,
+        "detail": "sensor_msgs.msg",
+        "documentation": {}
+    },
+    {
+        "label": "TFMessage",
+        "importPath": "tf2_msgs.msg",
+        "description": "tf2_msgs.msg",
+        "isExtraImport": true,
+        "detail": "tf2_msgs.msg",
+        "documentation": {}
+    },
+    {
+        "label": "TransformStamped",
+        "importPath": "geometry_msgs.msg",
+        "description": "geometry_msgs.msg",
+        "isExtraImport": true,
+        "detail": "geometry_msgs.msg",
+        "documentation": {}
+    },
+    {
+        "label": "CvBridge",
+        "importPath": "cv_bridge",
+        "description": "cv_bridge",
+        "isExtraImport": true,
+        "detail": "cv_bridge",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
+        "importPath": "airsim.utils",
+        "description": "airsim.utils",
+        "isExtraImport": true,
+        "detail": "airsim.utils",
+        "documentation": {}
+    },
+    {
+        "label": "os,sys,logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.sys.logging",
+        "description": "os.sys.logging",
+        "detail": "os.sys.logging",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "arm",
+        "description": "arm",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.armDisarm(True)",
+        "detail": "arm",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nprint(\"Flying a small square box using moveByVelocityZ\")\n# AirSim uses NED coordinates so negative axis is up.\n# z of -7 is 7 meters above the original launch point.\nz = -7\n# Fly given velocity vector for 5 seconds",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "z",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "z = -7\n# Fly given velocity vector for 5 seconds\nduration = 5\nspeed = 1\ndelay = duration * speed\n# using airsim.DrivetrainType.MaxDegreeOfFreedom means we can control the drone yaw independently\n# from the direction the drone is flying.  I've set values here that make the drone always point inwards\n# towards the inside of the box (which would be handy if you are building a 3d scan of an object in the real world).\nvx = speed\nvy = 0",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "duration",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "duration = 5\nspeed = 1\ndelay = duration * speed\n# using airsim.DrivetrainType.MaxDegreeOfFreedom means we can control the drone yaw independently\n# from the direction the drone is flying.  I've set values here that make the drone always point inwards\n# towards the inside of the box (which would be handy if you are building a 3d scan of an object in the real world).\nvx = speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=90\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 90)).join()",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "speed",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "speed = 1\ndelay = duration * speed\n# using airsim.DrivetrainType.MaxDegreeOfFreedom means we can control the drone yaw independently\n# from the direction the drone is flying.  I've set values here that make the drone always point inwards\n# towards the inside of the box (which would be handy if you are building a 3d scan of an object in the real world).\nvx = speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=90\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 90)).join()\ntime.sleep(delay)",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "delay",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "delay = duration * speed\n# using airsim.DrivetrainType.MaxDegreeOfFreedom means we can control the drone yaw independently\n# from the direction the drone is flying.  I've set values here that make the drone always point inwards\n# towards the inside of the box (which would be handy if you are building a 3d scan of an object in the real world).\nvx = speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=90\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 90)).join()\ntime.sleep(delay)\nvx = 0",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vx",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vx = speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=90\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 90)).join()\ntime.sleep(delay)\nvx = 0\nvy = speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=180\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 180)).join()\ntime.sleep(delay)",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vy",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=90\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 90)).join()\ntime.sleep(delay)\nvx = 0\nvy = speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=180\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 180)).join()\ntime.sleep(delay)\nvx = -speed",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vx",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vx = 0\nvy = speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=180\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 180)).join()\ntime.sleep(delay)\nvx = -speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=270\")\nclient.moveByVelocityZAsync(vx, vy, z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 270)).join()\ntime.sleep(delay)",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vy",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vy = speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=180\")\nclient.moveByVelocityZAsync(vx,vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 180)).join()\ntime.sleep(delay)\nvx = -speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=270\")\nclient.moveByVelocityZAsync(vx, vy, z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 270)).join()\ntime.sleep(delay)\nvx = 0",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vx",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vx = -speed\nvy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=270\")\nclient.moveByVelocityZAsync(vx, vy, z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 270)).join()\ntime.sleep(delay)\nvx = 0\nvy = -speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=0\")\nclient.moveByVelocityZAsync(vx, vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 0)).join()\ntime.sleep(delay)",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vy",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vy = 0\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy)+ \", yaw=270\")\nclient.moveByVelocityZAsync(vx, vy, z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 270)).join()\ntime.sleep(delay)\nvx = 0\nvy = -speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=0\")\nclient.moveByVelocityZAsync(vx, vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 0)).join()\ntime.sleep(delay)\nclient.hoverAsync().join()",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vx",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vx = 0\nvy = -speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=0\")\nclient.moveByVelocityZAsync(vx, vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 0)).join()\ntime.sleep(delay)\nclient.hoverAsync().join()\nclient.landAsync().join()",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "vy",
+        "kind": 5,
+        "importPath": "box",
+        "description": "box",
+        "peekOfCode": "vy = -speed\nprint(\"moving by velocity vx=\" + str(vx) + \", vy=\" + str(vy) + \", yaw=0\")\nclient.moveByVelocityZAsync(vx, vy,z,duration, airsim.DrivetrainType.MaxDegreeOfFreedom, airsim.YawMode(False, 0)).join()\ntime.sleep(delay)\nclient.hoverAsync().join()\nclient.landAsync().join()",
+        "detail": "box",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "clock_speed",
+        "description": "clock_speed",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.moveByVelocityZAsync(0, 0, -20, 3).join()\nwhile True:\n    client.moveByVelocityZAsync(5, 5, -2, 1).join()\n    time.sleep(10)\nclient.armDisarm(False)\nclient.reset()",
+        "detail": "clock_speed",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "disarm",
+        "description": "disarm",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.armDisarm(False)",
+        "detail": "disarm",
+        "documentation": {}
+    },
+    {
+        "label": "ReplayMemory",
+        "kind": 6,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "class ReplayMemory(object):\n    \"\"\"\n    ReplayMemory keeps track of the environment dynamic.\n    We store all the transitions (s(t), action, s(t+1), reward, done).\n    The replay memory allows us to efficiently sample mini-batches from it, and generate the correct state representation\n    (w.r.t the number of previous frames needed).\n    \"\"\"\n    def __init__(self, size, sample_shape, history_length=4):\n        self._pos = 0\n        self._count = 0",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "History",
+        "kind": 6,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "class History(object):\n    \"\"\"\n    Accumulator keeping track of the N previous frames to be used by the agent\n    for evaluation\n    \"\"\"\n    def __init__(self, shape):\n        self._buffer = np.zeros(shape, dtype=np.float32)\n    @property\n    def value(self):\n        \"\"\" Underlying buffer with N previous states stacked along first axis",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "LinearEpsilonAnnealingExplorer",
+        "kind": 6,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "class LinearEpsilonAnnealingExplorer(object):\n    \"\"\"\n    Exploration policy using Linear Epsilon Greedy\n    Attributes:\n        start (float): start value\n        end (float): end value\n        steps (int): number of steps between start and end\n    \"\"\"\n    def __init__(self, start, end, steps):\n        self._start = start",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "DeepQAgent",
+        "kind": 6,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "class DeepQAgent(object):\n    \"\"\"\n    Implementation of Deep Q Neural Network agent like in:\n        Nature 518. \"Human-level control through deep reinforcement learning\" (Mnih & al. 2015)\n    \"\"\"\n    def __init__(self, input_shape, nb_actions,\n                 gamma=0.99, explorer=LinearEpsilonAnnealingExplorer(1, 0.1, 1000000),\n                 learning_rate=0.00025, momentum=0.95, minibatch_size=32,\n                 memory_size=500000, train_after=10000, train_interval=4, target_update_interval=10000,\n                 monitor=True):",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "huber_loss",
+        "kind": 2,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "def huber_loss(y, y_hat, delta):\n    \"\"\" Compute the Huber Loss as part of the model graph\n    Huber Loss is more robust to outliers. It is defined as:\n     if |y - y_hat| < delta :\n        0.5 * (y - y_hat)**2\n    else :\n        delta * |y - y_hat| - 0.5 * delta**2\n    Attributes:\n        y (Tensor[-1, 1]): Target value\n        y_hat(Tensor[-1, 1]): Estimated value",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "transform_input",
+        "kind": 2,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "def transform_input(responses):\n    img1d = np.array(responses[0].image_data_float, dtype=np.float)\n    img1d = 255/np.maximum(np.ones(img1d.size), img1d)\n    img2d = np.reshape(img1d, (responses[0].height, responses[0].width))\n    from PIL import Image\n    image = Image.fromarray(img2d)\n    im_final = np.array(image.resize((84, 84)).convert('L')) \n    return im_final\ndef interpret_action(action):\n    scaling_factor = 0.25",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "interpret_action",
+        "kind": 2,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "def interpret_action(action):\n    scaling_factor = 0.25\n    if action == 0:\n        quad_offset = (0, 0, 0)\n    elif action == 1:\n        quad_offset = (scaling_factor, 0, 0)\n    elif action == 2:\n        quad_offset = (0, scaling_factor, 0)\n    elif action == 3:\n        quad_offset = (0, 0, scaling_factor)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "compute_reward",
+        "kind": 2,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "def compute_reward(quad_state, quad_vel, collision_info):\n    thresh_dist = 7\n    beta = 1\n    z = -10\n    pts = [np.array([-.55265, -31.9786, -19.0225]), np.array([48.59735, -63.3286, -60.07256]), np.array([193.5974, -55.0786, -46.32256]), np.array([369.2474, 35.32137, -62.5725]), np.array([541.3474, 143.6714, -32.07256])]\n    quad_pt = np.array(list((quad_state.x_val, quad_state.y_val, quad_state.z_val)))\n    if collision_info.has_collided:\n        reward = -100\n    else:    \n        dist = 10000000",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "isDone",
+        "kind": 2,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "def isDone(reward):\n    done = 0\n    if  reward <= -10:\n        done = 1\n    return done\ninitX = -.55265\ninitY = -31.9786\ninitZ = -19.0225\n# connect to the AirSim simulator \nclient = airsim.MultirotorClient()",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "initX",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "initX = -.55265\ninitY = -31.9786\ninitZ = -19.0225\n# connect to the AirSim simulator \nclient = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nclient.moveToPositionAsync(initX, initY, initZ, 5).join()",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "initY",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "initY = -31.9786\ninitZ = -19.0225\n# connect to the AirSim simulator \nclient = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nclient.moveToPositionAsync(initX, initY, initZ, 5).join()\nclient.moveByVelocityAsync(1, -0.67, -0.8, 5).join()",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "initZ",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "initZ = -19.0225\n# connect to the AirSim simulator \nclient = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nclient.moveToPositionAsync(initX, initY, initZ, 5).join()\nclient.moveByVelocityAsync(1, -0.67, -0.8, 5).join()\ntime.sleep(0.5)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nclient.moveToPositionAsync(initX, initY, initZ, 5).join()\nclient.moveByVelocityAsync(1, -0.67, -0.8, 5).join()\ntime.sleep(0.5)\n# Make RL agent\nNumBufferFrames = 4",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "NumBufferFrames",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "NumBufferFrames = 4\nSizeRows = 84\nSizeCols = 84\nNumActions = 7\nagent = DeepQAgent((NumBufferFrames, SizeRows, SizeCols), NumActions, monitor=True)\n# Train\nepoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "SizeRows",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "SizeRows = 84\nSizeCols = 84\nNumActions = 7\nagent = DeepQAgent((NumBufferFrames, SizeRows, SizeCols), NumActions, monitor=True)\n# Train\nepoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "SizeCols",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "SizeCols = 84\nNumActions = 7\nagent = DeepQAgent((NumBufferFrames, SizeRows, SizeCols), NumActions, monitor=True)\n# Train\nepoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "NumActions",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "NumActions = 7\nagent = DeepQAgent((NumBufferFrames, SizeRows, SizeCols), NumActions, monitor=True)\n# Train\nepoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "agent",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "agent = DeepQAgent((NumBufferFrames, SizeRows, SizeCols), NumActions, monitor=True)\n# Train\nepoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "epoch",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "epoch = 100\ncurrent_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    client.moveByVelocityAsync(quad_vel.x_val+quad_offset[0], quad_vel.y_val+quad_offset[1], quad_vel.z_val+quad_offset[2], 5).join()",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "current_step",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "current_step = 0\nmax_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    client.moveByVelocityAsync(quad_vel.x_val+quad_offset[0], quad_vel.y_val+quad_offset[1], quad_vel.z_val+quad_offset[2], 5).join()\n    time.sleep(0.5)",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "max_steps",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "max_steps = epoch * 250000\nresponses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    client.moveByVelocityAsync(quad_vel.x_val+quad_offset[0], quad_vel.y_val+quad_offset[1], quad_vel.z_val+quad_offset[2], 5).join()\n    time.sleep(0.5)\n    quad_state = client.getMultirotorState().kinematics_estimated.position",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "responses",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "responses = client.simGetImages([airsim.ImageRequest(3, airsim.ImageType.DepthPerspective, True, False)])\ncurrent_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    client.moveByVelocityAsync(quad_vel.x_val+quad_offset[0], quad_vel.y_val+quad_offset[1], quad_vel.z_val+quad_offset[2], 5).join()\n    time.sleep(0.5)\n    quad_state = client.getMultirotorState().kinematics_estimated.position\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "current_state",
+        "kind": 5,
+        "importPath": "DQNdrone",
+        "description": "DQNdrone",
+        "peekOfCode": "current_state = transform_input(responses)\nwhile True:\n    action = agent.act(current_state)\n    quad_offset = interpret_action(action)\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    client.moveByVelocityAsync(quad_vel.x_val+quad_offset[0], quad_vel.y_val+quad_offset[1], quad_vel.z_val+quad_offset[2], 5).join()\n    time.sleep(0.5)\n    quad_state = client.getMultirotorState().kinematics_estimated.position\n    quad_vel = client.getMultirotorState().kinematics_estimated.linear_velocity\n    collision_info = client.simGetCollisionInfo()",
+        "detail": "DQNdrone",
+        "documentation": {}
+    },
+    {
+        "label": "LidarTest",
+        "kind": 6,
+        "importPath": "drone_lidar",
+        "description": "drone_lidar",
+        "peekOfCode": "class LidarTest:\n    def __init__(self):\n        # connect to the AirSim simulator\n        self.client = airsim.MultirotorClient()\n        self.client.confirmConnection()\n        self.client.enableApiControl(True)\n    def execute(self):\n        print(\"arming the drone...\")\n        self.client.armDisarm(True)\n        state = self.client.getMultirotorState()",
+        "detail": "drone_lidar",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "drone_stress_test",
+        "description": "drone_stress_test",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nfor idx in range(3000):\n    client.moveToPositionAsync(0, 0, -10, 5).join()\n    client.reset()\n    client.enableApiControl(True)\n    print(\"%d\" % idx)\n# that's enough fun for now. let's quite cleanly",
+        "detail": "drone_stress_test",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "gimbal",
+        "description": "gimbal",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\n# MultirotorClient.wait_key('Press any key to takeoff')\nprint(\"Taking off\")\nclient.takeoffAsync().join()\nprint(\"Ready\")\nfor i in range(5):\n    client.moveToPositionAsync(float(-50.00), float( 50.26), float( -20.58), float( 3.5))",
+        "detail": "gimbal",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nstate = client.getMultirotorState()\ns = pprint.pformat(state)\nprint(\"state: %s\" % s)\nimu_data = client.getImuData()\ns = pprint.pformat(imu_data)\nprint(\"imu_data: %s\" % s)",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "state = client.getMultirotorState()\ns = pprint.pformat(state)\nprint(\"state: %s\" % s)\nimu_data = client.getImuData()\ns = pprint.pformat(imu_data)\nprint(\"imu_data: %s\" % s)\nbarometer_data = client.getBarometerData()\ns = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "s = pprint.pformat(state)\nprint(\"state: %s\" % s)\nimu_data = client.getImuData()\ns = pprint.pformat(imu_data)\nprint(\"imu_data: %s\" % s)\nbarometer_data = client.getBarometerData()\ns = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "imu_data",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "imu_data = client.getImuData()\ns = pprint.pformat(imu_data)\nprint(\"imu_data: %s\" % s)\nbarometer_data = client.getBarometerData()\ns = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "s = pprint.pformat(imu_data)\nprint(\"imu_data: %s\" % s)\nbarometer_data = client.getBarometerData()\ns = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()\ns = pprint.pformat(gps_data)",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "barometer_data",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "barometer_data = client.getBarometerData()\ns = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()\ns = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "s = pprint.pformat(barometer_data)\nprint(\"barometer_data: %s\" % s)\nmagnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()\ns = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')\nclient.takeoffAsync().join()",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "magnetometer_data",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "magnetometer_data = client.getMagnetometerData()\ns = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()\ns = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')\nclient.takeoffAsync().join()\nstate = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "s = pprint.pformat(magnetometer_data)\nprint(\"magnetometer_data: %s\" % s)\ngps_data = client.getGpsData()\ns = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')\nclient.takeoffAsync().join()\nstate = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to move vehicle to (-10, 10, -10) at 5 m/s')",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "gps_data",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "gps_data = client.getGpsData()\ns = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')\nclient.takeoffAsync().join()\nstate = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to move vehicle to (-10, 10, -10) at 5 m/s')\nclient.moveToPositionAsync(-10, 10, -10, 5).join()\nclient.hoverAsync().join()",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "s = pprint.pformat(gps_data)\nprint(\"gps_data: %s\" % s)\nairsim.wait_key('Press any key to takeoff')\nclient.takeoffAsync().join()\nstate = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to move vehicle to (-10, 10, -10) at 5 m/s')\nclient.moveToPositionAsync(-10, 10, -10, 5).join()\nclient.hoverAsync().join()\nstate = client.getMultirotorState()",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "state = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to move vehicle to (-10, 10, -10) at 5 m/s')\nclient.moveToPositionAsync(-10, 10, -10, 5).join()\nclient.hoverAsync().join()\nstate = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to take images')\n# get camera images from the car\nresponses = client.simGetImages([",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "state = client.getMultirotorState()\nprint(\"state: %s\" % pprint.pformat(state))\nairsim.wait_key('Press any key to take images')\n# get camera images from the car\nresponses = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.DepthPerspective, True), #depth in perspective projection\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene), #scene vision image in png format\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)])  #scene vision image in uncompressed RGBA array\nprint('Retrieved images: %d' % len(responses))",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "responses",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "responses = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.DepthPerspective, True), #depth in perspective projection\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene), #scene vision image in png format\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)])  #scene vision image in uncompressed RGBA array\nprint('Retrieved images: %d' % len(responses))\ntmp_dir = os.path.join(tempfile.gettempdir(), \"airsim_drone\")\nprint (\"Saving images to %s\" % tmp_dir)\ntry:\n    os.makedirs(tmp_dir)",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "tmp_dir",
+        "kind": 5,
+        "importPath": "hello_drone",
+        "description": "hello_drone",
+        "peekOfCode": "tmp_dir = os.path.join(tempfile.gettempdir(), \"airsim_drone\")\nprint (\"Saving images to %s\" % tmp_dir)\ntry:\n    os.makedirs(tmp_dir)\nexcept OSError:\n    if not os.path.isdir(tmp_dir):\n        raise\nfor idx, response in enumerate(responses):\n    filename = os.path.join(tmp_dir, str(idx))\n    if response.pixels_as_float:",
+        "detail": "hello_drone",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "high_res_camera",
+        "description": "high_res_camera",
+        "peekOfCode": "client = airsim.VehicleClient()\nclient.confirmConnection()\nframecounter = 1\nprevtimestamp = datetime.now()\nwhile(framecounter <= 500):\n    if framecounter%150 == 0:\n        client.simGetImages([airsim.ImageRequest(\"high_res\", airsim.ImageType.Scene, False, False)])\n        print(\"High resolution image captured.\")\n    if framecounter%30 == 0:\n        now = datetime.now()",
+        "detail": "high_res_camera",
+        "documentation": {}
+    },
+    {
+        "label": "framecounter",
+        "kind": 5,
+        "importPath": "high_res_camera",
+        "description": "high_res_camera",
+        "peekOfCode": "framecounter = 1\nprevtimestamp = datetime.now()\nwhile(framecounter <= 500):\n    if framecounter%150 == 0:\n        client.simGetImages([airsim.ImageRequest(\"high_res\", airsim.ImageType.Scene, False, False)])\n        print(\"High resolution image captured.\")\n    if framecounter%30 == 0:\n        now = datetime.now()\n        print(f\"Time spent for 30 frames: {now-prevtimestamp}\")\n        prevtimestamp = now",
+        "detail": "high_res_camera",
+        "documentation": {}
+    },
+    {
+        "label": "prevtimestamp",
+        "kind": 5,
+        "importPath": "high_res_camera",
+        "description": "high_res_camera",
+        "peekOfCode": "prevtimestamp = datetime.now()\nwhile(framecounter <= 500):\n    if framecounter%150 == 0:\n        client.simGetImages([airsim.ImageRequest(\"high_res\", airsim.ImageType.Scene, False, False)])\n        print(\"High resolution image captured.\")\n    if framecounter%30 == 0:\n        now = datetime.now()\n        print(f\"Time spent for 30 frames: {now-prevtimestamp}\")\n        prevtimestamp = now\n    client.simGetImages([airsim.ImageRequest(\"low_res\", airsim.ImageType.Scene, False, False)])",
+        "detail": "high_res_camera",
+        "documentation": {}
+    },
+    {
+        "label": "KinectPublisher",
+        "kind": 6,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "class KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()\n        self.msg_d = Image()\n        self.msg_info = CameraInfo()\n        self.msg_tf = TFMessage()\n    def getDepthImage(self,response_d):\n        img_depth = np.array(response_d.image_data_float, dtype=np.float32)",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CLAHE_ENABLED",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CLAHE_ENABLED = False  # when enabled, RGB image is enhanced using CLAHE\nCAMERA_FX = 320\nCAMERA_FY = 320\nCAMERA_CX = 320\nCAMERA_CY = 240\nCAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_FX",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_FX = 320\nCAMERA_FY = 320\nCAMERA_CX = 320\nCAMERA_CY = 240\nCAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_FY",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_FY = 320\nCAMERA_CX = 320\nCAMERA_CY = 240\nCAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_CX",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_CX = 320\nCAMERA_CY = 240\nCAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_CY",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_CY = 240\nCAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_K1",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_K1 = -0.000591\nCAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_K2",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_K2 = 0.000519\nCAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_P1",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_P1 = 0.000001\nCAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_P2",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_P2 = -0.000030\nCAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()\n        self.msg_d = Image()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "CAMERA_P3",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "CAMERA_P3 = 0.0\nIMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()\n        self.msg_d = Image()\n        self.msg_info = CameraInfo()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "IMAGE_WIDTH",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "IMAGE_WIDTH = 640  # resolution should match values in settings.json\nIMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()\n        self.msg_d = Image()\n        self.msg_info = CameraInfo()\n        self.msg_tf = TFMessage()",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "IMAGE_HEIGHT",
+        "kind": 5,
+        "importPath": "kinect_publisher",
+        "description": "kinect_publisher",
+        "peekOfCode": "IMAGE_HEIGHT = 480\nclass KinectPublisher:\n    def __init__(self):\n        self.bridge_rgb = CvBridge()\n        self.msg_rgb = Image()\n        self.bridge_d = CvBridge()\n        self.msg_d = Image()\n        self.msg_info = CameraInfo()\n        self.msg_tf = TFMessage()\n    def getDepthImage(self,response_d):",
+        "detail": "kinect_publisher",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "land",
+        "description": "land",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nlanded = client.getMultirotorState().landed_state\nif landed == airsim.LandedState.Landed:\n    print(\"already landed...\")\nelse:\n    print(\"landing...\")\n    client.landAsync().join()",
+        "detail": "land",
+        "documentation": {}
+    },
+    {
+        "label": "landed",
+        "kind": 5,
+        "importPath": "land",
+        "description": "land",
+        "peekOfCode": "landed = client.getMultirotorState().landed_state\nif landed == airsim.LandedState.Landed:\n    print(\"already landed...\")\nelse:\n    print(\"landing...\")\n    client.landAsync().join()\nclient.armDisarm(False)\nclient.enableApiControl(False)",
+        "detail": "land",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nstate = client.getMultirotorState()\ns = pprint.pformat(state)\nprint(\"state: %s\" % s)\nclient.moveByManualAsync(vx_max = 1E6, vy_max = 1E6, z_min = -1E6, duration = 1E10)\nairsim.wait_key('Manual mode is setup. Press any key to send RC data to takeoff')\nclient.moveByRC(rcdata = airsim.RCData(pitch = 0.0, throttle = 1.0, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "state = client.getMultirotorState()\ns = pprint.pformat(state)\nprint(\"state: %s\" % s)\nclient.moveByManualAsync(vx_max = 1E6, vy_max = 1E6, z_min = -1E6, duration = 1E10)\nairsim.wait_key('Manual mode is setup. Press any key to send RC data to takeoff')\nclient.moveByRC(rcdata = airsim.RCData(pitch = 0.0, throttle = 1.0, is_initialized = True, is_valid = True))\nairsim.wait_key('Set Yaw and pitch to 0.5')\nclient.moveByRC(rcdata = airsim.RCData(roll = 0.5, throttle = 1.0, yaw = 0.5, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "s = pprint.pformat(state)\nprint(\"state: %s\" % s)\nclient.moveByManualAsync(vx_max = 1E6, vy_max = 1E6, z_min = -1E6, duration = 1E10)\nairsim.wait_key('Manual mode is setup. Press any key to send RC data to takeoff')\nclient.moveByRC(rcdata = airsim.RCData(pitch = 0.0, throttle = 1.0, is_initialized = True, is_valid = True))\nairsim.wait_key('Set Yaw and pitch to 0.5')\nclient.moveByRC(rcdata = airsim.RCData(roll = 0.5, throttle = 1.0, yaw = 0.5, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "client.moveByManualAsync(vx_max",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "client.moveByManualAsync(vx_max = 1E6, vy_max = 1E6, z_min = -1E6, duration = 1E10)\nairsim.wait_key('Manual mode is setup. Press any key to send RC data to takeoff')\nclient.moveByRC(rcdata = airsim.RCData(pitch = 0.0, throttle = 1.0, is_initialized = True, is_valid = True))\nairsim.wait_key('Set Yaw and pitch to 0.5')\nclient.moveByRC(rcdata = airsim.RCData(roll = 0.5, throttle = 1.0, yaw = 0.5, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "client.moveByRC(rcdata",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "client.moveByRC(rcdata = airsim.RCData(pitch = 0.0, throttle = 1.0, is_initialized = True, is_valid = True))\nairsim.wait_key('Set Yaw and pitch to 0.5')\nclient.moveByRC(rcdata = airsim.RCData(roll = 0.5, throttle = 1.0, yaw = 0.5, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "client.moveByRC(rcdata",
+        "kind": 5,
+        "importPath": "manual_mode_demo",
+        "description": "manual_mode_demo",
+        "peekOfCode": "client.moveByRC(rcdata = airsim.RCData(roll = 0.5, throttle = 1.0, yaw = 0.5, is_initialized = True, is_valid = True))",
+        "detail": "manual_mode_demo",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True, \"Drone1\")\nclient.enableApiControl(True, \"Drone2\")\nclient.armDisarm(True, \"Drone1\")\nclient.armDisarm(True, \"Drone2\")\nairsim.wait_key('Press any key to takeoff')\nf1 = client.takeoffAsync(vehicle_name=\"Drone1\")\nf2 = client.takeoffAsync(vehicle_name=\"Drone2\")\nf1.join()",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "f1",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "f1 = client.takeoffAsync(vehicle_name=\"Drone1\")\nf2 = client.takeoffAsync(vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nstate1 = client.getMultirotorState(vehicle_name=\"Drone1\")\ns = pprint.pformat(state1)\nprint(\"state: %s\" % s)\nstate2 = client.getMultirotorState(vehicle_name=\"Drone2\")\ns = pprint.pformat(state2)\nprint(\"state: %s\" % s)",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "f2",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "f2 = client.takeoffAsync(vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nstate1 = client.getMultirotorState(vehicle_name=\"Drone1\")\ns = pprint.pformat(state1)\nprint(\"state: %s\" % s)\nstate2 = client.getMultirotorState(vehicle_name=\"Drone2\")\ns = pprint.pformat(state2)\nprint(\"state: %s\" % s)\nairsim.wait_key('Press any key to move vehicles')",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "state1",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "state1 = client.getMultirotorState(vehicle_name=\"Drone1\")\ns = pprint.pformat(state1)\nprint(\"state: %s\" % s)\nstate2 = client.getMultirotorState(vehicle_name=\"Drone2\")\ns = pprint.pformat(state2)\nprint(\"state: %s\" % s)\nairsim.wait_key('Press any key to move vehicles')\nf1 = client.moveToPositionAsync(-5, 5, -10, 5, vehicle_name=\"Drone1\")\nf2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "s = pprint.pformat(state1)\nprint(\"state: %s\" % s)\nstate2 = client.getMultirotorState(vehicle_name=\"Drone2\")\ns = pprint.pformat(state2)\nprint(\"state: %s\" % s)\nairsim.wait_key('Press any key to move vehicles')\nf1 = client.moveToPositionAsync(-5, 5, -10, 5, vehicle_name=\"Drone1\")\nf2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()\nf2.join()",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "state2",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "state2 = client.getMultirotorState(vehicle_name=\"Drone2\")\ns = pprint.pformat(state2)\nprint(\"state: %s\" % s)\nairsim.wait_key('Press any key to move vehicles')\nf1 = client.moveToPositionAsync(-5, 5, -10, 5, vehicle_name=\"Drone1\")\nf2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nairsim.wait_key('Press any key to take images')\n# get camera images from the car",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "s",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "s = pprint.pformat(state2)\nprint(\"state: %s\" % s)\nairsim.wait_key('Press any key to move vehicles')\nf1 = client.moveToPositionAsync(-5, 5, -10, 5, vehicle_name=\"Drone1\")\nf2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nairsim.wait_key('Press any key to take images')\n# get camera images from the car\nresponses1 = client.simGetImages([",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "f1",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "f1 = client.moveToPositionAsync(-5, 5, -10, 5, vehicle_name=\"Drone1\")\nf2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nairsim.wait_key('Press any key to take images')\n# get camera images from the car\nresponses1 = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)], vehicle_name=\"Drone1\")  #scene vision image in uncompressed RGB array\nprint('Drone1: Retrieved images: %d' % len(responses1))",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "f2",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "f2 = client.moveToPositionAsync(5, -5, -10, 5, vehicle_name=\"Drone2\")\nf1.join()\nf2.join()\nairsim.wait_key('Press any key to take images')\n# get camera images from the car\nresponses1 = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)], vehicle_name=\"Drone1\")  #scene vision image in uncompressed RGB array\nprint('Drone1: Retrieved images: %d' % len(responses1))\nresponses2 = client.simGetImages([",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "responses1",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "responses1 = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)], vehicle_name=\"Drone1\")  #scene vision image in uncompressed RGB array\nprint('Drone1: Retrieved images: %d' % len(responses1))\nresponses2 = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)], vehicle_name=\"Drone2\")  #scene vision image in uncompressed RGB array\nprint('Drone2: Retrieved images: %d' % len(responses2))\ntmp_dir = os.path.join(tempfile.gettempdir(), \"airsim_drone\")\nprint (\"Saving images to %s\" % tmp_dir)",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "responses2",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "responses2 = client.simGetImages([\n    airsim.ImageRequest(\"0\", airsim.ImageType.DepthVis),  #depth visualization image\n    airsim.ImageRequest(\"1\", airsim.ImageType.Scene, False, False)], vehicle_name=\"Drone2\")  #scene vision image in uncompressed RGB array\nprint('Drone2: Retrieved images: %d' % len(responses2))\ntmp_dir = os.path.join(tempfile.gettempdir(), \"airsim_drone\")\nprint (\"Saving images to %s\" % tmp_dir)\ntry:\n    os.makedirs(tmp_dir)\nexcept OSError:\n    if not os.path.isdir(tmp_dir):",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "tmp_dir",
+        "kind": 5,
+        "importPath": "multi_agent_drone",
+        "description": "multi_agent_drone",
+        "peekOfCode": "tmp_dir = os.path.join(tempfile.gettempdir(), \"airsim_drone\")\nprint (\"Saving images to %s\" % tmp_dir)\ntry:\n    os.makedirs(tmp_dir)\nexcept OSError:\n    if not os.path.isdir(tmp_dir):\n        raise\nfor idx, response in enumerate(responses1 + responses2):\n    filename = os.path.join(tmp_dir, str(idx))\n    if response.pixels_as_float:",
+        "detail": "multi_agent_drone",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\n# you must first press \"1\" in the AirSim view to turn on the depth capture\n# get depth image\nyaw = 0\npi = 3.14159265483\nvx = 0",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "yaw",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "yaw = 0\npi = 3.14159265483\nvx = 0\nvy = 0\ndriving = 0\nhelp = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "pi",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "pi = 3.14159265483\nvx = 0\nvy = 0\ndriving = 0\nhelp = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):\n        if (not help):",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "vx",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "vx = 0\nvy = 0\ndriving = 0\nhelp = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):\n        if (not help):\n            help = True",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "vy",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "vy = 0\ndriving = 0\nhelp = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):\n        if (not help):\n            help = True\n            print(\"Please press '1' in the AirSim view to enable the Depth camera view\")",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "driving",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "driving = 0\nhelp = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):\n        if (not help):\n            help = True\n            print(\"Please press '1' in the AirSim view to enable the Depth camera view\")\n    else:    ",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "help",
+        "kind": 5,
+        "importPath": "navigate",
+        "description": "navigate",
+        "peekOfCode": "help = False\nwhile True:\n    # this will return png width= 256, height= 144\n    result = client.simGetImage(\"0\", airsim.ImageType.DepthVis)\n    if (result == \"\\0\"):\n        if (not help):\n            help = True\n            print(\"Please press '1' in the AirSim view to enable the Depth camera view\")\n    else:    \n        rawImage = np.fromstring(result, np.int8)",
+        "detail": "navigate",
+        "documentation": {}
+    },
+    {
+        "label": "printUsage",
+        "kind": 2,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "def printUsage():\n   print(\"Usage: python camera.py [depth|segmentation|scene]\")\ncameraType = \"depth\"\nfor arg in sys.argv[1:]:\n  cameraType = arg.lower()\ncameraTypeMap = { \n \"depth\": airsim.ImageType.DepthVis,\n \"segmentation\": airsim.ImageType.Segmentation,\n \"seg\": airsim.ImageType.Segmentation,\n \"scene\": airsim.ImageType.Scene,",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "cameraType",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "cameraType = \"depth\"\nfor arg in sys.argv[1:]:\n  cameraType = arg.lower()\ncameraTypeMap = { \n \"depth\": airsim.ImageType.DepthVis,\n \"segmentation\": airsim.ImageType.Segmentation,\n \"seg\": airsim.ImageType.Segmentation,\n \"scene\": airsim.ImageType.Scene,\n \"disparity\": airsim.ImageType.DisparityNormalized,\n \"normals\": airsim.ImageType.SurfaceNormals",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "cameraTypeMap",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "cameraTypeMap = { \n \"depth\": airsim.ImageType.DepthVis,\n \"segmentation\": airsim.ImageType.Segmentation,\n \"seg\": airsim.ImageType.Segmentation,\n \"scene\": airsim.ImageType.Scene,\n \"disparity\": airsim.ImageType.DisparityNormalized,\n \"normals\": airsim.ImageType.SurfaceNormals\n}\nif (not cameraType in cameraTypeMap):\n  printUsage()",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nhelp = False\nfontFace = cv2.FONT_HERSHEY_SIMPLEX\nfontScale = 0.5\nthickness = 2\ntextSize, baseline = cv2.getTextSize(\"FPS\", fontFace, fontScale, thickness)",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "help",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "help = False\nfontFace = cv2.FONT_HERSHEY_SIMPLEX\nfontScale = 0.5\nthickness = 2\ntextSize, baseline = cv2.getTextSize(\"FPS\", fontFace, fontScale, thickness)\nprint (textSize)\ntextOrg = (10, 10 + textSize[1])\nframeCount = 0\nstartTime=time.clock()\nfps = 0",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "fontFace",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "fontFace = cv2.FONT_HERSHEY_SIMPLEX\nfontScale = 0.5\nthickness = 2\ntextSize, baseline = cv2.getTextSize(\"FPS\", fontFace, fontScale, thickness)\nprint (textSize)\ntextOrg = (10, 10 + textSize[1])\nframeCount = 0\nstartTime=time.clock()\nfps = 0\nwhile True:",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "fontScale",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "fontScale = 0.5\nthickness = 2\ntextSize, baseline = cv2.getTextSize(\"FPS\", fontFace, fontScale, thickness)\nprint (textSize)\ntextOrg = (10, 10 + textSize[1])\nframeCount = 0\nstartTime=time.clock()\nfps = 0\nwhile True:\n    # because this method returns std::vector<uint8>, msgpack decides to encode it as a string unfortunately.",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "thickness",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "thickness = 2\ntextSize, baseline = cv2.getTextSize(\"FPS\", fontFace, fontScale, thickness)\nprint (textSize)\ntextOrg = (10, 10 + textSize[1])\nframeCount = 0\nstartTime=time.clock()\nfps = 0\nwhile True:\n    # because this method returns std::vector<uint8>, msgpack decides to encode it as a string unfortunately.\n    rawImage = client.simGetImage(\"0\", cameraTypeMap[cameraType])",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "textOrg",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "textOrg = (10, 10 + textSize[1])\nframeCount = 0\nstartTime=time.clock()\nfps = 0\nwhile True:\n    # because this method returns std::vector<uint8>, msgpack decides to encode it as a string unfortunately.\n    rawImage = client.simGetImage(\"0\", cameraTypeMap[cameraType])\n    if (rawImage == None):\n        print(\"Camera is not returning image, please check airsim for error messages\")\n        sys.exit(0)",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "frameCount",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "frameCount = 0\nstartTime=time.clock()\nfps = 0\nwhile True:\n    # because this method returns std::vector<uint8>, msgpack decides to encode it as a string unfortunately.\n    rawImage = client.simGetImage(\"0\", cameraTypeMap[cameraType])\n    if (rawImage == None):\n        print(\"Camera is not returning image, please check airsim for error messages\")\n        sys.exit(0)\n    else:",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "fps",
+        "kind": 5,
+        "importPath": "opencv_show",
+        "description": "opencv_show",
+        "peekOfCode": "fps = 0\nwhile True:\n    # because this method returns std::vector<uint8>, msgpack decides to encode it as a string unfortunately.\n    rawImage = client.simGetImage(\"0\", cameraTypeMap[cameraType])\n    if (rawImage == None):\n        print(\"Camera is not returning image, please check airsim for error messages\")\n        sys.exit(0)\n    else:\n        png = cv2.imdecode(airsim.string_to_uint8_array(rawImage), cv2.IMREAD_UNCHANGED)\n        cv2.putText(png,'FPS ' + str(fps),textOrg, fontFace, fontScale,(255,0,255),thickness)",
+        "detail": "opencv_show",
+        "documentation": {}
+    },
+    {
+        "label": "Position",
+        "kind": 6,
+        "importPath": "orbit",
+        "description": "orbit",
+        "peekOfCode": "class Position:\n    def __init__(self, pos):\n        self.x = pos.x_val\n        self.y = pos.y_val\n        self.z = pos.z_val\n# Make the drone fly in a circle.\nclass OrbitNavigator:\n    def __init__(self, radius = 2, altitude = 10, speed = 2, iterations = 1, center = [1,0], snapshots = None):\n        self.radius = radius\n        self.altitude = altitude",
+        "detail": "orbit",
+        "documentation": {}
+    },
+    {
+        "label": "OrbitNavigator",
+        "kind": 6,
+        "importPath": "orbit",
+        "description": "orbit",
+        "peekOfCode": "class OrbitNavigator:\n    def __init__(self, radius = 2, altitude = 10, speed = 2, iterations = 1, center = [1,0], snapshots = None):\n        self.radius = radius\n        self.altitude = altitude\n        self.speed = speed\n        self.iterations = iterations\n        self.snapshots = snapshots\n        self.snapshot_delta = None\n        self.next_snapshot = None\n        self.z = None",
+        "detail": "orbit",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "path",
+        "description": "path",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nprint(\"arming the drone...\")\nclient.armDisarm(True)\nstate = client.getMultirotorState()\nif state.landed_state == airsim.LandedState.Landed:\n    print(\"taking off...\")\n    client.takeoffAsync().join()\nelse:",
+        "detail": "path",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "path",
+        "description": "path",
+        "peekOfCode": "state = client.getMultirotorState()\nif state.landed_state == airsim.LandedState.Landed:\n    print(\"taking off...\")\n    client.takeoffAsync().join()\nelse:\n    client.hoverAsync().join()\ntime.sleep(1)\nstate = client.getMultirotorState()\nif state.landed_state == airsim.LandedState.Landed:\n    print(\"take off failed...\")",
+        "detail": "path",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "path",
+        "description": "path",
+        "peekOfCode": "state = client.getMultirotorState()\nif state.landed_state == airsim.LandedState.Landed:\n    print(\"take off failed...\")\n    sys.exit(1)\n# AirSim uses NED coordinates so negative axis is up.\n# z of -7 is 7 meters above the original launch point.\nz = -7\nprint(\"make sure we are hovering at 7 meters...\")\nclient.moveToZAsync(z, 1).join()\n# see https://github.com/Microsoft/AirSim/wiki/moveOnPath-demo",
+        "detail": "path",
+        "documentation": {}
+    },
+    {
+        "label": "z",
+        "kind": 5,
+        "importPath": "path",
+        "description": "path",
+        "peekOfCode": "z = -7\nprint(\"make sure we are hovering at 7 meters...\")\nclient.moveToZAsync(z, 1).join()\n# see https://github.com/Microsoft/AirSim/wiki/moveOnPath-demo\n# this method is async and we are not waiting for the result since we are passing timeout_sec=0.\nprint(\"flying on path...\")\nresult = client.moveOnPathAsync([airsim.Vector3r(125,0,z),\n                                airsim.Vector3r(125,-130,z),\n                                airsim.Vector3r(0,-130,z),\n                                airsim.Vector3r(0,0,z)],",
+        "detail": "path",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "path",
+        "description": "path",
+        "peekOfCode": "result = client.moveOnPathAsync([airsim.Vector3r(125,0,z),\n                                airsim.Vector3r(125,-130,z),\n                                airsim.Vector3r(0,-130,z),\n                                airsim.Vector3r(0,0,z)],\n                        12, 120,\n                        airsim.DrivetrainType.ForwardOnly, airsim.YawMode(False,0), 20, 1).join()\n# drone will over-shoot so we bring it back to the start point before landing.\nclient.moveToPositionAsync(0,0,z,1).join()\nprint(\"landing...\")\nclient.landAsync().join()",
+        "detail": "path",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "pause_continue_drone",
+        "description": "pause_continue_drone",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nprint(\"Taking off\")\nclient.moveByVelocityZAsync(0, 0, -20, 8).join()\ntime.sleep(3)    \nfor i in range(1, 6):\n    print(\"Starting command to run for 15sec\")\n    client.moveByVelocityZAsync(-1*i, -1*i, -20-i, 15)",
+        "detail": "pause_continue_drone",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client = airsim.VehicleClient()\nclient.confirmConnection()\n# plot red arrows for 30 seconds\nclient.simPlotArrows(points_start = [Vector3r(x,y,0) for x, y in zip(np.linspace(0,10,20), np.linspace(0,0,20))], \n                        points_end = [Vector3r(x,y,0) for x, y in zip(np.linspace(0,10,20), np.linspace(10,10,20))], \n                        color_rgba = [1.0, 0.0, 1.0, 1.0], duration = 30.0, arrow_size = 10, thickness = 1)\n# plot magenta arrows for 15 seconds\nclient.simPlotArrows(points_start = [Vector3r(x,y,-3) for x, y in zip(np.linspace(0,10,20), np.linspace(0,0,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,10,20), np.linspace(10,20,20))], \n                        color_rgba = [1.0, 1.0, 0.0, 1.0], duration = 15.0, arrow_size = 20, thickness = 3)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotArrows(points_start",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotArrows(points_start = [Vector3r(x,y,0) for x, y in zip(np.linspace(0,10,20), np.linspace(0,0,20))], \n                        points_end = [Vector3r(x,y,0) for x, y in zip(np.linspace(0,10,20), np.linspace(10,10,20))], \n                        color_rgba = [1.0, 0.0, 1.0, 1.0], duration = 30.0, arrow_size = 10, thickness = 1)\n# plot magenta arrows for 15 seconds\nclient.simPlotArrows(points_start = [Vector3r(x,y,-3) for x, y in zip(np.linspace(0,10,20), np.linspace(0,0,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,10,20), np.linspace(10,20,20))], \n                        color_rgba = [1.0, 1.0, 0.0, 1.0], duration = 15.0, arrow_size = 20, thickness = 3)\n# plot red arrows for 10 seconds\nclient.simPlotArrows(points_start = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,0,20), np.linspace(-3,-10, 20))], \n                        points_end = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(10,20,20), np.linspace(-5,-8, 20))], ",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotArrows(points_start",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotArrows(points_start = [Vector3r(x,y,-3) for x, y in zip(np.linspace(0,10,20), np.linspace(0,0,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,10,20), np.linspace(10,20,20))], \n                        color_rgba = [1.0, 1.0, 0.0, 1.0], duration = 15.0, arrow_size = 20, thickness = 3)\n# plot red arrows for 10 seconds\nclient.simPlotArrows(points_start = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,0,20), np.linspace(-3,-10, 20))], \n                        points_end = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(10,20,20), np.linspace(-5,-8, 20))], \n                        color_rgba = [1.0, 0.0, 0.0, 1.0], duration = 10.0, arrow_size = 100, thickness = 5)\n# plot 2 white arrows which are persistent \nclient.simPlotArrows(points_start = [Vector3r(x,y,-2) for x, y in zip(np.linspace(0,10,20), np.linspace(0,20,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(3,17,20), np.linspace(5,28,20))], ",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotArrows(points_start",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotArrows(points_start = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,0,20), np.linspace(-3,-10, 20))], \n                        points_end = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(10,20,20), np.linspace(-5,-8, 20))], \n                        color_rgba = [1.0, 0.0, 0.0, 1.0], duration = 10.0, arrow_size = 100, thickness = 5)\n# plot 2 white arrows which are persistent \nclient.simPlotArrows(points_start = [Vector3r(x,y,-2) for x, y in zip(np.linspace(0,10,20), np.linspace(0,20,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(3,17,20), np.linspace(5,28,20))], \n                        color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 5.0, arrow_size = 100, thickness = 1, is_persistent = True)\n# plot points \nclient.simPlotPoints(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,20), np.linspace(0,-20,20))], color_rgba=[1.0, 0.0, 0.0, 1.0], size = 25, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,-10,20), np.linspace(0,-20,20), np.linspace(0,-5,20))], color_rgba=[0.0, 0.0, 1.0, 1.0], size = 10, duration = 20.0, is_persistent = False)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotArrows(points_start",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotArrows(points_start = [Vector3r(x,y,-2) for x, y in zip(np.linspace(0,10,20), np.linspace(0,20,20))], \n                        points_end = [Vector3r(x,y,-5) for x, y in zip(np.linspace(3,17,20), np.linspace(5,28,20))], \n                        color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 5.0, arrow_size = 100, thickness = 1, is_persistent = True)\n# plot points \nclient.simPlotPoints(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,20), np.linspace(0,-20,20))], color_rgba=[1.0, 0.0, 0.0, 1.0], size = 25, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,-10,20), np.linspace(0,-20,20), np.linspace(0,-5,20))], color_rgba=[0.0, 0.0, 1.0, 1.0], size = 10, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,-20,20), np.linspace(0,-7,20))], color_rgba=[1.0, 0.0, 1.0, 1.0], size = 15, duration = 20.0, is_persistent = False)\n# plot line strip. 0-1, 1-2, 2-3\nclient.simPlotLineStrip(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot line list. 0-1, 2-3, 4-5. Must be even. ",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotPoints(points",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotPoints(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,20), np.linspace(0,-20,20))], color_rgba=[1.0, 0.0, 0.0, 1.0], size = 25, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,-10,20), np.linspace(0,-20,20), np.linspace(0,-5,20))], color_rgba=[0.0, 0.0, 1.0, 1.0], size = 10, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,-20,20), np.linspace(0,-7,20))], color_rgba=[1.0, 0.0, 1.0, 1.0], size = 15, duration = 20.0, is_persistent = False)\n# plot line strip. 0-1, 1-2, 2-3\nclient.simPlotLineStrip(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot line list. 0-1, 2-3, 4-5. Must be even. \nclient.simPlotLineList(points = [Vector3r(x,y,-7) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot transforms \nclient.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotPoints(points",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,-10,20), np.linspace(0,-20,20), np.linspace(0,-5,20))], color_rgba=[0.0, 0.0, 1.0, 1.0], size = 10, duration = 20.0, is_persistent = False)\nclient.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,-20,20), np.linspace(0,-7,20))], color_rgba=[1.0, 0.0, 1.0, 1.0], size = 15, duration = 20.0, is_persistent = False)\n# plot line strip. 0-1, 1-2, 2-3\nclient.simPlotLineStrip(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot line list. 0-1, 2-3, 4-5. Must be even. \nclient.simPlotLineList(points = [Vector3r(x,y,-7) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot transforms \nclient.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], ",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotPoints(points",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotPoints(points = [Vector3r(x,y,z) for x, y, z in zip(np.linspace(0,10,20), np.linspace(0,-20,20), np.linspace(0,-7,20))], color_rgba=[1.0, 0.0, 1.0, 1.0], size = 15, duration = 20.0, is_persistent = False)\n# plot line strip. 0-1, 1-2, 2-3\nclient.simPlotLineStrip(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot line list. 0-1, 2-3, 4-5. Must be even. \nclient.simPlotLineList(points = [Vector3r(x,y,-7) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot transforms \nclient.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotLineStrip(points",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotLineStrip(points = [Vector3r(x,y,-5) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot line list. 0-1, 2-3, 4-5. Must be even. \nclient.simPlotLineList(points = [Vector3r(x,y,-7) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot transforms \nclient.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotLineList(points",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotLineList(points = [Vector3r(x,y,-7) for x, y in zip(np.linspace(0,-10,10), np.linspace(0,-20,10))], color_rgba=[1.0, 0.0, 0.0, 1.0], thickness = 5, duration = 30.0, is_persistent = False)\n# plot transforms \nclient.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_yaw_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotStrings(strings",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotStrings(strings = [\"Microsoft AirSim\" for i in range(5)], positions = [Vector3r(x,y,-1) for x, y in zip(np.linspace(0,5,5), np.linspace(0,0,5))], \n                        scale = 1, color_rgba=[1.0, 1.0, 1.0, 1.0], duration = 1200.0)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)\n# client.simPlotTransforms(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n#                         scale = 35, thickness = 5, duration = 1200.0, is_persistent = False)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_yaw_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_roll_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotTransformsWithNames(poses",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=0.0, yaw=yaw)) for x, y, yaw in zip(np.linspace(0,10,10), np.linspace(0,0,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_yaw_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_roll_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=pitch, roll=0.0, yaw=0.0)) for x, y, pitch in zip(np.linspace(0,10,10), np.linspace(-1,-1,10), np.linspace(0,np.pi,10))],\n                                  names=[\"tf_pitch_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\ntime.sleep(20.0)\nclient.simFlushPersistentMarkers()",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotTransformsWithNames(poses",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=0.0, roll=roll, yaw=0.0)) for x, y, roll in zip(np.linspace(0,10,10), np.linspace(1,1,10), np.linspace(0,np.pi,10))], \n                                  names=[\"tf_roll_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\nclient.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=pitch, roll=0.0, yaw=0.0)) for x, y, pitch in zip(np.linspace(0,10,10), np.linspace(-1,-1,10), np.linspace(0,np.pi,10))],\n                                  names=[\"tf_pitch_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\ntime.sleep(20.0)\nclient.simFlushPersistentMarkers()",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "client.simPlotTransformsWithNames(poses",
+        "kind": 5,
+        "importPath": "plot_markers",
+        "description": "plot_markers",
+        "peekOfCode": "client.simPlotTransformsWithNames(poses = [Pose(position_val=Vector3r(x,y,0), orientation_val=to_quaternion(pitch=pitch, roll=0.0, yaw=0.0)) for x, y, pitch in zip(np.linspace(0,10,10), np.linspace(-1,-1,10), np.linspace(0,np.pi,10))],\n                                  names=[\"tf_pitch_\" + str(idx) for idx in range(10)], tf_scale = 35, tf_thickness = 5, text_scale = 1, text_color_rgba = [1.0, 1.0, 1.0, 1.0], duration = 1200.0)\ntime.sleep(20.0)\nclient.simFlushPersistentMarkers()",
+        "detail": "plot_markers",
+        "documentation": {}
+    },
+    {
+        "label": "printUsage",
+        "kind": 2,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "def printUsage():\n   print(\"Usage: python point_cloud.py [cloud.txt]\")\ndef savePointCloud(image, fileName):\n   f = open(fileName, \"w\")\n   for x in range(image.shape[0]):\n     for y in range(image.shape[1]):\n        pt = image[x,y]\n        if (math.isinf(pt[0]) or math.isnan(pt[0])):\n          # skip it\n          None",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "savePointCloud",
+        "kind": 2,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "def savePointCloud(image, fileName):\n   f = open(fileName, \"w\")\n   for x in range(image.shape[0]):\n     for y in range(image.shape[1]):\n        pt = image[x,y]\n        if (math.isinf(pt[0]) or math.isnan(pt[0])):\n          # skip it\n          None\n        else: \n          f.write(\"%f %f %f %s\\n\" % (pt[0], pt[1], pt[2]-1, rgb))",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "outputFile",
+        "kind": 5,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "outputFile = \"cloud.asc\" \ncolor = (0,255,0)\nrgb = \"%d %d %d\" % color\nprojectionMatrix = np.array([[-0.501202762, 0.000000000, 0.000000000, 0.000000000],\n                              [0.000000000, -0.501202762, 0.000000000, 0.000000000],\n                              [0.000000000, 0.000000000, 10.00000000, 100.00000000],\n                              [0.000000000, 0.000000000, -10.0000000, 0.000000000]])\ndef printUsage():\n   print(\"Usage: python point_cloud.py [cloud.txt]\")\ndef savePointCloud(image, fileName):",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "color",
+        "kind": 5,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "color = (0,255,0)\nrgb = \"%d %d %d\" % color\nprojectionMatrix = np.array([[-0.501202762, 0.000000000, 0.000000000, 0.000000000],\n                              [0.000000000, -0.501202762, 0.000000000, 0.000000000],\n                              [0.000000000, 0.000000000, 10.00000000, 100.00000000],\n                              [0.000000000, 0.000000000, -10.0000000, 0.000000000]])\ndef printUsage():\n   print(\"Usage: python point_cloud.py [cloud.txt]\")\ndef savePointCloud(image, fileName):\n   f = open(fileName, \"w\")",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "rgb",
+        "kind": 5,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "rgb = \"%d %d %d\" % color\nprojectionMatrix = np.array([[-0.501202762, 0.000000000, 0.000000000, 0.000000000],\n                              [0.000000000, -0.501202762, 0.000000000, 0.000000000],\n                              [0.000000000, 0.000000000, 10.00000000, 100.00000000],\n                              [0.000000000, 0.000000000, -10.0000000, 0.000000000]])\ndef printUsage():\n   print(\"Usage: python point_cloud.py [cloud.txt]\")\ndef savePointCloud(image, fileName):\n   f = open(fileName, \"w\")\n   for x in range(image.shape[0]):",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "projectionMatrix",
+        "kind": 5,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "projectionMatrix = np.array([[-0.501202762, 0.000000000, 0.000000000, 0.000000000],\n                              [0.000000000, -0.501202762, 0.000000000, 0.000000000],\n                              [0.000000000, 0.000000000, 10.00000000, 100.00000000],\n                              [0.000000000, 0.000000000, -10.0000000, 0.000000000]])\ndef printUsage():\n   print(\"Usage: python point_cloud.py [cloud.txt]\")\ndef savePointCloud(image, fileName):\n   f = open(fileName, \"w\")\n   for x in range(image.shape[0]):\n     for y in range(image.shape[1]):",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "point_cloud",
+        "description": "point_cloud",
+        "peekOfCode": "client = airsim.MultirotorClient()\nwhile True:\n    rawImage = client.simGetImage(\"0\", airsim.ImageType.DepthPerspective)\n    if (rawImage is None):\n        print(\"Camera is not returning image, please check airsim for error messages\")\n        airsim.wait_key(\"Press any key to exit\")\n        sys.exit(0)\n    else:\n        png = cv2.imdecode(np.frombuffer(rawImage, np.uint8) , cv2.IMREAD_UNCHANGED)\n        gray = cv2.cvtColor(png, cv2.COLOR_BGR2GRAY)",
+        "detail": "point_cloud",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "reset_test_drone",
+        "description": "reset_test_drone",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nprint(\"fly\")\nclient.moveToPositionAsync(0, 0, -10, 5).join()\nprint(\"reset\")\nclient.reset()\nclient.enableApiControl(True)\nclient.armDisarm(True)",
+        "detail": "reset_test_drone",
+        "documentation": {}
+    },
+    {
+        "label": "SetupPath",
+        "kind": 6,
+        "importPath": "setup_path",
+        "description": "setup_path",
+        "peekOfCode": "class SetupPath:\n    @staticmethod\n    def getDirLevels(path):\n        path_norm = os.path.normpath(path)\n        return len(path_norm.split(os.sep))\n    @staticmethod\n    def getCurrentPath():\n        cur_filepath = __file__\n        return os.path.dirname(cur_filepath)\n    @staticmethod",
+        "detail": "setup_path",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "set_trace_line",
+        "description": "set_trace_line",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nclient.takeoffAsync().join()\nclient.hoverAsync().join()\nvehicleControl = client.moveByVelocityAsync(1, 1, 0, 12)\nclient.simSetTraceLine([1.0, 0.0, 0.0, 1.0], 5)\ntime.sleep(2)\nclient.simSetTraceLine([0.0, 1.0, 0.0, 0.8], 10)",
+        "detail": "set_trace_line",
+        "documentation": {}
+    },
+    {
+        "label": "vehicleControl",
+        "kind": 5,
+        "importPath": "set_trace_line",
+        "description": "set_trace_line",
+        "peekOfCode": "vehicleControl = client.moveByVelocityAsync(1, 1, 0, 12)\nclient.simSetTraceLine([1.0, 0.0, 0.0, 1.0], 5)\ntime.sleep(2)\nclient.simSetTraceLine([0.0, 1.0, 0.0, 0.8], 10)\ntime.sleep(2)\nclient.simSetTraceLine([0.0, 0.0, 1.0, 0.6], 20)\ntime.sleep(2)\nclient.simSetTraceLine([1.0, 1.0, 0.0, 0.4], 30)\ntime.sleep(2)\nclient.simSetTraceLine([0.0, 1.0, 1.0, 0.2], 40)",
+        "detail": "set_trace_line",
+        "documentation": {}
+    },
+    {
+        "label": "print_state",
+        "kind": 2,
+        "importPath": "state",
+        "description": "state",
+        "peekOfCode": "def print_state():\n    print(\"===============================================================\")\n    state = client.getMultirotorState()\n    print(\"state: %s\" % pprint.pformat(state))\n    return state\nclient = airsim.MultirotorClient()\nstate = print_state()\nif state.ready:\n    print(\"drone is ready!\")\nelse:",
+        "detail": "state",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "state",
+        "description": "state",
+        "peekOfCode": "client = airsim.MultirotorClient()\nstate = print_state()\nif state.ready:\n    print(\"drone is ready!\")\nelse:\n    print(\"drone is not ready!\")\nif state.ready_message:\n    print(state.ready_message)",
+        "detail": "state",
+        "documentation": {}
+    },
+    {
+        "label": "state",
+        "kind": 5,
+        "importPath": "state",
+        "description": "state",
+        "peekOfCode": "state = print_state()\nif state.ready:\n    print(\"drone is ready!\")\nelse:\n    print(\"drone is not ready!\")\nif state.ready_message:\n    print(state.ready_message)",
+        "detail": "state",
+        "documentation": {}
+    },
+    {
+        "label": "SurveyNavigator",
+        "kind": 6,
+        "importPath": "survey",
+        "description": "survey",
+        "peekOfCode": "class SurveyNavigator:\n    def __init__(self, args):\n        self.boxsize = args.size\n        self.stripewidth = args.stripewidth\n        self.altitude = args.altitude\n        self.velocity = args.speed\n        self.client = airsim.MultirotorClient()\n        self.client.confirmConnection()\n        self.client.enableApiControl(True)\n    def start(self):",
+        "detail": "survey",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "takeoff",
+        "description": "takeoff",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\nclient.enableApiControl(True)\nclient.armDisarm(True)\nlanded = client.getMultirotorState().landed_state\nif landed == airsim.LandedState.Landed:\n    print(\"taking off...\")\n    client.takeoffAsync().join()\nelse:\n    print(\"already flying...\")",
+        "detail": "takeoff",
+        "documentation": {}
+    },
+    {
+        "label": "landed",
+        "kind": 5,
+        "importPath": "takeoff",
+        "description": "takeoff",
+        "peekOfCode": "landed = client.getMultirotorState().landed_state\nif landed == airsim.LandedState.Landed:\n    print(\"taking off...\")\n    client.takeoffAsync().join()\nelse:\n    print(\"already flying...\")\n    client.hoverAsync().join()",
+        "detail": "takeoff",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "teleport",
+        "description": "teleport",
+        "peekOfCode": "client = airsim.MultirotorClient()\nclient.confirmConnection()\npose = client.simGetVehiclePose()\n# teleport the drone + 10 meters in x-direction\npose.position.x_val += 10\nclient.simSetVehiclePose(pose, True, \"Drone1\")\ntime.sleep(2)\n# teleport the drone back\npose.position.x_val -= 10\nclient.simSetVehiclePose(pose, True, \"Drone1\")",
+        "detail": "teleport",
+        "documentation": {}
+    },
+    {
+        "label": "pose",
+        "kind": 5,
+        "importPath": "teleport",
+        "description": "teleport",
+        "peekOfCode": "pose = client.simGetVehiclePose()\n# teleport the drone + 10 meters in x-direction\npose.position.x_val += 10\nclient.simSetVehiclePose(pose, True, \"Drone1\")\ntime.sleep(2)\n# teleport the drone back\npose.position.x_val -= 10\nclient.simSetVehiclePose(pose, True, \"Drone1\")",
+        "detail": "teleport",
+        "documentation": {}
+    }
+]

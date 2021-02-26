@@ -1,0 +1,119 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "parser",
+        "kind": 5,
+        "importPath": "computeAvgTime",
+        "description": "computeAvgTime",
+        "peekOfCode": "parser = argparse.ArgumentParser(description='Layer 1')\nparser.add_argument('-d', type=str,\n                  help='episodes (default: %(default)s)')\nargs = parser.parse_args()\nif args.d:\n   dir= args.d\nelse:\n   dir=\"./\"\ntimes =[]\nfor ff in os.listdir(dir):",
+        "detail": "computeAvgTime",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "computeAvgTime",
+        "description": "computeAvgTime",
+        "peekOfCode": "args = parser.parse_args()\nif args.d:\n   dir= args.d\nelse:\n   dir=\"./\"\ntimes =[]\nfor ff in os.listdir(dir):\n   print(ff)\n   if(not \".txt\" in ff):\n      continue",
+        "detail": "computeAvgTime",
+        "documentation": {}
+    },
+    {
+        "label": "meaned",
+        "kind": 5,
+        "importPath": "computeAvgTime",
+        "description": "computeAvgTime",
+        "peekOfCode": "meaned = np.mean(times)\nprint('len(meaned),meaned: ', meaned)",
+        "detail": "computeAvgTime",
+        "documentation": {}
+    },
+    {
+        "label": "fix1",
+        "kind": 2,
+        "importPath": "fixer",
+        "description": "fixer",
+        "peekOfCode": "def fix1(ff):\n   with open(ff,\"r\") as fr:\n      print(\"reading\",ff)\n      l=fr.readlines()\n      ls = (\",\".join(l) ).split(\",\")\n      print(ls[0:3])\n      num=\"\"\n      numCifre=1\n      vecchioValore = 0\n      for i,value in enumerate(ls):",
+        "detail": "fixer",
+        "documentation": {}
+    },
+    {
+        "label": "ys",
+        "kind": 5,
+        "importPath": "plot",
+        "description": "plot",
+        "peekOfCode": "ys = []\nfor ff in os.listdir(\"./\"):\n   print(ff)\n   if(not \".txt\" \"\" in ff):\n      continue\n   x = []\n   y = []\n   with open(ff,'r') as csvfile:\n      plots = csv.reader(csvfile, delimiter=',')\n      for i,row in enumerate(plots):",
+        "detail": "plot",
+        "documentation": {}
+    },
+    {
+        "label": "meaned",
+        "kind": 5,
+        "importPath": "plot",
+        "description": "plot",
+        "peekOfCode": "meaned = np.mean(ys,axis=0)\nprint(len(meaned),meaned)\n# plt.plot(x,y, label='Loaded from file!')\nplt.plot(x,meaned,color=\"blue\")\nplt.xlabel(\"Episodes\")\nplt.ylabel('Number of steps')\n# plt.title('N-steps QLearning (N=20): Number of steps per episode')\nplt.title('QLearning: Number of steps per episode')\nplt.legend()\nplt.show()",
+        "detail": "plot",
+        "documentation": {}
+    },
+    {
+        "label": "ys",
+        "kind": 5,
+        "importPath": "plotRWD",
+        "description": "plotRWD",
+        "peekOfCode": "ys = []\nfor ff in os.listdir(\"./\"):\n   print(ff)\n   if(not \".txt\" in ff):\n      continue\n   x = []\n   y = []\n   with open(ff,'r') as csvfile:\n      plots = csv.reader(csvfile, delimiter=',')\n      for i,row in enumerate(plots):",
+        "detail": "plotRWD",
+        "documentation": {}
+    },
+    {
+        "label": "meaned",
+        "kind": 5,
+        "importPath": "plotRWD",
+        "description": "plotRWD",
+        "peekOfCode": "meaned = np.mean(ys,axis=0)\nprint(len(meaned),meaned)\n# plt.plot(x,y, label='Loaded from file!')\nplt.plot(x,meaned,color=\"blue\")\nplt.xlabel(\"Episodes\")\nplt.ylabel('Reward')\n# plt.title('N-steps QLearning (N=20): Reward per episode')\nplt.title('QLearning: Reward per episode')\nplt.legend()\nplt.show()",
+        "detail": "plotRWD",
+        "documentation": {}
+    }
+]

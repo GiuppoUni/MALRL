@@ -233,6 +233,7 @@ if __name__ == "__main__":
 
    outs = 0
    trajsWithAltitude = []
+   trajsBySteps=[]
    fids = []
 
    # if(args.debug):
@@ -441,7 +442,10 @@ if __name__ == "__main__":
       rewLogFile.write("nrun %d,seed %d,max_t %d, buf_size %d\n" % (n_run, SEED,MAX_T,TRAJECTORIES_BUFFER_SIZE))
       start = time.time()
       for episode in range(n_episodes+1):
-
+         
+         if(episode == n_episodes and args.render_test):
+            env.set_render()
+            
          # Reset the environment
          obv = env.reset()
          env.seed(SEED+episode)
@@ -588,8 +592,8 @@ if __name__ == "__main__":
 
             print("Altitude assignment started...")    
             trajs3d, i_outs,local_fids = trajs_utils.avoid_collision_complex(new_trajs_2d=gtrajs,
-               fids=[i+ ((i_run-TRAJECTORIES_BUFFER_SIZE)+1) for i in range(TRAJECTORIES_BUFFER_SIZE)],
-               assigned_trajs = trajsWithAltitude,min_height=50,max_height=300,sep_h = 1,radius=10, tolerance=0.0)
+               fids=[ i + ((i_run-TRAJECTORIES_BUFFER_SIZE)+1) for i in range(TRAJECTORIES_BUFFER_SIZE)],
+               assigned_trajs = trajsWithAltitude,min_height=50,max_height=300,sep_h = 10,radius=100, tolerance=0.0)
             
             print("gtrajs",len(gtrajs))
             print("mtrajs",len(mtrajs))
@@ -599,6 +603,9 @@ if __name__ == "__main__":
             outs += i_outs
             for t in trajs3d:
                trajsWithAltitude.append(t)
+            trajsBySteps.append( (local_fids,trajs3d) )
+            trajs_utils.plot_xy(trajs,cell_size=1,fids=local_fids,doScatter=True,doSave=True,isCell=True,name="rlTrajs_ep_"+str(i_run),date=EXPERIMENT_DATE)
+
             for id in local_fids:
                fids.append(id)
             # Resetto il buffer
@@ -635,12 +642,16 @@ if __name__ == "__main__":
    print("Trained and tested runs",i_run+1)
    utils.play_audio_notification()
 
+   print("OUTS:",outs)
+   print("Start PLOTTING...")
    if(args.plot3d):
-      print("OUTS:",outs)
-      print("Start PLOTTING...")
-      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=True,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
-      trajs_utils.plot_xy(trajsWithAltitude,fids,doSave=True,date=EXPERIMENT_DATE)
+      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=False,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
+      trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=False,date=EXPERIMENT_DATE)
       # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=0,name="test"+"xz")
       # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=1,name="test"+"yz")
-   
+   else:
+      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=True,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
+      trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=True,date=EXPERIMENT_DATE)
+
+
    print("DONE.")

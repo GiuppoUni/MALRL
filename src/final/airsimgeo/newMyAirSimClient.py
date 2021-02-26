@@ -25,6 +25,11 @@ import threading
 from scipy.interpolate import interp1d
 
 
+
+from airsim import Vector3r, MultirotorClient
+from pyproj import Proj
+
+
 class DrivetrainType:
     MaxDegreeOfFreedom = 0
     ForwardOnly = 1
@@ -72,6 +77,14 @@ class NewMyAirSimClient(MultirotorClient):
         self.thickness = thickness
         if(self.canDrawTrajectories):
             self.drawTrajectories()
+
+
+            
+        self.srid = utils.SRID
+        self.origin = utils.ORIGIN
+
+        self.proj = Proj(init=self.srid)
+        self.origin_proj = self.proj(*self.origin[0:2]) + (self.origin[2],)
 
 
 
@@ -279,60 +292,6 @@ class NewMyAirSimClient(MultirotorClient):
         return result
     
 
-    # def take_action_threaded(self, action,lock,vIdx,vName):
-
-    #     #check if copter is on level cause sometimes he goes up without a reason
-    #     x = 0
-    #     levelized = False
-    #     while not levelized:
-    #         lock.acquire()
-    #         z = self.getPosition(vehicle_name=vName).z_val 
-    #         lock.release()
-    #         if (z > -7.0):
-    #             levelized = True
-    #         lock.acquire()
-    #         self.moveToZAsync(-6, 3,vName)
-    #         lock.release()
-    #         time.sleep(1)
-    #         lock.acquire()
-    #         print(self.getPosition(vehicle_name=vName).z_val, "and", x)
-    #         lock.release()
-    #         x = x + 1
-    #         if x > 10:
-    #             return [vIdx,True]        
-        
-    
-    #     start = time.time()
-    #     duration = 0 
-        
-    #     collided = False
-    #     if action == 0:
-    #         lock.acquire()
-    #         start, duration = self.straight(3, 5,vName)
-    #         lock.release()
-    #     elif action == 1:         
-    #         lock.acquire()
-    #         start, duration = self.yaw_right(0.8,vName)            
-    #         lock.release()
-    #     elif action == 2:
-    #         lock.acquire()
-    #         start, duration = self.yaw_left(1,vName)
-    #         lock.release()
-    #     while duration > time.time() - start:
-    #         lock.acquire()
-    #         col = self.simGetCollisionInfo(vehicle_name=vName).has_collided
-    #         lock.release()
-    #         if  col == True:
-    #             return [vIdx,True]    
-    #     lock.acquire()
-    #     self.moveByVelocityAsync(0, 0, 0, 1,vehicle_name=vName)
-    #     lock.release()
-        
-    #     lock.acquire()
-    #     self.rotateByYawRate(0, 1,vehicle_name=vName)            
-    #     lock.release()
-        
-    #     return [vIdx,collided]
 
     def goal_direction(self, goal, pos, vn):
         
@@ -476,4 +435,73 @@ class NewMyAirSimClient(MultirotorClient):
     def position_to_list(position_vector) -> list:
         return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
     
-    
+
+
+# -----------------------------------------------      AIRSIM GEO               ------------------------------------------------------------------------------------------------------------------
+
+
+    def lonlatToProj(self, lon, lat, z, inverse=False):
+        proj_coords = self.proj(lon, lat, inverse=inverse)
+        return proj_coords + (z,)
+
+    def projToAirSim(self, x, y, z):
+        x_airsim = x - self.origin_proj[0]
+        y_airsim = y - self.origin_proj[1]
+        z_airsim = -z + self.origin_proj[2]
+        return (x_airsim, -y_airsim, z_airsim)
+
+    def lonlatToAirSim(self, lon, lat, z):
+        return self.projToAirSim(*self.lonlatToProj(lon, lat, z))
+
+    def nedToProj(self, x, y, z):
+        """
+        Converts NED coordinates to the projected map coordinates
+        Takes care of offset origin, inverted z, as well as inverted y axis
+        """
+        x_proj = x + self.origin_proj[0]
+        y_proj = -y + self.origin_proj[1]
+        z_proj = -z + self.origin_proj[2]
+        return (x_proj, y_proj, z_proj)
+
+    def nedToGps(self, x, y, z):
+        return self.lonlatToProj(*self.nedToProj(x, y, z), inverse=True)
+
+    # def getGpsLocation(self):
+    #     """
+    #     Gets GPS coordinates of the vehicle.
+    #     """
+    #     pos = self.simGetGroundTruthKinematics().position
+    #     gps = self.nedToGps(pos.x_val, pos.y_val, pos.z_val)
+    #     return gps
+
+    def moveToPositionAsyncGeo(self, gps=None, proj=None,vel=10, **kwargs):
+        """
+        Moves to the a position that is specified by gps (lon, lat, +z) or by the projected map 
+        coordinates (x, y, +z).  +z represent height up.
+        """
+        coords = None
+        if gps is not None:
+            coords = self.lonlatToAirSim(*gps)
+        elif proj is not None:
+            coords = self.projToAirSim(*proj)
+        if coords:
+            return self.moveToPositionAsync(coords[0], coords[1], coords[2],velocity=vel, **kwargs)
+        else:
+            print('Please pass in GPS (lon,lat,z), or projected coordinates (x,y,z)!')
+
+    def moveOnPathAsyncGeo(self, gps=None, proj=None, velocity=10, **kwargs):
+        """
+        Moves to the a path that is a list of points. The path points are either gps (lon, lat, +z) or by the projected map 
+        coordinates (x, y, +z).  +z represent height is up.
+        """
+        path = None
+        if gps is not None:
+            path = [Vector3r(*self.lonlatToAirSim(*cds)) for cds in gps]
+        elif proj is not None:
+            path = [Vector3r(*self.projToAirSim(*cds)) for cds in proj]
+        if path:
+            # print(gps, path)
+            return self.moveOnPathAsync(path, velocity=velocity, **kwargs)
+        else:
+            print(
+                'Please pass in GPS [(lon,lat,z)], or projected coordinates [(x,y,z)]!')

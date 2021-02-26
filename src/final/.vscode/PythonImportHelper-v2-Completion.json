@@ -41,6 +41,14 @@
         "documentation": {}
     },
     {
+        "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
         "label": "Pose",
         "importPath": "airsim.types",
         "description": "airsim.types",
@@ -270,6 +278,22 @@
         "isExtraImport": true,
         "importPath": "airsim",
         "description": "airsim",
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "MultirotorClient",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
+        "detail": "airsim",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim",
+        "description": "airsim",
+        "isExtraImport": true,
         "detail": "airsim",
         "documentation": {}
     },
@@ -658,6 +682,14 @@
         "description": "airsimgeo.newMyAirSimClient",
         "isExtraImport": true,
         "detail": "airsimgeo.newMyAirSimClient",
+        "documentation": {}
+    },
+    {
+        "label": "BUFFER_SIZE",
+        "importPath": "numpy.lib.format",
+        "description": "numpy.lib.format",
+        "isExtraImport": true,
+        "detail": "numpy.lib.format",
         "documentation": {}
     },
     {
@@ -1387,7 +1419,7 @@
         "kind": 5,
         "importPath": "layer2",
         "description": "layer2",
-        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
+        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=False,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
         "detail": "layer2",
         "documentation": {}
     },
@@ -1396,7 +1428,7 @@
         "kind": 5,
         "importPath": "layer3",
         "description": "layer3",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L2log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
+        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL3/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
         "detail": "layer3",
         "documentation": {}
     },
@@ -1405,8 +1437,17 @@
         "kind": 5,
         "importPath": "layer3",
         "description": "layer3",
-        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
+        "peekOfCode": "logger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 3')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
         "detail": "layer3",
+        "documentation": {}
+    },
+    {
+        "label": "strDate",
+        "kind": 2,
+        "importPath": "manualGenerator",
+        "description": "manualGenerator",
+        "peekOfCode": "def strDate():\n    return str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') )\nEXPERIMENT_DATE =  strDate()\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + EXPERIMENT_DATE +\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )\ntolerances = [0,0.0]",
+        "detail": "manualGenerator",
         "documentation": {}
     },
     {
@@ -1414,7 +1455,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "a_logger = logging.getLogger(\"collisionTesterLog\")\na_logger.setLevel(logging.DEBUG)\noutput_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED",
+        "peekOfCode": "a_logger = logging.getLogger(\"collisionTesterLog\")\na_logger.setLevel(logging.DEBUG)\noutput_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\ndef strDate():\n    return str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') )\nEXPERIMENT_DATE =  strDate()\na_logger.debug(",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1423,7 +1464,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "output_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )",
+        "peekOfCode": "output_file_handler = logging.FileHandler(\"finalCollisionTimeTester.log\")\nstdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\ndef strDate():\n    return str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') )\nEXPERIMENT_DATE =  strDate()\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + EXPERIMENT_DATE +\"\\n\"\n)",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1432,7 +1473,16 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "stdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + str(datetime.datetime.now().strftime('%Y-%m-%d--%H:%M:%S'))+\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )\ntolerances = [0,0.2]",
+        "peekOfCode": "stdout_handler = logging.StreamHandler(sys.stdout)\na_logger.addHandler(output_file_handler)\na_logger.addHandler(stdout_handler)\ndef strDate():\n    return str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') )\nEXPERIMENT_DATE =  strDate()\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + EXPERIMENT_DATE +\"\\n\"\n)\n# RANDOM SEED",
+        "detail": "manualGenerator",
+        "documentation": {}
+    },
+    {
+        "label": "EXPERIMENT_DATE",
+        "kind": 5,
+        "importPath": "manualGenerator",
+        "description": "manualGenerator",
+        "peekOfCode": "EXPERIMENT_DATE =  strDate()\na_logger.debug(\n   \"\\nRUNNING EXP at: \" + EXPERIMENT_DATE +\"\\n\"\n)\n# RANDOM SEED\n# a_logger.debug(\"SEED: \"+ str(trajs_utils.setRandomSeed())  )\na_logger.debug(\"SEED: \"+ str(trajs_utils.setSeed(999))  )\ntolerances = [0,0.0]\nn_trajectories = [30,300,10,10,50,50,100,100]\nNUM_TESTS = 1",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1441,7 +1491,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "tolerances = [0,0.2]\nn_trajectories = [300,300,10,10,50,50,100,100]\nNUM_TESTS = 6\nOUT_FOLDER = \"randTrajs/\"\nexp_path = OUT_FOLDER + \"experiment/\"\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"",
+        "peekOfCode": "tolerances = [0,0.0]\nn_trajectories = [30,300,10,10,50,50,100,100]\nNUM_TESTS = 1\nBUFFER_SIZE=3\nOUT_FOLDER = \"generatedData/randTrajs/\"\nexp_path = OUT_FOLDER + \"rand\"+EXPERIMENT_DATE\ncreated = False\ni=1\nwhile(not created ):\n   try:",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1450,7 +1500,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "n_trajectories = [300,300,10,10,50,50,100,100]\nNUM_TESTS = 6\nOUT_FOLDER = \"randTrajs/\"\nexp_path = OUT_FOLDER + \"experiment/\"\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)",
+        "peekOfCode": "n_trajectories = [30,300,10,10,50,50,100,100]\nNUM_TESTS = 1\nBUFFER_SIZE=3\nOUT_FOLDER = \"generatedData/randTrajs/\"\nexp_path = OUT_FOLDER + \"rand\"+EXPERIMENT_DATE\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1459,7 +1509,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "NUM_TESTS = 6\nOUT_FOLDER = \"randTrajs/\"\nexp_path = OUT_FOLDER + \"experiment/\"\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)\n      print (\"Successfully created the directory %s \" % exp_path)",
+        "peekOfCode": "NUM_TESTS = 1\nBUFFER_SIZE=3\nOUT_FOLDER = \"generatedData/randTrajs/\"\nexp_path = OUT_FOLDER + \"rand\"+EXPERIMENT_DATE\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1468,7 +1518,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "OUT_FOLDER = \"randTrajs/\"\nexp_path = OUT_FOLDER + \"experiment/\"\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)\n      print (\"Successfully created the directory %s \" % exp_path)\n      created = True",
+        "peekOfCode": "OUT_FOLDER = \"generatedData/randTrajs/\"\nexp_path = OUT_FOLDER + \"rand\"+EXPERIMENT_DATE\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)\n      print (\"Successfully created the directory %s \" % exp_path)\n      created = True",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1477,7 +1527,7 @@
         "kind": 5,
         "importPath": "manualGenerator",
         "description": "manualGenerator",
-        "peekOfCode": "exp_path = OUT_FOLDER + \"experiment/\"\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)\n      print (\"Successfully created the directory %s \" % exp_path)\n      created = True\n   except OSError:",
+        "peekOfCode": "exp_path = OUT_FOLDER + \"rand\"+EXPERIMENT_DATE\ncreated = False\ni=1\nwhile(not created ):\n   try:\n      exp_path = exp_path[:-1]+ str(i) +\"/\"\n      os.mkdir(exp_path)\n      print (\"Successfully created the directory %s \" % exp_path)\n      created = True\n   except OSError:",
         "detail": "manualGenerator",
         "documentation": {}
     },
@@ -1675,7 +1725,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(fids is None):\n            idx = i\n        else:\n            idx = fids[i]",
+        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\n# TODO use cell_size to underestand if its  acell or not?\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp=9 #dummy value",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1684,7 +1734,25 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(fids is None):\n            idx = i\n        else:\n            idx = fids[i]\n        if(isCell):\n            xs = [ p[0]+cell_size/2 for p in trajs[i] ]",
+        "peekOfCode": "def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp=9 #dummy value\n        else:\n            hp=trajs[i][0][2]\n        if(fids is None):",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "rotate_point_2d",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def rotate_point_2d(theta,x,y):\n    return x*math.cos(theta) - y * math.sin(theta),  x * math.sin(theta) + y * math.cos(theta)\ndef assign_dummy_z(traj,dummyZ=50):\n    return [[p[0],p[1],dummyZ] for p in traj]\ndef plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\",isCell=False): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    ax.invert_yaxis()\n    # fig = matplotlib.pyplot.gcf()",
+        "detail": "trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "assign_dummy_z",
+        "kind": 2,
+        "importPath": "trajs_utils",
+        "description": "trajs_utils",
+        "peekOfCode": "def assign_dummy_z(traj,dummyZ=50):\n    return [[p[0],p[1],dummyZ] for p in traj]\ndef plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\",isCell=False): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    ax.invert_yaxis()\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1693,7 +1761,7 @@
         "kind": 2,
         "importPath": "trajs_utils",
         "description": "trajs_utils",
-        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\",isCell): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d').invert_yaxis()\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])\n        if(exploded):",
+        "peekOfCode": "def plot_3d(trajs,ids,also2d=False,doSave=False,name=\"\",exploded=False,date=\"\",isCell=False): \n    \"\"\" 3D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    fig = plt.figure(figsize=(20,10))\n    ax = fig.gca(projection='3d')\n    ax.invert_yaxis()\n    # fig = matplotlib.pyplot.gcf()\n    # fig.set_size_inches(18.5, 10.5)\n    altitudes = dict()\n    for i in range(len(trajs)):\n        # print(\"xs\",xs[-10:],\"ys\",ys[-10:],\"zs\",zs[-10:])",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1721,15 +1789,6 @@
         "importPath": "trajs_utils",
         "description": "trajs_utils",
         "peekOfCode": "def np_remove_z(arr):\n    return np.delete( np.array( arr ),np.s_[2:3], axis=1)\nif __name__ == \"__main__\":\n    d1 = [[0,0],[1,0],[2,0],[1,0],[2,0],[1,0],[0,0],[0,1],[0,2],[0,1],[0,0],[0,1],[0,2],[0,3],[0,4]]\n    d2 = [[1,0],[2,0],[2,1],[2,2],[2,3],[1,3],[0,3],[0,4]]\n    d3 = [[4,0,1],[4,1,1],[4,2,1],[4,3,1],[3,3,1],[2,3,1],[1,3,1],[0,3,1]]\n    d4 = [[5,0,1],[5,1,1],[5,2,1],[5,3,1],[4,3,1],[3,3,1],[3,2,1],[3,1,1],[3,0,1]]\n    trajectories = [d1,d2]\n    d3 = np.array(d3)\n    d3[:,1] += 3",
-        "detail": "trajs_utils",
-        "documentation": {}
-    },
-    {
-        "label": "SEED",
-        "kind": 5,
-        "importPath": "trajs_utils",
-        "description": "trajs_utils",
-        "peekOfCode": "SEED = 668\nN_DRONES=5\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):",
         "detail": "trajs_utils",
         "documentation": {}
     },
@@ -1815,51 +1874,6 @@
         "documentation": {}
     },
     {
-        "label": "projToAirSim",
-        "kind": 2,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "def projToAirSim( x, y, z):\n    x_airsim = (x + o_x ) \n    y_airsim = (y - o_y) \n    z_airsim = (-z + o_z) \n    return (x_airsim, -y_airsim, z_airsim)\ndef lonlatToProj( lon, lat, z, inverse=False):\n    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)\n    return proj_coords + (z,)\ndef lonlatToAirSim( lon, lat, z):\n    return projToAirSim(*lonlatToProj(lon, lat, z)   )",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "lonlatToProj",
-        "kind": 2,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "def lonlatToProj( lon, lat, z, inverse=False):\n    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)\n    return proj_coords + (z,)\ndef lonlatToAirSim( lon, lat, z):\n    return projToAirSim(*lonlatToProj(lon, lat, z)   )\ndef nedToProj( x, y, z):\n    \"\"\"\n    Converts NED coordinates to the projected map coordinates\n    Takes care of offset origin, inverted z, as well as inverted y axis\n    \"\"\"",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "lonlatToAirSim",
-        "kind": 2,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "def lonlatToAirSim( lon, lat, z):\n    return projToAirSim(*lonlatToProj(lon, lat, z)   )\ndef nedToProj( x, y, z):\n    \"\"\"\n    Converts NED coordinates to the projected map coordinates\n    Takes care of offset origin, inverted z, as well as inverted y axis\n    \"\"\"\n    x_proj = x + o_x\n    y_proj = -y + o_y\n    z_proj = -z + o_z",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "nedToProj",
-        "kind": 2,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "def nedToProj( x, y, z):\n    \"\"\"\n    Converts NED coordinates to the projected map coordinates\n    Takes care of offset origin, inverted z, as well as inverted y axis\n    \"\"\"\n    x_proj = x + o_x\n    y_proj = -y + o_y\n    z_proj = -z + o_z\n    return (x_proj, y_proj, z_proj)\ndef nedToGps( x, y, z):",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "nedToGps",
-        "kind": 2,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "def nedToGps( x, y, z):\n    return lonlatToProj(* nedToProj(x, y, z), inverse=True)\ndef dronePrint(idx,s):\n    print(\"[Drone\"+str(idx)+\"]\",s)\ndef addToDict(d: dict,k,v):\n    if k not in d:\n        d[k] = []\n    d[k].append(v)\ndef pkl_save_obj(obj, name,file_timestamp ):\n    with open(TRAJECTORIES_FOLDER + name + file_timestamp + '.pkl', 'wb') as f:",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
         "label": "dronePrint",
         "kind": 2,
         "importPath": "utils",
@@ -1909,7 +1923,7 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*2)\n    y = int(l[1]*2)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")",
+        "peekOfCode": "def position_to_list(position_vector) -> list:\n    return [position_vector.x_val, position_vector.y_val, position_vector.z_val]\ndef list_to_position(l,wcell_in_meters=2,hcell_in_meters=2) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    if(len(l)>2):\n        z = int(l[2])\n    else:",
         "detail": "utils",
         "documentation": {}
     },
@@ -1918,7 +1932,16 @@
         "kind": 2,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "def list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*2)\n    y = int(l[1]*2)\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
+        "peekOfCode": "def list_to_position(l,wcell_in_meters=2,hcell_in_meters=2) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0]*wcell_in_meters)\n    y = int(l[1]*hcell_in_meters)\n    if(len(l)>2):\n        z = int(l[2])\n    else:\n        z = -50\n    # if len(l) != 3:",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "l3_list_to_position",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0])\n    y = int(l[1])\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
         "detail": "utils",
         "documentation": {}
     },
@@ -1977,11 +2000,20 @@
         "documentation": {}
     },
     {
+        "label": "lonLatFromRotation",
+        "kind": 2,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "def lonLatFromRotation(theta,phi,r_lon,r_lat):\n    lon = math.atan2( math.sin(r_lon), math.tan(r_lat)* math.sin(theta) + math.cos(r_lon)* math.cos(theta)) - phi\n    lat = math.asin( math.cos(theta) * math.sin(r_lat) - math.cos(r_lon) * math.sin(theta) * math.cos(r_lat) )\n    return lon,lat\nif __name__==\"__main__\":\n    lon,lat=2.1833298597595303, 41.409602234016496\n    print(lonLatFromRotation(-5.41052,0,lon,lat))    \n    res1,res2 = 2.179982, 41.403179",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
         "label": "AIRSIM_SETTINGS_FOLDER",
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'\nCONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"",
+        "peekOfCode": "AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'\nCONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"",
         "detail": "utils",
         "documentation": {}
     },
@@ -1990,7 +2022,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "CONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"",
+        "peekOfCode": "CONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified",
         "detail": "utils",
         "documentation": {}
     },
@@ -1999,7 +2031,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "LOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (",
+        "peekOfCode": "LOG_FOLDER = \"generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.",
         "detail": "utils",
         "documentation": {}
     },
@@ -2008,7 +2040,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "TRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,",
+        "peekOfCode": "TRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.\n        Arguments:",
         "detail": "utils",
         "documentation": {}
     },
@@ -2017,7 +2049,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "g_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (",
+        "peekOfCode": "g_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.\n        Arguments:\n            srid {str} -- EPSG SRID string. Example \"EPSG:3857\"\n            origin {list} -- [Longitude, Latitude, Height]\n            kwargs -- Any keyword arguments forwared to AirSim",
         "detail": "utils",
         "documentation": {}
     },
@@ -2026,7 +2058,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "g_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,",
+        "peekOfCode": "g_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.\n        Arguments:\n            srid {str} -- EPSG SRID string. Example \"EPSG:3857\"\n            origin {list} -- [Longitude, Latitude, Height]\n            kwargs -- Any keyword arguments forwared to AirSim\n\"\"\"",
         "detail": "utils",
         "documentation": {}
     },
@@ -2035,7 +2067,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "map_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) ",
+        "peekOfCode": "map_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\n# ORIGIN = (\n# 2.178855691482311,\n# 41.411225748657294,\n# 0)\nORIGIN = (2.174432,41.404572,0)\nO_THETA = 0\nDEST = (\n    12.466382,",
         "detail": "utils",
         "documentation": {}
     },
@@ -2044,7 +2076,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "SRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory",
+        "peekOfCode": "SRID = \"EPSG:5555\"\n# ORIGIN = (\n# 2.178855691482311,\n# 41.411225748657294,\n# 0)\nORIGIN = (2.174432,41.404572,0)\nO_THETA = 0\nDEST = (\n    12.466382,\n    41.902491,",
         "detail": "utils",
         "documentation": {}
     },
@@ -2053,7 +2085,16 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "ORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs",
+        "peekOfCode": "ORIGIN = (2.174432,41.404572,0)\nO_THETA = 0\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (",
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "O_THETA",
+        "kind": 5,
+        "importPath": "utils",
+        "description": "utils",
+        "peekOfCode": "O_THETA = 0\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,",
         "detail": "utils",
         "documentation": {}
     },
@@ -2108,42 +2149,6 @@
         "importPath": "utils",
         "description": "utils",
         "peekOfCode": "blue_color = [0.0,0.0,1.0]\norange_color =[255/255, 102/255, 0]\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "env_cfg",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "env_cfg = read_cfg(config_filename = CONFIGS_FOLDER + 'map_config.cfg')\no_x = env_cfg[\"o_x\"]\no_y = env_cfg[\"o_y\"]\no_z = env_cfg[\"o_z\"]\ndef projToAirSim( x, y, z):\n    x_airsim = (x + o_x ) \n    y_airsim = (y - o_y) \n    z_airsim = (-z + o_z) \n    return (x_airsim, -y_airsim, z_airsim)\ndef lonlatToProj( lon, lat, z, inverse=False):",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "o_x",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "o_x = env_cfg[\"o_x\"]\no_y = env_cfg[\"o_y\"]\no_z = env_cfg[\"o_z\"]\ndef projToAirSim( x, y, z):\n    x_airsim = (x + o_x ) \n    y_airsim = (y - o_y) \n    z_airsim = (-z + o_z) \n    return (x_airsim, -y_airsim, z_airsim)\ndef lonlatToProj( lon, lat, z, inverse=False):\n    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "o_y",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "o_y = env_cfg[\"o_y\"]\no_z = env_cfg[\"o_z\"]\ndef projToAirSim( x, y, z):\n    x_airsim = (x + o_x ) \n    y_airsim = (y - o_y) \n    z_airsim = (-z + o_z) \n    return (x_airsim, -y_airsim, z_airsim)\ndef lonlatToProj( lon, lat, z, inverse=False):\n    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)\n    return proj_coords + (z,)",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "o_z",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "o_z = env_cfg[\"o_z\"]\ndef projToAirSim( x, y, z):\n    x_airsim = (x + o_x ) \n    y_airsim = (y - o_y) \n    z_airsim = (-z + o_z) \n    return (x_airsim, -y_airsim, z_airsim)\ndef lonlatToProj( lon, lat, z, inverse=False):\n    proj_coords = Proj(init=SRID)(lon, lat, inverse=inverse)\n    return proj_coords + (z,)\ndef lonlatToAirSim( lon, lat, z):",
         "detail": "utils",
         "documentation": {}
     },

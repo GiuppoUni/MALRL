@@ -81,7 +81,6 @@ class MazeEnv(gym.Env):
 
   
 
-
     
 
     def setNewEntrance(self,entrance):
@@ -256,3 +255,5 @@ class MazeEnv(gym.Env):
 
     def set_render(self):
         self.enable_render = True
+        self.maze_view.__enable_render=True
+        self.maze_view.setScreen()

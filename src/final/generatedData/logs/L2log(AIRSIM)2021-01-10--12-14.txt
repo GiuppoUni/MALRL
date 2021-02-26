@@ -1,6 +1,0 @@
-12:14:41,305 RL Layer2 INFO Experiment Date: 2021-01-10  12:14
-12:14:44,599 tornado.general WARNING Connect error on fd 3768: WSAECONNREFUSED
-12:14:46,611 tornado.general WARNING Connect error on fd 3768: WSAECONNREFUSED
-12:14:48,615 tornado.general WARNING Connect error on fd 3768: WSAECONNREFUSED
-12:14:50,620 tornado.general WARNING Connect error on fd 3768: WSAECONNREFUSED
-12:14:52,623 tornado.general WARNING Connect error on fd 3768: WSAECONNREFUSED

@@ -3962,7 +3962,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "g_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (",
+        "peekOfCode": "g_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\n# DEST = (",
         "detail": "utils",
         "documentation": {}
     },
@@ -3971,7 +3971,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "g_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,",
+        "peekOfCode": "g_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\nmap_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\n# DEST = (\n#     12.466382,",
         "detail": "utils",
         "documentation": {}
     },
@@ -3980,7 +3980,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "map_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) ",
+        "peekOfCode": "map_filename = \"overlayMap.png\"\nSRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\n# DEST = (\n#     12.466382,\n#     41.902491,\n#     80) ",
         "detail": "utils",
         "documentation": {}
     },
@@ -3989,7 +3989,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "SRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory",
+        "peekOfCode": "SRID = \"EPSG:5555\"\nORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\n# DEST = (\n#     12.466382,\n#     41.902491,\n#     80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory",
         "detail": "utils",
         "documentation": {}
     },
@@ -3998,16 +3998,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "ORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\nDEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "DEST",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "DEST = (\n    12.466382,\n    41.902491,\n    80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,",
+        "peekOfCode": "ORIGIN = (\n    12.457480,\n    41.902243,\n    0 )\n# DEST = (\n#     12.466382,\n#     41.902491,\n#     80) \nNEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# # GPS init position of uavs",
         "detail": "utils",
         "documentation": {}
     },
@@ -4016,16 +4007,7 @@
         "kind": 5,
         "importPath": "utils",
         "description": "utils",
-        "peekOfCode": "NEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# GPS init position of uavs\ninit_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0\n    ),\n    (\n        12.457227408885958,",
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "init_gps",
-        "kind": 5,
-        "importPath": "utils",
-        "description": "utils",
-        "peekOfCode": "init_gps = [\n    (\n        12.45727300643921,\n        41.90169011784915,\n        0\n    ),\n    (\n        12.457227408885958,\n        41.90276414312537,\n        0",
+        "peekOfCode": "NEW_TRAJ_PENALTY = 25 # negative reward for collision points of a new trajectory\n# # GPS init position of uavs\n# init_gps = [\n#     (\n#         12.45727300643921,\n#         41.90169011784915,\n#         0\n#     ),\n#     (\n#         12.457227408885958,",
         "detail": "utils",
         "documentation": {}
     },

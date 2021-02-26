@@ -21,22 +21,22 @@ import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
-TRAJECTORIES_3D_FOLDER = "generatedData/3dL2/csv/"
+TRAJECTORIES_3D_FOLDER = "generatedData/3dL3/csv/"
 
 
 # if(args.debug):
-logging.basicConfig(filename=utils.LOG_FOLDER+"L2log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+logging.basicConfig(filename=utils.LOG_FOLDER+"L3log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
                         filemode='w',
                         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                         datefmt='%H:%M:%S',
                         level=logging.INFO)
 
 
-logger = logging.getLogger('RL Layer2')
+logger = logging.getLogger('RL Layer3')
 logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
 
 if __name__ == "__main__":
-   parser = argparse.ArgumentParser(description='Layer 2')
+   parser = argparse.ArgumentParser(description='Layer 3')
    
    parser.add_argument("-i", type=str,required=True,
                      help='input folder of trajs 3d')
@@ -92,6 +92,7 @@ if __name__ == "__main__":
         # print(df)
       trajectory = df.to_numpy()
       trajectory[:,2] *= -1
+      trajectory = trajectory.tolist()
       for ff in l_files[1:]:
          df = pandas.read_csv(os.path.join(args.i,ff),delimiter=",",index_col="index")
          # print(df)
@@ -103,11 +104,12 @@ if __name__ == "__main__":
       print("Invalid trajectory")
       sys.exit(0)
    
-   trajectory = np.array( trajs_utils.fix_traj([list(trajectory)])[0] )
-   trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+   trajs_utils.plot_xy([trajectory],cell_size=20)
+   trajectory_vecs = [utils.list_to_position(x) for i,x in enumerate(trajectory) if i%10==0]
+   np_trajectory = np.array( trajectory)
    print("FOLLOWING trajectory:",trajectory_file)
    print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
-   print("\t num. of points:", np.shape(trajectory)[0] )
+   print("\t num. of points:", np.shape(np_trajectory)[0] )
    
    # Create AirSim client
    asClient = NewMyAirSimClient(trajColFlag=False,
@@ -115,29 +117,33 @@ if __name__ == "__main__":
    
 
    asClient.disable_trace_lines()
-
+   sleep(0.5)
    pose = Pose(utils.list_to_position(trajectory[0]), to_quaternion(0, 0, 0) ) 
    asClient.simSetVehiclePose(pose,True,"Drone0")        
+   print("Drone set at start position.")
 
-   asClient.enable_trace_lines()
+   gps_coo = asClient.nedToGps(*trajs_utils.rotate_point_2d(-math.pi/2, trajectory[0][0],trajectory[0][1]),trajectory[0][2] ) 
+   print("GPS STARTING COO (lon,lat,alt):",gps_coo)
+   
+   # asClient.enable_trace_lines()
 
+   print("Positioning at std altitude...")
    pointer = asClient.moveToZAsync(-50,20)
    pointer.join()
-
+   
+   print("Altitude reached.\n Starting following path...")
    pointer = asClient.moveOnPathAsync(
       trajectory_vecs,
       args.velocity,
       adaptive_lookahead=1,vehicle_name="Drone0")
 
-
+   
    for i in range(0,500):
       sleep(1)
-      logger.info( ","+ str(i)+","+", ".join([ str(x) for x in utils.position_to_list( asClient.getPosition("Drone0"))]) )
+      pos = utils.position_to_list( asClient.getPosition("Drone0" ) ) 
+      gps_pos = asClient.nedToGps(*trajs_utils.rotate_point_2d(-utils.O_THETA,pos[0],pos[1]),pos[2] )
+      toPrint = ", ".join( [ str(x) for x in list(pos) + list(gps_pos) ] )
+      logger.info( ","+ str(i)+","+ toPrint )
 
-   print("UAV following trajectory...")
    pointer.join()
    print("UAV completed its mission.")
-   
-
-
-                                       

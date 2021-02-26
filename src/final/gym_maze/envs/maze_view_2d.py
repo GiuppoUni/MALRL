@@ -23,7 +23,9 @@ class MazeView2D:
         self.verbose = verbose
         self.np_random = np_random
         self.n_trajs = n_trajs
-
+        
+        self.screen_size = screen_size
+        
         # PyGame configurations
         pygame.init()
         pygame.display.set_caption(maze_name)
@@ -121,6 +123,20 @@ class MazeView2D:
             # # show the goal
             # self.__draw_goal()
     
+
+    def setScreen(self):
+        self.screen = pygame.display.set_mode(self.screen_size)
+        self.__screen_size = tuple(map(sum, zip(self.screen_size, (-1, -1))))
+        self.background = pygame.Surface(self.screen.get_size()).convert()
+        self.background.fill((255, 255, 255))
+
+        # Create a layer for the maze
+        self.maze_layer = pygame.Surface(self.screen.get_size()).convert_alpha()
+        # self.maze_layer.fill((0, 0, 0, 0,))
+
+        # show the maze
+        self.__draw_maze()
+
     def get_init_pool(self):
         rnd= np.where((self.maze.maze_cells!=0) & 
         ((self.maze.maze_cells == 7)|(self.maze.maze_cells == 15) |(self.maze.maze_cells  ==13 )) )
