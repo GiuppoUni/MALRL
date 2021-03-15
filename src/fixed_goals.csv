@@ -1,0 +1,7 @@
+name,x_pos,y_pos
+# Goal positions to be reached by UAV named as <name>, position specified as <x_pos>, <y_pos>. Data used in layer1.py
+g1, 11, 42
+g2, 12, 21
+g3, 21, 42
+g4, 42, 11
+g5, 42, 42

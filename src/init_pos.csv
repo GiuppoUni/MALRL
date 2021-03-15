@@ -1,0 +1,7 @@
+name,x_pos,y_pos 
+# Inital positions from which UAV starts named as <name>, location specified as <x_pos>, <y_pos>. Data used in layer1.py
+p1, 20, 0
+p2, 42, 0
+p3, 0, 42
+p4, 0, 0
+p5, 0,20
