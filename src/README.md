@@ -5,14 +5,70 @@ Multiple Abstraction Layers Reinforcement Learning (MALRL) is a Python based fra
 Clone the repository
 
 ## Usage
-To launch layer1:
+**To launch layer1:**
+```bash
 python layer1.py
+```
+optional arguments:
+``` bash
+  -h, --help            show this help message and exit
+  --nepisodes NEPISODES
+                        episodes (default: 100)
+  --ngoals NGOALS       n goals to collect (default: 1)
+  --seed SEED           seed value (default: None)
+  --ntrajs NTRAJS       num trajectories value (default: None)
+  --nbuffer NBUFFER     size of buffer for past trajectories (default: 3)
+  --nagents NAGENTS     num agents (supported 1 )(default: 1)
+  --nsteps NSTEPS       enforce n-steps qlearning if 0 is standard qlearning
+                        (default: 0)
+  --debug               Log debug in file (default: False)
+  --render-train        render maze while training/random (default: False)
+  --render-test         render maze while testing (default: False)
+  --quiet               render maze while testing (default: False)
+  --random-mode         Agent takes random actions (default: False)
+  --skip-train          Just assign altitude to 2D trajecories in folder
+                        (default: False)
+  --show-plot           Show generated trajectories each time (default: False)
+  -v                    verbose (default: False)
+  --randomInitGoal      Random init and goal per episode (default: False)
+  --random-pos          Drones start from random positions exctrateced from
+                        pool of 10 (default: False)
+  --slow                Slow down training to observe behaviour (default:
+                        False)
+  --plot3d              Render 3d plots(default: False)
+  --n-random-init N_RANDOM_INIT
+                        n sample pool for random init (default: 5)
+  --log-reward          log reward file in out (default: False)
+  --load-qtable LOAD_QTABLE
+                        qtable file (default: None)
+  --load-maze LOAD_MAZE
+                        maze file (default: None)
+  --load-goals LOAD_GOALS
+                        maze file (default: None)
+  --load-init-pos LOAD_INIT_POS
+                        maze file (default: None)
+```
+</br>
 
+**To launch layer2:**
+```bash
+python layer2.py
+```
+</br>
+
+**To launch layer3:**
+```bash
+python layer3.py
+```
 ## Files
+inputData : folder containing files to set (settings,initial positions for UAVs, final positions for UAVs)
 envs\my_maze_generator.py : let you generate custom mazes
-layer1.py, layer2.py, layer3.py  : can be executed 
+layer1.py, layer2.py, layer3.py  : Layers to be executed 
 trajs_utils.py : contains useful API functions called in layer modules
+utils.py : contains helper functions
 gym_maze\envs\maze_env.py : Class of the custom maze environment
+eurocontrolConverter.py : Python script to convert 3d trajectories into format usable for Bubbles collision measurements
+
 
 ## Airsim instructions
 Vehicle name used was "Drone0" so it is not guaranteed to function any other name.

@@ -1,0 +1,102 @@
+#====================================================================================================
+layer1:
+
+  paths:
+    RANDOM_TRAJECTORIES_FOLDER : "generatedData/2dL1/csv/"
+    TRAJECTORIES_FOLDER : "generatedData/2dL1/" 
+    INT_TRAJECTORIES_FOLDER : "generatedData/2dL1INT/" 
+    TRAJECTORIES_3D_FOLDER : "generatedData/3dL2/csv/"
+    STD_MAZE : "maze2d_004.npy"
+
+  settings:
+    OUT_FORMAT : "csv" # (csv or npy)
+
+    N_TRAJECTORIES_TO_GENERATE : 99 # Number of UAV Trajectories
+    TRAJECTORIES_BUFFER_SIZE : 3 # Number UAV past trajectories recorded (to be then horizontally separated)
+    SCALE_SIZE : 20 # length of cell side in meters unit
+
+    NROWS : 43
+    NCOLS : 43
+
+    # Learning related constants   
+    MIN_EXPLORE_RATE : 0.001
+    MIN_LEARNING_RATE : 0.2
+
+    # Defining the simulation related constants
+    MAX_T : 10000
+    STREAK_TO_END : 100
+    SOLVED_T : 10
+  
+  #   # Pygame related settings  
+  #   NEPISODES : 100
+  #   NGOALS : 1
+  #   SEED : 100
+
+  #  ntrajs : 5
+
+  #  nbuffer : 3
+              
+
+  #  nagents : 1,
+
+  #  nsteps : 0,
+   
+  #  debug',action='store_true',  default=False,
+  #     help='Log debug in file (default: %(default)s)' )
+   
+  #  render-train',action='store_true',  default=False,
+  #     help='render maze while training/random  (default: %(default)s)' )
+   
+  #  render-test',action='store_true',  default=False,
+  #     help='render maze while testing  (default: %(default)s)' )
+
+  #  quiet',action='store_true',  default=False,
+  #     help='render maze while testing  (default: %(default)s)' )
+
+  #  random-mode',action='store_true',  default=False,
+  #     help='Agent takes random actions (default: %(default)s)' )
+
+  #  skip-train',action='store_true',  default=False,
+  #     help='Just assign altitude to 2D trajecories in folder (default: %(default)s)' )
+   
+  #  show-plot',action='store_true',  default=False,
+  #     help='Show generated trajectories each time (default: %(default)s)' )
+   
+  #  v',action='store_true',  default=False,
+  #     help='verbose (default: %(default)s)' )
+   
+  #  randomInitGoal',action='store_true',  default=False,
+  #     help='Random init and goal per episode (default: %(default)s)' )
+   
+  #  random-pos',action='store_true',  default=False,
+  #     help='Drones start from random positions exctrateced from pool of 10 (default: %(default)s)')
+
+  #  slow',action='store_true',  default=False,
+  #     help='Slow down training to observe behaviour (default: %(default)s)')
+
+  #  plot3d',action='store_true',  default=False,
+  #     help='Render 3d plots(default: %(default)s)')
+
+  #  n-random-init', type=int, default=5,
+  #                    help='n sample pool for random init (default: %(default)s)')
+
+  #  log-reward', action='store_true', default=False,
+  #  help='log reward file in out (default: %(default)s)')
+
+  #  load-qtable', type=str, 
+  #     help='qtable file (default: %(default)s)')
+
+  #  load-maze', type=str, 
+  #     help='maze file (default: %(default)s)')
+
+  #  load-goals', type=str, 
+  #     help='maze file (default: %(default)s)')
+
+  #  load-init-pos', type=str, 
+  #     help='maze file (default: %(default)s)')
+
+#====================================================================================================
+layer2:
+
+#====================================================================================================
+layer3:

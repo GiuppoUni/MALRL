@@ -1,6 +1,0 @@
-03:18:38,93 RL Layer2 INFO Experiment Date: 2021-01-12  03:18
-03:18:40,150 tornado.general WARNING Connect error on fd 3940: WSAECONNREFUSED
-03:18:42,154 tornado.general WARNING Connect error on fd 3940: WSAECONNREFUSED
-03:18:44,159 tornado.general WARNING Connect error on fd 3940: WSAECONNREFUSED
-03:18:46,162 tornado.general WARNING Connect error on fd 3940: WSAECONNREFUSED
-03:18:48,167 tornado.general WARNING Connect error on fd 3940: WSAECONNREFUSED

@@ -13,31 +13,29 @@ import time
 
 
 class MazeEnv(gym.Env):
-    metadata = {
-        "render.modes": ["human", "rgb_array"],
-    }
 
     ACTION = ["N","S", "E", "W"]
-    VISTED_TO_IDX = {"visited":16}
+    VISITED_TO_IDX = {"visited":16}
 
-    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,
-        do_track_trajectories=False,num_goals = 1,verbose = True,human_mode=False, 
-        measure_distance = False,n_trajs = None,random_pos = False,seed_num = None,
+    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, 
+        n_trajs = None,random_pos = False,seed_num = None,
         fixed_goals = None, fixed_init_pos = None,visited_cells = []):
         
         self.visited_cells = visited_cells
-        self.measure_distance = measure_distance
         self.verbose = verbose
         self.viewer = None
         self.enable_render = enable_render
         self.num_goals = num_goals
-        
+        self.fixed_init_pos = fixed_init_pos
+        self.fixed_goals = fixed_goals
+
         self.human_mode = human_mode
         self.chosen_goal = None
         self.random_pos = random_pos
         self.n_trajs = n_trajs
 
         self.seed(seed_num)
+
 
         if maze_file:
             print("maze from file")
@@ -47,10 +45,13 @@ class MazeEnv(gym.Env):
                                         enable_render=enable_render,
                                         num_goals = self.num_goals,random_pos = random_pos,
                                         verbose = self.verbose,np_random=self.np_random,
-                                        n_trajs = n_trajs, fixed_goals = fixed_goals,
+                                        n_trajs = None, fixed_goals = fixed_goals,
                                         fixed_init_pos =fixed_init_pos)
+
         else:
             raise AttributeError("One must supply either a maze_file path (str) or the maze_size (tuple of length 2)")
+
+        # Set random
 
         self.maze_size = self.maze_view.maze_size
 
@@ -65,31 +66,35 @@ class MazeEnv(gym.Env):
         # initial condition
         self.state = None
         self.steps_beyond_done = None
-
-        # Past trajectories variables
-        self.trajColFlag = do_track_trajectories
-        self.kdtrees = []
-        self.trajectory = []
-
-        self.final_points = []
-        # if(self.measure_distance):
-        #     self.assign_goal()
-        self.covered_cells = self.maze_view.maze.maze_cells.copy()
-        # print('self.covered_cells = self.maze_view.copy()', self.covered_cells )
         
-        # Remove goals from init
-        # print('self.random_init_pool: ', self.random_init_pool)
-
-        # Simulation related variables.
+        self.final_points = []
+ 
+        self.covered_cells = self.maze_view.maze.maze_cells.copy()
+   
         self.reset()
 
-        # Just need to initialize the relevant attributes
         self.configure()
       
 
-    # def assign_goal(self):
-    #     self.maze_view.robot
   
+
+    
+
+    def setNewEntrance(self,entrance):
+        self.fixed_init_pos = entrance
+        self.maze_view.fixed_init_pos = entrance
+        self.maze_view.setEntrance ( np.array(entrance) ) 
+        print('self.visited_cells: ', len(self.visited_cells))
+    
+    def setNewGoals(self,goals):
+        # TODO make multi
+        self.fixed_goals = goals
+        self.maze_view.fixed_goals = goals
+        self.maze_view.setGoal(  np.array(goals[0]) ) 
+        
+    def setVisitedCells(self,cells):
+        self.visited_cells = cells
+
 
     def __del__(self):
         if self.enable_render is True:
@@ -99,12 +104,14 @@ class MazeEnv(gym.Env):
         self.display = display
 
     def seed(self, seed=None):
-        self.np_random, seed = seeding.np_random(int(seed))
+        # self.np_random, seed = seeding.np_random(int(seed))
+        np.random.seed(seed=seed)
+        self.np_random = np.random
         return [seed]
 
     def get_n_to_be_covered(self):
         n_total_cells = np.count_nonzero(self.covered_cells != 0)
-        n_covered_cells = np.count_nonzero(self.covered_cells == MazeEnv.VISTED_TO_IDX["visited"])
+        n_covered_cells = np.count_nonzero(self.covered_cells == MazeEnv.VISITED_TO_IDX["visited"])
         return n_total_cells - n_covered_cells
 
     def compute_reward(self,moved):
@@ -146,21 +153,19 @@ class MazeEnv(gym.Env):
                 reward = -1/(self.maze_size[0]*self.maze_size[1])
                 done = False
             if(self.maze_view.goals==[]):
-
                 done = True
             else:
-
                 done = False
         else:
             # I am doing covering 
             reward = 0
-            if moved and self.covered_cells[self.maze_view.robot[0],self.maze_view.robot[1]] == MazeEnv.VISTED_TO_IDX["visited"]:
+            if moved and self.covered_cells[self.maze_view.robot[0],self.maze_view.robot[1]] == MazeEnv.VISITED_TO_IDX["visited"]:
                 reward = -0.5
                 # cell already covered
             elif moved:
                 reward = 1
                 # New cell covered 
-                self.covered_cells[self.maze_view.robot[0],self.maze_view.robot[1]] = MazeEnv.VISTED_TO_IDX["visited"]
+                self.covered_cells[self.maze_view.robot[0],self.maze_view.robot[1]] = MazeEnv.VISITED_TO_IDX["visited"]
             
             elif not moved: # Not found any goal
                 reward = -0.1/(self.maze_size[0]*self.maze_size[1])
@@ -198,9 +203,7 @@ class MazeEnv(gym.Env):
             if(self.enable_render):
                 self.maze_view.color_visited_cell(self.state[0],self.state[1])
             
-            if(self.trajColFlag):
-                self.trajectory.append(list(self.state))
-                self.final_points.append(list(self.state))
+        
         
         # print('trajectory: ', self.trajectory)
         # print('self.kdtrees: ', self.kdtrees)
@@ -213,32 +216,26 @@ class MazeEnv(gym.Env):
     def reset(self):
         if(self.num_goals > 1):
             self.maze_view.goals = self.maze_view.saved_goals.copy()
-            
-
+        elif(self.num_goals < 1):
+            # reset covered_cells
+            self.covered_cells = self.maze_view.maze.maze_cells.copy()
 
         self.steps_beyond_done = None
         self.done = False
-        if(self.trajColFlag and self.trajectory!=[]):
-            # Add points of one trajectory removing also duplicates
-            self.trajectory = list(num for num,_ in itertools.groupby(self.trajectory))
-            _tree = KDTree(np.array(self.trajectory))
-            self.kdtrees.append(_tree)
-        if(self.num_goals < 1):
-            # reset covered_cells
-            self.covered_cells = self.maze_view.maze.maze_cells.copy()
+
         
-        #Redraw goals
+        #Redraw entrance
         if(self.random_pos):
             self.state = self.maze_view.entrance 
             self.maze_view.resetEntrance()
+        elif (self.fixed_init_pos is not None):
+            self.state = self.maze_view.entrance         
         else:
             self.state = np.zeros(2)
 
-        if(self.enable_render):
-            if(self.num_goals < 1 ):
+        if(self.enable_render and self.num_goals < 1 ):
                 # Reset all cells
                 self.maze_view.maze_layer.fill((0, 0, 0, 0,))
-
 
         self.maze_view.reset_robot(rend=self.enable_render)
         
@@ -253,16 +250,7 @@ class MazeEnv(gym.Env):
 
         return self.maze_view.update(mode)
 
-    def set_render(self):
-        self.enable_render = True
-
-
-if __name__ == "__main__" :
-
-    env = MazeEnv( maze_file = "maze_samples/maze2d_001.npy",                  
-            # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
-                                        # maze_size=(640, 640), 
-                                        enable_render=True)
-
-    env.render()
-    input("Enter any key to quit.")
+    def set_render(flag,self):
+        self.enable_render = flag
+        self.maze_view.__enable_render=flag
+        self.maze_view.setScreen()

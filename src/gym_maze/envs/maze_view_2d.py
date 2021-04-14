@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 from collections.abc import Iterable
-from gym_maze.__init__ import fixed_init_pos_list
+
 class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
@@ -23,7 +23,9 @@ class MazeView2D:
         self.verbose = verbose
         self.np_random = np_random
         self.n_trajs = n_trajs
-
+        
+        self.screen_size = screen_size
+        
         # PyGame configurations
         pygame.init()
         pygame.display.set_caption(maze_name)
@@ -54,28 +56,6 @@ class MazeView2D:
 
        
 
-        # Set the Goal
-        print('num_goals: ', num_goals)
-        self.__goal = None
-        if self.num_goals == 1:        
-            print('=========================================')
-            if(self.fixed_goals is None):
-                self.__goal = np.array(self.maze_size) - np.array((1, 1))
-            else:
-                if( len(self.fixed_goals) == 1):
-                    self.__goal = np.array(self.fixed_goals)[0]
-                else:
-                    idx = self.np_random.choice(range(len(fixed_goals)) )
-                    self.__goal =  np.array(self.fixed_goals[idx]) 
-            self.goals = [self.__goal]
-
-            
-        # Set multiple random goals
-        elif self.num_goals > 1:
-            self.goals = self.init_goals()
-            self.saved_goals = self.goals.copy()
-
-
         if self.random_pos:
             # Set the starting point
             _arr= self.get_init_pool()
@@ -95,6 +75,25 @@ class MazeView2D:
 
         # Create the Robot
         self.__robot = self.entrance.copy()
+
+        # Set the Goal
+        print('num_goals: ', num_goals)
+        self.__goal = None
+        if self.num_goals == 1:        
+            print('=========================================')
+            if(self.fixed_goals is None):
+                self.__goal = np.array(self.maze_size) - np.array((1, 1))
+            else:
+                if( len(self.fixed_goals) == 1):
+                    self.__goal = np.array(self.fixed_goals)[0]
+                else:
+                    idx = self.np_random.choice(range(len(fixed_goals)) )
+                    self.__goal =  np.array(self.fixed_goals[idx]) 
+            self.goals = [self.__goal]           
+        # Set multiple random goals
+        elif self.num_goals > 1:
+            self.goals = self.init_goals()
+            self.saved_goals = self.goals.copy()
 
 
         if self.__enable_render is True:
@@ -121,6 +120,21 @@ class MazeView2D:
             # # show the goal
             # self.__draw_goal()
     
+
+    def setScreen(self):
+        self.screen = pygame.display.set_mode(self.screen_size)
+        self.__screen_size = tuple(map(sum, zip(self.screen_size, (-1, -1))))
+        self.background = pygame.Surface(self.screen.get_size()).convert()
+        self.background.fill((255, 255, 255))
+
+        # Create a layer for the maze
+        self.maze_layer = pygame.Surface(self.screen.get_size()).convert_alpha()
+        # self.maze_layer.fill((0, 0, 0, 0,))
+
+        # show the maze
+        self.__draw_maze()
+
+    # Return good cells (usable as entrances or goals)
     def get_init_pool(self):
         rnd= np.where((self.maze.maze_cells!=0) & 
         ((self.maze.maze_cells == 7)|(self.maze.maze_cells == 15) |(self.maze.maze_cells  ==13 )) )
@@ -150,6 +164,7 @@ class MazeView2D:
 
         else:
             return []
+
     def resetEntrance(self):
         if self.__enable_render: self.decolor(self.__entrance)
         self.__entrance =  self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
@@ -174,8 +189,8 @@ class MazeView2D:
             if self.__enable_render is True:
                 pygame.display.quit()
             pygame.quit()
-        except Exception:
-            pass
+        except Exception as e:
+            print(e)
 
     def tr(self,dir):
         if dir=="N": return "UP"
@@ -185,24 +200,44 @@ class MazeView2D:
         else: raise ValueError("Not acceptable dir") 
 
 
+    # TODO
+    # def setGoals(self,goals):
+    #     self.goals = goals
+
+    def setGoal(self,goal):
+        if self.__enable_render: self.decolor(self.__goal)
+        self.__goal = goal
+        self.goals = [goal]
+
+    def setEntrance(self,ent):
+        if self.__enable_render: self.decolor(self.__entrance)
+        self.__entrance = ent
+        
+
+
     def move_robot(self, dir):
         if dir not in self.__maze.COMPASS.keys():
             raise ValueError("dir cannot be %s. The only valid dirs are %s."
                              % (str(dir), str(self.__maze.COMPASS.keys())))
+
+        # print('self.entrance: ', self.entrance,self.goals,self.goal)
 
         moved = False
         if self.__maze.is_open(self.__robot, dir):
             if(self.verbose):
                 print("MOVING:", self.tr(dir),"\n")    
             # update the drawing
-            self.__draw_robot(transparency=0)
+            if self.__enable_render:
+                self.__draw_robot(transparency=0)
 
             # move the robot
             self.__robot += np.array(self.__maze.COMPASS[dir])
             # if it's in a portal afterward
             if self.maze.is_portal(self.robot):
                 self.__robot = np.array(self.maze.get_portal(tuple(self.robot)).teleport(tuple(self.robot)))
-            self.__draw_robot(transparency=255)
+            
+            if self.__enable_render:
+                self.__draw_robot(transparency=255)
             moved = True
             
         return moved
@@ -222,6 +257,7 @@ class MazeView2D:
     def __view_update(self, mode="human"):
         if not self.__game_over:
             # update the robot's position
+
             self.screen.blit(self.background, (0, 0))
             
             self.__draw_entrance()

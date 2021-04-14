@@ -19,6 +19,15 @@ import random
 import csv
 
 # Columns name of the .csv header according to the standard Eurocontrol template.
+FINAL_COLUMNS_NAMES = ['UAS id', 
+   'UAS Relative time',
+   'x',
+   'y', 
+   'target angle',
+   'linear velocity', 
+   'angular velocity']
+
+
 COLUMNS_NAMES = ['ECTRL ID',
                 'Sequence Number',
                 'Time Over',
@@ -26,6 +35,8 @@ COLUMNS_NAMES = ['ECTRL ID',
                 'Latitude',     # Actually is Y coordinate
                 'Longitude']    # Actually is X coordinate
 
+
+"""   OLD version
 COLUMNS_NAMES2 = ['id',
                 'time',
                 'x',
@@ -35,6 +46,8 @@ COLUMNS_NAMES2 = ['id',
                #  "tv", #NA
                #  "rv", #NA
                ] 
+
+"""
 
 FILE_DIR = "eurocontrol/"
 
@@ -62,7 +75,8 @@ def flights_points( data, file_name):
         df = pd.DataFrame.from_dict(d)
         df = df[COLUMNS_NAMES]
         mode = 'w' if header==True else 'a'
-        df.to_csv(FILE_DIR+file_name, encoding='utf-8', mode=mode, header=header, index=False)
+        df.to_csv(FILE_DIR+file_name, encoding='utf-8', 
+        mode=mode, header=header, index=False)
 
 def data_to_csv(data,filename,header=True):
 
@@ -112,26 +126,26 @@ def extract_waypoints_from_flights_points_csv( file_name):
     return flights_and_coords_dict
 
 
-def create_eurocontrol_file2(trajs,filename,header = True):
-   if(trajs is None): raise Exception("Invalid input")
+def create_eurocontrol_file(trajs,filename,header = True):
+   if(trajs is None): raise Exception("Invalid input (None)")
    if( trajs == [] or trajs[0] is None or 
       trajs[0] == []  or trajs[0][0] is None or 
       trajs[0][0] == [] ): 
-      raise Exception("Invalid input")
+      raise Exception("Invalid input (No input)")
    dimensions = len(trajs[0][0])
    if(dimensions <2 or dimensions >3): raise Exception("Only 2D or 3D, received", dimensions)
    offset=3
    print("Found",len(trajs),"trajectories with dimensions of num.:", dimensions)
    with open(filename,"w",newline="") as fout:
       wr = csv.writer(fout, delimiter=",")
-      wr.writerow(COLUMNS_NAMES2)
+      wr.writerow(FINAL_COLUMNS_NAMES) #(header)
       for traj in trajs:
          id = generate_flight_id()
          n_points = len(traj)
          for i in range(n_points):
             # Time over is N/A right now
             row = [id,i]
-            for field in range(0,len(COLUMNS_NAMES2)):
+            for field in range(0,len(FINAL_COLUMNS_NAMES)):
                if(field < 2):
                   continue               
                elif field == 2:
@@ -146,35 +160,35 @@ def create_eurocontrol_file2(trajs,filename,header = True):
 
 
 
-def create_eurocontrol_file(trajs,dimensions,filename,header = True):
-   if(dimensions <2 or dimensions >3): raise Exception("Only 2D or 3D")
-   d = {}
-   offset=3
-   for traj in trajs:
-      id = generate_flight_id()
-      for i in range(len(traj)):
-         # Time over is N/A right now
-         row = [id,i,None]
-         for field in range(0,len(fields)):
-            if(field < 3):
-               value = row[field]               
-            elif(dimensions==2 and field == 3):
-               value = None
-            elif field == 3:
-               value = traj[i][2]
-            elif field == 4:
-               value = traj[i][1]
-            elif field == 5:
-               value = traj[i][0]
+# def create_eurocontrol_file(trajs,dimensions,filename,header = True):
+#    if(dimensions <2 or dimensions >3): raise Exception("Only 2D or 3D")
+#    d = {}
+#    offset=3
+#    for traj in trajs:
+#       id = generate_flight_id()
+#       for i in range(len(traj)):
+#          # Time over is N/A right now
+#          row = [id,i,None]
+#          for field in range(0,len(fields)):
+#             if(field < 3):
+#                value = row[field]               
+#             elif(dimensions==2 and field == 3):
+#                value = None
+#             elif field == 3:
+#                value = traj[i][2]
+#             elif field == 4:
+#                value = traj[i][1]
+#             elif field == 5:
+#                value = traj[i][0]
 
-            if COLUMNS_NAMES[field] not in d:
-               d[COLUMNS_NAMES2[field]] = [value]
-            else:
-               d[COLUMNS_NAMES2[field]].append( value)
+#             if COLUMNS_NAMES[field] not in d:
+#                d[COLUMNS_NAMES2[field]] = [value]
+#             else:
+#                d[COLUMNS_NAMES2[field]].append( value)
 
-   df = pd.DataFrame.from_dict(d)
-   mode = 'w' if header==True else 'a'
-   df.to_csv(FILE_DIR + filename, encoding='utf-8', mode=mode, header=header, index=False)
+#    df = pd.DataFrame.from_dict(d)
+#    mode = 'w' if header==True else 'a'
+#    df.to_csv(FILE_DIR + filename, encoding='utf-8', mode=mode, header=header, index=False)
 
 
 if __name__ == "__main__":
@@ -187,7 +201,7 @@ if __name__ == "__main__":
         help='input folder of trajs (default: %(default)s)')
 
    parser.add_argument('-o', type=str,required=False, 
-        help='output file (default: %(default)s)')
+        help='output filename (default: %(default)s)')
 
 
    args = parser.parse_args()
@@ -195,7 +209,7 @@ if __name__ == "__main__":
    N_WAYPOINTS = 2
    data = []
    # Random values to test
-   for fligth in range(3):
+   for flight in range(3):
       id = generate_flight_id()
       for i in range(N_WAYPOINTS):
          fields = [id,i]
@@ -207,20 +221,18 @@ if __name__ == "__main__":
    d1 = [[0,0],[1,0],[2,0]]
    d2 = [[1,0],[2,0],[2,1]]
    
-   if(args.i):
-      trajectories = []
-      for t in os.listdir(args.i):
-         if(t[-4:] == ".csv" ):
-            df = pd.read_csv( os.path.join(args.i, t),delimiter=",",index_col="index")
-               # print(df)
-            trajectories.append( df.to_numpy() )
-         elif(t[-4:] == ".npy"):
-            trajectories = np.load(os.path.join( args.i,t) )
-         else:
-            raise Exception("invalid file in dir")
-         # trajectories = [d1,d2]
-         print(t,":",trajectories[0][0:2],"...")
-         # create_eurocontrol_file2(trajectories,args.o +".csv" if ".csv" !=args.o[-4:] else args.o)
-         create_eurocontrol_file2(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
+   trajectories = []
+   for t in os.listdir(args.i):
+      if(t[-4:] == ".csv" ):
+         df = pd.read_csv( os.path.join(args.i, t),delimiter=",",index_col="index")
+            # print(df)
+         trajectories.append( df.to_numpy() )
+      elif(t[-4:] == ".npy"):
+         trajectories = np.load(os.path.join( args.i,t) )
+      else:
+         raise Exception("invalid file in dir")
+      # trajectories = [d1,d2]
+      print(t,":",trajectories[0][0:2],"...")
+      create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
 
    # data_to_csv(data,"test.csv")
