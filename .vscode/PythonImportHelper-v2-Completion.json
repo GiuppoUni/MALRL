@@ -2634,7 +2634,7 @@
         "kind": 6,
         "importPath": "src.gym_maze.envs.maze_env",
         "description": "src.gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISITED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, \n        n_trajs = None,random_pos = False,seed_num = None,\n        fixed_goals = None, fixed_init_pos = None,visited_cells = []):\n        self.visited_cells = visited_cells\n        self.verbose = verbose\n        self.viewer = None\n        self.enable_render = enable_render",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISITED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, \n        n_trajs = None,random_start_pos = False,random_goal_pos=False,seed_num = None,\n        fixed_goals = None, fixed_start_pos = None,visited_cells = []):\n        self.visited_cells = visited_cells\n        self.verbose = verbose\n        self.viewer = None\n        self.enable_render = enable_render",
         "detail": "src.gym_maze.envs.maze_env",
         "documentation": {}
     },
@@ -2643,7 +2643,7 @@
         "kind": 6,
         "importPath": "src.gym_maze.envs.maze_view_2d",
         "description": "src.gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True,\n                 random_pos=False,np_random=None,n_trajs=None, fixed_goals = None,\n                 fixed_init_pos = None):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_pos = random_pos\n        self.fixed_goals = fixed_goals ",
+        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,\n                 random_start_pos=False,random_goal_pos=False,np_random=None,n_trajs=None, fixed_goals = None,\n                 fixed_start_pos = None):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_start_pos = random_start_pos\n        self.random_goal_pos = random_goal_pos",
         "detail": "src.gym_maze.envs.maze_view_2d",
         "documentation": {}
     },
@@ -3021,7 +3021,7 @@
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                goodCells.append([r,c])\n    return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:",
+        "peekOfCode": "def getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3030,7 +3030,7 @@
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:\n         action = env.action_space.sample()\n   # Select the action with the highest q\n   else:\n         action = int(np.argmax(q_table[state]))\n   return action\ndef get_explore_rate(t):\n   return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
+        "peekOfCode": "def select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:\n      action = env.action_space.sample()\n   # Select the action with the highest q\n   else:\n      action = int(np.argmax(q_table[state]))\n   return action\ndef get_explore_rate(t):\n   return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3075,7 +3075,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3084,7 +3084,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3093,7 +3093,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                goodCells.append([r,c])",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3102,7 +3102,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                goodCells.append([r,c])\n    return goodCells",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3111,7 +3111,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "SEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                goodCells.append([r,c])\n    return goodCells\ndef select_action(state, explore_rate):",
+        "peekOfCode": "SEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3120,7 +3120,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n    goodCells = []\n    for r in range(c_settings[\"NROWS\"]):\n        for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                goodCells.append([r,c])\n    return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action",
+        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action",
         "detail": "src.layer1",
         "documentation": {}
     },

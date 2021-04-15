@@ -45,7 +45,7 @@ optional arguments:
                         maze file (default: None)
   --load-goals LOAD_GOALS
                         maze file (default: None)
-  --load-init-pos LOAD_INIT_POS
+  --load-start-pos LOAD_INIT_POS
                         maze file (default: None)
 ```
 </br>

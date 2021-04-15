@@ -12,7 +12,9 @@ kwargs={
     "maze_file":"maze2d_004.npy",
       "maze_size":(640, 640), 
     "enable_render":True,
-    "verbose" : False,"n_trajs":9,"random_pos" : False,"seed_num" : 12,
+    "verbose" : False,"n_trajs":9,"random_start_pos":True,
+    "random_goal_pos":True,
+    "seed_num" : 12,
    "num_goals":1, 
    "seed_num" : 1,
    "visited_cells" : []

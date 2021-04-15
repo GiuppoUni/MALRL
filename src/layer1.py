@@ -1,3 +1,11 @@
+"""
+Layer 1 
+(Config files are inside inputData folder)
+
+Returns:
+      Saved 2D trajectories with altitude inside ./generatedData
+
+"""
 import itertools
 import logging
 import os
@@ -33,21 +41,21 @@ EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-
 
 
 def getNotWallsCells():
-    goodCells = []
-    for r in range(c_settings["NROWS"]):
-        for c in range(c_settings["NCOLS"]):
-            if( r % 7==0 or c % 7==0):
-                goodCells.append([r,c])
-    return goodCells
+   goodCells = []
+   for r in range(c_settings["NROWS"]):
+      for c in range(c_settings["NCOLS"]):
+         if( r % 7==0 or c % 7==0):
+               goodCells.append([r,c])
+   return goodCells
 
 
 def select_action(state, explore_rate):
    # Select a random action
    if random.random() < explore_rate:
-         action = env.action_space.sample()
+      action = env.action_space.sample()
    # Select the action with the highest q
    else:
-         action = int(np.argmax(q_table[state]))
+      action = int(np.argmax(q_table[state]))
    return action
 
 
@@ -105,9 +113,8 @@ if __name__ == "__main__":
    parser.add_argument("--nbuffer",type=int, default=3,
                         help='size of buffer for past trajectories (default: %(default)s)')
 
-
-   parser.add_argument('--nagents', type=int, default=1,
-                     help='num agents (supported 1 )(default: %(default)s)')
+   # parser.add_argument('--nagents', type=int, default=1,
+   #                   help='num of simultaneous agents (supported 1 )(default: %(default)s)')
 
    parser.add_argument('--nsteps', type=int, default=0,
                      help='enforce n-steps qlearning if 0 is standard qlearning  (default: %(default)s)')
@@ -122,7 +129,7 @@ if __name__ == "__main__":
       help='render maze while testing  (default: %(default)s)' )
 
    parser.add_argument( '--quiet',action='store_true',  default=False,
-      help='render maze while testing  (default: %(default)s)' )
+      help='Less info in output  (default: %(default)s)' )
 
    parser.add_argument('--random-mode',action='store_true',  default=False,
       help='Agent takes random actions (default: %(default)s)' )
@@ -136,12 +143,6 @@ if __name__ == "__main__":
    parser.add_argument( '-v',action='store_true',  default=False,
       help='verbose (default: %(default)s)' )
    
-   parser.add_argument( '--randomInitGoal',action='store_true',  default=False,
-      help='Random init and goal per episode (default: %(default)s)' )
-   
-   parser.add_argument('--random-pos',action='store_true',  default=False,
-      help='Drones start from random positions exctrateced from pool of 10 (default: %(default)s)')
-
    parser.add_argument('--slow',action='store_true',  default=False,
       help='Slow down training to observe behaviour (default: %(default)s)')
 
@@ -160,15 +161,13 @@ if __name__ == "__main__":
    parser.add_argument('--load-maze', type=str, 
       help='maze file (default: %(default)s)')
 
-   parser.add_argument('--load-goals', type=str, 
-      help='maze file (default: %(default)s)')
+   parser.add_argument('--random-goal-pos', action="store_true",default=False, 
+      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
 
-   parser.add_argument('--load-init-pos', type=str, 
-      help='maze file (default: %(default)s)')
+   parser.add_argument('--random-start-pos',  action="store_true",default=False,  
+      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
 
    args = parser.parse_args()
-
-
 
 
    if(args.seed):
@@ -176,17 +175,17 @@ if __name__ == "__main__":
       random.seed(SEED)
       np.random.seed(seed=SEED)
 
-   """
-      Creo celle pool da estrarre
-   """
-
-   goodCells = getNotWallsCells() # related to our maze design
+   # """
+   #    Define cells allowed to be used as start or goal
+   # """
+   # goodCells = getNotWallsCells() # NOTE: relative to our maze design
 
    outs = 0
    trajsWithAltitude = []
    trajsBySteps = []
    fids = []
 
+   # Init logger
    logging.basicConfig(filename=utils.LOG_FOLDER+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
                            filemode='w',
                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
@@ -195,36 +194,28 @@ if __name__ == "__main__":
    logger = logging.getLogger('RL Layer1')
    logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
 
-
-   if(args.load_init_pos ):
-      df = pandas.read_csv(args.load_init_pos, index_col='name')
-      # print(df)
-      fixed_init_pos_list = df.to_numpy()
-      # print('fixed_goals: ', fixed_goals)
-   else:
-      fixed_init_pos_list = None
-
    TRAJECTORIES_BUFFER_SIZE = args.nbuffer
 
+   if(args.ntrajs):
+      assert(args.ntrajs%TRAJECTORIES_BUFFER_SIZE==0)
+      n_uavs = args.ntrajs
+   else:
+      n_uavs = c_settings["N_TRAJECTORIES_TO_GENERATE"]
 
    """
-      Carico pool di input 
+      Choose inputs: standard start and goals
    """
+
+   df = pandas.read_csv("inputData/start_pos.csv", index_col='name')
+   fixed_start_pos_list= df.values.tolist()
+   assert(0 < len(fixed_start_pos_list) <= n_uavs  )
 
    df = pandas.read_csv("inputData/fixed_goals.csv", index_col='name')
-   # print(df)
-   goals_pool = df.to_numpy()
-   assert(len(goals_pool) > 0)
-   df = pandas.read_csv("inputData/init_pos.csv", index_col='name')
-   # print(df)
-   fixed_init_pos_list = df.to_numpy()
-   assert(len(fixed_init_pos_list) > 0)
-   
-   # print('fixed_goals: ', fixed_goals)
-
-
+   fixed_goals_list = df.values.tolist()
+   assert(len(fixed_goals_list) == len(fixed_start_pos_list))
+ 
    ''''
-   Preparo stuff pre training
+      Prepare  pre training
    '''
 
    maze_file = c_paths["STD_MAZE"]
@@ -232,36 +223,23 @@ if __name__ == "__main__":
    # Creo Maze
    print("SEED",SEED)
 
-   # # TODO bin flag here
-   # render_val=0
-   # if(args.render_train and args.render_test):
-   #    render_value = 3
-   # elif(args.render_test):
-   #    render_value = 2
-   # elif(args.render_train):
-   #    render_value = 1
-
-   """
-   Init and goal cells are extracted randomly
-   """
-
-   np.random.shuffle(goodCells)
-   # print(goodCells)
-   fixed_init_pos = goodCells[0]
-   print('fixed_init_pos: ', fixed_init_pos)
-   fixed_goals = [goodCells[1]]
-
+   # Define start and goal for first env settings
+   fixed_start_pos =  fixed_start_pos_list.pop(0)
+   fixed_goals = [ fixed_goals_list.pop(0)]
 
    env = gym.make("MALRLEnv-v0",maze_file = maze_file,                  
       # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                     maze_size=(640, 640), 
                                     enable_render= args.render_train,num_goals=args.ngoals, 
-                                    verbose = args.v, n_trajs=args.n_random_init,random_pos = args.random_pos,seed_num = SEED,
-                                    fixed_goals = fixed_goals ,fixed_init_pos = fixed_init_pos,
+                                    verbose = args.v, n_trajs=args.n_random_init,
+                                    random_start_pos = args.random_start_pos,
+                                    random_goal_pos = args.random_goal_pos,
+                                    seed_num = SEED,
+                                    fixed_goals = fixed_goals ,fixed_start_pos = fixed_start_pos,
                                     visited_cells = [])
 
    '''
-   Defining the environment related constants
+      Defining the constants related to env
    '''
    # Number of discrete states (bucket) per state dimension
    MAZE_SIZE = tuple((env.observation_space.high + np.ones(env.observation_space.shape)).astype(int))
@@ -292,23 +270,15 @@ if __name__ == "__main__":
    
    n_episodes = args.nepisodes
 
-   
+
    # if(args.log_reward  ):
    logOutfile ="generatedData/logs/log-"+EXPERIMENT_DATE+".txt"
    rewLogFile=open(logOutfile, 'w')
 
-   '''      
-      Begin training/testing #
-   '''      
             
-   visited_cells = []
-   trajs = []
-
-   if(args.ntrajs):
-      assert(args.ntrajs%TRAJECTORIES_BUFFER_SIZE==0)
-      n_uavs = args.ntrajs
-   else:
-      n_uavs = c_settings["N_TRAJECTORIES_TO_GENERATE"]
+   '''
+      Create folders to allocate generated trajectories
+   '''
 
    outDir ="qTrajs2D"+EXPERIMENT_DATE 
    outDir= (os.path.join(c_paths["TRAJECTORIES_FOLDER"], outDir) )
@@ -323,30 +293,27 @@ if __name__ == "__main__":
    os.makedirs( outDirInt)
  
 
-
+   '''      
+      Begin training and testing 
+   '''      
+   visited_cells = []
+   trajs = []
    for uav_idx in range(0,n_uavs):
       print("||||||||||||||||||||||||||||| GENERATING TRAJECTORY ", uav_idx," |||||||||||||||||||||||||||||")
-      if(uav_idx != 0): #alt. gia fatto
-         """
-         Prendo a caso init e goal
-         """
-         np.random.shuffle(goodCells)
-         # print(goodCells)
-         fixed_init_pos = goodCells[0]
-         print('fixed_init_pos: ', fixed_init_pos)
-         fixed_goals = [goodCells[1]]
+      
+      if(uav_idx != 0): #oth. yet done
+         # Need for new random start and goal
+         fixed_start_pos = fixed_start_pos_list.pop(0)
+         print('fixed_start_pos: ', fixed_start_pos)
+         env.setNewEntrance(fixed_start_pos)
+         fixed_goals = [ fixed_goals.pop(0)]
          print('fixed_goals: ', fixed_goals)
-         env.setNewEntrance(fixed_init_pos)
          env.setNewGoals(fixed_goals)
          env.setVisitedCells(visited_cells)
 
-      # qtable,_ = main(mode = "train",fixed_init_pos=fixed_init_pos,visited_cells = visited_cells,i_trajectory = uav_idx)
-      # _,traj =  main(mode = "test",trainedQtable=  qtable,fixed_init_pos=fixed_init_pos,i_trajectory = uav_idx,outDir=outDir)
-      # print('traj: ', traj[0:3])
-
       #------------------------------------------------------------------------------------------------#------------------------------------------------------------------------------------------------  
       '''
-      Preparo dati per nuova traj generata
+         Update variables before generating new trajectory
       '''
       
       # Creating a Q-Table for each state-action pair
@@ -383,12 +350,21 @@ if __name__ == "__main__":
             print(">>>>>>>>>>>>>>> TESTING TRAJ. ",uav_idx," <<<<<<<<<<<<<<<<")
             # logger.info(', '.join( [str(x) for x in [episode,len(q_table),len(qtrajectory),len(last_s_a_queue)] ] ))
 
+         elapsed_time1 = 0 
+         elapsed_time2 = 0
          for t in range(c_settings["MAX_T"]):
             # Select an action
             action = select_action(old_state, explore_rate)
 
+
+            t = time.process_time()
+            
             # execute the action
             obv, reward, done, info = env.step(action)
+            elapsed_time1 += time.process_time() - t
+
+            t = time.process_time()
+
             # print('observation: ', obv)
 
             if(episode == n_episodes and info["moved"]):
@@ -458,6 +434,10 @@ if __name__ == "__main__":
 
             if(args.slow):
                   time.sleep(1)
+                  import time
+
+         elapsed_time2 += time.process_time() - t
+         # print(str( elapsed_time1)+","+str(elapsed_time2))
 
          # It's considered done when it's solved over 120 times consecutively
          if not args.nepisodes and num_streaks > c_settings["STREAK_TO_END"]:
@@ -470,8 +450,8 @@ if __name__ == "__main__":
       # ----> EPISODES ENDED
       
       end = time.time()
-      rewLogFile.write("ELAPSED TIME for:"+str(uav_idx)+","+str(end-start))
-      
+      rewLogFile.write("ELAPSED TIME for all episodes of "+str(uav_idx)+" is "+str(end-start))
+
       toBeSaved = np.array(qtrajectory,dtype=int)
       print('Saving in : ', outDir)
       outfile = "traj2d_" + str(uav_idx)

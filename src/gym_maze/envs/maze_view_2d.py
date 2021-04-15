@@ -9,15 +9,17 @@ class MazeView2D:
 
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
-                 has_loops=False, num_portals=0, enable_render=True,num_goals = 1,verbose = True,
-                 random_pos=False,np_random=None,n_trajs=None, fixed_goals = None,
-                 fixed_init_pos = None):
+                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,
+                 random_start_pos=False,random_goal_pos=False,np_random=None,n_trajs=None, fixed_goals = None,
+                 fixed_start_pos = None):
 
         # if(num_goals<=0 ):
         #     raise ValueError("Error in num_goals parameter")
-        self.random_pos = random_pos
+        self.random_start_pos = random_start_pos
+        self.random_goal_pos = random_goal_pos
+        
         self.fixed_goals = fixed_goals 
-        self.fixed_init_pos = fixed_init_pos
+        self.fixed_start_pos = fixed_start_pos
         
         self.num_goals = num_goals
         self.verbose = verbose
@@ -56,22 +58,18 @@ class MazeView2D:
 
        
 
-        if self.random_pos:
+        if self.random_start_pos:
             # Set the starting point
             _arr= self.get_init_pool()
             self.np_random.shuffle( _arr )
-            if(self.n_trajs and len(_arr)-self.n_trajs>0):
-                self.random_init_pool = _arr[0:self.n_trajs]  
-                print('self.random_init_pool: ', self.random_init_pool)
-            else:
-                self.random_init_pool = _arr 
+            self.random_init_pool = _arr 
             self.__entrance = self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
 
             # it s set on reset
-        elif self.fixed_init_pos is not None:
-            self.__entrance = self.fixed_init_pos
-        else:
-            self.__entrance = np.zeros(2)
+        elif self.fixed_start_pos is not None:
+            self.__entrance = self.fixed_start_pos
+        else:  
+            raise Exception("Either start goal or random must be specified")
 
         # Create the Robot
         self.__robot = self.entrance.copy()
@@ -81,9 +79,13 @@ class MazeView2D:
         self.__goal = None
         if self.num_goals == 1:        
             print('=========================================')
-            if(self.fixed_goals is None):
-                self.__goal = np.array(self.maze_size) - np.array((1, 1))
-            else:
+            if(self.random_goal_pos):
+                print('random_init_pool: ', self.random_init_pool)
+                self.random_init_pool = np.setdiff1d(self.random_init_pool, self.__entrance)
+                self.__goal = self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
+                print('self.__goal: ', self.__goal)
+
+            elif(self.fixed_goals is not None):
                 if( len(self.fixed_goals) == 1):
                     self.__goal = np.array(self.fixed_goals)[0]
                 else:
@@ -142,8 +144,9 @@ class MazeView2D:
         rs= rnd[0]
         cs= rnd[1]
         arr = np.array( [[rs[i],cs[i]] for i in range(len(rs)) ] )
-                
-        np.setdiff1d(arr, self.goals) 
+        
+        # np.setdiff1d(arr, self.goals) 
+
         return arr
 
     def _get_random_xy(self):
@@ -238,9 +241,9 @@ class MazeView2D:
             
             if self.__enable_render:
                 self.__draw_robot(transparency=255)
-            moved = True
-            
+            moved = True    
         return moved
+
     def reset_robot(self,rend):
         
         if rend: self.__draw_robot(transparency=0)

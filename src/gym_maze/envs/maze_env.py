@@ -18,20 +18,21 @@ class MazeEnv(gym.Env):
     VISITED_TO_IDX = {"visited":16}
 
     def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, 
-        n_trajs = None,random_pos = False,seed_num = None,
-        fixed_goals = None, fixed_init_pos = None,visited_cells = []):
+        n_trajs = None,random_start_pos = False,random_goal_pos=False,seed_num = None,
+        fixed_goals = None, fixed_start_pos = None,visited_cells = []):
         
         self.visited_cells = visited_cells
         self.verbose = verbose
         self.viewer = None
         self.enable_render = enable_render
         self.num_goals = num_goals
-        self.fixed_init_pos = fixed_init_pos
+        self.fixed_start_pos = fixed_start_pos
         self.fixed_goals = fixed_goals
 
         self.human_mode = human_mode
         self.chosen_goal = None
-        self.random_pos = random_pos
+        self.random_start_pos = random_start_pos
+        self.random_goal_pos = random_goal_pos
         self.n_trajs = n_trajs
 
         self.seed(seed_num)
@@ -43,10 +44,11 @@ class MazeEnv(gym.Env):
                                         maze_file_path=maze_file,
                                         screen_size=(640, 640), 
                                         enable_render=enable_render,
-                                        num_goals = self.num_goals,random_pos = random_pos,
+                                        num_goals = self.num_goals,random_start_pos = random_start_pos,
+                                        random_goal_pos= random_goal_pos,
                                         verbose = self.verbose,np_random=self.np_random,
                                         n_trajs = None, fixed_goals = fixed_goals,
-                                        fixed_init_pos =fixed_init_pos)
+                                        fixed_start_pos =fixed_start_pos)
 
         else:
             raise AttributeError("One must supply either a maze_file path (str) or the maze_size (tuple of length 2)")
@@ -81,8 +83,8 @@ class MazeEnv(gym.Env):
     
 
     def setNewEntrance(self,entrance):
-        self.fixed_init_pos = entrance
-        self.maze_view.fixed_init_pos = entrance
+        self.fixed_start_pos = entrance
+        self.maze_view.fixed_start_pos = entrance
         self.maze_view.setEntrance ( np.array(entrance) ) 
         print('self.visited_cells: ', len(self.visited_cells))
     
@@ -117,24 +119,22 @@ class MazeEnv(gym.Env):
     def compute_reward(self,moved):
         reward = 0
         if(self.num_goals==1):
-            # Single goal modeù
-            
+            # Single goal mode          
             if not moved:
                 return -0.5,False
-            if np.array_equal(self.maze_view.robot, self.maze_view.goal):
+            elif np.array_equal(self.maze_view.robot, self.maze_view.goal):
                 # Found goal
                 reward = 1000
                 done = True
             else:
                 #  Not found goal
                 if self.maze_view.robot.tolist() in self.visited_cells:
+                    # Already been here
                     reward = -1
                 else:
-                    # Should be lower than not moved case
+                    # oth: should be lower than not moved case
                     reward = -0.5/(self.maze_size[0]*self.maze_size[1])
-                done = False
-
-            
+                done = False            
         elif self.num_goals > 1:
             # Multiple goals mode
             if not moved:
@@ -223,15 +223,15 @@ class MazeEnv(gym.Env):
         self.steps_beyond_done = None
         self.done = False
 
-        
         #Redraw entrance
-        if(self.random_pos):
+        if(self.random_start_pos):
             self.state = self.maze_view.entrance 
             self.maze_view.resetEntrance()
-        elif (self.fixed_init_pos is not None):
+        elif (self.fixed_start_pos is not None):
             self.state = self.maze_view.entrance         
         else:
-            self.state = np.zeros(2)
+            # self.state = np.zeros(2)
+            raise Exception("Either start goal or random must be specified")
 
         if(self.enable_render and self.num_goals < 1 ):
                 # Reset all cells
