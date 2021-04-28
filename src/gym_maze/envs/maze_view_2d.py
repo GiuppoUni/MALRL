@@ -10,7 +10,7 @@ class MazeView2D:
     def __init__(self, maze_name="Maze2D", maze_file_path=None,
                  maze_size=(30, 30), screen_size=(600, 600),
                  has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,
-                 random_start_pos=False,random_goal_pos=False,np_random=None,n_trajs=None, fixed_goals = None,
+                 random_start_pos=False,random_goal_pos=False,np_random=None, fixed_goals = None,
                  fixed_start_pos = None):
 
         # if(num_goals<=0 ):
@@ -24,7 +24,7 @@ class MazeView2D:
         self.num_goals = num_goals
         self.verbose = verbose
         self.np_random = np_random
-        self.n_trajs = n_trajs
+
         
         self.screen_size = screen_size
         
@@ -60,7 +60,7 @@ class MazeView2D:
 
         if self.random_start_pos:
             # Set the starting point
-            _arr= self.get_init_pool()
+            _arr= self.get_init_pool(self.maze)
             self.np_random.shuffle( _arr )
             self.random_init_pool = _arr 
             self.__entrance = self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
@@ -137,9 +137,10 @@ class MazeView2D:
         self.__draw_maze()
 
     # Return good cells (usable as entrances or goals)
-    def get_init_pool(self):
-        rnd= np.where((self.maze.maze_cells!=0) & 
-        ((self.maze.maze_cells == 7)|(self.maze.maze_cells == 15) |(self.maze.maze_cells  ==13 )) )
+    def get_init_pool(self,maze):
+        
+        rnd= np.where((maze.maze_cells!=0) & 
+        ((maze.maze_cells == 7)|(maze.maze_cells == 15) |(maze.maze_cells  ==13 )) )
         
         rs= rnd[0]
         cs= rnd[1]
@@ -170,7 +171,7 @@ class MazeView2D:
 
     def resetEntrance(self):
         if self.__enable_render: self.decolor(self.__entrance)
-        self.__entrance =  self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
+        # self.__entrance =  self.random_init_pool[self.np_random.choice(self.random_init_pool.shape[0])]
 
   
 

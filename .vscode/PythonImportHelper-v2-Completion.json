@@ -611,6 +611,14 @@
         "documentation": {}
     },
     {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
         "label": "eventlet",
         "kind": 6,
         "isExtraImport": true,
@@ -802,6 +810,14 @@
         "documentation": {}
     },
     {
+        "label": "Maze",
+        "importPath": "gym_maze.envs.maze_view_2d",
+        "description": "gym_maze.envs.maze_view_2d",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_view_2d",
+        "documentation": {}
+    },
+    {
         "label": "itertools",
         "kind": 6,
         "isExtraImport": true,
@@ -930,6 +946,14 @@
         "documentation": {}
     },
     {
+        "label": "MazeView2D",
+        "importPath": "gym_maze.envs.maze_env",
+        "description": "gym_maze.envs.maze_env",
+        "isExtraImport": true,
+        "detail": "gym_maze.envs.maze_env",
+        "documentation": {}
+    },
+    {
         "label": "yaml",
         "kind": 6,
         "isExtraImport": true,
@@ -1002,14 +1026,6 @@
         "description": "pygame.constants",
         "isExtraImport": true,
         "detail": "pygame.constants",
-        "documentation": {}
-    },
-    {
-        "label": "poisson",
-        "importPath": "scipy.stats",
-        "description": "scipy.stats",
-        "isExtraImport": true,
-        "detail": "scipy.stats",
         "documentation": {}
     },
     {
@@ -2634,7 +2650,7 @@
         "kind": 6,
         "importPath": "src.gym_maze.envs.maze_env",
         "description": "src.gym_maze.envs.maze_env",
-        "peekOfCode": "class MazeEnv(gym.Env):\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISITED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, \n        n_trajs = None,random_start_pos = False,random_goal_pos=False,seed_num = None,\n        fixed_goals = None, fixed_start_pos = None,visited_cells = []):\n        self.visited_cells = visited_cells\n        self.verbose = verbose\n        self.viewer = None\n        self.enable_render = enable_render",
+        "peekOfCode": "class MazeEnv(gym.Env):\n    ACTION = [\"N\",\"S\", \"E\", \"W\"]\n    VISITED_TO_IDX = {\"visited\":16}\n    def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, \n        random_start_pos = False,random_goal_pos=False,seed_num = None,\n        fixed_goals = None, fixed_start_pos = None,visited_cells = []):\n        self.visited_cells = visited_cells\n        self.verbose = verbose\n        self.viewer = None\n        self.enable_render = enable_render",
         "detail": "src.gym_maze.envs.maze_env",
         "documentation": {}
     },
@@ -2643,7 +2659,7 @@
         "kind": 6,
         "importPath": "src.gym_maze.envs.maze_view_2d",
         "description": "src.gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,\n                 random_start_pos=False,random_goal_pos=False,np_random=None,n_trajs=None, fixed_goals = None,\n                 fixed_start_pos = None):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_start_pos = random_start_pos\n        self.random_goal_pos = random_goal_pos",
+        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,\n                 random_start_pos=False,random_goal_pos=False,np_random=None, fixed_goals = None,\n                 fixed_start_pos = None):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_start_pos = random_start_pos\n        self.random_goal_pos = random_goal_pos",
         "detail": "src.gym_maze.envs.maze_view_2d",
         "documentation": {}
     },
@@ -2981,6 +2997,15 @@
         "documentation": {}
     },
     {
+        "label": "convert_df_to_eurocontrol_format",
+        "kind": 2,
+        "importPath": "src.eurocontrolConverter",
+        "description": "src.eurocontrolConverter",
+        "peekOfCode": "def convert_df_to_eurocontrol_format(df,uasId):\n   if \"z_pos\" in df.columns:\n      df.pop(\"z_pos\")\n   df[\"UAS id\"] = [uasId]*len(df.index)\n   df[ 'UAS Relative time' ] = df.index\n   df = df.rename(columns={\"x_pos\":\"x\",\"y_pos\":\"y\"})\n   return df\n# def create_eurocontrol_file(trajs,dimensions,filename,header = True):\n#    if(dimensions <2 or dimensions >3): raise Exception(\"Only 2D or 3D\")\n#    d = {}",
+        "detail": "src.eurocontrolConverter",
+        "documentation": {}
+    },
+    {
         "label": "FINAL_COLUMNS_NAMES",
         "kind": 5,
         "importPath": "src.eurocontrolConverter",
@@ -3021,7 +3046,7 @@
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:",
+        "peekOfCode": "def getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):\n   if(lastAction is None):\n      # Select a random action",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3030,7 +3055,7 @@
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def select_action(state, explore_rate):\n   # Select a random action\n   if random.random() < explore_rate:\n      action = env.action_space.sample()\n   # Select the action with the highest q\n   else:\n      action = int(np.argmax(q_table[state]))\n   return action\ndef get_explore_rate(t):\n   return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))",
+        "peekOfCode": "def select_action(state, explore_rate,lastAction):\n   if(lastAction is None):\n      # Select a random action\n      if random.random() < explore_rate:\n         action = env.action_space.sample()\n      # Select the action with the highest q\n      else:\n         action = int(np.argmax(q_table[state]))\n      return action\n   else:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3039,7 +3064,7 @@
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def get_explore_rate(t):\n   return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef get_learning_rate(t):\n   return max(c_settings[\"MIN_LEARNING_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n   bucket_indice = []\n   for i in range(len(state)):\n         if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n         elif state[i] >= STATE_BOUNDS[i][1]:",
+        "peekOfCode": "def get_explore_rate(t):\n   # return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\n   return 0.2\ndef get_learning_rate(t):\n   return max(c_settings[\"MIN_LEARNING_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n   bucket_indice = []\n   for i in range(len(state)):\n         if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3075,7 +3100,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3084,7 +3109,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3093,7 +3118,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3102,16 +3127,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nSEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells",
-        "detail": "src.layer1",
-        "documentation": {}
-    },
-    {
-        "label": "SEED",
-        "kind": 5,
-        "importPath": "src.layer1",
-        "description": "src.layer1",
-        "peekOfCode": "SEED = random.randint(0,int(10e6))\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3120,7 +3136,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate):\n   # Select a random action",
+        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):\n   if(lastAction is None):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3255,7 +3271,7 @@
         "kind": 2,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "def vertical_separate(new_trajs_2d,fids,min_height,max_height,\n    sep_h,assigned_trajs=[],radius=10, n_new_trajs_2d=None,seed=None,\n    tolerance = 0):\n    \"\"\"\n    ASSUMPTIONS\n    - assigned_trajs follows this convention\n    - threshold value is the max value of problematic points before traj\n    is considered colliding \n    \"\"\"\n    print(\"Loaded\" ,len(assigned_trajs),\"fixed trajectories\")",
+        "peekOfCode": "def vertical_separate(new_trajs_2d,fids,min_height,max_height,\n    sep_h,seed,assigned_trajs=[],radius=10, n_new_trajs_2d=None,\n    tolerance = 0):\n    \"\"\"\n    ASSUMPTIONS\n    - assigned_trajs follows this convention\n    - threshold value is the max value of problematic points before traj\n    is considered colliding \n    \"\"\"\n    print(\"Loaded\" ,len(assigned_trajs),\"fixed trajectories\")",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3264,7 +3280,7 @@
         "kind": 2,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "def print_z_head(arr):\n    print(\"heights are:\")\n    for idx,t in enumerate(arr):\n        print(\"\\t id:\",idx,\"z\",t[0][2])\nfrom scipy.stats import poisson\ndef random_gen_2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=None,n_trajs=5):\n    \"\"\"\n    normal to choose action with (mean=0,std=1)\n    \"\"\"\n    n_drones = n_trajs",
+        "peekOfCode": "def print_z_head(arr):\n    print(\"heights are:\")\n    for idx,t in enumerate(arr):\n        print(\"\\t id:\",idx,\"z\",t[0][2])\ndef random_gen_2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=None,n_trajs=5):\n    \"\"\"\n    normal to choose action with (mean=0,std=1)\n    \"\"\"\n    n_drones = n_trajs\n    trajs = [[] for i in range(n_drones)]",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3327,7 +3343,7 @@
         "kind": 2,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\n# TODO use cell_size to underestand if its  acell or not?\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp=9 #dummy value",
+        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\n# TODO use cell_size to understand if it's a cell or not?\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories: trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp = 9 #dummy value #2D",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3336,7 +3352,7 @@
         "kind": 2,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp=9 #dummy value\n        else:\n            hp=trajs[i][0][2]\n        if(fids is None):",
+        "peekOfCode": "def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories: trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp = 9 #dummy value #2D\n        else:\n            hp = trajs[i][0][2] #3D\n        if(fids is None):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3395,11 +3411,20 @@
         "documentation": {}
     },
     {
+        "label": "configYml",
+        "kind": 5,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\n# global SEED\n# SEED = 668\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED",
+        "detail": "src.trajs_utils",
+        "documentation": {}
+    },
+    {
         "label": "N_POINTS",
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3408,7 +3433,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3417,7 +3442,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3426,7 +3451,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3435,7 +3460,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "FIGS_FOLDER = \"generatedFigs\"\n# random.seed(SEED)\n# np.random.seed(seed=SEED)\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
+        "peekOfCode": "FIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)\n    return SEED",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3552,7 +3577,16 @@
         "kind": 2,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0])\n    y = int(l[1])\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef set_offset_position(pos):",
+        "peekOfCode": "def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:\n    # x = int(l[0]*wcell_in_meters)\n    # y = int(l[1]*hcell_in_meters)\n    x = int(l[0])\n    y = int(l[1])\n    z = int(l[2])\n    if len(l) != 3:\n        raise Exception(\"REQUIRED EXACTLY 3 elements\")\n    return Vector3r(x,y,z)\ndef getGoodCells(maze):",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "getGoodCells",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def getGoodCells(maze):\n    rnd= np.where((maze.maze_cells!=0) & \n    ((maze.maze_cells == 7)|(maze.maze_cells == 15) |(maze.maze_cells  ==13 )) )\n    rs= rnd[0]\n    cs= rnd[1]\n    arr = np.array( [[rs[i],cs[i]] for i in range(len(rs)) ] )\n    # np.setdiff1d(arr, self.goals) \n    return arr\ndef set_offset_position(pos):\n    _v = g_vehicles[\"Drone0\"]",
         "detail": "src.utils",
         "documentation": {}
     },

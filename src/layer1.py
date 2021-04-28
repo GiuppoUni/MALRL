@@ -20,7 +20,7 @@ import datetime
 
 import utils
 import time
-from gym_maze.envs.maze_env import MazeEnv
+from gym_maze.envs.maze_env import MazeEnv, MazeView2D
 
 import signal
 import sys
@@ -28,14 +28,15 @@ import pandas
 
 import trajs_utils
 import yaml
+from gym_maze.envs.maze_view_2d import Maze
+from PIL import Image as img
 
 configYml = utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["layer1"]["paths"]
 c_settings = configYml["layer1"]["settings"]
+c_verSep= configYml["layer1"]["vertical_separation"]
 
 IDX_TO_ACTION =  {0:"LEFT", 1:"FRONT", 2:"RIGHT", 3:"BACK"}
-
-SEED = random.randint(0,int(10e6))
 
 EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints
 
@@ -49,19 +50,29 @@ def getNotWallsCells():
    return goodCells
 
 
-def select_action(state, explore_rate):
-   # Select a random action
-   if random.random() < explore_rate:
-      action = env.action_space.sample()
-   # Select the action with the highest q
+def select_action(state, explore_rate,lastAction):
+   if(lastAction is None):
+      # Select a random action
+      if random.random() < explore_rate:
+         action = env.action_space.sample()
+      # Select the action with the highest q
+      else:
+         action = int(np.argmax(q_table[state]))
+      return action
    else:
-      action = int(np.argmax(q_table[state]))
-   return action
-
+        # Select a random action
+      if random.random() < explore_rate:
+         action = env.action_space.sample()
+         while(action == lastAction):
+            action = env.action_space.sample()
+      # Select the action with the highest q
+      else:
+         action = int(np.argmax(q_table[state]))
+      return action
 
 def get_explore_rate(t):
-   return max(c_settings["MIN_EXPLORE_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
-
+   # return max(c_settings["MIN_EXPLORE_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
+   return 0.2
 
 def get_learning_rate(t):
    return max(c_settings["MIN_LEARNING_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
@@ -104,9 +115,6 @@ if __name__ == "__main__":
    parser.add_argument('--ngoals', type=int, default=1,
                      help='n goals to collect (default: %(default)s)')
 
-   parser.add_argument("--seed",type=int,
-                        help='seed value (default: %(default)s)')
-
    parser.add_argument("--ntrajs",type=int,
                         help='num trajectories value (default: %(default)s)')
 
@@ -130,24 +138,12 @@ if __name__ == "__main__":
 
    parser.add_argument( '--quiet',action='store_true',  default=False,
       help='Less info in output  (default: %(default)s)' )
-
-   parser.add_argument('--random-mode',action='store_true',  default=False,
-      help='Agent takes random actions (default: %(default)s)' )
-
-   parser.add_argument( '--skip-train',action='store_true',  default=False,
-      help='Just assign altitude to 2D trajecories in folder (default: %(default)s)' )
-   
-   parser.add_argument( '--show-plot',action='store_true',  default=False,
-      help='Show generated trajectories each time (default: %(default)s)' )
    
    parser.add_argument( '-v',action='store_true',  default=False,
       help='verbose (default: %(default)s)' )
    
    parser.add_argument('--slow',action='store_true',  default=False,
       help='Slow down training to observe behaviour (default: %(default)s)')
-
-   parser.add_argument('--plot3d',action='store_true',  default=False,
-      help='Render 3d plots(default: %(default)s)')
 
    parser.add_argument('--n-random-init', type=int, default=5,
                      help='n sample pool for random init (default: %(default)s)')
@@ -160,20 +156,48 @@ if __name__ == "__main__":
 
    parser.add_argument('--load-maze', type=str, 
       help='maze file (default: %(default)s)')
+   
+   parser.add_argument("--show-maze-bm", action="store_true",default=False, 
+      help='Show Bitmap used as maze')
+
+   parser.add_argument("--train", action="store_true",default=False, 
+      help='Start generating trajectories')
+
 
    parser.add_argument('--random-goal-pos', action="store_true",default=False, 
+      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
+
+   parser.add_argument('--generate-random-start', action="store_true",default=False, 
       help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
 
    parser.add_argument('--random-start-pos',  action="store_true",default=False,  
       help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
 
+   parser.add_argument('--generate-random-goal',  action="store_true",default=False,  
+      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
+
    args = parser.parse_args()
 
 
-   if(args.seed):
-      SEED = args.seed
-      random.seed(SEED)
-      np.random.seed(seed=SEED)
+   if(args.show_maze_bm):
+      data = np.load(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) )
+      print("MAZE BitMap:",data.shape,data)
+
+      data  =    np.where(data==0, 255, data) 
+      data  =    np.where(data!=255, 0, data) 
+      image = img.fromarray(data)
+      # image.save('my.png')
+      np.savetxt('np.csv', image, delimiter=',',fmt="%u")
+      image.resize(size=(720, 1280))
+      image.show()
+   
+   SEED = c_settings["SEED"]
+   if(SEED==-1):
+    SEED = random.seed()
+   else:
+    random.seed(SEED)
+    np.random.seed(seed=SEED)
+      
 
    # """
    #    Define cells allowed to be used as start or goal
@@ -205,33 +229,60 @@ if __name__ == "__main__":
    """
       Choose inputs: standard start and goals
    """
+   
+   if(args.generate_random_start or args.random_goal_pos):
+      maze = Maze(maze_cells=Maze.load_maze(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) ) ,verbose = args.v)
+      allGoodCells = utils.getGoodCells(maze) # good as entrance or goal
+      with open("inputData/start_pos_table.csv","w") as fstart, open("inputData/goal_pos_table.csv","w") as fgoal:
+         fstart.write("name,x_pos,y_pos\n")
+         for i in range(0,n_uavs):
+            if(args.generate_random_start):
+               startRandomCell = allGoodCells[np.random.choice(allGoodCells.shape[0])]
+               fstart.write("s"+str(i)+",")
+               fstart.write(",".join([ str(x) for x in startRandomCell.tolist() ] ) +"\n")
+            if(args.generate_random_goal):
+               if(i==0): fgoal.write("name,x_pos,y_pos\n")
+               goalRandomCell = startRandomCell
+               while( np.array_equal(goalRandomCell , startRandomCell)):
+                  goalRandomCell =  allGoodCells[np.random.choice(allGoodCells.shape[0])]
+               fgoal.write("g"+str(i)+",")
+               fgoal.write(",".join([ str(x) for x in goalRandomCell.tolist() ] ) +"\n")
 
-   df = pandas.read_csv("inputData/start_pos.csv", index_col='name')
+   df = pandas.read_csv("inputData/start_pos_table.csv", index_col='name')
    fixed_start_pos_list= df.values.tolist()
-   assert(0 < len(fixed_start_pos_list) <= n_uavs  )
+   print('fixed_start_pos_list: ', fixed_start_pos_list)
 
-   df = pandas.read_csv("inputData/fixed_goals.csv", index_col='name')
+   df = pandas.read_csv("inputData/goal_pos_table.csv", index_col='name')
    fixed_goals_list = df.values.tolist()
-   assert(len(fixed_goals_list) == len(fixed_start_pos_list))
+   # assert(len(fixed_goals_list) == len(fixed_start_pos_list))
  
+
    ''''
       Prepare  pre training
    '''
 
-   maze_file = c_paths["STD_MAZE"]
+   
             
-   # Creo Maze
    print("SEED",SEED)
+
+   '''
+      Check
+   '''
+
+   if(not (args.random_start_pos and args.random_goal_pos ) and c_settings["N_TRAJECTORIES_TO_GENERATE"]>len(fixed_start_pos_list)):
+      print('len(fixed_start_pos_list): ', len(fixed_start_pos_list))
+      print('fixed_start_pos_list: ', fixed_start_pos_list)
+      raise Exception("Too many trajectory, adjust fixed positions ")
 
    # Define start and goal for first env settings
    fixed_start_pos =  fixed_start_pos_list.pop(0)
    fixed_goals = [ fixed_goals_list.pop(0)]
 
-   env = gym.make("MALRLEnv-v0",maze_file = maze_file,                  
+   env = gym.make("MALRLEnv-v0",maze_file =  c_paths["STD_MAZE"],                  
       # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                     maze_size=(640, 640), 
                                     enable_render= args.render_train,num_goals=args.ngoals, 
-                                    verbose = args.v, n_trajs=args.n_random_init,
+                                    verbose = args.v, 
                                     random_start_pos = args.random_start_pos,
                                     random_goal_pos = args.random_goal_pos,
                                     seed_num = SEED,
@@ -293,6 +344,8 @@ if __name__ == "__main__":
    os.makedirs( outDirInt)
  
 
+
+
    '''      
       Begin training and testing 
    '''      
@@ -304,12 +357,13 @@ if __name__ == "__main__":
       if(uav_idx != 0): #oth. yet done
          # Need for new random start and goal
          fixed_start_pos = fixed_start_pos_list.pop(0)
-         print('fixed_start_pos: ', fixed_start_pos)
          env.setNewEntrance(fixed_start_pos)
-         fixed_goals = [ fixed_goals.pop(0)]
-         print('fixed_goals: ', fixed_goals)
+         fixed_goals = [ fixed_goals_list.pop(0)]
          env.setNewGoals(fixed_goals)
          env.setVisitedCells(visited_cells)
+      
+      print('fixed_start_pos: ', fixed_start_pos)
+      print('fixed_goals: ', fixed_goals)
 
       #------------------------------------------------------------------------------------------------#------------------------------------------------------------------------------------------------  
       '''
@@ -331,14 +385,18 @@ if __name__ == "__main__":
 
       rewLogFile.write("nrun %d,seed %d,max_t %d, buf_size %d\n" % (n_uavs, SEED,c_settings["MAX_T"],TRAJECTORIES_BUFFER_SIZE))
       start = time.time()
+
+      env.seed(SEED)
+
       for episode in range(n_episodes+1):
          
          if(episode == n_episodes and args.render_test):
             env.set_render(True)
-            
+         
+         lastAction = None #To save last action avoiding repeat
+
          # Reset the environment
          obv = env.reset()
-         env.seed(SEED+episode)
          # the initial state
          old_state = state_to_bucket(obv)
          total_reward = 0
@@ -354,8 +412,8 @@ if __name__ == "__main__":
          elapsed_time2 = 0
          for t in range(c_settings["MAX_T"]):
             # Select an action
-            action = select_action(old_state, explore_rate)
-
+            action = select_action(old_state, explore_rate,lastAction=lastAction)
+            lastAction=action
 
             t = time.process_time()
             
@@ -467,7 +525,7 @@ if __name__ == "__main__":
 
 
       #------------------------------------------------------------------------------------------------#------------------------------------------------------------------------------------------------#------------------------------------------------------------------------------------------------
-      # EPISODE HA GIA FINITO SU UNA TRAIETTORIA
+      # ONE TRAJECTORY IS COMPLETED
       trajs.append(qtrajectory)
       
       # Remove duplicates from single traj
@@ -475,7 +533,7 @@ if __name__ == "__main__":
          if p not in visited_cells:
             visited_cells.append(p)  
       
-      print("Num. trajs till now ",len(trajs))
+      print("Num. trajs generated: ",len(trajs))
 
       if(uav_idx!=0 and uav_idx  % TRAJECTORIES_BUFFER_SIZE == TRAJECTORIES_BUFFER_SIZE-1 ):
             # gtrajs = trajs_utils.fix_traj(trajs)
@@ -497,7 +555,9 @@ if __name__ == "__main__":
             print("Altitude assignment started...")    
             trajs3d, i_outs,local_fids = trajs_utils.vertical_separate(new_trajs_2d=gtrajs,
                fids=[ i + ((uav_idx-TRAJECTORIES_BUFFER_SIZE)+1) for i in range(TRAJECTORIES_BUFFER_SIZE)],
-               assigned_trajs = trajsWithAltitude,min_height=50,max_height=300,sep_h = 10,radius=100, tolerance=0.0)
+               assigned_trajs = trajsWithAltitude,
+               min_height=c_verSep["MIN_HEIGHT"],max_height=c_verSep["MAX_HEIGHT"],sep_h = c_verSep["SEP_H"],
+               radius=c_verSep["RADIUS"], tolerance=c_verSep["TOLERANCE"], seed=SEED)
             
             print("gtrajs ",len(gtrajs))
             print("mtrajs ",len(mtrajs))
@@ -537,14 +597,8 @@ if __name__ == "__main__":
 
    print("OUTS:",outs)
    print("Start PLOTTING...")
-   if(args.plot3d):
-      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=False,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
-      trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=False,date=EXPERIMENT_DATE)
-      # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=0,name="test"+"xz")
-      # trajs_utils.plot_z(trajsWithAltitude,fids,second_axis=1,name="test"+"yz")
-   else:
-      trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=True,name="test"+"3d",exploded=False,date=EXPERIMENT_DATE)
-      trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=True,date=EXPERIMENT_DATE)
-
+   trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=c_settings["doSave_3dPlot"],name="test"+"3d",
+      exploded=c_settings["exploded_3dPlot"],date=EXPERIMENT_DATE)
+   trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=c_settings["doSave_xyPlot"],date=EXPERIMENT_DATE)
 
    print("DONE.")

@@ -13,6 +13,8 @@ import utils
 from sklearn.neighbors import KDTree
 import os
 
+configYml = utils.read_yaml("inputData/config.yaml")
+
 # global SEED
 # SEED = 668
 N_POINTS = 100
@@ -20,9 +22,9 @@ STEP_SIZE = 20
 ACTION = ["N","S", "E", "W"]
 AINDEX = {"N":0,"S":1, "E":2, "W":3}
 
-FIGS_FOLDER = "generatedFigs"
-# random.seed(SEED)
-# np.random.seed(seed=SEED)
+FIGS_FOLDER = configYml["layer1"]["paths"]["FIGS_FOLDER"]
+
+
 
 def setSeed(seed):
    global SEED
@@ -327,7 +329,7 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
 
 
 def vertical_separate(new_trajs_2d,fids,min_height,max_height,
-    sep_h,assigned_trajs=[],radius=10, n_new_trajs_2d=None,seed=None,
+    sep_h,seed,assigned_trajs=[],radius=10, n_new_trajs_2d=None,
     tolerance = 0):
     
     """
@@ -342,7 +344,7 @@ def vertical_separate(new_trajs_2d,fids,min_height,max_height,
     init_num = len(new_trajs_2d)
     outs = 0 # number of trajs that cannot be allocated
     if(new_trajs_2d == []): return []
-    if(tolerance>1): raise Exception("Invalid threshold value")
+    if(not 0<=tolerance<=1): raise Exception("Invalid tolerance value")
     assert(len(fids)==len(new_trajs_2d))
  
     if(seed is not None): random.seed(seed)
@@ -363,10 +365,7 @@ def vertical_separate(new_trajs_2d,fids,min_height,max_height,
     for fligth_id,t2d in enumerate(new_trajs_2d):
         assigned = False
         refused = False
-        if(tolerance==0):
-            threshold=1
-        else:
-            threshold = math.ceil(len(t2d)*tolerance)
+        threshold = max( 1, math.ceil(len(t2d)*tolerance))
         
         while(not assigned and not refused):
             ns_problematic = 0
@@ -466,7 +465,6 @@ def print_z_head(arr):
     
 
 
-from scipy.stats import poisson
 
 def random_gen_2d(xmin,xmax,ymin,ymax,zmin=None,zmax=None,step=120,n_points=None,n_trajs=5):
     """
@@ -690,22 +688,25 @@ def convert2airsim(trajs):
 
 
 
-# TODO use cell_size to underestand if its  acell or not?
+# TODO use cell_size to understand if it's a cell or not?
 def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date="",isCell=False, name = None):
-    """ 2D plot of trajectories trajs = [t1,...,tn] """
+    """ 2D plot of trajectories: trajs = [t1,...,tn] """
     # Assegno altitude se 2d
 
     fPerHeights = dict()
     for i in range(len(trajs)):
         if(len(trajs[i][0]) == 2):
-            hp=9 #dummy value
+            hp = 9 #dummy value #2D
         else:
-            hp=trajs[i][0][2]
+            hp = trajs[i][0][2] #3D
 
         if(fids is None):
             idx = i
         else:
-            idx = fids[i]
+            if i < len(fids):
+                idx = fids[i]
+            else:
+                idx = i
 
         if(isCell):
             xs = [ p[0]+cell_size/2 for p in trajs[i] ]

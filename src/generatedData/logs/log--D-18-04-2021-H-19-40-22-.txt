@@ -1,0 +1,10 @@
+nrun 3,seed 234,max_t 10000, buf_size 3
+0,5.515625,942.460249
+1,8.640625,895.420227
+ELAPSED TIME for all episodes of 0 is 5.176953077316284nrun 3,seed 234,max_t 10000, buf_size 3
+0,9.937500,962.981071
+1,15.953125,-202.660898
+ELAPSED TIME for all episodes of 1 is 8.903989315032959nrun 3,seed 234,max_t 10000, buf_size 3
+0,24.000000,-245.145754
+1,27.906250,556.990265
+ELAPSED TIME for all episodes of 2 is 11.139071464538574

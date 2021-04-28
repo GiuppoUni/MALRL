@@ -1,0 +1,1 @@
+nrun 3,seed 1547507,max_t 10000, buf_size 3

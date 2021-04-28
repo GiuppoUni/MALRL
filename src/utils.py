@@ -250,7 +250,18 @@ def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
         raise Exception("REQUIRED EXACTLY 3 elements")
     return Vector3r(x,y,z)
 
+def getGoodCells(maze):
+        
+    rnd= np.where((maze.maze_cells!=0) & 
+    ((maze.maze_cells == 7)|(maze.maze_cells == 15) |(maze.maze_cells  ==13 )) )
+    
+    rs= rnd[0]
+    cs= rnd[1]
+    arr = np.array( [[rs[i],cs[i]] for i in range(len(rs)) ] )
+    
+    # np.setdiff1d(arr, self.goals) 
 
+    return arr
 
 def set_offset_position(pos):
     _v = g_vehicles["Drone0"]

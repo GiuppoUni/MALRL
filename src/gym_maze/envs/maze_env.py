@@ -18,7 +18,7 @@ class MazeEnv(gym.Env):
     VISITED_TO_IDX = {"visited":16}
 
     def __init__(self, maze_file=None, maze_size=None, mode=None, enable_render=True,num_goals = 1,verbose = True,human_mode=False, 
-        n_trajs = None,random_start_pos = False,random_goal_pos=False,seed_num = None,
+        random_start_pos = False,random_goal_pos=False,seed_num = None,
         fixed_goals = None, fixed_start_pos = None,visited_cells = []):
         
         self.visited_cells = visited_cells
@@ -33,9 +33,8 @@ class MazeEnv(gym.Env):
         self.chosen_goal = None
         self.random_start_pos = random_start_pos
         self.random_goal_pos = random_goal_pos
-        self.n_trajs = n_trajs
 
-        self.seed(seed_num)
+        self.seed_num=self.seed(seed_num)
 
 
         if maze_file:
@@ -47,7 +46,7 @@ class MazeEnv(gym.Env):
                                         num_goals = self.num_goals,random_start_pos = random_start_pos,
                                         random_goal_pos= random_goal_pos,
                                         verbose = self.verbose,np_random=self.np_random,
-                                        n_trajs = None, fixed_goals = fixed_goals,
+                                         fixed_goals = fixed_goals,
                                         fixed_start_pos =fixed_start_pos)
 
         else:
@@ -105,10 +104,9 @@ class MazeEnv(gym.Env):
     def configure(self, display=None):
         self.display = display
 
-    def seed(self, seed=None):
-        # self.np_random, seed = seeding.np_random(int(seed))
+    def seed(self, seed):
         np.random.seed(seed=seed)
-        self.np_random = np.random
+        self.np_random = np.random.seed(seed=seed)
         return [seed]
 
     def get_n_to_be_covered(self):
@@ -128,11 +126,11 @@ class MazeEnv(gym.Env):
                 done = True
             else:
                 #  Not found goal
-                if self.maze_view.robot.tolist() in self.visited_cells:
+                if self.maze_view.robot.tolist() in self.visited_cells: #NOTE: O(len(visCellList)) cost
                     # Already been here
                     reward = -1
                 else:
-                    # oth: should be lower than not moved case
+                    # oth: should be lower than not moved case to encourage moving
                     reward = -0.5/(self.maze_size[0]*self.maze_size[1])
                 done = False            
         elif self.num_goals > 1:

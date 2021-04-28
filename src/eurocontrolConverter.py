@@ -10,6 +10,7 @@ NOTE:
 """
 
 import argparse
+import datetime
 import os
 import numpy as np
 import pandas as pd
@@ -158,7 +159,13 @@ def create_eurocontrol_file(trajs,filename,header = True):
             wr.writerow(row)
 
 
-
+def convert_df_to_eurocontrol_format(df,uasId):
+   if "z_pos" in df.columns:
+      df.pop("z_pos")
+   df["UAS id"] = [uasId]*len(df.index)
+   df[ 'UAS Relative time' ] = df.index
+   df = df.rename(columns={"x_pos":"x","y_pos":"y"})
+   return df
 
 # def create_eurocontrol_file(trajs,dimensions,filename,header = True):
 #    if(dimensions <2 or dimensions >3): raise Exception("Only 2D or 3D")
@@ -200,39 +207,28 @@ if __name__ == "__main__":
    parser.add_argument('-i', type=str, required=True,
         help='input folder of trajs (default: %(default)s)')
 
-   parser.add_argument('-o', type=str,required=False, 
-        help='output filename (default: %(default)s)')
+   parser.add_argument('-o', type=str,required=True, 
+        help='Output folder path (default: %(default)s)')
 
 
    args = parser.parse_args()
    
-   N_WAYPOINTS = 2
-   data = []
-   # Random values to test
-   for flight in range(3):
-      id = generate_flight_id()
-      for i in range(N_WAYPOINTS):
-         fields = [id,i]
-         for field in COLUMNS_NAMES[2:]:
-            fields.append(random.randint(0,10))
-         data.append(fields)
-
-   # print(data)
-   d1 = [[0,0],[1,0],[2,0]]
-   d2 = [[1,0],[2,0],[2,1]]
-   
    trajectories = []
-   for t in os.listdir(args.i):
-      if(t[-4:] == ".csv" ):
-         df = pd.read_csv( os.path.join(args.i, t),delimiter=",",index_col="index")
+   concatDf = pd.DataFrame(columns=["UAS id","UAS relative time","x","y"])
+   for idx,t_filename in enumerate(os.listdir(args.i)):
+      if(t_filename[-4:] == ".csv" ):
+         df = pd.read_csv( os.path.join(args.i, t_filename),delimiter=",",index_col="index")
             # print(df)
          trajectories.append( df.to_numpy() )
-      elif(t[-4:] == ".npy"):
-         trajectories = np.load(os.path.join( args.i,t) )
+      elif(t_filename[-4:] == ".npy"):
+         trajectories = np.load(os.path.join( args.i,t_filename) )
       else:
          raise Exception("invalid file in dir")
       # trajectories = [d1,d2]
-      print(t,":",trajectories[0][0:2],"...")
-      create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
-
+      print(t_filename,":",trajectories[0][0:2],"...")
+      # create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
+      newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
+      concatDf = pd.concat([newDf,concatDf])
+   
+   concatDf.to_csv(os.path.join(args.o,"euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv")) 
    # data_to_csv(data,"test.csv")

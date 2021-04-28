@@ -12,7 +12,7 @@ kwargs={
     "maze_file":"maze2d_004.npy",
       "maze_size":(640, 640), 
     "enable_render":True,
-    "verbose" : False,"n_trajs":9,"random_start_pos":True,
+    "verbose" : False,"random_start_pos":True,
     "random_goal_pos":True,
     "seed_num" : 12,
    "num_goals":1, 

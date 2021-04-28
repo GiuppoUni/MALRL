@@ -7,8 +7,10 @@ layer1:
     INT_TRAJECTORIES_FOLDER : "generatedData/2dL1INT/" 
     TRAJECTORIES_3D_FOLDER : "generatedData/3dL2/csv/"
     STD_MAZE : "maze2d_004.npy"
+    FIGS_FOLDER : "generatedFigs"
 
   settings:
+    SEED : 234
     OUT_FORMAT : "csv" # (csv or npy)
 
     N_TRAJECTORIES_TO_GENERATE : 99 # Number of UAV Trajectories
@@ -27,7 +29,19 @@ layer1:
     STREAK_TO_END : 100
     SOLVED_T : 10
   
- 
+    # Plotting constants
+    doSave_3dPlot : True
+    exploded_3dPlot : True
+    doSave_xyPlot : True
+
+  vertical_separation:
+    MIN_HEIGHT : 50
+    MAX_HEIGHT : 300
+    SEP_H  :  10
+    RADIUS : 50 #m
+    TOLERANCE : 0.0
+
+
 #====================================================================================================
 layer2:
 
