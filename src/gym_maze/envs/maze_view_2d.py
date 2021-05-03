@@ -11,7 +11,7 @@ class MazeView2D:
                  maze_size=(30, 30), screen_size=(600, 600),
                  has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,
                  random_start_pos=False,random_goal_pos=False,np_random=None, fixed_goals = None,
-                 fixed_start_pos = None):
+                 fixed_start_pos = None,demo=False):
 
         # if(num_goals<=0 ):
         #     raise ValueError("Error in num_goals parameter")
@@ -24,17 +24,18 @@ class MazeView2D:
         self.num_goals = num_goals
         self.verbose = verbose
         self.np_random = np_random
-
         
         self.screen_size = screen_size
         
         # PyGame configurations
         pygame.init()
         pygame.display.set_caption(maze_name)
+        self.font = pygame.font.SysFont("Times New Roman", 18)
         self.clock = pygame.time.Clock()
         self.__game_over = False
         self.__enable_render = enable_render
-        
+        self.demo = demo
+
         # Load a maze
         if maze_file_path is None:
             print(" no maze filepath")
@@ -68,7 +69,9 @@ class MazeView2D:
             # it s set on reset
         elif self.fixed_start_pos is not None:
             self.__entrance = self.fixed_start_pos
-        else:  
+        elif self.demo:  
+            self.__entrance = np.array([0,0])            
+        else:
             raise Exception("Either start goal or random must be specified")
 
         # Create the Robot
@@ -96,6 +99,9 @@ class MazeView2D:
         elif self.num_goals > 1:
             self.goals = self.init_goals()
             self.saved_goals = self.goals.copy()
+
+        if(self.demo):
+            self.__goal = np.array([0,0])
 
 
         if self.__enable_render is True:
@@ -175,17 +181,43 @@ class MazeView2D:
 
   
 
-    def update(self, mode="human"):
+    def demo_update(self):
         
+
         try:
-            img_output = self.__view_update(mode)
+            img_output = self.__view_update("human")
             self.__controller_update()
+            for i in range(0,self.MAZE_H):
+                for j in range(0,self.MAZE_W):
+                    numDisplay = self.font.render(str(i)+","+str(j), 1, (0,0,0))
+                    self.screen.blit(numDisplay, (100, 100))
+            pygame.display.update()
+
         except Exception as e:
             self.__game_over = True
             self.quit_game()
             raise e
         else:
             return img_output
+        
+
+    def update(self, mode="human"):
+        
+        try:
+            img_output = self.__view_update(mode)
+            self.__controller_update()
+            if(self.demo):
+                self.screen.blit(numDisplay, (100, 100))
+                pygame.display.update()
+
+        except Exception as e:
+            self.__game_over = True
+            self.quit_game()
+            raise e
+        else:
+            return img_output
+        
+
 
     def quit_game(self):
         try:
@@ -382,6 +414,7 @@ class MazeView2D:
             return
 
         if not (isinstance(cell, (list, tuple, np.ndarray)) and len(cell) == 2):
+            print("cell:",cell," ,type:",type(cell))
             raise TypeError("cell must a be a tuple, list, or numpy array of size 2")
 
         x = int(cell[0] * self.CELL_W + 0.5 + 1)
@@ -468,6 +501,15 @@ class MazeView2D:
     @property
     def CELL_H(self):
         return float(self.SCREEN_H) / float(self.maze.MAZE_H)
+    
+    @property
+    def CELL_W_CNTR(self):
+        return self.CELL_W/ 2
+    
+    @property
+    def CELL_H_CNTR(self):
+        return self.CELL_H/ 2 
+
 
 
 class Maze:

@@ -21,48 +21,16 @@ import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
-TRAJECTORIES_3D_FOLDER = "generatedData/3dL2/csv/"
+configYml = utils.read_yaml("inputData/config.yaml")
+c_paths = configYml["layer1"]["paths"]
+c_settings = configYml["layer1"]["settings"]
+c_verSep= configYml["layer1"]["vertical_separation"]
 
 
-# if(args.debug):
-logging.basicConfig(filename=utils.LOG_FOLDER+"L2log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
-                        filemode='w',
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.INFO)
+def init():
 
+def main():
 
-logger = logging.getLogger('RL Layer2')
-logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
-
-
-
-
-
-if __name__ == "__main__":
-   parser = argparse.ArgumentParser(description='Layer 2')
-   
-   parser.add_argument("-i", type=str,required=False,
-                     help='input folder of trajs 3d')
-
-
-   # parser.add_argument('-sx', type=int,required=True,
-   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')
-
-   # parser.add_argument('-sy', type=int,required=True,
-   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')
-
-   parser.add_argument('--velocity',default = 20, type=float,required=False,
-                     help='Speed value')
-
-
-   # parser.add_argument( '--debug',action='store_true',  default=False,
-   #    help='Log into file (default: %(default)s)' )
-
-   # parser.add_argument('--load-qtable', type=str, 
-   #    help='qtable file (default: %(default)s)')
-
-   args = parser.parse_args()
 
    # Starting position of agent
    # s_x,s_y = args.sx, args.sy
@@ -127,9 +95,9 @@ if __name__ == "__main__":
    balls_name = asClient.simListSceneObjects(regex)
 
    def _vec2r_to_numpy_array(vec):
-    return np.array([vec.x_val, vec.y_val]) 
+      return np.array([vec.x_val, vec.y_val]) 
 
-                
+               
    for j in range(0,3):
       trajectory=[] 
       if(j==1):
@@ -151,7 +119,7 @@ if __name__ == "__main__":
 
       # print("Reading FILE:",trajs2d[i])
       # df = pandas.read_csv(os.path.join(args.i,l_files[i]),delimiter=",",index_col="index")
-        # print(df)
+      # print(df)
       # trajectory = df.to_numpy()
       # trajectory=trajectory.tolist()
       # trajectory = trajs2d[i]
@@ -190,5 +158,48 @@ if __name__ == "__main__":
       print("UAV completed its mission.")
       
 
-
                                        
+
+
+
+if __name__ == "__main__":
+
+   parser = argparse.ArgumentParser(description='Layer 2')
+   
+   parser.add_argument("-i", type=str,required=False,
+                     help='input folder of trajs 3d')
+
+
+   # parser.add_argument('-sx', type=int,required=True,
+   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')
+
+   # parser.add_argument('-sy', type=int,required=True,
+   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')
+
+   parser.add_argument('--velocity',default = 20, type=float,required=False,
+                     help='Speed value')
+
+
+   parser.add_argument( '--log',action='store_true',  default=False,
+      help='Log into file (default: %(default)s)' )
+
+   # parser.add_argument('--load-qtable', type=str, 
+   #    help='qtable file (default: %(default)s)')
+
+   args = parser.parse_args()
+
+   
+   if(args.log):
+      logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"L2log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+                              filemode='w',
+                              format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                              datefmt='%H:%M:%S',
+                              level=logging.INFO)
+
+
+      logger = logging.getLogger('RL Layer2')
+      logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
+
+
+
+   main()

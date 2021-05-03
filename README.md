@@ -43,6 +43,9 @@ Environment demo files:
 - weather.py -> change weather conditions
 
 
+## Notes
+Time to generate a trajectory: 4-5 sec or 10 sec
+
 ## Conventions
 
 All drone names **NEED** to be in this format:

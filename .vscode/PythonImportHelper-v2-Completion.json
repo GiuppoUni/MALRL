@@ -2659,7 +2659,7 @@
         "kind": 6,
         "importPath": "src.gym_maze.envs.maze_view_2d",
         "description": "src.gym_maze.envs.maze_view_2d",
-        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,\n                 random_start_pos=False,random_goal_pos=False,np_random=None, fixed_goals = None,\n                 fixed_start_pos = None):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_start_pos = random_start_pos\n        self.random_goal_pos = random_goal_pos",
+        "peekOfCode": "class MazeView2D:\n    def __init__(self, maze_name=\"Maze2D\", maze_file_path=None,\n                 maze_size=(30, 30), screen_size=(600, 600),\n                 has_loops=False, num_portals=0, enable_render=True, num_goals = 1,verbose = True,\n                 random_start_pos=False,random_goal_pos=False,np_random=None, fixed_goals = None,\n                 fixed_start_pos = None,demo=False):\n        # if(num_goals<=0 ):\n        #     raise ValueError(\"Error in num_goals parameter\")\n        self.random_start_pos = random_start_pos\n        self.random_goal_pos = random_goal_pos",
         "detail": "src.gym_maze.envs.maze_view_2d",
         "documentation": {}
     },
@@ -3042,56 +3042,29 @@
         "documentation": {}
     },
     {
-        "label": "getNotWallsCells",
+        "label": "remove_action",
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):\n   if(lastAction is None):\n      # Select a random action",
+        "peekOfCode": "def remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:\n        value &= ~ 0x2\n    if \"S\" in action:\n        value &= ~ 0x4\n    if \"W\" in action:\n        value &= ~ 0x8\n    return value",
         "detail": "src.layer1",
         "documentation": {}
     },
     {
-        "label": "select_action",
+        "label": "cell_value",
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def select_action(state, explore_rate,lastAction):\n   if(lastAction is None):\n      # Select a random action\n      if random.random() < explore_rate:\n         action = env.action_space.sample()\n      # Select the action with the highest q\n      else:\n         action = int(np.argmax(q_table[state]))\n      return action\n   else:",
+        "peekOfCode": "def cell_value(r,c,cols,obs_blocks=1,street_blocks=1,):\n    if(obs_blocks ==1):\n        if r %2 ==0 or c %2 ==0:\n            return 15\n        elif r != 0 and c !=0 and r !=  -1 and c != cols -1 :\n            return 0\n        else:\n            return 15\n    else:\n        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):",
         "detail": "src.layer1",
         "documentation": {}
     },
     {
-        "label": "get_explore_rate",
+        "label": "main",
         "kind": 2,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "def get_explore_rate(t):\n   # return max(c_settings[\"MIN_EXPLORE_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\n   return 0.2\ndef get_learning_rate(t):\n   return max(c_settings[\"MIN_LEARNING_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n   bucket_indice = []\n   for i in range(len(state)):\n         if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0",
-        "detail": "src.layer1",
-        "documentation": {}
-    },
-    {
-        "label": "get_learning_rate",
-        "kind": 2,
-        "importPath": "src.layer1",
-        "description": "src.layer1",
-        "peekOfCode": "def get_learning_rate(t):\n   return max(c_settings[\"MIN_LEARNING_RATE\"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))\ndef state_to_bucket(state):\n   bucket_indice = []\n   for i in range(len(state)):\n         if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n         elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n         else:",
-        "detail": "src.layer1",
-        "documentation": {}
-    },
-    {
-        "label": "state_to_bucket",
-        "kind": 2,
-        "importPath": "src.layer1",
-        "description": "src.layer1",
-        "peekOfCode": "def state_to_bucket(state):\n   bucket_indice = []\n   for i in range(len(state)):\n         if state[i] <= STATE_BOUNDS[i][0]:\n            bucket_index = 0\n         elif state[i] >= STATE_BOUNDS[i][1]:\n            bucket_index = NUM_BUCKETS[i] - 1\n         else:\n            # Mapping the state bounds to the bucket array\n            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]",
-        "detail": "src.layer1",
-        "documentation": {}
-    },
-    {
-        "label": "signal_handler",
-        "kind": 2,
-        "importPath": "src.layer1",
-        "description": "src.layer1",
-        "peekOfCode": "def signal_handler(sig, frame):\n   print('You pressed Ctrl+C!\\nSaving...')\n   if(not args.load_qtable):\n         print(\"ENDING OF TRAIN\")\n         np.save(\"generatedData/qTable/q_table_\"+EXPERIMENT_DATE, q_table )\n         print(\"Table saved\")\n   sys.exit(0)\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 1')\n   parser.add_argument('--nepisodes', type=int, default=100,",
+        "peekOfCode": "def main():\n   global time\n   def getNotWallsCells():\n      goodCells = []\n      for r in range(c_settings[\"NROWS\"]):\n         for c in range(c_settings[\"NCOLS\"]):\n            if( r % 7==0 or c % 7==0):\n                  goodCells.append([r,c])\n      return goodCells\n   def select_action(state, explore_rate,lastAction):",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3100,7 +3073,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3109,7 +3082,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3118,7 +3091,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3127,7 +3100,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):",
+        "peekOfCode": "IDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:\n        value &= ~ 0x2\n    if \"S\" in action:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3136,25 +3109,52 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\ndef getNotWallsCells():\n   goodCells = []\n   for r in range(c_settings[\"NROWS\"]):\n      for c in range(c_settings[\"NCOLS\"]):\n         if( r % 7==0 or c % 7==0):\n               goodCells.append([r,c])\n   return goodCells\ndef select_action(state, explore_rate,lastAction):\n   if(lastAction is None):",
+        "peekOfCode": "EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1\n    if \"E\" in action:\n        value &= ~ 0x2\n    if \"S\" in action:\n        value &= ~ 0x4",
         "detail": "src.layer1",
         "documentation": {}
     },
     {
-        "label": "TRAJECTORIES_3D_FOLDER",
-        "kind": 5,
+        "label": "init",
+        "kind": 2,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL2/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L2log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
+        "peekOfCode": "def init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:\n   #    if( f[-4:]==\".csv\" ):\n   #       print(\"Reading:\",f)",
         "detail": "src.layer2",
         "documentation": {}
     },
     {
-        "label": "logger",
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.layer2",
+        "description": "src.layer2",
+        "peekOfCode": "def main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:\n   #    if( f[-4:]==\".csv\" ):\n   #       print(\"Reading:\",f)\n   #       with open(os.path.join(args.i,f),\"r\") as fin:",
+        "detail": "src.layer2",
+        "documentation": {}
+    },
+    {
+        "label": "configYml",
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "logger = logging.getLogger('RL Layer2')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 2')\n   parser.add_argument(\"-i\", type=str,required=False,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None",
+        "detail": "src.layer2",
+        "documentation": {}
+    },
+    {
+        "label": "c_paths",
+        "kind": 5,
+        "importPath": "src.layer2",
+        "description": "src.layer2",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None",
+        "detail": "src.layer2",
+        "documentation": {}
+    },
+    {
+        "label": "c_settings",
+        "kind": 5,
+        "importPath": "src.layer2",
+        "description": "src.layer2",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3658,7 +3658,7 @@
         "kind": 5,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'\nCONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"./generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"",
+        "peekOfCode": "AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'\nCONFIGS_FOLDER = \"./configs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified",
         "detail": "src.utils",
         "documentation": {}
     },
@@ -3667,16 +3667,7 @@
         "kind": 5,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "CONFIGS_FOLDER = \"./configs/\"\nLOG_FOLDER = \"./generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified",
-        "detail": "src.utils",
-        "documentation": {}
-    },
-    {
-        "label": "LOG_FOLDER",
-        "kind": 5,
-        "importPath": "src.utils",
-        "description": "src.utils",
-        "peekOfCode": "LOG_FOLDER = \"./generatedData/logs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.",
+        "peekOfCode": "CONFIGS_FOLDER = \"./configs/\"\nTRAJECTORIES_FOLDER = \"./qtrajectories/\"\nwith open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:\n    g_airsim_settings = json.load(jsonFile)\ng_vehicles = g_airsim_settings[\"Vehicles\"]\ng_config = ConfigParser()\ng_config.read(CONFIGS_FOLDER + 'config.ini')\n\"\"\"\n       Assumes that the simulation environment (unreal) is in the coordinate system specified\n        by the srid but offset by the origin specified.",
         "detail": "src.utils",
         "documentation": {}
     },

@@ -19,7 +19,6 @@ import yaml
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
 AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
 CONFIGS_FOLDER = "./configs/"
-LOG_FOLDER = "./generatedData/logs/"
 TRAJECTORIES_FOLDER = "./qtrajectories/"
 
 

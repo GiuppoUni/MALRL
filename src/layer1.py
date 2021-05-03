@@ -31,6 +31,7 @@ import yaml
 from gym_maze.envs.maze_view_2d import Maze
 from PIL import Image as img
 
+
 configYml = utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["layer1"]["paths"]
 c_settings = configYml["layer1"]["settings"]
@@ -41,144 +42,102 @@ IDX_TO_ACTION =  {0:"LEFT", 1:"FRONT", 2:"RIGHT", 3:"BACK"}
 EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints
 
 
-def getNotWallsCells():
-   goodCells = []
-   for r in range(c_settings["NROWS"]):
-      for c in range(c_settings["NCOLS"]):
-         if( r % 7==0 or c % 7==0):
-               goodCells.append([r,c])
-   return goodCells
+# FOR MAZE GENERATION ONLY
+# Return a value depending on allowed action, "NESW" if all possible
+def remove_action(value,action):
+    if "N" in action:
+        value &= ~ 0x1
+    if "E" in action:
+        value &= ~ 0x2
+    if "S" in action:
+        value &= ~ 0x4
+    if "W" in action:
+        value &= ~ 0x8
+    return value
+# FOR MAZE GENERATION ONLY
+""
+def cell_value(r,c,cols,obs_blocks=1,street_blocks=1,):
+    if(obs_blocks ==1):
+        if r %2 ==0 or c %2 ==0:
+            return 15
+        elif r != 0 and c !=0 and r !=  -1 and c != cols -1 :
+            return 0
+        else:
+            return 15
+    else:
+        if(r % ( obs_blocks+1)==0 or c % (obs_blocks +1 ) == 0 ):
+            return 15
+        else:
+            return 0
 
 
-def select_action(state, explore_rate,lastAction):
-   if(lastAction is None):
-      # Select a random action
-      if random.random() < explore_rate:
-         action = env.action_space.sample()
-      # Select the action with the highest q
-      else:
-         action = int(np.argmax(q_table[state]))
-      return action
-   else:
-        # Select a random action
-      if random.random() < explore_rate:
-         action = env.action_space.sample()
-         while(action == lastAction):
+def main():
+
+   global time
+      
+   def getNotWallsCells():
+      goodCells = []
+      for r in range(c_settings["NROWS"]):
+         for c in range(c_settings["NCOLS"]):
+            if( r % 7==0 or c % 7==0):
+                  goodCells.append([r,c])
+      return goodCells
+
+
+   def select_action(state, explore_rate,lastAction):
+      if(lastAction is None):
+         # Select a random action
+         if random.random() < explore_rate:
             action = env.action_space.sample()
-      # Select the action with the highest q
-      else:
-         action = int(np.argmax(q_table[state]))
-      return action
-
-def get_explore_rate(t):
-   # return max(c_settings["MIN_EXPLORE_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
-   return 0.2
-
-def get_learning_rate(t):
-   return max(c_settings["MIN_LEARNING_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
-
-def state_to_bucket(state):
-   bucket_indice = []
-   for i in range(len(state)):
-         if state[i] <= STATE_BOUNDS[i][0]:
-            bucket_index = 0
-         elif state[i] >= STATE_BOUNDS[i][1]:
-            bucket_index = NUM_BUCKETS[i] - 1
+         # Select the action with the highest q
          else:
-            # Mapping the state bounds to the bucket array
-            bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]
-            offset = (NUM_BUCKETS[i]-1)*STATE_BOUNDS[i][0]/bound_width
-            scaling = (NUM_BUCKETS[i]-1)/bound_width
-            bucket_index = int(round(scaling*state[i] - offset))
-         bucket_indice.append(bucket_index)
-   return tuple(bucket_indice)
+            action = int(np.argmax(q_table[state]))
+         return action
+      else:
+         # Select a random action
+         if random.random() < explore_rate:
+            action = env.action_space.sample()
+            while(action == lastAction):
+               action = env.action_space.sample()
+         # Select the action with the highest q
+         else:
+            action = int(np.argmax(q_table[state]))
+         return action
 
-'''
-   Handle SIGINT saving qTable
-'''
-def signal_handler(sig, frame):
-   print('You pressed Ctrl+C!\nSaving...')
-   if(not args.load_qtable):
-         print("ENDING OF TRAIN")
-         np.save("generatedData/qTable/q_table_"+EXPERIMENT_DATE, q_table )
-         print("Table saved")
-   sys.exit(0)
+   def get_explore_rate(t):
+      # return max(c_settings["MIN_EXPLORE_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
+      return 0.2
 
-if __name__ == "__main__":
+   def get_learning_rate(t):
+      return max(c_settings["MIN_LEARNING_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
 
-   parser = argparse.ArgumentParser(description='Layer 1')
-   
-   
-   parser.add_argument('--nepisodes', type=int, default=100,
-                     help='episodes (default: %(default)s)')
+   def state_to_bucket(state):
+      bucket_indice = []
+      for i in range(len(state)):
+            if state[i] <= STATE_BOUNDS[i][0]:
+               bucket_index = 0
+            elif state[i] >= STATE_BOUNDS[i][1]:
+               bucket_index = NUM_BUCKETS[i] - 1
+            else:
+               # Mapping the state bounds to the bucket array
+               bound_width = STATE_BOUNDS[i][1] - STATE_BOUNDS[i][0]
+               offset = (NUM_BUCKETS[i]-1)*STATE_BOUNDS[i][0]/bound_width
+               scaling = (NUM_BUCKETS[i]-1)/bound_width
+               bucket_index = int(round(scaling*state[i] - offset))
+            bucket_indice.append(bucket_index)
+      return tuple(bucket_indice)
 
-   parser.add_argument('--ngoals', type=int, default=1,
-                     help='n goals to collect (default: %(default)s)')
-
-   parser.add_argument("--ntrajs",type=int,
-                        help='num trajectories value (default: %(default)s)')
-
-   parser.add_argument("--nbuffer",type=int, default=3,
-                        help='size of buffer for past trajectories (default: %(default)s)')
-
-   # parser.add_argument('--nagents', type=int, default=1,
-   #                   help='num of simultaneous agents (supported 1 )(default: %(default)s)')
-
-   parser.add_argument('--nsteps', type=int, default=0,
-                     help='enforce n-steps qlearning if 0 is standard qlearning  (default: %(default)s)')
-
-   parser.add_argument( '--debug',action='store_true',  default=False,
-      help='Log debug in file (default: %(default)s)' )
-   
-   parser.add_argument('--render-train',action='store_true',  default=False,
-      help='render maze while training/random  (default: %(default)s)' )
-   
-   parser.add_argument( '--render-test',action='store_true',  default=False,
-      help='render maze while testing  (default: %(default)s)' )
-
-   parser.add_argument( '--quiet',action='store_true',  default=False,
-      help='Less info in output  (default: %(default)s)' )
-   
-   parser.add_argument( '-v',action='store_true',  default=False,
-      help='verbose (default: %(default)s)' )
-   
-   parser.add_argument('--slow',action='store_true',  default=False,
-      help='Slow down training to observe behaviour (default: %(default)s)')
-
-   parser.add_argument('--n-random-init', type=int, default=5,
-                     help='n sample pool for random init (default: %(default)s)')
-
-   parser.add_argument('--log-reward', action='store_true', default=False,
-   help='log reward file in out (default: %(default)s)')
-
-   parser.add_argument('--load-qtable', type=str, 
-      help='qtable file (default: %(default)s)')
-
-   parser.add_argument('--load-maze', type=str, 
-      help='maze file (default: %(default)s)')
-   
-   parser.add_argument("--show-maze-bm", action="store_true",default=False, 
-      help='Show Bitmap used as maze')
-
-   parser.add_argument("--train", action="store_true",default=False, 
-      help='Start generating trajectories')
-
-
-   parser.add_argument('--random-goal-pos', action="store_true",default=False, 
-      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
-
-   parser.add_argument('--generate-random-start', action="store_true",default=False, 
-      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
-
-   parser.add_argument('--random-start-pos',  action="store_true",default=False,  
-      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
-
-   parser.add_argument('--generate-random-goal',  action="store_true",default=False,  
-      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
-
-   args = parser.parse_args()
-
-
+   '''
+      Handle SIGINT saving qTable
+   '''
+   def signal_handler(sig, frame):
+      print('You pressed Ctrl+C!\nSaving...')
+      if(not args.load_qtable):
+            print("ENDING OF TRAIN")
+            np.save("generatedData/qTable/q_table_"+EXPERIMENT_DATE, q_table )
+            print("Table saved")
+      sys.exit(0)
+      
    if(args.show_maze_bm):
       data = np.load(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) )
       print("MAZE BitMap:",data.shape,data)
@@ -230,24 +189,7 @@ if __name__ == "__main__":
       Choose inputs: standard start and goals
    """
    
-   if(args.generate_random_start or args.random_goal_pos):
-      maze = Maze(maze_cells=Maze.load_maze(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) ) ,verbose = args.v)
-      allGoodCells = utils.getGoodCells(maze) # good as entrance or goal
-      with open("inputData/start_pos_table.csv","w") as fstart, open("inputData/goal_pos_table.csv","w") as fgoal:
-         fstart.write("name,x_pos,y_pos\n")
-         for i in range(0,n_uavs):
-            if(args.generate_random_start):
-               startRandomCell = allGoodCells[np.random.choice(allGoodCells.shape[0])]
-               fstart.write("s"+str(i)+",")
-               fstart.write(",".join([ str(x) for x in startRandomCell.tolist() ] ) +"\n")
-            if(args.generate_random_goal):
-               if(i==0): fgoal.write("name,x_pos,y_pos\n")
-               goalRandomCell = startRandomCell
-               while( np.array_equal(goalRandomCell , startRandomCell)):
-                  goalRandomCell =  allGoodCells[np.random.choice(allGoodCells.shape[0])]
-               fgoal.write("g"+str(i)+",")
-               fgoal.write(",".join([ str(x) for x in goalRandomCell.tolist() ] ) +"\n")
-
+  
    df = pandas.read_csv("inputData/start_pos_table.csv", index_col='name')
    fixed_start_pos_list= df.values.tolist()
    print('fixed_start_pos_list: ', fixed_start_pos_list)
@@ -585,7 +527,7 @@ if __name__ == "__main__":
                print("saved traj",i_t ," in 3d to",outDir3D)
 
    # SONO FINITE TUTTE LE TRAIETTORIE
-
+   
    rewLogFile.close()
 
 
@@ -602,3 +544,160 @@ if __name__ == "__main__":
    trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=c_settings["doSave_xyPlot"],date=EXPERIMENT_DATE)
 
    print("DONE.")
+
+
+if __name__ == "__main__":
+
+   parser = argparse.ArgumentParser(description='Layer 1')
+   
+   
+   parser.add_argument('--nepisodes', type=int, default=100,
+                     help='episodes (default: %(default)s)')
+
+   parser.add_argument('--ngoals', type=int, default=1,
+                     help='n goals to collect (default: %(default)s)')
+
+   parser.add_argument("--ntrajs",type=int,
+                        help='num trajectories value (default: %(default)s)')
+
+   parser.add_argument("--nbuffer",type=int, default=3,
+                        help='size of buffer for past trajectories (default: %(default)s)')
+
+   # parser.add_argument('--nagents', type=int, default=1,
+   #                   help='num of simultaneous agents (supported 1 )(default: %(default)s)')
+
+   parser.add_argument('--nsteps', type=int, default=0,
+                     help='enforce n-steps qlearning if 0 is standard qlearning  (default: %(default)s)')
+
+   parser.add_argument( '--debug',action='store_true',  default=False,
+      help='Log debug in file (default: %(default)s)' )
+   
+   parser.add_argument('--render-train',action='store_true',  default=False,
+      help='render maze while training/random  (default: %(default)s)' )
+   
+   parser.add_argument( '--render-test',action='store_true',  default=False,
+      help='render maze while testing  (default: %(default)s)' )
+
+   parser.add_argument( '--quiet',action='store_true',  default=False,
+      help='Less info in output  (default: %(default)s)' )
+   
+   parser.add_argument( '-v',action='store_true',  default=False,
+      help='verbose (default: %(default)s)' )
+   
+   parser.add_argument('--slow',action='store_true',  default=False,
+      help='Slow down training to observe behaviour (default: %(default)s)')
+
+   parser.add_argument('--n-random-init', type=int, default=5,
+                     help='n sample pool for random init (default: %(default)s)')
+
+   parser.add_argument('--log-reward', action='store_true', default=False,
+   help='log reward file in out (default: %(default)s)')
+
+   parser.add_argument('--load-qtable', type=str, 
+      help='qtable file (default: %(default)s)')
+
+   parser.add_argument('--load-maze', type=str, 
+      help='maze file (default: %(default)s)')
+   
+   parser.add_argument("--show-maze-bm", action="store_true",default=False, 
+      help='Show Bitmap used as maze')
+
+   parser.add_argument("--train", action="store_true",default=False, 
+      help='Start generating trajectories')
+
+
+   parser.add_argument('--random-goal-pos', action="store_true",default=False, 
+      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
+
+   parser.add_argument('--generate-random-start', action="store_true",default=False, 
+      help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
+
+   parser.add_argument('--random-start-pos',  action="store_true",default=False,  
+      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
+
+   parser.add_argument('--generate-random-goal',  action="store_true",default=False,  
+      help='Choose random goal pos instead of the one inside csv file  (default: %(default)s)')
+
+   parser.add_argument('--generate-maze',  type=str,  metavar="FILENAME",
+      help='Generate new maze structure (rows and cols inside config.yaml)  (default: %(default)s)')
+
+
+   args = parser.parse_args()
+
+
+   if(args.generate_random_start or args.random_goal_pos):
+      n_uavs = c_settings["N_TRAJECTORIES_TO_GENERATE"]
+      maze = Maze(maze_cells=Maze.load_maze(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) ) ,verbose = args.v)
+      allGoodCells = utils.getGoodCells(maze) # good as entrance or goal
+      startFilename = c_paths["START_INPUT_FILE"]
+      goalFilename = c_paths["GOAL_INPUT_FILE"]
+      with open(startFilename,"w") as fstart, open(goalFilename,"w") as fgoal:
+         fstart.write("name,x_pos,y_pos\n")
+         for i in range(0,n_uavs):
+            if(args.generate_random_start):
+               startRandomCell = allGoodCells[np.random.choice(allGoodCells.shape[0])]
+               fstart.write("s"+str(i)+",")
+               fstart.write(",".join([ str(x) for x in startRandomCell.tolist() ] ) +"\n")
+               print("Succesfully generated", str(n_uavs),"random start positions and saved into:" ,startFilename)
+            if(args.generate_random_goal):
+               if(i==0): fgoal.write("name,x_pos,y_pos\n")
+               goalRandomCell = startRandomCell
+               while( np.array_equal(goalRandomCell , startRandomCell)):
+                  goalRandomCell =  allGoodCells[np.random.choice(allGoodCells.shape[0])]
+               fgoal.write("g"+str(i)+",")
+               fgoal.write(",".join([ str(x) for x in goalRandomCell.tolist() ] ) +"\n")
+               print("Succesfully generated", str(n_uavs),"random goal positions and saved into:" ,goalFilename)
+
+      del maze
+      del allGoodCells  
+      
+   if( args.generate_maze):
+      print("Generating maze with name:",args.generate_maze)
+      new_maze = np.array( [ 
+         [cell_value(r,c,obs_blocks=c_settings["OBS_BLOCKS"],cols=c_settings["NCOLS"]) 
+         for c in range(c_settings["NCOLS"]) ] 
+         for r in range(c_settings["NROWS"])
+         ] )
+      for r in range(len(new_maze)):
+         for c in range( len(new_maze[0] )):
+            
+            cell = new_maze[r,c]
+            if r -1 < 0 or  new_maze[r-1,c] == 0:
+                  cell = remove_action( cell,"N") 
+            
+            if r+1 >= len(new_maze) or new_maze[r+1,c] == 0:
+                  cell = remove_action( cell,"S") 
+            
+            if c -1 < 0 or  new_maze[r,c-1] == 0:
+                  cell = remove_action( cell,"W") 
+
+            if c+1 >= len(new_maze[0]) or new_maze[r,c+1] == 0:
+                  cell = remove_action( cell,"E") 
+            new_maze[r,c] = cell
+               
+
+      filename = args.generate_maze + ".npy" if ".npy" not in args.generate_maze else args.generate_maze
+      print('Generated new maze: \n', new_maze)
+      np.save("gym_maze/envs/maze_samples/" + filename,new_maze)
+      print('Maze saved as : \n', "gym_maze/envs/maze_samples/" + filename)
+
+      maze_view = MazeView2D(maze_name="OpenAI Gym - Maze (%s)" % "gym_maze/envs/maze_samples/" + filename,
+                                       maze_file_path="gym_maze/envs/maze_samples/" +     filename,
+                                       screen_size=(900, 900), 
+                                       enable_render=True,
+                                       num_goals = 1,random_start_pos = False,
+                                       random_goal_pos= False,
+                                       verbose = False,np_random=None,
+                                       fixed_goals = None,
+                                       fixed_start_pos =None,
+                                       demo=True)
+     
+      
+      i=0
+      while(i<5000):
+         maze_view.demo_update("human")
+         time.sleep(0.1)
+
+
+   else:
+      main()

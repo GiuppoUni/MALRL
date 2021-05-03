@@ -6,20 +6,25 @@ layer1:
     TRAJECTORIES_FOLDER : "generatedData/2dL1/" 
     INT_TRAJECTORIES_FOLDER : "generatedData/2dL1INT/" 
     TRAJECTORIES_3D_FOLDER : "generatedData/3dL2/csv/"
-    STD_MAZE : "maze2d_004.npy"
+    INPUT_START_FILE: "inputData/start_pos_table.csv"
+    GOAL_START_FILE: "inputData/goal_pos_table.csv"
+    STD_MAZE : "test_file"
+    LOG_FOLDER : "./generatedData/logs/"
+    #maze2d_004.npy
     FIGS_FOLDER : "generatedFigs"
 
   settings:
     SEED : 234
     OUT_FORMAT : "csv" # (csv or npy)
 
-    N_TRAJECTORIES_TO_GENERATE : 99 # Number of UAV Trajectories
+    N_TRAJECTORIES_TO_GENERATE : 3 # Number of UAV Trajectories
     TRAJECTORIES_BUFFER_SIZE : 3 # Number UAV past trajectories recorded (to be then horizontally separated)
     SCALE_SIZE : 20 # length of cell side in meters unit
 
-    NROWS : 43
-    NCOLS : 43
-
+    NROWS : 63
+    NCOLS : 63
+    OBS_BLOCKS : 6
+    
     # Learning related constants   
     MIN_EXPLORE_RATE : 0.001
     MIN_LEARNING_RATE : 0.2
