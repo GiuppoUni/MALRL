@@ -21,11 +21,14 @@ import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
-TRAJECTORIES_3D_FOLDER = "generatedData/3dL3/csv/"
 
+configYml = utils.read_yaml("inputData/config.yaml")
+c_paths = configYml["layer1"]["paths"]
+c_settings = configYml["layer1"]["settings"]
+c_verSep= configYml["layer1"]["vertical_separation"]
 
 # if(args.debug):
-logging.basicConfig(filename=utils.LOG_FOLDER+"L3log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"L3log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
                         filemode='w',
                         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                         datefmt='%H:%M:%S',
@@ -104,7 +107,7 @@ if __name__ == "__main__":
       print("Invalid trajectory")
       sys.exit(0)
    
-   trajs_utils.plot_xy([trajectory],cell_size=20)
+   trajs_utils.plot_xy([trajectory],cell_size=c_settings["SCALE_SIZE"])
    trajectory_vecs = [utils.list_to_position(x) for i,x in enumerate(trajectory) if i%10==0]
    np_trajectory = np.array( trajectory)
    print("FOLLOWING trajectory:",trajectory_file)

@@ -24,6 +24,20 @@ AINDEX = {"N":0,"S":1, "E":2, "W":3}
 
 FIGS_FOLDER = configYml["layer1"]["paths"]["FIGS_FOLDER"]
 
+def vec2d_list_to_tuple_list(list):
+    return [vec2d_to_tuple(v) for v in list]
+
+def vec2d_list_to_numpy_list(list):
+    return [vec2d_to_numpy_array(v) for v in list]
+
+def vec2d_to_tuple(vec):
+    return tuple([vec.x_val, vec.y_val]) 
+
+def vec2d_to_numpy_array(vec):
+    return np.array([vec.x_val, vec.y_val]) 
+
+def vec3d_to_numpy_array(vec):
+    return np.array([vec.x_val, vec.y_val,vec.z_val]) 
 
 
 def setSeed(seed):
@@ -322,7 +336,7 @@ def avoid_collision_in_busy_space(trajs_2d,assigned_trajs,min_height,max_height,
                             raise Exception("Out of min height bound")
                         proposed_heights[z].append(fid)
                         # Ora devo controllare sia che non collida con le busy sia che non collida con le proposed su new_z    
-                        _vertical_separate(assigned_heights,trajs_2d,proposed_heights,static_trees,min_height)
+                        vertical_separate(assigned_heights,trajs_2d,proposed_heights,static_trees,min_height)
         
     return trajs_3d
 
@@ -689,6 +703,7 @@ def convert2airsim(trajs):
 
 
 # TODO use cell_size to understand if it's a cell or not?
+# trajs = list of trajectories (list of list)
 def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date="",isCell=False, name = None):
     """ 2D plot of trajectories: trajs = [t1,...,tn] """
     # Assegno altitude se 2d
@@ -765,7 +780,6 @@ def plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,dat
                 plt.savefig(os.path.join( outDir,name+".png"))
         else:
             plt.show()
-
 
 def rotate_point_2d(theta,x,y):
     return x*math.cos(theta) - y * math.sin(theta),  x * math.sin(theta) + y * math.cos(theta)

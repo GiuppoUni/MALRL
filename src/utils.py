@@ -101,7 +101,7 @@ def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):
 
 
 def initiate_logger():
-    logging.basicConfig(filename=LOG_FOLDER+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+    logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
                                 filemode='w',
                                 format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                                 datefmt='%H:%M:%S',
@@ -455,3 +455,4 @@ if __name__=="__main__":
     print(lonLatFromRotation(-5.41052,0,lon,lat))    
 
     res1,res2 = 2.179982, 41.403179 
+

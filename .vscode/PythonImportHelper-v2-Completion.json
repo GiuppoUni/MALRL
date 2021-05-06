@@ -521,6 +521,14 @@
         "documentation": {}
     },
     {
+        "label": "DrivetrainType",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
         "label": "Pose",
         "importPath": "airsim.types",
         "description": "airsim.types",
@@ -530,6 +538,14 @@
     },
     {
         "label": "Vector3r",
+        "importPath": "airsim.types",
+        "description": "airsim.types",
+        "isExtraImport": true,
+        "detail": "airsim.types",
+        "documentation": {}
+    },
+    {
+        "label": "YawMode",
         "importPath": "airsim.types",
         "description": "airsim.types",
         "isExtraImport": true,
@@ -3114,20 +3130,11 @@
         "documentation": {}
     },
     {
-        "label": "init",
-        "kind": 2,
-        "importPath": "src.layer2",
-        "description": "src.layer2",
-        "peekOfCode": "def init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:\n   #    if( f[-4:]==\".csv\" ):\n   #       print(\"Reading:\",f)",
-        "detail": "src.layer2",
-        "documentation": {}
-    },
-    {
         "label": "main",
         "kind": 2,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "def main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:\n   #    if( f[-4:]==\".csv\" ):\n   #       print(\"Reading:\",f)\n   #       with open(os.path.join(args.i,f),\"r\") as fin:",
+        "peekOfCode": "def main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]\n   latest_mod_folder = max(exp_folders , key=os.path.getmtime)\n   print(\"Detected \",len(latest_mod_folder),\" files.\")\n   for f in sorted(os.listdir(latest_mod_folder)):\n      asClient.disable_trace_lines()",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3136,7 +3143,7 @@
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3145,7 +3152,7 @@
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]\n   latest_mod_folder = max(exp_folders , key=os.path.getmtime)",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3154,16 +3161,34 @@
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef init():\ndef main():\n   # Starting position of agent\n   # s_x,s_y = args.sx, args.sy\n   l_files = os.listdir(args.i)\n   trajectory_file = None\n   x,y = None,None\n   # for f in l_files:",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]\n   latest_mod_folder = max(exp_folders , key=os.path.getmtime)\n   print(\"Detected \",len(latest_mod_folder),\" files.\")",
         "detail": "src.layer2",
         "documentation": {}
     },
     {
-        "label": "TRAJECTORIES_3D_FOLDER",
+        "label": "configYml",
         "kind": 5,
         "importPath": "src.layer3",
         "description": "src.layer3",
-        "peekOfCode": "TRAJECTORIES_3D_FOLDER = \"generatedData/3dL3/csv/\"\n# if(args.debug):\nlogging.basicConfig(filename=utils.LOG_FOLDER+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)",
+        "detail": "src.layer3",
+        "documentation": {}
+    },
+    {
+        "label": "c_paths",
+        "kind": 5,
+        "importPath": "src.layer3",
+        "description": "src.layer3",
+        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')",
+        "detail": "src.layer3",
+        "documentation": {}
+    },
+    {
+        "label": "c_settings",
+        "kind": 5,
+        "importPath": "src.layer3",
+        "description": "src.layer3",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )",
         "detail": "src.layer3",
         "documentation": {}
     },
@@ -3174,6 +3199,51 @@
         "description": "src.layer3",
         "peekOfCode": "logger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 3')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
         "detail": "src.layer3",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d_list_to_tuple_list",
+        "kind": 2,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "def vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val,vec.z_val]) ",
+        "detail": "src.trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d_list_to_numpy_list",
+        "kind": 2,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "def vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val,vec.z_val]) \ndef setSeed(seed):\n   global SEED",
+        "detail": "src.trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d_to_tuple",
+        "kind": 2,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "def vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val,vec.z_val]) \ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)",
+        "detail": "src.trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "vec2d_to_numpy_array",
+        "kind": 2,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "def vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val,vec.z_val]) \ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
+        "detail": "src.trajs_utils",
+        "documentation": {}
+    },
+    {
+        "label": "vec3d_to_numpy_array",
+        "kind": 2,
+        "importPath": "src.trajs_utils",
+        "description": "src.trajs_utils",
+        "peekOfCode": "def vec3d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val,vec.z_val]) \ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)",
+        "detail": "src.trajs_utils",
         "documentation": {}
     },
     {
@@ -3343,7 +3413,7 @@
         "kind": 2,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\n# TODO use cell_size to understand if it's a cell or not?\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories: trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):\n            hp = 9 #dummy value #2D",
+        "peekOfCode": "def convert2airsim(trajs):\n    return     [ [    [ p[0],p[1],-p[2] ]    for p in t]  for t in trajs]\n# TODO use cell_size to understand if it's a cell or not?\n# trajs = list of trajectories (list of list)\ndef plot_xy(trajs,cell_size,dotSize=3,fids=None,doScatter=False,doSave=False,date=\"\",isCell=False, name = None):\n    \"\"\" 2D plot of trajectories: trajs = [t1,...,tn] \"\"\"\n    # Assegno altitude se 2d\n    fPerHeights = dict()\n    for i in range(len(trajs)):\n        if(len(trajs[i][0]) == 2):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3415,7 +3485,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\n# global SEED\n# SEED = 668\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\n# global SEED\n# SEED = 668\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3424,7 +3494,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3433,7 +3503,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) ",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3442,7 +3512,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3451,7 +3521,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) ",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3460,7 +3530,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "FIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef setSeed(seed):\n   global SEED\n   SEED=seed\n   random.seed(SEED)\n   np.random.seed(seed=SEED)\ndef setRandomSeed():\n    s = random.randint(0,int(10e8))\n    setSeed(s)\n    return SEED",
+        "peekOfCode": "FIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3469,7 +3539,7 @@
         "kind": 2,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "def read_yaml(file_path):\n    with open(file_path, \"r\") as f:\n        return yaml.safe_load(f)\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',",
+        "peekOfCode": "def read_yaml(file_path):\n    with open(file_path, \"r\") as f:\n        return yaml.safe_load(f)\ndef play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',",
         "detail": "src.utils",
         "documentation": {}
     },
@@ -3478,7 +3548,7 @@
         "kind": 2,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)",
+        "peekOfCode": "def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):\n    for _ in range(n_beeps):\n        winsound.Beep(frequency, beep_duration)\n        time.sleep(0.1)\ndef initiate_logger():\n    logging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)",
         "detail": "src.utils",
         "documentation": {}
     },
@@ -3487,7 +3557,7 @@
         "kind": 2,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "def initiate_logger():\n    logging.basicConfig(filename=LOG_FOLDER+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\n    return logger\ndef ConvertIfStringIsInt(input_string):",
+        "peekOfCode": "def initiate_logger():\n    logging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"log\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                                filemode='w',\n                                format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                                datefmt='%H:%M:%S',\n                                level=logging.DEBUG)\n    logger = logging.getLogger('multiAirGym')\n    logger.debug('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\n    return logger\ndef ConvertIfStringIsInt(input_string):",
         "detail": "src.utils",
         "documentation": {}
     },

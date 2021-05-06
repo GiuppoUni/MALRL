@@ -230,5 +230,6 @@ if __name__ == "__main__":
       newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
       concatDf = pd.concat([newDf,concatDf])
    
-   concatDf.to_csv(os.path.join(args.o,"euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv")) 
+   concatDf.to_csv(os.path.join(args.o,
+      "euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv")) 
    # data_to_csv(data,"test.csv")

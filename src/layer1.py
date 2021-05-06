@@ -169,7 +169,7 @@ def main():
    fids = []
 
    # Init logger
-   logging.basicConfig(filename=utils.LOG_FOLDER+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+   logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"log"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
                            filemode='w',
                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                            datefmt='%H:%M:%S',
@@ -198,6 +198,11 @@ def main():
    fixed_goals_list = df.values.tolist()
    # assert(len(fixed_goals_list) == len(fixed_start_pos_list))
  
+   if(len(fixed_goals_list)< c_settings["N_TRAJECTORIES_TO_GENERATE"]  ):
+      raise Exception("Not enough fixed goals lists")
+
+   if(len(fixed_start_pos_list)< c_settings["N_TRAJECTORIES_TO_GENERATE"]  ):
+      raise Exception("Not enough fixed goals lists")
 
    ''''
       Prepare  pre training
@@ -510,7 +515,7 @@ def main():
             for t in trajs3d:
                trajsWithAltitude.append(t)
             trajsBySteps.append( (local_fids,trajs3d) )
-            trajs_utils.plot_xy(trajs,cell_size=1,fids=local_fids,doScatter=True,doSave=True,isCell=True,name="rlTrajs_ep_"+str(uav_idx),date=EXPERIMENT_DATE)
+            trajs_utils.plot_xy(trajs,cell_size=c_settings["SCALE_SIZE"],fids=local_fids,doScatter=True,doSave=True,isCell=True,name="rlTrajs_ep_"+str(uav_idx),date=EXPERIMENT_DATE)
 
             for id in local_fids:
                fids.append(id)
@@ -541,7 +546,7 @@ def main():
    print("Start PLOTTING...")
    trajs_utils.plot_3d(trajsWithAltitude,fids,also2d=False,doSave=c_settings["doSave_3dPlot"],name="test"+"3d",
       exploded=c_settings["exploded_3dPlot"],date=EXPERIMENT_DATE)
-   trajs_utils.plot_xy(trajsWithAltitude,cell_size=20,fids=fids,doSave=c_settings["doSave_xyPlot"],date=EXPERIMENT_DATE)
+   trajs_utils.plot_xy(trajsWithAltitude,cell_size=c_settings["SCALE_SIZE"],fids=fids,doSave=c_settings["doSave_xyPlot"],date=EXPERIMENT_DATE)
 
    print("DONE.")
 
@@ -551,7 +556,7 @@ if __name__ == "__main__":
    parser = argparse.ArgumentParser(description='Layer 1')
    
    
-   parser.add_argument('--nepisodes', type=int, default=100,
+   parser.add_argument('--nepisodes', type=int, default=c_settings["EPISODES"],
                      help='episodes (default: %(default)s)')
 
    parser.add_argument('--ngoals', type=int, default=1,
@@ -602,10 +607,6 @@ if __name__ == "__main__":
    parser.add_argument("--show-maze-bm", action="store_true",default=False, 
       help='Show Bitmap used as maze')
 
-   parser.add_argument("--train", action="store_true",default=False, 
-      help='Start generating trajectories')
-
-
    parser.add_argument('--random-goal-pos', action="store_true",default=False, 
       help='Choose random start pos instead of the one inside csv file (default: %(default)s)')
 
@@ -624,13 +625,15 @@ if __name__ == "__main__":
 
    args = parser.parse_args()
 
-
+   '''
+      Maze bitmap Generator
+   '''
    if(args.generate_random_start or args.random_goal_pos):
       n_uavs = c_settings["N_TRAJECTORIES_TO_GENERATE"]
       maze = Maze(maze_cells=Maze.load_maze(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) ) ,verbose = args.v)
       allGoodCells = utils.getGoodCells(maze) # good as entrance or goal
-      startFilename = c_paths["START_INPUT_FILE"]
-      goalFilename = c_paths["GOAL_INPUT_FILE"]
+      startFilename = c_paths["INPUT_START_FILE"]
+      goalFilename = c_paths["GOAL_START_FILE"]
       with open(startFilename,"w") as fstart, open(goalFilename,"w") as fgoal:
          fstart.write("name,x_pos,y_pos\n")
          for i in range(0,n_uavs):
