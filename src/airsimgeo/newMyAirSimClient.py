@@ -1,6 +1,6 @@
 import os
-from airsim.types import ImageRequest, Vector3r
-from airsim.utils import to_eularian_angles
+from airsim140.types import ImageRequest, Vector3r
+from airsim140.utils import to_eularian_angles
 from matplotlib.pyplot import draw
 import numpy as np
 import time
@@ -15,7 +15,9 @@ from sklearn.neighbors import KDTree
 # Change the path below to point to the directoy where you installed the AirSim PythonClient
 #sys.path.append('C:/Users/Kjell/Google Drive/MASTER-THESIS/AirSimpy')
 
-from airsim import MultirotorClient
+from airsim140 import Vector3r, MultirotorClient
+from pyproj import Proj
+
 import airsim
 import sys 
 import utils
@@ -23,11 +25,6 @@ import gc
 import pandas
 import threading
 from scipy.interpolate import interp1d
-
-
-
-from airsim import Vector3r, MultirotorClient
-from pyproj import Proj
 
 
 class DrivetrainType:
@@ -43,20 +40,18 @@ class AirSimImageType:
     Segmentation = 5
     SurfaceNormals = 6
 
-lock = threading.Lock()
-
-
-
 
 class NewMyAirSimClient(MultirotorClient):
 
     deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0
 
-    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow):        
+    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow,z_des=None):        
 
         MultirotorClient.__init__(self)
         MultirotorClient.confirmConnection(self)
         self.drones_names = [ v for v in utils.g_airsim_settings["Vehicles"] ]
+        
+        self.lock = threading.Lock()
 
         for i,dn in enumerate( self.drones_names ):
             self.enableApiControl(True,vehicle_name=dn)
@@ -64,10 +59,7 @@ class NewMyAirSimClient(MultirotorClient):
 
         self.trajColFlag = trajColFlag
 
-        self.z_des = -10
-        self.z_max = -20
-        self.z_min =  -6
-        
+        self.z_des = z_des
         self.kdtrees = [] 
 
         self.trajs2draw=trajs2draw
@@ -90,18 +82,22 @@ class NewMyAirSimClient(MultirotorClient):
 
         # self.trajectories = self._loadPastTrajectories()
 
-    def simGetPosition(self,lock,vName):
-        if(lock):
-            lock.acquire()
-            p = self.simGetGroundTruthKinematics(vehicle_name = vName).position
-            lock.release()
-        else:
-            p = self.simGetGroundTruthKinematics(vehicle_name = vName).position
+    def simGetPosition(self,vName):
+        self.lock.acquire()
+        p = self.simGetGroundTruthKinematics(vehicle_name = vName).position
+        self.lock.release()
         
-        pp=(p.x_val,p.y_val,p.z_val)
+        pp=(str(p.x_val),str(p.y_val),str(p.z_val))
         print("[THREAD]",pp)
         return  pp
     
+    def moveOnPathAsync(self, path, velocity, timeout_sec, drivetrain, yaw_mode, lookahead, adaptive_lookahead, vehicle_name):
+        self.lock.acquire()
+        ret = super().moveOnPathAsync(path, velocity, timeout_sec=timeout_sec, drivetrain=drivetrain, yaw_mode=yaw_mode, lookahead=lookahead, adaptive_lookahead=adaptive_lookahead, vehicle_name=vehicle_name)
+        self.lock.release()
+        return ret
+
+
     def getPosition(self,vehicle_name = ""):
         kin_state = self.getMultirotorState(vehicle_name=vehicle_name).kinematics_estimated
         return kin_state.position
@@ -188,29 +184,29 @@ class NewMyAirSimClient(MultirotorClient):
         return start, duration
     
        # CRAB ACTIONS
-    def crab_up(self, duration=12, speed=12,vName="Drone0"):
-        self.moveByVelocityZAsync(0, -speed, self.z_des, duration, DrivetrainType.ForwardOnly,
-            vehicle_name = vName)
-        start = time.time()
-        return start, duration
+    # def crab_up(self, duration=12, speed=12,vName="Drone0"):
+    #     self.moveByVelocityZAsync(0, -speed, self.z_des, duration, DrivetrainType.ForwardOnly,
+    #         vehicle_name = vName)
+    #     start = time.time()
+    #     return start, duration
     
-    def crab_right(self, duration=12,speed=12,vName="Drone0"):
-        self.moveByVelocityZAsync(speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
-            vehicle_name = vName)
-        start = time.time()
-        return start, duration
+    # def crab_right(self, duration=12,speed=12,vName="Drone0"):
+    #     self.moveByVelocityZAsync(speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
+    #         vehicle_name = vName)
+    #     start = time.time()
+    #     return start, duration
     
-    def crab_left(self, duration=12,speed=12,vName="Drone0"):
-        self.moveByVelocityZAsync(-speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
-            vehicle_name = vName)        
-        start = time.time()
-        return start, duration
+    # def crab_left(self, duration=12,speed=12,vName="Drone0"):
+    #     self.moveByVelocityZAsync(-speed, 0, self.z_des, duration, DrivetrainType.ForwardOnly,
+    #         vehicle_name = vName)        
+    #     start = time.time()
+    #     return start, duration
     
-    def crab_down(self, duration=12,speed=12,vName="Drone0"):
-        self.moveByVelocityZAsync(0, speed, self.z_des, duration, DrivetrainType.ForwardOnly,
-            vehicle_name = vName)        
-        start = time.time()
-        return start, duration
+    # def crab_down(self, duration=12,speed=12,vName="Drone0"):
+    #     self.moveByVelocityZAsync(0, speed, self.z_des, duration, DrivetrainType.ForwardOnly,
+    #         vehicle_name = vName)        
+    #     start = time.time()
+    #     return start, duration
     
     def take_action(self, action,vName):
 
@@ -323,7 +319,7 @@ class NewMyAirSimClient(MultirotorClient):
         #     trajectory = np.load(filename)
             
         print("Drawing trajectory:",trajectory)
-        trajectory_vecs = [utils.list_to_position(x) for x in trajectory]
+        trajectory_vecs = [utils.pos_arr_to_airsim_vec(x) for x in trajectory]
         self.simPlotLineStrip(trajectory_vecs,color_rgba=color,
             is_persistent= True, thickness = self.thickness)
         
@@ -385,9 +381,9 @@ class NewMyAirSimClient(MultirotorClient):
             self.enableApiControl(True,vehicle_name=dn)
             self.armDisarm(True,vehicle_name=dn)
         time.sleep(1)
-        for dn in self.drones_names:
-            self.moveToZAsync(self.z_des, 3,vehicle_name=dn) 
-            time.sleep(1)
+        # for dn in self.drones_names:
+        #     self.moveToZAsync(self.z_des, 3,vehicle_name=dn) 
+        #     time.sleep(1)
 
 
     def disable_trace_lines(self):

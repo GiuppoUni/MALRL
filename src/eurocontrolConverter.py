@@ -17,6 +17,7 @@ import pandas as pd
 import uuid
 from collections import OrderedDict
 import random
+import utils
 import csv
 
 # Columns name of the .csv header according to the standard Eurocontrol template.
@@ -50,7 +51,9 @@ COLUMNS_NAMES2 = ['id',
 
 """
 
-FILE_DIR = "eurocontrol/"
+configYml = utils.read_yaml("inputData/config.yaml")
+c_paths = configYml["paths"]
+FILE_DIR = configYml["paths"]["EUROCONTROL_FOLDER"]
 
 def generate_flight_id():
     # Generate a unique ID for a flight.
@@ -160,8 +163,8 @@ def create_eurocontrol_file(trajs,filename,header = True):
 
 
 def convert_df_to_eurocontrol_format(df,uasId):
-   if "z_pos" in df.columns:
-      df.pop("z_pos")
+   # if "z_pos" in df.columns:
+   #    df.pop("z_pos")
    df["UAS id"] = [uasId]*len(df.index)
    df[ 'UAS Relative time' ] = df.index
    df = df.rename(columns={"x_pos":"x","y_pos":"y"})
@@ -204,32 +207,48 @@ if __name__ == "__main__":
 
    parser = argparse.ArgumentParser(description='Eurocontrol converter')
 
-   parser.add_argument('-i', type=str, required=True,
+   # Read trajectories
+   exp_folders = [os.path.join(c_paths["LAYER2_OUTPUT_FOLDER"],d) for d in os.listdir(c_paths["LAYER2_OUTPUT_FOLDER"])]
+   latest_mod_folder = max(exp_folders , key=os.path.getmtime)
+
+   parser.add_argument('-i', type=str, required=False, default=latest_mod_folder,
         help='input folder of trajs (default: %(default)s)')
 
-   parser.add_argument('-o', type=str,required=True, 
+   parser.add_argument('-o', type=str,required=False, default=FILE_DIR,
         help='Output folder path (default: %(default)s)')
 
-
    args = parser.parse_args()
+   print("Found: ",len(os.listdir(args.i)),"in ",args.i)
    
    trajectories = []
-   concatDf = pd.DataFrame(columns=["UAS id","UAS relative time","x","y"])
+   concatDf = pd.DataFrame(columns=["UAS id","UAS Relative time","x","y","z_pos","w_or","x_or","y_or",\
+         "z_or","x_lin_vel","y_lin_vel","z_lin_vel","x_ang_vel","y_ang_vel","z_ang_vel",\
+         "x_lin_acc","y_lin_acc","z_lin_acc","x_ang_acc","y_ang_acc","z_ang_acc"])
    for idx,t_filename in enumerate(os.listdir(args.i)):
       if(t_filename[-4:] == ".csv" ):
          df = pd.read_csv( os.path.join(args.i, t_filename),delimiter=",",index_col="index")
             # print(df)
+         df["UAS id"] = np.nan
+         df["UAS Relative time"] = np.nan
          trajectories.append( df.to_numpy() )
       elif(t_filename[-4:] == ".npy"):
          trajectories = np.load(os.path.join( args.i,t_filename) )
       else:
          raise Exception("invalid file in dir")
       # trajectories = [d1,d2]
-      print(t_filename,":",trajectories[0][0:2],"...")
+      # print(t_filename,":",trajectories[0][0:2],"...")
       # create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
       newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
       concatDf = pd.concat([newDf,concatDf])
    
+      concatDf = concatDf[["UAS id","UAS Relative time","x","y","z_pos","w_or","x_or","y_or",\
+         "z_or","x_lin_vel","y_lin_vel","z_lin_vel","x_ang_vel","y_ang_vel","z_ang_vel",\
+         "x_lin_acc","y_lin_acc","z_lin_acc","x_ang_acc","y_ang_acc","z_ang_acc" ]]
+         
+
    concatDf.to_csv(os.path.join(args.o,
-      "euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv")) 
+      "euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv"),index=False) 
+ 
    # data_to_csv(data,"test.csv")
+   print(concatDf.columns)
+   print("Completed. File converted can be found at:",args.o)

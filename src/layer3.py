@@ -1,11 +1,12 @@
 import argparse
+import cntk.layers
 import datetime
 import logging
 import math
 import sys
 from time import sleep
-from airsim.types import Pose
-from airsim.utils import to_quaternion
+from airsim140.types import Pose
+from airsim140.utils import to_quaternion
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -21,107 +22,50 @@ import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
-
 configYml = utils.read_yaml("inputData/config.yaml")
-c_paths = configYml["layer1"]["paths"]
+c_paths = configYml["paths"]
 c_settings = configYml["layer1"]["settings"]
 c_verSep= configYml["layer1"]["vertical_separation"]
 
-# if(args.debug):
-logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"L3log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
-                        filemode='w',
-                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                        datefmt='%H:%M:%S',
-                        level=logging.INFO)
-
-
-logger = logging.getLogger('RL Layer3')
-logger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )
-
-if __name__ == "__main__":
-   parser = argparse.ArgumentParser(description='Layer 3')
+def main(out_folder,velocity):
    
-   parser.add_argument("-i", type=str,required=True,
-                     help='input folder of trajs 3d')
 
 
-   # parser.add_argument('-sx', type=int,required=True,
-   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')
-
-   # parser.add_argument('-sy', type=int,required=True,
-   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')
-
-   parser.add_argument('--velocity',default = 10, type=float,required=False,
-                     help='Speed value')
-
-
-   # parser.add_argument( '--debug',action='store_true',  default=False,
-   #    help='Log into file (default: %(default)s)' )
-
-   # parser.add_argument('--load-qtable', type=str, 
-   #    help='qtable file (default: %(default)s)')
-
-   args = parser.parse_args()
-
-   # Starting position of agent
-   # s_x,s_y = args.sx, args.sy
-
-   l_files = os.listdir(args.i)
-   trajectory_file = None
-   x,y = None,None
+   l_files = os.listdir(out_folder)
 
    for f in l_files:
       if( f[-4:]==".csv" ):
-         print("Reading:",f)
-         with open(os.path.join(args.i,f),"r") as fin:
+         print("Reading trajectory from file:",f)
+         trajectory=[]
+         with open(os.path.join(out_folder,f),"r") as fin:
             lr= fin.readlines()
-            x = float( lr[1].split(",")[1] )
-            y = float( lr[1].split(",")[2] )
+            for i in len(lr):
+               if(i==0): #(Heading)
+                  continue
+               values = lr[i].split(",")
+               x = float( lr[i].split(",")[1] )
+               y = float( lr[i].split(",")[2] )
+               z = float( lr[i].split(",")[3]) if(len(values)>2) else configYml["layer3"]["FIXED_Z"]
+   
+               trajectory.append(tuple(x,y,z))
             # print('x: ', x)
             # print('y: ', y)
 
-         
-      # if(x==s_x and y==s_y):
-      #    trajectory_file = f
-   trajectory_file = l_files[0]
-   if(x is None or y is None):
-      raise Exception("Invalid Initial positions",s_x,s_y)
-   trajectory = None
-   # if(trajectory_file):
-   other_trajectories = []
-   if(True):
-      
-      df = pandas.read_csv(os.path.join(args.i,trajectory_file),delimiter=",",index_col="index")
-        # print(df)
-      trajectory = df.to_numpy()
-      trajectory[:,2] *= -1
-      trajectory = trajectory.tolist()
-      for ff in l_files[1:]:
-         df = pandas.read_csv(os.path.join(args.i,ff),delimiter=",",index_col="index")
-         # print(df)
-         o_t = df.to_numpy()
-         o_t[:,2] *= -1
-         other_trajectories.append( o_t )
+      trajs_utils.plot_xy([trajectory],cell_size=c_settings["SCALE_SIZE"])
+      trajectory_vecs = [utils.l3_pos_arr_to_airsim_vec(x) for i,x in enumerate(trajectory) if i%10==0]
+      np_trajectory = np.array( trajectory)
+      print("FOLLOWING trajectory:",f)
+      print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
+      print("\t num. of points:", np.shape(np_trajectory)[0] )
 
-   else:
-      print("Invalid trajectory")
-      sys.exit(0)
-   
-   trajs_utils.plot_xy([trajectory],cell_size=c_settings["SCALE_SIZE"])
-   trajectory_vecs = [utils.list_to_position(x) for i,x in enumerate(trajectory) if i%10==0]
-   np_trajectory = np.array( trajectory)
-   print("FOLLOWING trajectory:",trajectory_file)
-   print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
-   print("\t num. of points:", np.shape(np_trajectory)[0] )
-   
-   # Create AirSim client
-   asClient = NewMyAirSimClient(trajColFlag=False,
-            canDrawTrajectories=True,crabMode=True,thickness = 140,trajs2draw=other_trajectories,traj2follow=trajectory)
-   
+            # Create AirSim client
+      asClient = NewMyAirSimClient(trajColFlag=False,
+               canDrawTrajectories=True,crabMode=True,thickness = 140,trajs2draw=[],traj2follow=trajectory)
+
 
    asClient.disable_trace_lines()
    sleep(0.5)
-   pose = Pose(utils.list_to_position(trajectory[0]), to_quaternion(0, 0, 0) ) 
+   pose = Pose(utils.pos_arr_to_airsim_vec(trajectory[0]), to_quaternion(0, 0, 0) ) 
    asClient.simSetVehiclePose(pose,True,"Drone0")        
    print("Drone set at start position.")
 
@@ -137,7 +81,7 @@ if __name__ == "__main__":
    print("Altitude reached.\n Starting following path...")
    pointer = asClient.moveOnPathAsync(
       trajectory_vecs,
-      args.velocity,
+      velocity,
       adaptive_lookahead=1,vehicle_name="Drone0")
 
    
@@ -150,3 +94,49 @@ if __name__ == "__main__":
 
    pointer.join()
    print("UAV completed its mission.")
+
+
+if __name__ == "__main__":
+   
+   EXPERIMENT_DATE= str(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') )
+
+   parser = argparse.ArgumentParser(description='Layer 3')
+   
+   parser.add_argument("-i", type=str,required=False,default=c_paths["LAYER2_OUTPUT_FOLDER"],
+                     help='input folder of trajs 3d')
+
+
+   # parser.add_argument('-sx', type=int,required=True,
+   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')
+
+   # parser.add_argument('-sy', type=int,required=True,
+   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')
+
+   parser.add_argument('--velocity',default = configYml["layer3"]["VELOCITY"],
+      type=float,required=False, help='Speed value')
+
+
+   parser.add_argument( '--debug',action='store_true',  default=False,
+      help='Log into file ' + EXPERIMENT_DATE + '(default: %(default)s)' )
+
+   # parser.add_argument('--load-qtable', type=str, 
+   #    help='qtable file (default: %(default)s)')
+
+   args = parser.parse_args()
+
+   # Starting position of agent
+   # s_x,s_y = args.sx, args.sy
+
+   if(args.debug):
+      logging.basicConfig(filename=c_paths["LOG_FOLDER"]+"L3log(AIRSIM)"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".txt",
+                              filemode='w',
+                              format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                              datefmt='%H:%M:%S',
+                              level=logging.INFO)
+
+
+      logger = logging.getLogger('RL Layer3')
+      logger.info('Experiment Date: {}'.format(EXPERIMENT_DATE) )
+
+
+   main(out_folder=args.i,velocity=args.velocity)

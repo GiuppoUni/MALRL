@@ -33,14 +33,13 @@ from PIL import Image as img
 
 
 configYml = utils.read_yaml("inputData/config.yaml")
-c_paths = configYml["layer1"]["paths"]
+c_paths = configYml["paths"]
 c_settings = configYml["layer1"]["settings"]
 c_verSep= configYml["layer1"]["vertical_separation"]
 
 IDX_TO_ACTION =  {0:"LEFT", 1:"FRONT", 2:"RIGHT", 3:"BACK"}
 
-EXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints
-
+EXPERIMENT_DATE =  utils.get_experiment_date()
 
 # FOR MAZE GENERATION ONLY
 # Return a value depending on allowed action, "NESW" if all possible
@@ -190,11 +189,11 @@ def main():
    """
    
   
-   df = pandas.read_csv("inputData/start_pos_table.csv", index_col='name')
+   df = pandas.read_csv(c_paths["LAYER1_INPUT_STARTS_FILE"], index_col='name')
    fixed_start_pos_list= df.values.tolist()
    print('fixed_start_pos_list: ', fixed_start_pos_list)
 
-   df = pandas.read_csv("inputData/goal_pos_table.csv", index_col='name')
+   df = pandas.read_csv(c_paths["LAYER1_INPUT_GOALS_FILE"], index_col='name')
    fixed_goals_list = df.values.tolist()
    # assert(len(fixed_goals_list) == len(fixed_start_pos_list))
  
@@ -279,16 +278,17 @@ def main():
    '''
 
    outDir ="qTrajs2D"+EXPERIMENT_DATE 
-   outDir= (os.path.join(c_paths["TRAJECTORIES_FOLDER"], outDir) )
+   outDir= (os.path.join(c_paths["LAYER1_2D_OUTPUT_FOLDER"], outDir) )
    os.makedirs( outDir)
    
+   outDirInt = "qTrajs2DINT"+EXPERIMENT_DATE 
+   outDirInt= (os.path.join(c_paths["LAYER1_2D_INTERPOLATED_OUTPUT_FOLDER"], outDirInt) )
+   os.makedirs( outDirInt)
+
    outDir3D ="trajs3D"+EXPERIMENT_DATE 
-   outDir3D= (os.path.join(c_paths["TRAJECTORIES_3D_FOLDER"], outDir3D) )
+   outDir3D = (os.path.join(c_paths["LAYER1_3D_OUTPUT_FOLDER"], outDir3D) )
    os.makedirs( outDir3D)
    
-   outDirInt = "qTrajs2DINT"+EXPERIMENT_DATE 
-   outDirInt= (os.path.join(c_paths["INT_TRAJECTORIES_FOLDER"], outDirInt) )
-   os.makedirs( outDirInt)
  
 
 
@@ -301,7 +301,7 @@ def main():
    for uav_idx in range(0,n_uavs):
       print("||||||||||||||||||||||||||||| GENERATING TRAJECTORY ", uav_idx," |||||||||||||||||||||||||||||")
       
-      if(uav_idx != 0): #oth. yet done
+      if(uav_idx != 0): #oth. already done
          # Need for new random start and goal
          fixed_start_pos = fixed_start_pos_list.pop(0)
          env.setNewEntrance(fixed_start_pos)
@@ -483,53 +483,53 @@ def main():
       print("Num. trajs generated: ",len(trajs))
 
       if(uav_idx!=0 and uav_idx  % TRAJECTORIES_BUFFER_SIZE == TRAJECTORIES_BUFFER_SIZE-1 ):
-            # gtrajs = trajs_utils.fix_traj(trajs)
-            
-            mtrajs = trajs_utils.fromCellsToMeters(trajs,scale_factor = c_settings["SCALE_SIZE"]/2)
+         # gtrajs = trajs_utils.fix_traj(trajs)
+         
+         mtrajs = trajs_utils.fromCellsToMeters(trajs,scale_factor = c_settings["SCALE_SIZE"]/2)
 
-            gtrajs = trajs_utils.myInterpolate2D(mtrajs,step_size=1)
-            print("2D interpolation completed.")    
-            for t in gtrajs:
-               toBeSaved=np.array(t)
-               df = pandas.DataFrame({'x_pos': toBeSaved[:, 0], 'y_pos': toBeSaved[:, 1]})
-               # df["z_pos"] = -10
-               df.index.name = "index"
-               df.to_csv(os.path.join(outDirInt,"traj_2d_int_"+str(uav_idx)+".csv"))
-            # gtrajs = trajs
-            # gtrajs = [ [ list(p) for p in t]  for t in gtrajs]
-            
+         gtrajs = trajs_utils.myInterpolate2D(mtrajs,step_size=1)
+         print("2D interpolation completed.")    
+         for t in gtrajs:
+            toBeSaved=np.array(t)
+            df = pandas.DataFrame({'x_pos': toBeSaved[:, 0], 'y_pos': toBeSaved[:, 1]})
+            # df["z_pos"] = -10
+            df.index.name = "index"
+            df.to_csv(os.path.join(outDirInt,"traj_2d_int_"+str(uav_idx)+".csv"))
+         # gtrajs = trajs
+         # gtrajs = [ [ list(p) for p in t]  for t in gtrajs]
+         
 
-            print("Altitude assignment started...")    
-            trajs3d, i_outs,local_fids = trajs_utils.vertical_separate(new_trajs_2d=gtrajs,
-               fids=[ i + ((uav_idx-TRAJECTORIES_BUFFER_SIZE)+1) for i in range(TRAJECTORIES_BUFFER_SIZE)],
-               assigned_trajs = trajsWithAltitude,
-               min_height=c_verSep["MIN_HEIGHT"],max_height=c_verSep["MAX_HEIGHT"],sep_h = c_verSep["SEP_H"],
-               radius=c_verSep["RADIUS"], tolerance=c_verSep["TOLERANCE"], seed=SEED)
-            
-            print("gtrajs ",len(gtrajs))
-            print("mtrajs ",len(mtrajs))
-            print("trajwith ",len(trajsWithAltitude))
-            print("trajwith ",len(trajs3d))
+         print("Altitude assignment started...")    
+         trajs3d, i_outs,local_fids = trajs_utils.vertical_separate(new_trajs_2d=gtrajs,
+            fids=[ i + ((uav_idx-TRAJECTORIES_BUFFER_SIZE)+1) for i in range(TRAJECTORIES_BUFFER_SIZE)],
+            assigned_trajs = trajsWithAltitude,
+            min_height=c_verSep["MIN_HEIGHT"],max_height=c_verSep["MAX_HEIGHT"],sep_h = c_verSep["SEP_H"],
+            radius=c_verSep["RADIUS"], tolerance=c_verSep["TOLERANCE"], seed=SEED)
+         
+         print("gtrajs ",len(gtrajs))
+         print("mtrajs ",len(mtrajs))
+         print("trajwith ",len(trajsWithAltitude))
+         print("trajwith ",len(trajs3d))
 
-            outs += i_outs
-            for t in trajs3d:
-               trajsWithAltitude.append(t)
-            trajsBySteps.append( (local_fids,trajs3d) )
-            trajs_utils.plot_xy(trajs,cell_size=c_settings["SCALE_SIZE"],fids=local_fids,doScatter=True,doSave=True,isCell=True,name="rlTrajs_ep_"+str(uav_idx),date=EXPERIMENT_DATE)
+         outs += i_outs
+         for t in trajs3d:
+            trajsWithAltitude.append(t)
+         trajsBySteps.append( (local_fids,trajs3d) )
+         trajs_utils.plot_xy(trajs,cell_size=c_settings["SCALE_SIZE"],fids=local_fids,doScatter=True,doSave=True,isCell=True,name="rlTrajs_ep_"+str(uav_idx),date=EXPERIMENT_DATE)
 
-            for id in local_fids:
-               fids.append(id)
-            # Resetto il buffer
-            trajs = []
-            visited_cells = []
+         for id in local_fids:
+            fids.append(id)
+         # Resetto il buffer
+         trajs = []
+         visited_cells = []
 
-            for i_t,t in enumerate( trajs3d):
-               nptraj = np.array(t)
-               df = pandas.DataFrame({'x_pos': nptraj[:, 0], 'y_pos': nptraj[:, 1],
-               'z_pos': nptraj[:, 2]})
-               df.index.name = "index"
-               df.to_csv(os.path.join( outDir3D,"3dtraj"+str(i_t+ (uav_idx - TRAJECTORIES_BUFFER_SIZE)+1)+".csv" ) )
-               print("saved traj",i_t ," in 3d to",outDir3D)
+         for i_t,t in enumerate( trajs3d):
+            nptraj = np.array(t)
+            df = pandas.DataFrame({'x_pos': nptraj[:, 0], 'y_pos': nptraj[:, 1],
+            'z_pos': nptraj[:, 2]})
+            df.index.name = "index"
+            df.to_csv(os.path.join( outDir3D,"3dtraj"+str(i_t+ (uav_idx - TRAJECTORIES_BUFFER_SIZE)+1)+".csv" ) )
+            print("saved traj",i_t ," in 3d to",outDir3D)
 
    # SONO FINITE TUTTE LE TRAIETTORIE
    

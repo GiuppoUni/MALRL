@@ -3,7 +3,7 @@ import math
 from os import O_EXCL
 import os
 from typing import Tuple
-from airsim.types import Vector3r
+from airsim140.types import Vector3r
 from dotmap import DotMap
 
 from configparser import ConfigParser
@@ -86,6 +86,10 @@ red_color = [1.0,0.0,0.0]
 green_color = [0.0,0.5,0.0]
 blue_color = [0.0,0.0,1.0]
 orange_color =[255/255, 102/255, 0]
+
+
+def get_experiment_date():
+    return  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints
 
 
 def read_yaml(file_path):
@@ -225,25 +229,32 @@ def numpy_save(arr,folder_timestamp,filename):
 def position_to_list(position_vector) -> list:
     return [position_vector.x_val, position_vector.y_val, position_vector.z_val]
 
-def list_to_position(l,wcell_in_meters=2,hcell_in_meters=2) -> Vector3r:
+def pos_arr_to_airsim_vec(l,wcell_in_meters=1,hcell_in_meters=1) -> Vector3r:
     # x = int(l[0]*wcell_in_meters)
     # y = int(l[1]*hcell_in_meters)
-    x = int(l[0]*wcell_in_meters)
-    y = int(l[1]*hcell_in_meters)
+    x = l[0]*wcell_in_meters
+    y = l[1]*hcell_in_meters
     if(len(l)>2):
-        z = int(l[2])
+        z = l[2]
     else:
         z = -50
     # if len(l) != 3:
     #     raise Exception("REQUIRED EXACTLY 3 elements")
     return Vector3r(x,y,z)
 
-def l3_list_to_position(l,wcell_in_meters=20,hcell_in_meters=20) -> Vector3r:
+def vec_to_str(v,doSum=False):
+    return ",".join( ( str(v.x_val),str(v.y_val),str(v.z_val)) )
+
+def quat_to_str(q,doSum=False): 
+    return ",".join( (str(q.w_val),str(q.x_val),str(q.y_val),str(q.z_val)) )
+    
+
+def l3_pos_arr_to_airsim_vec(l,wcell_in_meters=1,w_offset=0,hcell_in_meters=1,h_offset=0) -> Vector3r:
     # x = int(l[0]*wcell_in_meters)
     # y = int(l[1]*hcell_in_meters)
-    x = int(l[0])
-    y = int(l[1])
-    z = int(l[2])
+    x = l[0]*wcell_in_meters+w_offset
+    y = l[1]*hcell_in_meters+h_offset
+    z = l[2]
 
     if len(l) != 3:
         raise Exception("REQUIRED EXACTLY 3 elements")

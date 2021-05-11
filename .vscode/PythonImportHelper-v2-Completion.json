@@ -42,30 +42,6 @@
         "documentation": {}
     },
     {
-        "label": "MultirotorClient",
-        "importPath": "airsim",
-        "description": "airsim",
-        "isExtraImport": true,
-        "detail": "airsim",
-        "documentation": {}
-    },
-    {
-        "label": "Vector3r",
-        "importPath": "airsim",
-        "description": "airsim",
-        "isExtraImport": true,
-        "detail": "airsim",
-        "documentation": {}
-    },
-    {
-        "label": "MultirotorClient",
-        "importPath": "airsim",
-        "description": "airsim",
-        "isExtraImport": true,
-        "detail": "airsim",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -148,6 +124,15 @@
         "description": "cntk.initializer",
         "isExtraImport": true,
         "detail": "cntk.initializer",
+        "documentation": {}
+    },
+    {
+        "label": "cntk.layers",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cntk.layers",
+        "description": "cntk.layers",
+        "detail": "cntk.layers",
         "documentation": {}
     },
     {
@@ -454,30 +439,6 @@
         "documentation": {}
     },
     {
-        "label": "to_eularian_angles",
-        "importPath": "airsim.utils",
-        "description": "airsim.utils",
-        "isExtraImport": true,
-        "detail": "airsim.utils",
-        "documentation": {}
-    },
-    {
-        "label": "to_quaternion",
-        "importPath": "airsim.utils",
-        "description": "airsim.utils",
-        "isExtraImport": true,
-        "detail": "airsim.utils",
-        "documentation": {}
-    },
-    {
-        "label": "to_quaternion",
-        "importPath": "airsim.utils",
-        "description": "airsim.utils",
-        "isExtraImport": true,
-        "detail": "airsim.utils",
-        "documentation": {}
-    },
-    {
         "label": "os,sys,logging",
         "kind": 6,
         "isExtraImport": true,
@@ -505,67 +466,46 @@
         "documentation": {}
     },
     {
-        "label": "ImageRequest",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "detail": "__future__",
         "documentation": {}
     },
     {
-        "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "print_function",
+        "importPath": "__future__",
+        "description": "__future__",
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "detail": "__future__",
         "documentation": {}
     },
     {
-        "label": "DrivetrainType",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "msgpackrpc",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "importPath": "msgpackrpc",
+        "description": "msgpackrpc",
+        "detail": "msgpackrpc",
         "documentation": {}
     },
     {
-        "label": "Pose",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "msgpack",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "airsim.types",
+        "importPath": "msgpack",
+        "description": "msgpack",
+        "detail": "msgpack",
         "documentation": {}
     },
     {
-        "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
+        "label": "logging",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "airsim.types",
-        "documentation": {}
-    },
-    {
-        "label": "YawMode",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
-        "documentation": {}
-    },
-    {
-        "label": "Pose",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
-        "documentation": {}
-    },
-    {
-        "label": "Vector3r",
-        "importPath": "airsim.types",
-        "description": "airsim.types",
-        "isExtraImport": true,
-        "detail": "airsim.types",
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -583,6 +523,130 @@
         "description": "matplotlib.pyplot",
         "isExtraImport": true,
         "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "pdb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdb",
+        "description": "pdb",
+        "detail": "pdb",
+        "documentation": {}
+    },
+    {
+        "label": "inspect",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "inspect",
+        "description": "inspect",
+        "detail": "inspect",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "types",
+        "description": "types",
+        "detail": "types",
+        "documentation": {}
+    },
+    {
+        "label": "ImageRequest",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "DrivetrainType",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Pose",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "YawMode",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Pose",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "importPath": "airsim140.types",
+        "description": "airsim140.types",
+        "isExtraImport": true,
+        "detail": "airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "to_eularian_angles",
+        "importPath": "airsim140.utils",
+        "description": "airsim140.utils",
+        "isExtraImport": true,
+        "detail": "airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
+        "importPath": "airsim140.utils",
+        "description": "airsim140.utils",
+        "isExtraImport": true,
+        "detail": "airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
+        "importPath": "airsim140.utils",
+        "description": "airsim140.utils",
+        "isExtraImport": true,
+        "detail": "airsim140.utils",
         "documentation": {}
     },
     {
@@ -709,6 +773,30 @@
         "documentation": {}
     },
     {
+        "label": "Vector3r",
+        "importPath": "airsim140",
+        "description": "airsim140",
+        "isExtraImport": true,
+        "detail": "airsim140",
+        "documentation": {}
+    },
+    {
+        "label": "MultirotorClient",
+        "importPath": "airsim140",
+        "description": "airsim140",
+        "isExtraImport": true,
+        "detail": "airsim140",
+        "documentation": {}
+    },
+    {
+        "label": "Proj",
+        "importPath": "pyproj",
+        "description": "pyproj",
+        "isExtraImport": true,
+        "detail": "pyproj",
+        "documentation": {}
+    },
+    {
         "label": "utils",
         "kind": 6,
         "isExtraImport": true,
@@ -750,14 +838,6 @@
         "description": "scipy.interpolate",
         "isExtraImport": true,
         "detail": "scipy.interpolate",
-        "documentation": {}
-    },
-    {
-        "label": "Proj",
-        "importPath": "pyproj",
-        "description": "pyproj",
-        "isExtraImport": true,
-        "detail": "pyproj",
         "documentation": {}
     },
     {
@@ -919,15 +999,6 @@
         "documentation": {}
     },
     {
-        "label": "logging",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
-        "documentation": {}
-    },
-    {
         "label": "contextlib",
         "kind": 6,
         "isExtraImport": true,
@@ -979,6 +1050,22 @@
         "documentation": {}
     },
     {
+        "label": "c_paths",
+        "importPath": "src.layer1",
+        "description": "src.layer1",
+        "isExtraImport": true,
+        "detail": "src.layer1",
+        "documentation": {}
+    },
+    {
+        "label": "configYml",
+        "importPath": "src.layer1",
+        "description": "src.layer1",
+        "isExtraImport": true,
+        "detail": "src.layer1",
+        "documentation": {}
+    },
+    {
         "label": "matplotlib",
         "kind": 6,
         "isExtraImport": true,
@@ -1009,15 +1096,6 @@
         "description": "mpl_toolkits",
         "isExtraImport": true,
         "detail": "mpl_toolkits",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
         "documentation": {}
     },
     {
@@ -2626,6 +2704,510 @@
         "documentation": {}
     },
     {
+        "label": "VehicleClient",
+        "kind": 6,
+        "importPath": "src.airsim140.client",
+        "description": "src.airsim140.client",
+        "peekOfCode": "class VehicleClient:\n    def __init__(self, ip = \"\", port = 41451, timeout_value = 3600):\n        if (ip == \"\"):\n            ip = \"127.0.0.1\"\n        self.client = msgpackrpc.Client(msgpackrpc.Address(ip, port), timeout = timeout_value, pack_encoding = 'utf-8', unpack_encoding = 'utf-8')\n    # -----------------------------------  Common vehicle APIs ---------------------------------------------\n    def reset(self):\n        \"\"\"\n        Reset the vehicle to its original starting state\n        Note that you must call `enableApiControl` and `armDisarm` again after the call to reset",
+        "detail": "src.airsim140.client",
+        "documentation": {}
+    },
+    {
+        "label": "MultirotorClient",
+        "kind": 6,
+        "importPath": "src.airsim140.client",
+        "description": "src.airsim140.client",
+        "peekOfCode": "class MultirotorClient(VehicleClient, object):\n    def __init__(self, ip = \"\", port = 41451, timeout_value = 3600):\n        super(MultirotorClient, self).__init__(ip, port, timeout_value)\n    def takeoffAsync(self, timeout_sec = 20, vehicle_name = ''):\n        \"\"\"\n        Takeoff vehicle to 3m above ground. Vehicle should not be moving when this API is used\n        Args:\n            timeout_sec (int, optional): Timeout for the vehicle to reach desired altitude\n            vehicle_name (str, optional): Name of the vehicle to send this command to\n        Returns:",
+        "detail": "src.airsim140.client",
+        "documentation": {}
+    },
+    {
+        "label": "CarClient",
+        "kind": 6,
+        "importPath": "src.airsim140.client",
+        "description": "src.airsim140.client",
+        "peekOfCode": "class CarClient(VehicleClient, object):\n    def __init__(self, ip = \"\", port = 41451, timeout_value = 3600):\n        super(CarClient, self).__init__(ip, port, timeout_value)\n    def setCarControls(self, controls, vehicle_name = ''):\n        \"\"\"\n        Control the car using throttle, steering, brake, etc.\n        Args:\n            controls (CarControls): Struct containing control values\n            vehicle_name (str, optional): Name of vehicle to be controlled\n        \"\"\"",
+        "detail": "src.airsim140.client",
+        "documentation": {}
+    },
+    {
+        "label": "read_pfm",
+        "kind": 2,
+        "importPath": "src.airsim140.pfm",
+        "description": "src.airsim140.pfm",
+        "peekOfCode": "def read_pfm(file):\n    \"\"\" Read a pfm file \"\"\"\n    file = open(file, 'rb')\n    color = None\n    width = None\n    height = None\n    scale = None\n    endian = None\n    header = file.readline().rstrip()\n    header = str(bytes.decode(header, encoding='utf-8'))",
+        "detail": "src.airsim140.pfm",
+        "documentation": {}
+    },
+    {
+        "label": "write_pfm",
+        "kind": 2,
+        "importPath": "src.airsim140.pfm",
+        "description": "src.airsim140.pfm",
+        "peekOfCode": "def write_pfm(file, image, scale=1):\n    \"\"\" Write a pfm file \"\"\"\n    file = open(file, 'wb')\n    color = None\n    if image.dtype.name != 'float32':\n        raise Exception('Image dtype must be float32.')\n    if len(image.shape) == 3 and image.shape[2] == 3: # color image\n        color = True\n    elif len(image.shape) == 2 or len(image.shape) == 3 and image.shape[2] == 1: # greyscale\n        color = False",
+        "detail": "src.airsim140.pfm",
+        "documentation": {}
+    },
+    {
+        "label": "MsgpackMixin",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class MsgpackMixin:\n    def __repr__(self):\n        from pprint import pformat\n        return \"<\" + type(self).__name__ + \"> \" + pformat(vars(self), indent=4, width=1)\n    def to_msgpack(self, *args, **kwargs):\n        return self.__dict__\n    @classmethod\n    def from_msgpack(cls, encoded):\n        obj = cls()\n        #obj.__dict__ = {k.decode('utf-8'): (from_msgpack(v.__class__, v) if hasattr(v, \"__dict__\") else v) for k, v in encoded.items()}",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "_ImageType",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class _ImageType(type):\n    @property\n    def Scene(cls):\n        return 0\n    def DepthPlanar(cls):\n        return 1\n    def DepthPerspective(cls):\n        return 2\n    def DepthVis(cls):\n        return 3",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "ImageType",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class ImageType(metaclass=_ImageType):\n    Scene = 0\n    DepthPlanar = 1\n    DepthPerspective = 2\n    DepthVis = 3\n    DisparityNormalized = 4\n    Segmentation = 5\n    SurfaceNormals = 6\n    Infrared = 7\nclass DrivetrainType:",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "DrivetrainType",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class DrivetrainType:\n    MaxDegreeOfFreedom = 0\n    ForwardOnly = 1\nclass LandedState:\n    Landed = 0\n    Flying = 1\nclass WeatherParameter:\n    Rain = 0\n    Roadwetness = 1\n    Snow = 2",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "LandedState",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class LandedState:\n    Landed = 0\n    Flying = 1\nclass WeatherParameter:\n    Rain = 0\n    Roadwetness = 1\n    Snow = 2\n    RoadSnow = 3\n    MapleLeaf = 4\n    RoadLeaf = 5",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "WeatherParameter",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class WeatherParameter:\n    Rain = 0\n    Roadwetness = 1\n    Snow = 2\n    RoadSnow = 3\n    MapleLeaf = 4\n    RoadLeaf = 5\n    Dust = 6\n    Fog = 7\n    Enabled = 8",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Vector3r",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class Vector3r(MsgpackMixin):\n    x_val = 0.0\n    y_val = 0.0\n    z_val = 0.0\n    def __init__(self, x_val = 0.0, y_val = 0.0, z_val = 0.0):\n        self.x_val = x_val\n        self.y_val = y_val\n        self.z_val = z_val\n    @staticmethod\n    def nanVector3r():",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Quaternionr",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class Quaternionr(MsgpackMixin):\n    w_val = 0.0\n    x_val = 0.0\n    y_val = 0.0\n    z_val = 0.0\n    def __init__(self, x_val = 0.0, y_val = 0.0, z_val = 0.0, w_val = 1.0):\n        self.x_val = x_val\n        self.y_val = y_val\n        self.z_val = z_val\n        self.w_val = w_val",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "Pose",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class Pose(MsgpackMixin):\n    position = Vector3r()\n    orientation = Quaternionr()\n    def __init__(self, position_val = None, orientation_val = None):\n        position_val = position_val if position_val != None else Vector3r()\n        orientation_val = orientation_val if orientation_val != None else Quaternionr()\n        self.position = position_val\n        self.orientation = orientation_val\n    @staticmethod\n    def nanPose():",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "CollisionInfo",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class CollisionInfo(MsgpackMixin):\n    has_collided = False\n    normal = Vector3r()\n    impact_point = Vector3r()\n    position = Vector3r()\n    penetration_depth = 0.0\n    time_stamp = 0.0\n    object_name = \"\"\n    object_id = -1\nclass GeoPoint(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "GeoPoint",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class GeoPoint(MsgpackMixin):\n    latitude = 0.0\n    longitude = 0.0\n    altitude = 0.0\nclass YawMode(MsgpackMixin):\n    is_rate = True\n    yaw_or_rate = 0.0\n    def __init__(self, is_rate = True, yaw_or_rate = 0.0):\n        self.is_rate = is_rate\n        self.yaw_or_rate = yaw_or_rate",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "YawMode",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class YawMode(MsgpackMixin):\n    is_rate = True\n    yaw_or_rate = 0.0\n    def __init__(self, is_rate = True, yaw_or_rate = 0.0):\n        self.is_rate = is_rate\n        self.yaw_or_rate = yaw_or_rate\nclass RCData(MsgpackMixin):\n    timestamp = 0\n    pitch, roll, throttle, yaw = (0.0,)*4 #init 4 variable to 0.0\n    switch1, switch2, switch3, switch4 = (0,)*4",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "RCData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class RCData(MsgpackMixin):\n    timestamp = 0\n    pitch, roll, throttle, yaw = (0.0,)*4 #init 4 variable to 0.0\n    switch1, switch2, switch3, switch4 = (0,)*4\n    switch5, switch6, switch7, switch8 = (0,)*4\n    is_initialized = False\n    is_valid = False\n    def __init__(self, timestamp = 0, pitch = 0.0, roll = 0.0, throttle = 0.0, yaw = 0.0, switch1 = 0,\n                 switch2 = 0, switch3 = 0, switch4 = 0, switch5 = 0, switch6 = 0, switch7 = 0, switch8 = 0, is_initialized = False, is_valid = False):\n        self.timestamp = timestamp",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "ImageRequest",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class ImageRequest(MsgpackMixin):\n    camera_name = '0'\n    image_type = ImageType.Scene\n    pixels_as_float = False\n    compress = False\n    def __init__(self, camera_name, image_type, pixels_as_float = False, compress = True):\n        # todo: in future remove str(), it's only for compatibility to pre v1.2\n        self.camera_name = str(camera_name)\n        self.image_type = image_type\n        self.pixels_as_float = pixels_as_float",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "ImageResponse",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class ImageResponse(MsgpackMixin):\n    image_data_uint8 = np.uint8(0)\n    image_data_float = 0.0\n    camera_position = Vector3r()\n    camera_orientation = Quaternionr()\n    time_stamp = np.uint64(0)\n    message = ''\n    pixels_as_float = 0.0\n    compress = True\n    width = 0",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "CarControls",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class CarControls(MsgpackMixin):\n    throttle = 0.0\n    steering = 0.0\n    brake = 0.0\n    handbrake = False\n    is_manual_gear = False\n    manual_gear = 0\n    gear_immediate = True\n    def __init__(self, throttle = 0, steering = 0, brake = 0,\n        handbrake = False, is_manual_gear = False, manual_gear = 0, gear_immediate = True):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "KinematicsState",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class KinematicsState(MsgpackMixin):\n    position = Vector3r()\n    orientation = Quaternionr()\n    linear_velocity = Vector3r()\n    angular_velocity = Vector3r()\n    linear_acceleration = Vector3r()\n    angular_acceleration = Vector3r()\nclass EnvironmentState(MsgpackMixin):\n    position = Vector3r()\n    geo_point = GeoPoint()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "EnvironmentState",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class EnvironmentState(MsgpackMixin):\n    position = Vector3r()\n    geo_point = GeoPoint()\n    gravity = Vector3r()\n    air_pressure = 0.0\n    temperature = 0.0\n    air_density = 0.0\nclass CarState(MsgpackMixin):\n    speed = 0.0\n    gear = 0",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "CarState",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class CarState(MsgpackMixin):\n    speed = 0.0\n    gear = 0\n    rpm = 0.0\n    maxrpm = 0.0\n    handbrake = False\n    collision = CollisionInfo()\n    kinematics_estimated = KinematicsState()\n    timestamp = np.uint64(0)\nclass MultirotorState(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "MultirotorState",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class MultirotorState(MsgpackMixin):\n    collision = CollisionInfo()\n    kinematics_estimated = KinematicsState()\n    gps_location = GeoPoint()\n    timestamp = np.uint64(0)\n    landed_state = LandedState.Landed\n    rc_data = RCData()\n    ready = False\n    ready_message = \"\"\n    can_arm = False",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "RotorStates",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class RotorStates(MsgpackMixin):\n    timestamp = np.uint64(0)\n    rotors = []\nclass ProjectionMatrix(MsgpackMixin):\n    matrix = []\nclass CameraInfo(MsgpackMixin):\n    pose = Pose()\n    fov = -1\n    proj_mat = ProjectionMatrix()\nclass LidarData(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "ProjectionMatrix",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class ProjectionMatrix(MsgpackMixin):\n    matrix = []\nclass CameraInfo(MsgpackMixin):\n    pose = Pose()\n    fov = -1\n    proj_mat = ProjectionMatrix()\nclass LidarData(MsgpackMixin):\n    point_cloud = 0.0\n    time_stamp = np.uint64(0)\n    pose = Pose()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "CameraInfo",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class CameraInfo(MsgpackMixin):\n    pose = Pose()\n    fov = -1\n    proj_mat = ProjectionMatrix()\nclass LidarData(MsgpackMixin):\n    point_cloud = 0.0\n    time_stamp = np.uint64(0)\n    pose = Pose()\n    segmentation = 0\nclass ImuData(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "LidarData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class LidarData(MsgpackMixin):\n    point_cloud = 0.0\n    time_stamp = np.uint64(0)\n    pose = Pose()\n    segmentation = 0\nclass ImuData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    orientation = Quaternionr()\n    angular_velocity = Vector3r()\n    linear_acceleration = Vector3r()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "ImuData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class ImuData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    orientation = Quaternionr()\n    angular_velocity = Vector3r()\n    linear_acceleration = Vector3r()\nclass BarometerData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    altitude = Quaternionr()\n    pressure = Vector3r()\n    qnh = Vector3r()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "BarometerData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class BarometerData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    altitude = Quaternionr()\n    pressure = Vector3r()\n    qnh = Vector3r()\nclass MagnetometerData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    magnetic_field_body = Vector3r()\n    magnetic_field_covariance = 0.0\nclass GnssFixType(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "MagnetometerData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class MagnetometerData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    magnetic_field_body = Vector3r()\n    magnetic_field_covariance = 0.0\nclass GnssFixType(MsgpackMixin):\n    GNSS_FIX_NO_FIX = 0\n    GNSS_FIX_TIME_ONLY = 1\n    GNSS_FIX_2D_FIX = 2\n    GNSS_FIX_3D_FIX = 3\nclass GnssReport(MsgpackMixin):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "GnssFixType",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class GnssFixType(MsgpackMixin):\n    GNSS_FIX_NO_FIX = 0\n    GNSS_FIX_TIME_ONLY = 1\n    GNSS_FIX_2D_FIX = 2\n    GNSS_FIX_3D_FIX = 3\nclass GnssReport(MsgpackMixin):\n    geo_point = GeoPoint()\n    eph = 0.0\n    epv = 0.0\n    velocity = Vector3r()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "GnssReport",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class GnssReport(MsgpackMixin):\n    geo_point = GeoPoint()\n    eph = 0.0\n    epv = 0.0\n    velocity = Vector3r()\n    fix_type = GnssFixType()\n    time_utc = np.uint64(0)\nclass GpsData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    gnss = GnssReport()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "GpsData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class GpsData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    gnss = GnssReport()\n    is_valid = False\nclass DistanceSensorData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    distance = 0.0\n    min_distance = 0.0\n    max_distance = 0.0\n    relative_pose = Pose()",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "DistanceSensorData",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class DistanceSensorData(MsgpackMixin):\n    time_stamp = np.uint64(0)\n    distance = 0.0\n    min_distance = 0.0\n    max_distance = 0.0\n    relative_pose = Pose()\nclass PIDGains():\n    \"\"\"\n    Struct to store values of PID gains. Used to transmit controller gain values while instantiating\n    AngleLevel/AngleRate/Velocity/PositionControllerGains objects.",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "PIDGains",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class PIDGains():\n    \"\"\"\n    Struct to store values of PID gains. Used to transmit controller gain values while instantiating\n    AngleLevel/AngleRate/Velocity/PositionControllerGains objects.\n    Attributes:\n        kP (float): Proportional gain\n        kI (float): Integrator gain\n        kD (float): Derivative gain\n    \"\"\"\n    def __init__(self, kp, ki, kd):",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "AngleRateControllerGains",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class AngleRateControllerGains():\n    \"\"\"\n    Struct to contain controller gains used by angle level PID controller\n    Attributes:\n        roll_gains (PIDGains): kP, kI, kD for roll axis\n        pitch_gains (PIDGains): kP, kI, kD for pitch axis\n        yaw_gains (PIDGains): kP, kI, kD for yaw axis\n    \"\"\"\n    def __init__(self, roll_gains = PIDGains(0.25, 0, 0),\n                       pitch_gains = PIDGains(0.25, 0, 0),",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "AngleLevelControllerGains",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class AngleLevelControllerGains():\n    \"\"\"\n    Struct to contain controller gains used by angle rate PID controller\n    Attributes:\n        roll_gains (PIDGains): kP, kI, kD for roll axis\n        pitch_gains (PIDGains): kP, kI, kD for pitch axis\n        yaw_gains (PIDGains): kP, kI, kD for yaw axis\n    \"\"\"\n    def __init__(self, roll_gains = PIDGains(2.5, 0, 0),\n                       pitch_gains = PIDGains(2.5, 0, 0),",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "VelocityControllerGains",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class VelocityControllerGains():\n    \"\"\"\n    Struct to contain controller gains used by velocity PID controller\n    Attributes:\n        x_gains (PIDGains): kP, kI, kD for X axis\n        y_gains (PIDGains): kP, kI, kD for Y axis\n        z_gains (PIDGains): kP, kI, kD for Z axis\n    \"\"\"\n    def __init__(self, x_gains = PIDGains(0.2, 0, 0),\n                       y_gains = PIDGains(0.2, 0, 0),",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "PositionControllerGains",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class PositionControllerGains():\n    \"\"\"\n    Struct to contain controller gains used by position PID controller\n    Attributes:\n        x_gains (PIDGains): kP, kI, kD for X axis\n        y_gains (PIDGains): kP, kI, kD for Y axis\n        z_gains (PIDGains): kP, kI, kD for Z axis\n    \"\"\"\n    def __init__(self, x_gains = PIDGains(0.25, 0, 0),\n                       y_gains = PIDGains(0.25, 0, 0),",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "MeshPositionVertexBuffersResponse",
+        "kind": 6,
+        "importPath": "src.airsim140.types",
+        "description": "src.airsim140.types",
+        "peekOfCode": "class MeshPositionVertexBuffersResponse(MsgpackMixin):\n    position = Vector3r()\n    orientation = Quaternionr()\n    vertices = 0.0\n    indices = 0.0\n    name = ''",
+        "detail": "src.airsim140.types",
+        "documentation": {}
+    },
+    {
+        "label": "string_to_uint8_array",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def string_to_uint8_array(bstr):\n    return np.fromstring(bstr, np.uint8)\ndef string_to_float_array(bstr):\n    return np.fromstring(bstr, np.float32)\ndef list_to_2d_float_array(flst, width, height):\n    return np.reshape(np.asarray(flst, np.float32), (height, width))\ndef get_pfm_array(response):\n    return list_to_2d_float_array(response.image_data_float, response.width, response.height)\ndef get_public_fields(obj):\n    return [attr for attr in dir(obj)",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "string_to_float_array",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def string_to_float_array(bstr):\n    return np.fromstring(bstr, np.float32)\ndef list_to_2d_float_array(flst, width, height):\n    return np.reshape(np.asarray(flst, np.float32), (height, width))\ndef get_pfm_array(response):\n    return list_to_2d_float_array(response.image_data_float, response.width, response.height)\ndef get_public_fields(obj):\n    return [attr for attr in dir(obj)\n                            if not (attr.startswith(\"_\") \n                            or inspect.isbuiltin(attr)",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "list_to_2d_float_array",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def list_to_2d_float_array(flst, width, height):\n    return np.reshape(np.asarray(flst, np.float32), (height, width))\ndef get_pfm_array(response):\n    return list_to_2d_float_array(response.image_data_float, response.width, response.height)\ndef get_public_fields(obj):\n    return [attr for attr in dir(obj)\n                            if not (attr.startswith(\"_\") \n                            or inspect.isbuiltin(attr)\n                            or inspect.isfunction(attr)\n                            or inspect.ismethod(attr))]",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_pfm_array",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def get_pfm_array(response):\n    return list_to_2d_float_array(response.image_data_float, response.width, response.height)\ndef get_public_fields(obj):\n    return [attr for attr in dir(obj)\n                            if not (attr.startswith(\"_\") \n                            or inspect.isbuiltin(attr)\n                            or inspect.isfunction(attr)\n                            or inspect.ismethod(attr))]\ndef to_dict(obj):\n    return dict([attr, getattr(obj, attr)] for attr in get_public_fields(obj))",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_public_fields",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def get_public_fields(obj):\n    return [attr for attr in dir(obj)\n                            if not (attr.startswith(\"_\") \n                            or inspect.isbuiltin(attr)\n                            or inspect.isfunction(attr)\n                            or inspect.ismethod(attr))]\ndef to_dict(obj):\n    return dict([attr, getattr(obj, attr)] for attr in get_public_fields(obj))\ndef to_str(obj):\n    return str(to_dict(obj))",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_dict",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def to_dict(obj):\n    return dict([attr, getattr(obj, attr)] for attr in get_public_fields(obj))\ndef to_str(obj):\n    return str(to_dict(obj))\ndef write_file(filename, bstr):\n    \"\"\"\n    Write binary data to file.\n    Used for writing compressed PNG images\n    \"\"\"\n    with open(filename, 'wb') as afile:",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_str",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def to_str(obj):\n    return str(to_dict(obj))\ndef write_file(filename, bstr):\n    \"\"\"\n    Write binary data to file.\n    Used for writing compressed PNG images\n    \"\"\"\n    with open(filename, 'wb') as afile:\n        afile.write(bstr)\n# helper method for converting getOrientation to roll/pitch/yaw",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "write_file",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def write_file(filename, bstr):\n    \"\"\"\n    Write binary data to file.\n    Used for writing compressed PNG images\n    \"\"\"\n    with open(filename, 'wb') as afile:\n        afile.write(bstr)\n# helper method for converting getOrientation to roll/pitch/yaw\n# https:#en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles\ndef to_eularian_angles(q):",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_eularian_angles",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def to_eularian_angles(q):\n    z = q.z_val\n    y = q.y_val\n    x = q.x_val\n    w = q.w_val\n    ysqr = y * y\n    # roll (x-axis rotation)\n    t0 = +2.0 * (w*x + y*z)\n    t1 = +1.0 - 2.0*(x*x + ysqr)\n    roll = math.atan2(t0, t1)",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "to_quaternion",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def to_quaternion(pitch, roll, yaw):\n    t0 = math.cos(yaw * 0.5)\n    t1 = math.sin(yaw * 0.5)\n    t2 = math.cos(roll * 0.5)\n    t3 = math.sin(roll * 0.5)\n    t4 = math.cos(pitch * 0.5)\n    t5 = math.sin(pitch * 0.5)\n    q = Quaternionr()\n    q.w_val = t0 * t2 * t4 + t1 * t3 * t5 #w\n    q.x_val = t0 * t3 * t4 - t1 * t2 * t5 #x",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "wait_key",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def wait_key(message = ''):\n    ''' Wait for a key press on the console and return it. '''\n    if message != '':\n        print (message)\n    result = None\n    if os.name == 'nt':\n        import msvcrt\n        result = msvcrt.getch()\n    else:\n        import termios",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "read_pfm",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def read_pfm(file):\n    \"\"\" Read a pfm file \"\"\"\n    file = open(file, 'rb')\n    color = None\n    width = None\n    height = None\n    scale = None\n    endian = None\n    header = file.readline().rstrip()\n    header = str(bytes.decode(header, encoding='utf-8'))",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "write_pfm",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def write_pfm(file, image, scale=1):\n    \"\"\" Write a pfm file \"\"\"\n    file = open(file, 'wb')\n    color = None\n    if image.dtype.name != 'float32':\n        raise Exception('Image dtype must be float32.')\n    if len(image.shape) == 3 and image.shape[2] == 3: # color image\n        color = True\n    elif len(image.shape) == 2 or len(image.shape) == 3 and image.shape[2] == 1: # grayscale\n        color = False",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
+        "label": "write_png",
+        "kind": 2,
+        "importPath": "src.airsim140.utils",
+        "description": "src.airsim140.utils",
+        "peekOfCode": "def write_png(filename, image):\n    \"\"\" image must be numpy array H X W X channels\n    \"\"\"\n    import cv2      # pip install opencv-python\n    ret = cv2.imwrite(filename, image)\n    if not ret:\n        logging.error(f\"Writing PNG file {filename} failed\")",
+        "detail": "src.airsim140.utils",
+        "documentation": {}
+    },
+    {
         "label": "DrivetrainType",
         "kind": 6,
         "importPath": "src.airsimgeo.newMyAirSimClient",
@@ -3089,7 +3671,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3098,7 +3680,7 @@
         "kind": 5,
         "importPath": "src.layer1",
         "description": "src.layer1",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1",
+        "peekOfCode": "c_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\nIDX_TO_ACTION =  {0:\"LEFT\", 1:\"FRONT\", 2:\"RIGHT\", 3:\"BACK\"}\nEXPERIMENT_DATE =  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints\n# FOR MAZE GENERATION ONLY\n# Return a value depending on allowed action, \"NESW\" if all possible\ndef remove_action(value,action):\n    if \"N\" in action:\n        value &= ~ 0x1",
         "detail": "src.layer1",
         "documentation": {}
     },
@@ -3143,7 +3725,7 @@
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3152,7 +3734,7 @@
         "kind": 5,
         "importPath": "src.layer2",
         "description": "src.layer2",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]\n   latest_mod_folder = max(exp_folders , key=os.path.getmtime)",
+        "peekOfCode": "c_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(trajectories_folder,velocity):\n   # Create AirSim client\n   asClient = NewMyAirSimClient(trajColFlag=False,\n            canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])\n   # Read trajectories\n   exp_folders = [os.path.join(trajectories_folder,d) for d in os.listdir(trajectories_folder)]\n   latest_mod_folder = max(exp_folders , key=os.path.getmtime)",
         "detail": "src.layer2",
         "documentation": {}
     },
@@ -3166,11 +3748,20 @@
         "documentation": {}
     },
     {
+        "label": "main",
+        "kind": 2,
+        "importPath": "src.layer3",
+        "description": "src.layer3",
+        "peekOfCode": "def main(out_folder,velocity):\n   l_files = os.listdir(out_folder)\n   trajectory_file = None\n   x,y = None,None\n   for f in l_files:\n      if( f[-4:]==\".csv\" ):\n         print(\"Reading:\",f)\n         with open(os.path.join(out_folder,f),\"r\") as fin:\n            lr= fin.readlines()\n            x = float( lr[1].split(\",\")[1] )",
+        "detail": "src.layer3",
+        "documentation": {}
+    },
+    {
         "label": "configYml",
         "kind": 5,
         "importPath": "src.layer3",
         "description": "src.layer3",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\nc_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(out_folder,velocity):\n   l_files = os.listdir(out_folder)\n   trajectory_file = None\n   x,y = None,None\n   for f in l_files:\n      if( f[-4:]==\".csv\" ):",
         "detail": "src.layer3",
         "documentation": {}
     },
@@ -3179,7 +3770,7 @@
         "kind": 5,
         "importPath": "src.layer3",
         "description": "src.layer3",
-        "peekOfCode": "c_paths = configYml[\"layer1\"][\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')",
+        "peekOfCode": "c_paths = configYml[\"paths\"]\nc_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(out_folder,velocity):\n   l_files = os.listdir(out_folder)\n   trajectory_file = None\n   x,y = None,None\n   for f in l_files:\n      if( f[-4:]==\".csv\" ):\n         print(\"Reading:\",f)",
         "detail": "src.layer3",
         "documentation": {}
     },
@@ -3188,16 +3779,7 @@
         "kind": 5,
         "importPath": "src.layer3",
         "description": "src.layer3",
-        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\n# if(args.debug):\nlogging.basicConfig(filename=c_paths[\"LOG_FOLDER\"]+\"L3log(AIRSIM)\"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+\".txt\",\n                        filemode='w',\n                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',\n                        datefmt='%H:%M:%S',\n                        level=logging.INFO)\nlogger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )",
-        "detail": "src.layer3",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "src.layer3",
-        "description": "src.layer3",
-        "peekOfCode": "logger = logging.getLogger('RL Layer3')\nlogger.info('Experiment Date: {}'.format(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') ) )\nif __name__ == \"__main__\":\n   parser = argparse.ArgumentParser(description='Layer 3')\n   parser.add_argument(\"-i\", type=str,required=True,\n                     help='input folder of trajs 3d')\n   # parser.add_argument('-sx', type=int,required=True,\n   #                   help='Starting x coordinate of agent to choose correct trajectory to follow')\n   # parser.add_argument('-sy', type=int,required=True,\n   #                   help='Starting y coordinate of agent to choose correct trajectory to follow')",
+        "peekOfCode": "c_settings = configYml[\"layer1\"][\"settings\"]\nc_verSep= configYml[\"layer1\"][\"vertical_separation\"]\ndef main(out_folder,velocity):\n   l_files = os.listdir(out_folder)\n   trajectory_file = None\n   x,y = None,None\n   for f in l_files:\n      if( f[-4:]==\".csv\" ):\n         print(\"Reading:\",f)\n         with open(os.path.join(out_folder,f),\"r\") as fin:",
         "detail": "src.layer3",
         "documentation": {}
     },
@@ -3485,7 +4067,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\n# global SEED\n# SEED = 668\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]",
+        "peekOfCode": "configYml = utils.read_yaml(\"inputData/config.yaml\")\n# global SEED\n# SEED = 668\nN_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3494,7 +4076,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):",
+        "peekOfCode": "N_POINTS = 100\nSTEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3503,7 +4085,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) ",
+        "peekOfCode": "STEP_SIZE = 20\nACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) ",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3512,7 +4094,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):",
+        "peekOfCode": "ACTION = [\"N\",\"S\", \"E\", \"W\"]\nAINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3521,7 +4103,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) ",
+        "peekOfCode": "AINDEX = {\"N\":0,\"S\":1, \"E\":2, \"W\":3}\nFIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) ",
         "detail": "src.trajs_utils",
         "documentation": {}
     },
@@ -3530,7 +4112,7 @@
         "kind": 5,
         "importPath": "src.trajs_utils",
         "description": "src.trajs_utils",
-        "peekOfCode": "FIGS_FOLDER = configYml[\"layer1\"][\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):",
+        "peekOfCode": "FIGS_FOLDER = configYml[\"paths\"][\"FIGS_FOLDER\"]\ndef vec2d_list_to_tuple_list(list):\n    return [vec2d_to_tuple(v) for v in list]\ndef vec2d_list_to_numpy_list(list):\n    return [vec2d_to_numpy_array(v) for v in list]\ndef vec2d_to_tuple(vec):\n    return tuple([vec.x_val, vec.y_val]) \ndef vec2d_to_numpy_array(vec):\n    return np.array([vec.x_val, vec.y_val]) \ndef vec3d_to_numpy_array(vec):",
         "detail": "src.trajs_utils",
         "documentation": {}
     },

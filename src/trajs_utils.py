@@ -22,7 +22,7 @@ STEP_SIZE = 20
 ACTION = ["N","S", "E", "W"]
 AINDEX = {"N":0,"S":1, "E":2, "W":3}
 
-FIGS_FOLDER = configYml["layer1"]["paths"]["FIGS_FOLDER"]
+FIGS_FOLDER = configYml["paths"]["FIGS_FOLDER"]
 
 def vec2d_list_to_tuple_list(list):
     return [vec2d_to_tuple(v) for v in list]

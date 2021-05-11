@@ -1,26 +1,37 @@
 #====================================================================================================
+# CONFIG file containing paths and global variable
+
+# format: <variable> : value 
+#  <#> for comments
+# space after double dots is needed
+
+
+paths:
+
+  LAYER1_INPUT_STARTS_FILE: "inputData/start_pos_table.csv"
+  LAYER1_INPUT_GOALS_FILE: "inputData/goal_pos_table.csv"
+  
+  LAYER1_2D_OUTPUT_FOLDER : "generatedData/2dL1/" 
+  LAYER1_2D_INTERPOLATED_OUTPUT_FOLDER : "generatedData/2dL1INT/" 
+  LAYER1_3D_OUTPUT_FOLDER : "generatedData/3dL1/"
+  
+  LAYER2_OUTPUT_FOLDER : "generatedData/3dL2/"
+
+  LAYER3_OUTPUT_FOLDER : "generatedData/3dL3/csv"
+  
+  STD_MAZE : "maze2d_004.npy"
+  LOG_FOLDER : "./generatedData/logs/"
+  FIGS_FOLDER : "generatedFigs"
+  EUROCONTROL_FOLDER : "generatedData/eurocontrol/"
+
 layer1:
-
-  paths:
-    RANDOM_TRAJECTORIES_FOLDER : "generatedData/2dL1/csv/"
-    TRAJECTORIES_FOLDER : "generatedData/2dL1/" 
-    INT_TRAJECTORIES_FOLDER : "generatedData/2dL1INT/" 
-    TRAJECTORIES_3D_FOLDER : "generatedData/3dL2/"
-    INPUT_START_FILE: "inputData/start_pos_table.csv"
-    GOAL_START_FILE: "inputData/goal_pos_table.csv"
-    TRAJECTORIES_3DL3_FOLDER : "generatedData/3dL3/csv/"
-
-    STD_MAZE : "maze2d_004.npy"
-    LOG_FOLDER : "./generatedData/logs/"
-    FIGS_FOLDER : "generatedFigs"
-
   settings:
     SEED : 234
-    OUT_FORMAT : "csv" # (csv or npy)
+    OUT_FORMAT : "csv" # (csv or npy) for layer1 output
 
     N_TRAJECTORIES_TO_GENERATE : 99 # Number of UAV Trajectories
     TRAJECTORIES_BUFFER_SIZE : 3 # Number UAV past trajectories recorded (to be then horizontally separated)
-    SCALE_SIZE : 20 # length of cell side in meters unit
+    SCALE_SIZE : 40 # length of cell side in meters unit
 
     # Influence when --generate-maze arg is passed
     NROWS : 43
@@ -28,7 +39,7 @@ layer1:
     OBS_BLOCKS : 6
     
     # Learning related constants   
-    EPISODES: 300
+    EPISODES: 500
     MIN_EXPLORE_RATE : 0.001
     MIN_LEARNING_RATE : 0.2
 
@@ -42,6 +53,7 @@ layer1:
     exploded_3dPlot : True
     doSave_xyPlot : True
 
+  
   vertical_separation:
     MIN_HEIGHT : 50
     MAX_HEIGHT : 300
@@ -52,6 +64,17 @@ layer1:
 
 #====================================================================================================
 layer2:
-
+    #UAV default velocity (Airsim)
+    VELOCITY : 12
+    AIRSIM_SAMPLING_INTERVAL: 0.01 #in seconds
+    
+    #Values to correct trajectory 
+    W_SCALE : 1
+    H_SCALE : 1
+    W_OFFSET : -14
+    H_OFFSET : -14
 #====================================================================================================
 layer3:
+    #UAV default velocity (Airsim)
+    VELOCITY : 12
+    FIXED_Z : -100 # Negative due to airsim
