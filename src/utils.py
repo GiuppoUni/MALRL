@@ -5,7 +5,7 @@ import os
 from typing import Tuple
 from airsim140.types import Vector3r
 from dotmap import DotMap
-
+from numpy.linalg import norm
 from configparser import ConfigParser
 import logging
 import datetime
@@ -242,11 +242,13 @@ def pos_arr_to_airsim_vec(l,wcell_in_meters=1,hcell_in_meters=1) -> Vector3r:
     #     raise Exception("REQUIRED EXACTLY 3 elements")
     return Vector3r(x,y,z)
 
-def vec_to_str(v,doSum=False):
-    return ",".join( ( str(v.x_val),str(v.y_val),str(v.z_val)) )
+def vec_to_str(v,doNorm=False):
+    if doNorm : return str( norm([v.x_val,v.y_val,v.z_val] ) )
+    else: return ",".join( ( str(v.x_val),str(v.y_val),str(v.z_val)) )
 
-def quat_to_str(q,doSum=False): 
-    return ",".join( (str(q.w_val),str(q.x_val),str(q.y_val),str(q.z_val)) )
+def quat_to_str(q,doNorm=False): 
+    if doNorm : return str( norm([q.w_val,q.x_val,q.y_val,q.z_val] ) )
+    else: return ",".join( (str(q.w_val),str(q.x_val),str(q.y_val),str(q.z_val)) )
     
 
 def l3_pos_arr_to_airsim_vec(l,wcell_in_meters=1,w_offset=0,hcell_in_meters=1,h_offset=0) -> Vector3r:

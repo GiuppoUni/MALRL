@@ -167,7 +167,10 @@ def convert_df_to_eurocontrol_format(df,uasId):
    #    df.pop("z_pos")
    df["UAS id"] = [uasId]*len(df.index)
    df[ 'UAS Relative time' ] = df.index
-   df = df.rename(columns={"x_pos":"x","y_pos":"y"})
+   df = df.rename(columns={"x_pos":"x","y_pos":"y","z_pos":"z"})
+   df[["linear_velocity"]] = np.sqrt(np.square(df[["x_lin_vel","y_lin_vel","z_lin_vel"]].values).sum(axis=1))
+   df[["angular_velocity"]] = np.sqrt(np.square(df[["x_ang_vel","y_ang_vel","z_ang_vel"]].values).sum(axis=1))
+   
    return df
 
 # def create_eurocontrol_file(trajs,dimensions,filename,header = True):
@@ -230,6 +233,8 @@ if __name__ == "__main__":
             # print(df)
          df["UAS id"] = np.nan
          df["UAS Relative time"] = np.nan
+         df["target_angle"]=np.nan
+         df["vz"]=np.nan
          trajectories.append( df.to_numpy() )
       elif(t_filename[-4:] == ".npy"):
          trajectories = np.load(os.path.join( args.i,t_filename) )
@@ -241,9 +246,7 @@ if __name__ == "__main__":
       newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
       concatDf = pd.concat([newDf,concatDf])
    
-      concatDf = concatDf[["UAS id","UAS Relative time","x","y","z_pos","w_or","x_or","y_or",\
-         "z_or","x_lin_vel","y_lin_vel","z_lin_vel","x_ang_vel","y_ang_vel","z_ang_vel",\
-         "x_lin_acc","y_lin_acc","z_lin_acc","x_ang_acc","y_ang_acc","z_ang_acc" ]]
+      concatDf = concatDf[["UAS id","UAS Relative time","x","y","z","target_angle","linear_velocity","angular_velocity","vz" ]]
          
 
    concatDf.to_csv(os.path.join(args.o,

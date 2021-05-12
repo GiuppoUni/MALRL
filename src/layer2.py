@@ -71,7 +71,7 @@ class positionLoggerThread(threading.Thread):
          while(True):
             ks = self.client.simGetGroundTruthKinematics("Drone0")
             position = utils.vec_to_str(ks.position)
-            orientation = utils.quat_to_str(ks.orientation,True)
+            orientation = utils.quat_to_str(ks.orientation,False)
             linear_velocity = utils.vec_to_str(ks.linear_velocity)
             angular_velocity = utils.vec_to_str(ks.angular_velocity)
             linear_acceleration = utils.vec_to_str(ks.linear_acceleration)

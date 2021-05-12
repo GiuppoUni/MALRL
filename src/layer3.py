@@ -5,6 +5,8 @@ import logging
 import math
 import sys
 from time import sleep
+
+from numpy.lib.function_base import rot90
 from airsim140.types import Pose
 from airsim140.utils import to_quaternion
 import matplotlib
@@ -29,13 +31,14 @@ c_verSep= configYml["layer1"]["vertical_separation"]
 
 def main(out_folder,velocity):
    
+   exp_folders = [os.path.join(out_folder,d) for d in os.listdir(out_folder)]
+   latest_mod_folder = max(exp_folders , key=os.path.getmtime)
 
-
-   l_files = os.listdir(out_folder)
+   l_files = os.listdir(latest_mod_folder)
 
    for f in l_files:
       if( f[-4:]==".csv" ):
-         print("Reading trajectory from file:",f)
+         print("Reading trajectory from file:",f,". Found ",len(l_files), "different files.")
          trajectory=[]
          with open(os.path.join(out_folder,f),"r") as fin:
             lr= fin.readlines()
@@ -54,6 +57,7 @@ def main(out_folder,velocity):
       trajs_utils.plot_xy([trajectory],cell_size=c_settings["SCALE_SIZE"])
       trajectory_vecs = [utils.l3_pos_arr_to_airsim_vec(x) for i,x in enumerate(trajectory) if i%10==0]
       np_trajectory = np.array( trajectory)
+      
       print("FOLLOWING trajectory:",f)
       print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
       print("\t num. of points:", np.shape(np_trajectory)[0] )
@@ -68,8 +72,9 @@ def main(out_folder,velocity):
    pose = Pose(utils.pos_arr_to_airsim_vec(trajectory[0]), to_quaternion(0, 0, 0) ) 
    asClient.simSetVehiclePose(pose,True,"Drone0")        
    print("Drone set at start position.")
-
-   gps_coo = asClient.nedToGps(*trajs_utils.rotate_point_2d(-math.pi/2, trajectory[0][0],trajectory[0][1]),trajectory[0][2] ) 
+   
+   transformed_coo = *trajs_utils.rotate_point_2d(-math.pi/2, trajectory[0][0],trajectory[0][1]) , trajectory[0][2]
+   gps_coo = asClient.nedToGps(transformed_coo ) 
    print("GPS STARTING COO (lon,lat,alt):",gps_coo)
    
    # asClient.enable_trace_lines()
