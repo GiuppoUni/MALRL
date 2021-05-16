@@ -12,22 +12,24 @@ import datetime
 import numpy as np
 import pickle
 import time
-import winsound
-from sklearn.neighbors import KDTree
+#import winsound
 import yaml
 
+
+def read_yaml(file_path):
+    with open(file_path, "r") as f:
+        return yaml.safe_load(f)
+
 # CHANGE FOR FOLDER CONTAINING AIRSIM SETTINGS
-AIRSIM_SETTINGS_FOLDER = 'C:/Users/gioca/OneDrive/Documents/Airsim/'
-CONFIGS_FOLDER = "./configs/"
-TRAJECTORIES_FOLDER = "./qtrajectories/"
+configYml = read_yaml("./inputData/config.yaml")
+AIRSIM_SETTINGS_FILE = configYml["paths"]["AIRSIM_SETTINGS_FILE"]
+TRAJECTORIES_FOLDER = configYml["paths"]["Q_TRAJECTORIES"]
 
 
-with open(AIRSIM_SETTINGS_FOLDER + 'settings.json', 'r') as jsonFile:
+with open(AIRSIM_SETTINGS_FILE, 'r') as jsonFile:
     g_airsim_settings = json.load(jsonFile)
 
 g_vehicles = g_airsim_settings["Vehicles"]
-g_config = ConfigParser()
-g_config.read(CONFIGS_FOLDER + 'config.ini')
 
 """
        Assumes that the simulation environment (unreal) is in the coordinate system specified
@@ -92,14 +94,16 @@ def get_experiment_date():
     return  str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') ) # To be used in log and prints
 
 
-def read_yaml(file_path):
-    with open(file_path, "r") as f:
-        return yaml.safe_load(f)
+
 
 
 def play_audio_notification(n_beeps=3,frequency=2000,beep_duration=250):
     for _ in range(n_beeps):
-        winsound.Beep(frequency, beep_duration)
+        # try:
+        #     winsound.Beep(frequency, beep_duration)
+        # except:
+        #     print("[WARNING] Bug in sound winsound")
+        print("[BEEP]")
         time.sleep(0.1)
 
 
@@ -399,12 +403,6 @@ def myInterpolate2D(trajs, n_samples=10,step_size=20 ):
     return res
             
 
-
-def build_trees(trajectories):
-    _trees = []
-    for traj in trajectories:
-        _trees.append(KDTree(np.array(traj)))
-    return _trees
 
 
 

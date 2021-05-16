@@ -7,6 +7,10 @@
 
 
 paths:
+  AIRSIM_SETTINGS_FILE : "settings.json"
+  #'C:\Users\gioca\OneDrive\Documents\AirSim\settings.json'
+  # TODO since inconsistent (it's just a copy) change for real or use this in airsim
+  Q_TRAJECTORIES : "./qtrajectories/"
 
   LAYER1_INPUT_STARTS_FILE: "inputData/start_pos_table.csv"
   LAYER1_INPUT_GOALS_FILE: "inputData/goal_pos_table.csv"

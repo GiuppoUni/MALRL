@@ -1,0 +1,47 @@
+{
+   "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings_json.md",
+   "SettingsVersion": 1.2,
+   "SimMode": "Multirotor",
+   "ClockSpeed": 10,
+   "ViewMode":"Manual",
+     "Vehicles": {
+     "Drone0": {
+       "VehicleType": "SimpleFlight",
+       "X": 3,
+       "Y": -1,
+       "Z": -10,
+       "EnableTrace": true,
+ 
+       "Sensors": {
+         "Barometer": {
+              "SensorType": 1,
+              "Enabled" : true
+         },
+         "Imu": {
+              "SensorType": 2,
+              "Enabled" : true
+         },
+         "Gps": {
+              "SensorType": 3,
+              "Enabled" : true
+         },
+         
+         "Distance": {
+              "SensorType": 5,
+              "Enabled" : true,
+              "Yaw": 0, "Pitch": 0, "Roll": 0,
+              "DrawDebugPoints": false
+              
+     
+         }
+       }
+     }
+    
+   },
+   "SubWindows": [
+      {"WindowID": 0, "CameraName": "0", "ImageType": 0, "VehicleName": "Drone0", "Visible": false},
+      {"WindowID": 1, "CameraName": "0", "ImageType": 0, "VehicleName": "Drone1", "Visible": false},
+      {"WindowID": 2, "CameraName": "0", "ImageType": 0, "VehicleName": "Drone2", "Visible": false}
+    ]
+ }
+  

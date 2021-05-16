@@ -1,29 +1,14 @@
 import argparse
 import datetime
 import logging
-import math
-import sys
 import threading
-from time import sleep
 import time
 from airsim140.client import MultirotorClient
 from airsim140.types import DrivetrainType, Pose, Vector3r, YawMode
 from airsim140.utils import to_quaternion
-import matplotlib
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
-import random
-import pandas
-
-import scipy.interpolate
 import utils
-from sklearn.neighbors import KDTree
 import os
-import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
-import trajs_utils
-
 import nest_asyncio
 nest_asyncio.apply()
 
@@ -91,7 +76,8 @@ class positionLoggerThread(threading.Thread):
             
 def calibrate(vertices,scale=1):
    asClient = NewMyAirSimClient(trajColFlag=False,
-         canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])
+         canDrawTrajectories=False,crabMode=True,
+         thickness = 100,trajs2draw=[],traj2follow=[])
    for v in vertices:
       x,y,z = v[0]*scale,v[1]*scale,-50
       pose = Pose(utils.l3_pos_arr_to_airsim_vec((x,y,z),w_offset=c_settings2["W_OFFSET"],h_offset=c_settings2["H_OFFSET"]), 
@@ -216,6 +202,10 @@ if __name__ == "__main__":
 
    parser.add_argument( '--calibrate',action='store_true',  default=False,
       help='Calibration flag to enable calibration (default: %(default)s)' )
+
+   parser.add_argument( '--from-docker',action='store_true',  default=False,
+      help='Set ip localhost for docker (default: %(default)s)' )
+
 
    # parser.add_argument('--load-qtable', type=str, 
    #    help='qtable file (default: %(default)s)')

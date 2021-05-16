@@ -103,7 +103,7 @@ def main():
             action = int(np.argmax(q_table[state]))
          return action
 
-   def get_explore_rate(t):
+   def get_explore_rate(t): # returns epsilon value
       # return max(c_settings["MIN_EXPLORE_RATE"], min(0.8, 1.0 - math.log10((t+1)/DECAY_FACTOR)))
       return 0.2
 

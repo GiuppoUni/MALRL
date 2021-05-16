@@ -5,24 +5,16 @@ from matplotlib.pyplot import draw
 import numpy as np
 import time
 import math
-import cv2
-from pylab import array, arange, uint8 
-from PIL import Image
-import eventlet
 from eventlet import Timeout
-import multiprocessing as mp
-from sklearn.neighbors import KDTree
+
 # Change the path below to point to the directoy where you installed the AirSim PythonClient
 #sys.path.append('C:/Users/Kjell/Google Drive/MASTER-THESIS/AirSimpy')
 
 from airsim140 import Vector3r, MultirotorClient
 from pyproj import Proj
 
-import airsim
-import sys 
 import utils
 import gc 
-import pandas
 import threading
 from scipy.interpolate import interp1d
 
