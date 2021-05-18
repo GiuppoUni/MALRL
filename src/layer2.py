@@ -100,7 +100,9 @@ def main(trajectories_folder,velocity):
    print("Detected ",len(latest_mod_folder)," files inside: "+latest_mod_folder+".")
    for f in   sorted(os.listdir(latest_mod_folder)) :
       asClient = NewMyAirSimClient(trajColFlag=False,
-         canDrawTrajectories=False,crabMode=True,thickness = 100,trajs2draw=[],traj2follow=[])
+         canDrawTrajectories=False,crabMode=True,
+         thickness = 100,trajs2draw=[],traj2follow=[],
+         ip="127.0.0.1")
       asClient.disable_trace_lines()
 
       if( f[-4:]==".csv" ):

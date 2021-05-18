@@ -37,9 +37,9 @@ class NewMyAirSimClient(MultirotorClient):
 
     deg_to_rad = lambda d_angle: d_angle * math.pi / 180.0
 
-    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow,z_des=None):        
+    def __init__(self,trajColFlag,canDrawTrajectories,crabMode,thickness,trajs2draw,traj2follow,z_des=None,ip = "", port = 41451):        
 
-        MultirotorClient.__init__(self)
+        MultirotorClient.__init__(self,ip = "", port = 41451)
         MultirotorClient.confirmConnection(self)
         self.drones_names = [ v for v in utils.g_airsim_settings["Vehicles"] ]
         
