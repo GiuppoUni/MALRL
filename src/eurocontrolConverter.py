@@ -203,6 +203,42 @@ def convert_df_to_eurocontrol_format(df,uasId):
 #    mode = 'w' if header==True else 'a'
 #    df.to_csv(FILE_DIR + filename, encoding='utf-8', mode=mode, header=header, index=False)
 
+def convert_folder_to_eurocontrol_format(in_folder):
+   
+   trajectories = []
+   concatDf = pd.DataFrame(columns=["UAS id","UAS Relative time","x","y","z_pos","w_or","x_or","y_or",\
+         "z_or","x_lin_vel","y_lin_vel","z_lin_vel","x_ang_vel","y_ang_vel","z_ang_vel",\
+         "x_lin_acc","y_lin_acc","z_lin_acc","x_ang_acc","y_ang_acc","z_ang_acc"])
+   
+   
+   for idx,t_filename in enumerate(os.listdir(args.i)):
+      if(t_filename[-4:] == ".csv" ):
+         df = pd.read_csv( os.path.join(args.i, t_filename),delimiter=",",index_col="index")
+            # print(df)
+         df["UAS id"] = np.nan
+         df["UAS Relative time"] = np.nan
+         df["target_angle"]=np.nan
+         df["vz"]=np.nan
+         trajectories.append( df.to_numpy() )
+      elif(t_filename[-4:] == ".npy"):
+         trajectories = np.load(os.path.join( args.i,t_filename) )
+      else:
+         raise Exception("invalid file in dir")
+      # trajectories = [d1,d2]
+      # print(t_filename,":",trajectories[0][0:2],"...")
+      # create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
+      newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
+      concatDf = pd.concat([newDf,concatDf])
+
+      concatDf = concatDf[["UAS id","UAS Relative time","x","y","z","target_angle","linear_velocity","angular_velocity","vz" ]]
+         
+
+   concatDf.to_csv(os.path.join(args.o,
+      "euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv"),header=False,index=False) 
+
+   # data_to_csv(data,"test.csv")
+   print(concatDf.columns)
+   print("Completed. File converted can be found at:",args.o)
 
 if __name__ == "__main__":
 
@@ -223,35 +259,4 @@ if __name__ == "__main__":
    args = parser.parse_args()
    print("Found: ",len(os.listdir(args.i)),"in ",args.i)
    
-   trajectories = []
-   concatDf = pd.DataFrame(columns=["UAS id","UAS Relative time","x","y","z_pos","w_or","x_or","y_or",\
-         "z_or","x_lin_vel","y_lin_vel","z_lin_vel","x_ang_vel","y_ang_vel","z_ang_vel",\
-         "x_lin_acc","y_lin_acc","z_lin_acc","x_ang_acc","y_ang_acc","z_ang_acc"])
-   for idx,t_filename in enumerate(os.listdir(args.i)):
-      if(t_filename[-4:] == ".csv" ):
-         df = pd.read_csv( os.path.join(args.i, t_filename),delimiter=",",index_col="index")
-            # print(df)
-         df["UAS id"] = np.nan
-         df["UAS Relative time"] = np.nan
-         df["target_angle"]=np.nan
-         df["vz"]=np.nan
-         trajectories.append( df.to_numpy() )
-      elif(t_filename[-4:] == ".npy"):
-         trajectories = np.load(os.path.join( args.i,t_filename) )
-      else:
-         raise Exception("invalid file in dir")
-      # trajectories = [d1,d2]
-      # print(t_filename,":",trajectories[0][0:2],"...")
-      # create_eurocontrol_file(trajectories,os.path.join(args.i, "euro"+t[0:-4]+".csv") )
-      newDf = convert_df_to_eurocontrol_format(df,int(t_filename.split("traj")[1].replace(".csv","")))
-      concatDf = pd.concat([newDf,concatDf])
-   
-      concatDf = concatDf[["UAS id","UAS Relative time","x","y","z","target_angle","linear_velocity","angular_velocity","vz" ]]
-         
-
-   concatDf.to_csv(os.path.join(args.o,
-      "euroMerged-"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M'))+".csv"),index=False) 
- 
-   # data_to_csv(data,"test.csv")
-   print(concatDf.columns)
-   print("Completed. File converted can be found at:",args.o)
+   convert_folder_to_eurocontrol_format(args.i)

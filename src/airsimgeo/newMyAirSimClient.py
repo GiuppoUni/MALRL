@@ -13,7 +13,7 @@ from eventlet import Timeout
 from airsim140 import Vector3r, MultirotorClient
 from pyproj import Proj
 
-import utils
+import malrl_utils
 import gc 
 import threading
 from scipy.interpolate import interp1d
@@ -41,7 +41,7 @@ class NewMyAirSimClient(MultirotorClient):
 
         MultirotorClient.__init__(self,ip = "", port = 41451)
         MultirotorClient.confirmConnection(self)
-        self.drones_names = [ v for v in utils.g_airsim_settings["Vehicles"] ]
+        self.drones_names = [ v for v in malrl_utils.g_airsim_settings["Vehicles"] ]
         
         self.lock = threading.Lock()
 
@@ -64,8 +64,8 @@ class NewMyAirSimClient(MultirotorClient):
 
 
             
-        self.srid = utils.SRID
-        self.origin = utils.ORIGIN
+        self.srid = malrl_utils.SRID
+        self.origin = malrl_utils.ORIGIN
 
         self.proj = Proj(init=self.srid)
         self.origin_proj = self.proj(*self.origin[0:2]) + (self.origin[2],)
@@ -209,7 +209,7 @@ class NewMyAirSimClient(MultirotorClient):
         result = {"collisions_per_traj": None,"total_p":0, "obs":False, "zout":False}
 
         if(self.trajColFlag):
-            total_p, p_per_traj = self.check_traj_collision(utils.position_to_list(cur_pos),
+            total_p, p_per_traj = self.check_traj_collision(malrl_utils.position_to_list(cur_pos),
                 radius = 10,count_only = True,specify_collision = True)
             print('traj_collisions: ', p_per_traj)
             
@@ -299,19 +299,19 @@ class NewMyAirSimClient(MultirotorClient):
     def distanceFromTraj(self,pos: Vector3r):
         return 0
 
-    def draw_numpy_trajectory(self,trajectory,color= utils.red_color+[0.7]):
+    def draw_numpy_trajectory(self,trajectory,color= malrl_utils.red_color+[0.7]):
         # TODO replace for a specific trajectories file 
         # try:
         # trajectory =  np.load(filename)
         # if(filename[-3:]=="csv"):
         #     trajectory = np.array(pandas.read_csv(filename,delimiter=",",usecols=[1,2,3]) )
-        #     # trajectory = utils.myInterpolate(trajectory,n_samples = 100)
+        #     # trajectory = malrl_utils.myInterpolate(trajectory,n_samples = 100)
         #     # trajectory = np.array(pandas.read_csv(filename,delimiter=",",index_col="index") )
         # elif filename[-3:]=="npy":
         #     trajectory = np.load(filename)
             
         print("Drawing trajectory:",trajectory)
-        trajectory_vecs = [utils.pos_arr_to_airsim_vec(x) for x in trajectory]
+        trajectory_vecs = [malrl_utils.pos_arr_to_airsim_vec(x) for x in trajectory]
         self.simPlotLineStrip(trajectory_vecs,color_rgba=color,
             is_persistent= True, thickness = self.thickness)
         
@@ -329,11 +329,11 @@ class NewMyAirSimClient(MultirotorClient):
 
 
     def drawTrajectories(self):
-        # traj_fold = os.path.join(utils.TRAJECTORIES_FOLDER,"csv")
+        # traj_fold = os.path.join(malrl_utils.TRAJECTORIES_FOLDER,"csv")
         for t in self.trajs2draw:
             self.draw_numpy_trajectory(np.array(t))
 
-        self.draw_numpy_trajectory(np.array(self.traj2follow),utils.orange_color+[0.3])
+        self.draw_numpy_trajectory(np.array(self.traj2follow),malrl_utils.orange_color+[0.3])
 
         # print('self.kdtrees: ', self.kdtrees)
 
@@ -385,7 +385,7 @@ class NewMyAirSimClient(MultirotorClient):
 
     def enable_trace_lines(self):
         # for i,dn in enumerate(self.drones_names):
-        self.simSetTraceLine(utils.green_color+[0.7],
+        self.simSetTraceLine(malrl_utils.green_color+[0.7],
             thickness=self.thickness*2,vehicle_name="Drone0")
 
 
@@ -450,9 +450,10 @@ class NewMyAirSimClient(MultirotorClient):
         y_proj = -y + self.origin_proj[1]
         z_proj = -z + self.origin_proj[2]
         return (x_proj, y_proj, z_proj)
-
+    
     def nedToGps(self, x, y, z):
         return self.lonlatToProj(*self.nedToProj(x, y, z), inverse=True)
+
 
     # def getGpsLocation(self):
     #     """

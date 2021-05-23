@@ -12,8 +12,10 @@ import scipy.interpolate
 import utils
 from sklearn.neighbors import KDTree
 import os
+import malrl_utils
 
-configYml = utils.read_yaml("inputData/config.yaml")
+
+configYml = malrl_utils.read_yaml("inputData/config.yaml")
 
 # global SEED
 # SEED = 668

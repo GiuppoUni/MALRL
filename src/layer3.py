@@ -7,7 +7,7 @@ import sys
 from time import sleep
 
 from numpy.lib.function_base import rot90
-from airsim140.types import Pose
+from airsim140.types import DrivetrainType, Pose, YawMode
 from airsim140.utils import to_quaternion
 import matplotlib
 import numpy as np
@@ -17,32 +17,41 @@ import random
 import pandas
 
 import scipy.interpolate
-import utils
+import malrl_utils
 from sklearn.neighbors import KDTree
 import os
 import re
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import trajs_utils
 
-configYml = utils.read_yaml("inputData/config.yaml")
+from layer2 import positionLoggerThread
+import multiprocessing
+
+configYml = malrl_utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["paths"]
 c_settings = configYml["layer1"]["settings"]
 c_verSep= configYml["layer1"]["vertical_separation"]
 
-def main(out_folder,velocity):
-   
-   exp_folders = [os.path.join(out_folder,d) for d in os.listdir(out_folder)]
+NEW_FOLDER = os.path.join(c_paths["LAYER3_OUTPUT_FOLDER"],malrl_utils.EXPERIMENT_DATE)    
+
+
+def main(input_folder,velocity):
+
+   os.makedirs(NEW_FOLDER)
+
+   exp_folders = [os.path.join(input_folder,d) for d in os.listdir(input_folder)]
    latest_mod_folder = max(exp_folders , key=os.path.getmtime)
 
    l_files = os.listdir(latest_mod_folder)
-
-   for f in l_files:
+   l_files=list(filter(lambda x: x[-4:]==".csv",l_files))
+   print("Found:",len(l_files),"csv files inside '",latest_mod_folder,"'.")
+   for f_num,f in enumerate(sorted(l_files,key=lambda x: int("".join( filter(str.isdigit, x))))):
       if( f[-4:]==".csv" ):
-         print("Reading trajectory from file:",f,". Found ",len(l_files), "different files.")
+         print("Reading trajectory from file:",os.path.join(latest_mod_folder,f),". Reading ",f_num,"/",len(l_files), "different files.")
          trajectory=[]
-         with open(os.path.join(out_folder,f),"r") as fin:
-            lr= fin.readlines()
-            for i in len(lr):
+         with open(os.path.join(latest_mod_folder,f),"r") as fin:
+            lr = fin.readlines()
+            for i in range(0,len(lr)):
                if(i==0): #(Heading)
                   continue
                values = lr[i].split(",")
@@ -50,60 +59,72 @@ def main(out_folder,velocity):
                y = float( lr[i].split(",")[2] )
                z = float( lr[i].split(",")[3]) if(len(values)>2) else configYml["layer3"]["FIXED_Z"]
    
-               trajectory.append(tuple(x,y,z))
+               trajectory.append( (x,y,z) )
             # print('x: ', x)
             # print('y: ', y)
 
-      trajs_utils.plot_xy([trajectory],cell_size=c_settings["SCALE_SIZE"])
-      trajectory_vecs = [utils.l3_pos_arr_to_airsim_vec(x) for i,x in enumerate(trajectory) if i%10==0]
-      np_trajectory = np.array( trajectory)
-      
-      print("FOLLOWING trajectory:",f)
-      print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
-      print("\t num. of points:", np.shape(np_trajectory)[0] )
+         plotProcess = multiprocessing.Process(target=trajs_utils.plot_xy , args=([trajectory], c_settings["SCALE_SIZE"] ))
+         plotProcess.start()
 
-            # Create AirSim client
-      asClient = NewMyAirSimClient(trajColFlag=False,
-               canDrawTrajectories=True,crabMode=True,thickness = 140,trajs2draw=[],traj2follow=trajectory)
+         trajectory_vecs = [malrl_utils.l3_pos_arr_to_airsim_vec(x) for i,x in enumerate(trajectory) if i%10==0]
+         np_trajectory = np.array( trajectory)
+         
+         print("FOLLOWING trajectory:",f)
+         print("\t traj_sum",trajectory[:4],"...",trajectory[-4:])
+         print("\t num. of points:", np.shape(np_trajectory)[0] )
+
+               # Create AirSim client
+         asClient = NewMyAirSimClient(trajColFlag=False,
+                  canDrawTrajectories=False,crabMode=False,thickness = 140,trajs2draw=[],traj2follow=trajectory)
 
 
-   asClient.disable_trace_lines()
-   sleep(0.5)
-   pose = Pose(utils.pos_arr_to_airsim_vec(trajectory[0]), to_quaternion(0, 0, 0) ) 
-   asClient.simSetVehiclePose(pose,True,"Drone0")        
-   print("Drone set at start position.")
-   
-   transformed_coo = *trajs_utils.rotate_point_2d(-math.pi/2, trajectory[0][0],trajectory[0][1]) , trajectory[0][2]
-   gps_coo = asClient.nedToGps(transformed_coo ) 
-   print("GPS STARTING COO (lon,lat,alt):",gps_coo)
-   
-   # asClient.enable_trace_lines()
+         asClient.disable_trace_lines()
+         sleep(0.5)
+         pose = Pose(malrl_utils.pos_arr_to_airsim_vec(trajectory[0]), to_quaternion(0, 0, 0) ) 
+         asClient.simSetVehiclePose(pose,True,"Drone0")        
+         sleep(1)
+         print("Drone set at start position.")
+         asClient.enable_trace_lines()
 
-   print("Positioning at std altitude...")
-   pointer = asClient.moveToZAsync(-50,20)
-   pointer.join()
-   
-   print("Altitude reached.\n Starting following path...")
-   pointer = asClient.moveOnPathAsync(
-      trajectory_vecs,
-      velocity,
-      adaptive_lookahead=1,vehicle_name="Drone0")
+         transformed_coo = *trajs_utils.rotate_point_2d(-math.pi/2, trajectory[0][0],trajectory[0][1]) , trajectory[0][2]
+         print('transformed_coo: ', transformed_coo)
+         gps_coo = asClient.nedToGps(*transformed_coo ) 
+         print("GPS STARTING COO (lon,lat,alt):",gps_coo)
+         
+         # asClient.enable_trace_lines()
 
-   
-   for i in range(0,500):
-      sleep(1)
-      pos = utils.position_to_list( asClient.getPosition("Drone0" ) ) 
-      gps_pos = asClient.nedToGps(*trajs_utils.rotate_point_2d(-utils.O_THETA,pos[0],pos[1]),pos[2] )
-      toPrint = ", ".join( [ str(x) for x in list(pos) + list(gps_pos) ] )
-      logger.info( ","+ str(i)+","+ toPrint )
+         # print("Positioning at std altitude...")
+         # pointer = asClient.moveToZAsync(-50,20)
+         # pointer.join()
+         # print("Altitude reached.\n Starting following path...")
+         
+         pointer = asClient.moveOnPathAsync(
+            trajectory_vecs,
+                 velocity, 120,DrivetrainType.ForwardOnly , YawMode(False,0),
+               lookahead=20,adaptive_lookahead=1,vehicle_name="Drone0")
 
-   pointer.join()
-   print("UAV completed its mission.")
+         fidx = f.split(".csv")[0].split("traj")[1]
+         if(not fidx.isdigit()):
+            raise Exception("Error in format of filename:"+f+", (it should be ...traj<id>.csv)")
+
+         positionThread = positionLoggerThread("Drone0",fidx,f,gpsOn=True,layer=3)
+         positionThread.start()
+
+            # pos = utils.position_to_list( asClient.getPosition("Drone0" ) ) 
+            # gps_pos = asClient.nedToGps(*trajs_utils.rotate_point_2d(-utils.O_THETA,pos[0],pos[1]),pos[2] )
+            # toPrint = ", ".join( [ str(x) for x in list(pos) + list(gps_pos) ] )
+            # logger.info( ","+ str(i)+","+ toPrint )
+
+         pointer.join()
+         plotProcess.terminate()
+         positionThread.stop()
+         positionThread.join()
+         
+         print("UAV completed its mission.")
 
 
 if __name__ == "__main__":
    
-   EXPERIMENT_DATE= str(datetime.datetime.now().strftime('%Y-%m-%d  %H:%M') )
 
    parser = argparse.ArgumentParser(description='Layer 3')
    
@@ -122,7 +143,7 @@ if __name__ == "__main__":
 
 
    parser.add_argument( '--debug',action='store_true',  default=False,
-      help='Log into file ' + EXPERIMENT_DATE + '(default: %(default)s)' )
+      help='Log into file ' + malrl_utils.EXPERIMENT_DATE + '(default: %(default)s)' )
 
    # parser.add_argument('--load-qtable', type=str, 
    #    help='qtable file (default: %(default)s)')
@@ -141,7 +162,7 @@ if __name__ == "__main__":
 
 
       logger = logging.getLogger('RL Layer3')
-      logger.info('Experiment Date: {}'.format(EXPERIMENT_DATE) )
+      logger.info('Experiment Date: {}'.format(malrl_utils.EXPERIMENT_DATE) )
 
 
-   main(out_folder=args.i,velocity=args.velocity)
+   main(input_folder=args.i,velocity=args.velocity)

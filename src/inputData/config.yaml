@@ -21,7 +21,7 @@ paths:
   
   LAYER2_OUTPUT_FOLDER : "generatedData/3dL2/"
 
-  LAYER3_OUTPUT_FOLDER : "generatedData/3dL3/csv"
+  LAYER3_OUTPUT_FOLDER : "generatedData/3dL3/"
   
   STD_MAZE : "maze2d_004.npy"
   LOG_FOLDER : "./generatedData/logs/"
@@ -30,7 +30,7 @@ paths:
 
 layer1:
   settings:
-    SEED : 234
+    SEED : 234 # -1 for casual seed
     OUT_FORMAT : "csv" # (csv or npy) for layer1 output
 
     N_TRAJECTORIES_TO_GENERATE : 99 # Number of UAV Trajectories
@@ -82,3 +82,9 @@ layer3:
     #UAV default velocity (Airsim)
     VELOCITY : 12
     FIXED_Z : -100 # Negative due to airsim
+    SRID : "EPSG:5555"
+    ORIGIN : 
+      - x : 2.174432
+      - y : 41.404572
+      - z : 0
+    O_THETA : 0

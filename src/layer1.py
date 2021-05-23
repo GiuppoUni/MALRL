@@ -18,7 +18,7 @@ import random
 import argparse
 import datetime
 
-import utils
+import malrl_utils
 import time
 from gym_maze.envs.maze_env import MazeEnv, MazeView2D
 
@@ -30,16 +30,15 @@ import trajs_utils
 import yaml
 from gym_maze.envs.maze_view_2d import Maze
 from PIL import Image as img
+from utils import EXPERIMENT_DATE
 
-
-configYml = utils.read_yaml("inputData/config.yaml")
+configYml = malrl_utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["paths"]
 c_settings = configYml["layer1"]["settings"]
 c_verSep= configYml["layer1"]["vertical_separation"]
 
 IDX_TO_ACTION =  {0:"LEFT", 1:"FRONT", 2:"RIGHT", 3:"BACK"}
 
-EXPERIMENT_DATE =  utils.get_experiment_date()
 
 # FOR MAZE GENERATION ONLY
 # Return a value depending on allowed action, "NESW" if all possible
@@ -151,10 +150,10 @@ def main():
    
    SEED = c_settings["SEED"]
    if(SEED==-1):
-    SEED = random.seed()
-   else:
-    random.seed(SEED)
-    np.random.seed(seed=SEED)
+      SEED = random.randint(0,9999)
+   
+   random.seed(SEED)
+   np.random.seed(seed=SEED)
       
 
    # """
@@ -540,7 +539,7 @@ def main():
    # PLOT
    # 
    print("Trained and tested runs",uav_idx+1)
-   utils.play_audio_notification()
+   malrl_utils.play_audio_notification()
 
    print("OUTS:",outs)
    print("Start PLOTTING...")
@@ -631,7 +630,7 @@ if __name__ == "__main__":
    if(args.generate_random_start or args.random_goal_pos):
       n_uavs = c_settings["N_TRAJECTORIES_TO_GENERATE"]
       maze = Maze(maze_cells=Maze.load_maze(os.path.join("gym_maze\envs\maze_samples",c_paths["STD_MAZE"]) ) ,verbose = args.v)
-      allGoodCells = utils.getGoodCells(maze) # good as entrance or goal
+      allGoodCells = malrl_utils.getGoodCells(maze) # good as entrance or goal
       startFilename = c_paths["INPUT_START_FILE"]
       goalFilename = c_paths["GOAL_START_FILE"]
       with open(startFilename,"w") as fstart, open(goalFilename,"w") as fgoal:

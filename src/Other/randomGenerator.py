@@ -4,7 +4,7 @@ Script to randomly (no RL) generate grid pattern UAV fligth trajectories then ho
 
 import numpy as np
 from numpy.lib.format import BUFFER_SIZE
-import pylab
+import malrl_utils
 from trajs_utils import setSeed
 import time 
 
@@ -28,12 +28,11 @@ a_logger.addHandler(stdout_handler)
 def strDate():
     return str(datetime.datetime.now().strftime('-D-%d-%m-%Y-H-%H-%M-%S-') )
 
-EXPERIMENT_DATE =  strDate()
 
 
 
 a_logger.debug(
-   "\nRUNNING EXP at: " + EXPERIMENT_DATE +"\n"
+   "\nRUNNING EXP at: " + malrl_utils.EXPERIMENT_DATE +"\n"
 )
 
 # RANDOM SEED
@@ -47,7 +46,7 @@ OUT_FOLDER = "generatedData/randTrajs/"
 TOLERANCES = [0,0.0] # Vertical separation tolearance value
 NUM_TRAJECTORIES = [30,300,10,10,50,50,100,100] # numbers of trajectories (multiple for multiple tests)
 
-exp_path = OUT_FOLDER + "rand"+EXPERIMENT_DATE
+exp_path = OUT_FOLDER + "rand"+malrl_utils.EXPERIMENT_DATE
 created = False
 
 """ Prepare directories """

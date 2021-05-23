@@ -6,84 +6,20 @@ import time
 from airsim140.client import MultirotorClient
 from airsim140.types import DrivetrainType, Pose, Vector3r, YawMode
 from airsim140.utils import to_quaternion
-import utils
+import malrl_utils
 import os
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient
 import nest_asyncio
 nest_asyncio.apply()
+from positionLoggerThread import positionLoggerThread
 
-
-configYml = utils.read_yaml("inputData/config.yaml")
+configYml = malrl_utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["paths"]
 c_settings = configYml["layer1"]["settings"]
 c_settings2 = configYml["layer2"]
 c_verSep= configYml["layer1"]["vertical_separation"]
-EXPERIMENT_DATE = utils.get_experiment_date()
-NEW_FOLDER = os.path.join(c_paths["LAYER2_OUTPUT_FOLDER"],EXPERIMENT_DATE)    
 
-class positionLoggerThread(threading.Thread):
-
-   def __init__(self,vehicle_name,idx,latest_mod_folder,traj_filename):
-      
-      print("IDX",idx)
-      threading.Thread.__init__(self,daemon=True )
-      
-      trajectory_completed = False
-      
-      self.vehicle_name = vehicle_name
-      self.traj_filename = traj_filename
-      self.client = MultirotorClient()
-      self.client.enableApiControl(True,vehicle_name=vehicle_name)
-
-      self.latest_mod_folder = os.path.join( c_paths["LAYER2_OUTPUT_FOLDER"], latest_mod_folder.split("/")[-1])
-      self.filename = NEW_FOLDER+ "/3dl2traj"+str(idx)+".csv"
-      self._stop_event = threading.Event()
-
-   def stop(self):
-      self._stop_event.set()
-
-   def is_stopped(self):
-        return self._stop_event.is_set()
-
-   def run(self): 
-      print("[THREAD "+threading.current_thread().getName()+"] Started \n Position logging for trajectory: ", self.traj_filename)
-      with open(self.filename,"w") as fout:
-         fout.write("index,x_pos,y_pos,z_pos,w_or,x_or,y_or,"+
-         "z_or,x_lin_vel,y_lin_vel,z_lin_vel,x_ang_vel,y_ang_vel,z_ang_vel,"+
-         "x_lin_acc,y_lin_acc,z_lin_acc,x_ang_acc,y_ang_acc,z_ang_acc"+"\n") #HEADER
-      with open(self.filename,"a") as fout:
-         time_counter = 0.
-         while(True):
-            ks = self.client.simGetGroundTruthKinematics("Drone0")
-            position = utils.vec_to_str(ks.position)
-            orientation = utils.quat_to_str(ks.orientation,False)
-            linear_velocity = utils.vec_to_str(ks.linear_velocity)
-            angular_velocity = utils.vec_to_str(ks.angular_velocity)
-            linear_acceleration = utils.vec_to_str(ks.linear_acceleration)
-            angular_acceleration = utils.vec_to_str(ks.angular_acceleration)
-                        
-            line = ",".join([     str(time_counter),       position  ,
-            orientation ,            linear_velocity ,            angular_velocity ,
-            linear_acceleration , angular_acceleration ,])
-
-            print("[THREAD "+threading.current_thread().getName()+"]",position)
-            fout.write(line+"\n")
-            time.sleep(configYml["layer2"]["AIRSIM_SAMPLING_INTERVAL"])
-            time_counter += configYml["layer2"]["AIRSIM_SAMPLING_INTERVAL"]
-            if(self.is_stopped()):
-               print("[THREAD "+threading.current_thread().getName()+"] STOP for: ", self.traj_filename)
-               break
-            
-def calibrate(vertices,scale=1):
-   asClient = NewMyAirSimClient(trajColFlag=False,
-         canDrawTrajectories=False,crabMode=True,
-         thickness = 100,trajs2draw=[],traj2follow=[])
-   for v in vertices:
-      x,y,z = v[0]*scale,v[1]*scale,-50
-      pose = Pose(utils.l3_pos_arr_to_airsim_vec((x,y,z),w_offset=c_settings2["W_OFFSET"],h_offset=c_settings2["H_OFFSET"]), 
-      to_quaternion(0, 0, 0) ) 
-      asClient.simSetVehiclePose(pose,True,"Drone0")     
-      time.sleep(1.0)
+NEW_FOLDER = os.path.join(c_paths["LAYER2_OUTPUT_FOLDER"],malrl_utils.EXPERIMENT_DATE)    
 
 def main(trajectories_folder,velocity):
 
@@ -98,7 +34,7 @@ def main(trajectories_folder,velocity):
    latest_mod_folder = max(exp_folders , key=os.path.getmtime)
 
    print("Detected ",len(latest_mod_folder)," files inside: "+latest_mod_folder+".")
-   for f in   sorted(os.listdir(latest_mod_folder)) :
+   for f in   sorted(os.listdir(latest_mod_folder),key=lambda x: int("".join( filter(str.isdigit, x)))) :
       asClient = NewMyAirSimClient(trajColFlag=False,
          canDrawTrajectories=False,crabMode=True,
          thickness = 100,trajs2draw=[],traj2follow=[],
@@ -113,7 +49,7 @@ def main(trajectories_folder,velocity):
             trajectory = []
             for idx,line in enumerate(lr):
                if(idx==0):
-                  continue
+                  continue #Skip header
                values = line.split(",")
                x = float( values[1] )
                y = float( values[2] )
@@ -122,10 +58,12 @@ def main(trajectories_folder,velocity):
 
                if(idx==1):
                   pose = Pose(Vector3r(x,y,z), to_quaternion(0, 0, 0) ) 
-                  asClient.simSetVehiclePose(pose,True,"Drone0")       
+                  asClient.simSetVehiclePose(pose,True,"Drone0")
+                  time.sleep(1)
+                  print("UAV start pose set.")       
                   asClient.enable_trace_lines()
                else:
-                  trajectory.append( utils.l3_pos_arr_to_airsim_vec([x,y,z],w_offset=c_settings2["W_OFFSET"],h_offset=c_settings2["H_OFFSET"]) )
+                  trajectory.append( malrl_utils.l3_pos_arr_to_airsim_vec([x,y,z],w_offset=c_settings2["W_OFFSET"],h_offset=c_settings2["H_OFFSET"]) )
 
             # trajs_utils.plot_xy([trajs_utils.vec2d_list_to_tuple_list(trajectory)],20,doScatter=True)
 
@@ -139,7 +77,7 @@ def main(trajectories_folder,velocity):
             if(not fidx.isdigit()):
                raise Exception("Error in format of filename:"+f+", (it should be ...traj<id>.csv)")
 
-            positionThread = positionLoggerThread("Drone0",fidx,latest_mod_folder,f)
+            positionThread = positionLoggerThread("Drone0",fidx,f,gpsOn=False,layer=2)
             positionThread.start()
 
             print("UAV following trajectory", os.path.join(latest_mod_folder,f),"...")
@@ -148,38 +86,20 @@ def main(trajectories_folder,velocity):
             positionThread.join()
             print("UAV completed its mission.")
 
-   # regex="Init"
-   # for j in range(0,3):
-   #    trajectory=[] 
-   #    if(j==1):
-   #       for i in [5,18,6,7,17,46] : 
-   #          bn = asClient.simListSceneObjects(regex+str(i))
-   #          pose = asClient.simGetObjectPose(bn[0])
-   #          trajectory.append (trajs_utils.vec2d_to_numpy_array(pose.position))
-   #    elif(j==0):
-   #       for i in [8,13,42,50,54,49,24] : 
-   #          bn = asClient.simListSceneObjects(regex+str(i))
-   #          print(bn)
-   #          pose = asClient.simGetObjectPose(bn[0])
-   #          trajectory.append (trajs_utils.vec2d_to_numpy_array(pose.position))
-   #    elif(j==2):
-   #       for i in [14,9,20,19,23,0,31,30,999,37] : 
-   #          bn = asClient.simListSceneObjects(regex+str(i))
-   #          pose = asClient.simGetObjectPose(bn[0])
-   #          trajectory.append (trajs_utils.vec2d_to_numpy_array(pose.position))
 
-      # pointer = asClient.moveToZAsync(trajectory[0][2],20)
-      # pointer.join()
-
-      # for i in range(0,500):
-      #    sleep(1)
-      #    logger.info( ","+ str(i)+","+", ".join([ str(x) for x in utils.position_to_list( asClient.getPosition("Drone0"))]) )
-
-      
 
                                        
 
-
+def calibrate(vertices,scale=1):
+   asClient = NewMyAirSimClient(trajColFlag=False,
+         canDrawTrajectories=False,crabMode=True,
+         thickness = 100,trajs2draw=[],traj2follow=[])
+   for v in vertices:
+      x,y,z = v[0]*scale,v[1]*scale,-50
+      pose = Pose(malrl_utils.l3_pos_arr_to_airsim_vec((x,y,z),w_offset=c_settings2["W_OFFSET"],h_offset=c_settings2["H_OFFSET"]), 
+      to_quaternion(0, 0, 0) ) 
+      asClient.simSetVehiclePose(pose,True,"Drone0")     
+      time.sleep(1.0)
 
 if __name__ == "__main__":
 
