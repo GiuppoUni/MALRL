@@ -80,6 +80,7 @@ layer2:
 #====================================================================================================
 layer3:
     #UAV default velocity (Airsim)
+    SHOW_XY_PLOT : False 
     VELOCITY : 12
     FIXED_Z : -100 # Negative due to airsim
     SRID : "EPSG:5555"

@@ -9,7 +9,6 @@ import pandas
 from pygame.constants import QUIT
 
 import scipy.interpolate
-import utils
 from sklearn.neighbors import KDTree
 import os
 import malrl_utils
@@ -915,7 +914,7 @@ if __name__ == "__main__":
     # trajs = fix_traj(trajectories)
     # print('fixed trajs: ', trajs)
     print('trajectories: ', trajectories)
-    utils.myInterpolate2D(trajectories)
+    malrl_utils.myInterpolate2D(trajectories)
     # trajs_3d = avoid_collision_in_busy_space(trajectories,[],min_height=0,max_height=100,sep_h=20,radius=5,min_safe_points=3)
     # print('trajs_3d,zs: ', trajs_3d)
     

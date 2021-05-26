@@ -7,9 +7,12 @@ numpy
 dotmap
 pyyaml
 pyproj
+pandas
+pygame
 matplotlib
 
 scipy
+sklearn
 tornado== 4.5.3
 
 msgpack-rpc-python==0.4.1

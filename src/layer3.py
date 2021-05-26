@@ -64,7 +64,8 @@ def main(input_folder,velocity):
             # print('y: ', y)
 
          plotProcess = multiprocessing.Process(target=trajs_utils.plot_xy , args=([trajectory], c_settings["SCALE_SIZE"] ))
-         plotProcess.start()
+         if(configYml["layer3"]["SHOW_XY_PLOT"]):
+            plotProcess.start()
 
          trajectory_vecs = [malrl_utils.l3_pos_arr_to_airsim_vec(x) for i,x in enumerate(trajectory) if i%10==0]
          np_trajectory = np.array( trajectory)
@@ -75,7 +76,8 @@ def main(input_folder,velocity):
 
                # Create AirSim client
          asClient = NewMyAirSimClient(trajColFlag=False,
-                  canDrawTrajectories=False,crabMode=False,thickness = 140,trajs2draw=[],traj2follow=trajectory)
+                  canDrawTrajectories=False,crabMode=False,thickness = 140,
+                  trajs2draw=[],traj2follow=trajectory,ip="127.0.0.1")
 
 
          asClient.disable_trace_lines()
@@ -116,7 +118,8 @@ def main(input_folder,velocity):
             # logger.info( ","+ str(i)+","+ toPrint )
 
          pointer.join()
-         plotProcess.terminate()
+         if(configYml["layer3"]["SHOW_XY_PLOT"]):
+            plotProcess.terminate()
          positionThread.stop()
          positionThread.join()
          
