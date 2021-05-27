@@ -1,4 +1,4 @@
-name: base
+name: malrl
 channels:
   - defaults
 dependencies:

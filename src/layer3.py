@@ -77,7 +77,7 @@ def main(input_folder,velocity):
                # Create AirSim client
          asClient = NewMyAirSimClient(trajColFlag=False,
                   canDrawTrajectories=False,crabMode=False,thickness = 140,
-                  trajs2draw=[],traj2follow=trajectory,ip="127.0.0.1")
+                  trajs2draw=[],traj2follow=trajectory,ip="192.168.1.160")
 
 
          asClient.disable_trace_lines()
