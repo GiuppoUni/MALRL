@@ -1,4 +1,4 @@
-name: base
+name: malrl
 channels:
   - defaults
 dependencies:
@@ -318,7 +318,6 @@ dependencies:
     - botocore==1.19.4
     - cachetools==4.1.1
     - certifi==2020.6.20
-    - cntk==2.2
     - configobj==5.0.6
     - dnspython==1.16.0
     - docutils==0.15.2

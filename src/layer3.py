@@ -1,5 +1,4 @@
 import argparse
-import cntk.layers
 import datetime
 import logging
 import math

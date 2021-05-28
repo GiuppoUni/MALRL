@@ -30,7 +30,7 @@ import trajs_utils
 import yaml
 from gym_maze.envs.maze_view_2d import Maze
 from PIL import Image as img
-from utils import EXPERIMENT_DATE
+from malrl_utils import EXPERIMENT_DATE
 
 configYml = malrl_utils.read_yaml("inputData/config.yaml")
 c_paths = configYml["paths"]
