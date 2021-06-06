@@ -46,7 +46,8 @@ layer1:
     EPISODES: 500
     MIN_EXPLORE_RATE : 0.001
     MIN_LEARNING_RATE : 0.2
-
+    NSTEPS : 0
+    
     # Defining the simulation related constants
     MAX_T : 10000
     STREAK_TO_END : 100

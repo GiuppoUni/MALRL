@@ -1,6 +1,6 @@
 import os
-from airsim140.types import ImageRequest, Vector3r
-from airsim140.utils import to_eularian_angles
+from airsim.types import ImageRequest, Vector3r
+from airsim.utils import to_eularian_angles
 from matplotlib.pyplot import draw
 import numpy as np
 import time
@@ -10,7 +10,7 @@ from eventlet import Timeout
 # Change the path below to point to the directoy where you installed the AirSim PythonClient
 #sys.path.append('C:/Users/Kjell/Google Drive/MASTER-THESIS/AirSimpy')
 
-from airsim140 import Vector3r, MultirotorClient
+from airsim import Vector3r, MultirotorClient
 from pyproj import Proj
 
 import malrl_utils

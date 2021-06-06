@@ -1,12 +1,13 @@
-# MALRL
-# **Repository in construction...**
+# Multiple Abstraction Layers Reinforcement Learning (MALRL)
 [Multiple Abstraction Layers Reinforcement Learning (MALRL)](https://sites.google.com/view/malrl-framework/home-page) is a framework developed as final project for Master Thesis in Engineering in Computer Science, at Sapienza University of Rome, supervised by Prof. [Luca Iocchi](https://www.diag.uniroma1.it/users/luca_iocchi).
 
-The scope of MALRL is to generate 3D trajectories realistic for a scenario of multiple UAVs flying from different locations inside a fixed portion of space, in a grid pattern. Horizontal and vertical separation is enforced to reduce collision risk. 
+The scope of MALRL is to generate 3D realistic trajectories for a scenario of multiple UAVs flying inside a fixed portion of space, in a grid pattern. 
+Each UAV moves from a random point A to a different random point B (both points not over obstacles). 
+Horizontal and vertical separation is enforced to simulate a collision risk miminimazation system. 
 
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![Layers Overview](docs/figures/LayersOverview.png)
 
-MALRL is composed of three main layers, each one executable indipentently:
+MALRL is composed of three main layers, each one executable independently:
 1) Grid Layer (GL) -> layer1.py
    - 2D QLearning in a grid maze 
    - Maze based (scale 1:40) on abstraction from real world scenario
@@ -26,22 +27,51 @@ MALRL is composed of three main layers, each one executable indipentently:
    - Plot of trajectory to be followed
    - Introduction of GPS (simulated) data exploiting OpenStreet map georeferenciation (case of study: Barcelona,Spain)
 
-The output of each layer is used as input for the following.
+The output of each layer is used as input for the following layer. Eventually is possible to give a specific input (set of trajectories) to a single layer.
 
 
 The second and third layers (layer2.py, layer3.py) are based on **custom AirSim environments** free [downloadable](#Environments) from the links at bottom page. 
 
 
+layer1.py             | layer2.py             |  layer3.py
+:-------------------------:|:-------------------------:|:-------------------------:
+![](docs\figures\l1.jpg)  | ![](docs\figures\l2.png)  |  ![](docs\figures\l3.png)
+OpenAI Gym                 | AirSim                   | AirSim + OpenStreetMap
+
+
+At the end it will be possible to have CSV files in output containing trajectories coordinates, kinematics info, GPS coordinates (gps only for layer 3).
+
 
 # Install
 1. Clone the repository
-2. Install requirements
+2. Install Anaconda with Python 3.6
+3. Install Unreal Engine
+4. Intall AirSim  
     
-Layer 2 and Layer 3 require Unreal Engine 4 (UE4) started and AirSim plugin installed.
+Only Layer 2 (layer2.py) and Layer 3 (layer3.py) require Unreal Engine 4 (UE4) started and AirSim plugin installed.
+
+## Anaconda install
+Anaconda has been used to create an environment isolating the project from different versions of Python and/or different version of packages.
+
+Anaconda install instructions, **choose Anaconda for Python 3.6** (the only tested):
+- [Install on Windows](https://docs.anaconda.com/anaconda/install/windows/)
+- [Install on Linux](https://docs.anaconda.com/anaconda/install/linux/)
+
+Once Anaconda is installed create new environment from file. 
+
+For Windows:
+
+```console
+conda env create -f envWindows.yaml
+```
+For Linux:
+```console
+conda env create -f envLinux.yaml
+```
 
 
 ## UE4 Install (Windows)
-Use of Unreal Engine on Windows is recommended (editing and testing has been done on Windows 10).
+**Use of Unreal Engine on Windows is recommended (editing and testing has been done on Windows 10).**
  
 1. [Download](https://www.unrealengine.com/download) the Epic Games Launcher. 
 2. [Register Epic Games account](https://www.epicgames.com/id/register) (while the Unreal Engine is open source and free to download, registration is still required).
@@ -63,13 +93,138 @@ In a nutshell you will need to:
 
 ## Environments download
 Environments are available as open source, editable projects at the following links:
-- [Layer2](https://drive.google.com/drive/folders/1754p_qQnguh83av8yTdc0yW9a_EnuZmJ?usp=sharing)
-- [Layer3](https://drive.google.com/drive/folders/17a_t73zrxV6WmlYNmlWtj8eyTNHARFcs?usp=sharing)
+- [Click here to download Layer2 from Drive](https://drive.google.com/drive/folders/1754p_qQnguh83av8yTdc0yW9a_EnuZmJ?usp=sharing)
+- [Click here to download Layer3 from Drive](https://drive.google.com/drive/folders/17a_t73zrxV6WmlYNmlWtj8eyTNHARFcs?usp=sharing)
+
+## AirSim install
+AirSim instructions can be found in the doc:
+- [Install on Windows](https://microsoft.github.io/AirSim/build_windows/)
+- [Install on Linux](https://microsoft.github.io/AirSim/build_linux/)
+
+Once succesfully installed AirSim, you will need to replace [AirSim settings](https://microsoft.github.io/AirSim/settings/) at their location, with the one you can find at:
+src/settings.json 
 
 # Usage
+The project makes use of 2D and 3D maps built upon use case scenario (Barcelona city centre), however it is possible to customize the 2D map present in layer1.py and to crete custom environments inside AirSim.
 
-# Demo files 
-The following is a list of demo python scripts and their explanation, taken from [AirSim](https://github.com/microsoft/AirSim/tree/master/PythonClient), ready to be run after installation to test airsim possibilities.
+**To modify parameters** regarading general options or specific to the training/flight phase you can change parameters value inside the **configuration file**. 
+
+**N.B.** Take a look at section [Notes](#Notes) to avoid mistakes when changing parameters.
+
+Configuration file can be found at: **src\inputData\config.yaml**
+
+Once config parameters are all set, you can start running:
+To run MALRL first make sured to be inside \src:
+```console
+cd src 
+```
+Then start executing layers one by one in the following order:
+
+1) [Run Grid Layer](#Run-Grid-Layer-(layer1.py))
+2) [Run Simplified 3D Layer](#Run-Simplified-3D-Layer-(layer2.py))
+3) [Run Georeferenced 3D Layer](#Run-Georeferenced-3D-Layer-(layer3.py))
+
+## Run Grid Layer (layer1.py)
+To run the first layer you can launch in the previously set conda environment:
+```console
+python layer1.py 
+```
+Optional arguments:
+   | Argument | Explanation|
+   |--------------|----------|
+   | --nepisodes | Number of episodes|
+   | --ntrajs | Number of trajectories to be generated|
+   | --nbuffer | Size of buffer for max number of past trajectories to avoid (then is flushed
+   | --nsteps | Enforce n-steps qlearning, if 0 then standard qlearning |
+   | --debug | Log debug in file |
+   | --render-train | Render maze while training/random  |
+   | --render-test | Render maze while testing |
+   | --quiet | Less info in output mode on  |
+   | -v | Verbose mode on |
+   | --slow | Slow down training to observe behaviour|
+   | --log-reward | Log reward file in out|
+   | --load-qtable | load qtable file specified |
+   | --show-maze-bm | Show Bitmap used as maze|
+   | --random-goal-pos | Choose random start pos instead of the one inside csv file|
+   | --generate-random-start | Choose random start pos instead of the one inside csv file|
+   | --random-start-pos | Choose random goal pos instead of the one inside csv file |
+   | --generate-random-goal | Choose random goal pos instead of the one inside csv file |
+   | --generate-maze | Generate new maze structure (rows and cols inside config.yaml) |
+
+## Run Simplified 3D Layer (layer2.py)
+```console
+python layer2.py 
+```
+## Run Georeferenced 3D Layer (layer3.py)
+```console
+python layer3.py 
+```
+# Create new scenarios (*optional)
+
+## Generate new 2D grid
+Standard maze file is the one studied upon Barcelona city centre.
+
+To generate a new mazefile use:
+```console
+python3 layer1.py generate-maze <mazeFilename>
+```
+The argument generate-maze will generate a new maze file (2D bitmap of the scenario to be displayed as a grid maze), using values of  
+- NROWS -> Number of rows of the grid
+- NCOLS -> Number of columns of the grid
+- OBS_BLOCKS -> Number of blocks composing edges of square obstacles
+- STD_MAZE -> Filename of the file used in layer1.py
+
+## Create custom Unreal environments 
+If you have previously chosen to create a new 2D grid wrt the standard one, you should also create new 3D Unreal environments, both simplified and georefenced one.  
+
+You should follow [these instructions](https://microsoft.github.io/AirSim/unreal_custenv/), they are enough to build your custom simplified environment (used in layer2.py).
+
+For the georeferenced environment you will need an extra step which is the integration of the 3D map with openstreetmap data.
+ 
+
+
+
+
+# HW Configuration
+To run smoothly Unreal Engine the use of a dedicated GPU is strongly recommended. 
+For developing and testing a desktop computer with the following specs has been used:
+
+- Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz   2.71 GHz
+- Nvidia GTX 970 GAMING 4 GB 
+- RAM: 16 GB DDR4
+- Samsung SSD 860 EVO 500GB
+
+
+# Other Info
+
+## Files
+inputData\ : folder containing files to set (settings,initial positions for UAVs, final positions for UAVs)
+envs\my_maze_generator.py : let you generate custom mazes
+layer1.py, layer2.py, layer3.py  : Layers to be executed 
+trajs_utils.py : contains useful API functions called in layer modules
+malrl_utils.py : contains helper functions
+gym_maze\envs\maze_env.py : Class of the custom maze environment
+eurocontrolConverter.py : Python script to convert 3d trajectories into format usable for Bubbles collision measurements
+
+
+## Notes
+- Time to generate a trajectories in layer two and three depends on clockspeed value.
+- Vehicle used in Airsim has single name: "Drone0" (it is not guaranteed to function any other name).
+- All drone names inside MALRL **NEED** to be in this format: "Drone<i>" where i is a number. E.g.: 'Drone0', 'Drone1', 'Drone2', 'Drone3', ...
+- N_TRAJECTORIES_TO_GENERATE (or --ntrajs if used) should be a multiple of TRAJECTORIES_BUFFER_SIZE for the sake of simplicity.
+
+<!-- ## Windowed env launch (Windows 10 AirSim)
+To run Airsim windowed:
+$ Blocks.exe -WINDOWED -ResX=640 -ResY=480 -->
+
+## Useful shortcuts (AirSim)
+F8 to toggle Unreal free mode (very useful to explore the environment while simulating e.g. looking from above) 
+' per debug
+F2 to toggle rendering
+
+
+## AirSim demo files 
+The following is a list of demo python scripts and their explanation, taken from [AirSim](https://github.com/microsoft/AirSim/tree/master/PythonClient), ready to be run after installation **to test airsim possibilities**.
 
 Multirotor demo files:
 - arm.py -> No visual effect (simple arming drone)
@@ -108,137 +263,11 @@ Environment demo files:
 - weather.py -> Change weather conditions
 
 
-# PC Requirements
-To run smoothly Unreal Engine the use of a dedicated GPU is strongly recommended. 
-For developing and testing a desktop computer with the following specs has been used:
-
-- Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz   2.71 GHz
-- Nvidia GTX 970 GAMING 4 GB 
-- RAM: 16 GB DDR4
-- Samsung SSD 860 EVO 500GB
-
-## Notes
-Time to generate a trajectory depends on clockspeed value.
-
-## Conventions
-
-- All drone names **NEED** to be in this format:
-"Drone<i>" where i is a number.
-E.g.: 'Drone0', 'Drone1', 'Drone2', 'Drone3', ...
 
 
-## Sources
+# Sources
 - https://github.com/Kjell-K/AirGym
 - https://github.com/koulanurag/ma-gym
 - gym-airsim
 
-Take a look at my watch/star  list
-
-
-
-
--------------------
-------------------. 
-
-
-## Install
-Clone the repository
-
-## Usage
-**To launch layer1:**
-```bash
-python layer1.py
-```
-optional arguments:
-``` bash
-  -h, --help            show this help message and exit
-  --nepisodes NEPISODES
-                        episodes (default: 100)
-  --ngoals NGOALS       n goals to collect (default: 1)
-  --seed SEED           seed value (default: None)
-  --ntrajs NTRAJS       num trajectories value (default: None)
-  --nbuffer NBUFFER     size of buffer for past trajectories (default: 3)
-  --nagents NAGENTS     num agents (supported 1 )(default: 1)
-  --nsteps NSTEPS       enforce n-steps qlearning if 0 is standard qlearning
-                        (default: 0)
-  --debug               Log debug in file (default: False)
-  --render-train        render maze while training/random (default: False)
-  --render-test         render maze while testing (default: False)
-  --quiet               render maze while testing (default: False)
-  --random-mode         Agent takes random actions (default: False)
-  --skip-train          Just assign altitude to 2D trajecories in folder
-                        (default: False)
-  --show-plot           Show generated trajectories each time (default: False)
-  -v                    verbose (default: False)
-  --randomInitGoal      Random init and goal per episode (default: False)
-  --random-pos          Drones start from random positions exctrateced from
-                        pool of 10 (default: False)
-  --slow                Slow down training to observe behaviour (default:
-                        False)
-  --plot3d              Render 3d plots(default: False)
-  --n-random-init N_RANDOM_INIT
-                        n sample pool for random init (default: 5)
-  --log-reward          log reward file in out (default: False)
-  --load-qtable LOAD_QTABLE
-                        qtable file (default: None)
-  --load-maze LOAD_MAZE
-                        maze file (default: None)
-  --load-goals LOAD_GOALS
-                        maze file (default: None)
-  --load-start-pos LOAD_INIT_POS
-                        maze file (default: None)
-```
-</br>
-
-**To launch layer2:**
-```bash
-python layer2.py
-```
-</br>
-
-**To launch layer3:**
-```bash
-python layer3.py
-```
-## Files
-inputData : folder containing files to set (settings,initial positions for UAVs, final positions for UAVs)
-envs\my_maze_generator.py : let you generate custom mazes
-layer1.py, layer2.py, layer3.py  : Layers to be executed 
-trajs_utils.py : contains useful API functions called in layer modules
-utils.py : contains helper functions
-gym_maze\envs\maze_env.py : Class of the custom maze environment
-eurocontrolConverter.py : Python script to convert 3d trajectories into format usable for Bubbles collision measurements
-
-
-## Airsim instructions
-Vehicle name used was "Drone0" so it is not guaranteed to function any other name.
-It is strongly suggested to set it as so in the settings file of AirSim.
-For Layer 3 you need to set an empty actor called: "CELL00", it will be used to pose the vehicle in that position
-
-
-## Windowed env launch (Windows 10 AirSim)
-To run Airsim windowed:
-$ Blocks.exe -WINDOWED -ResX=640 -ResY=480
-
-## Useful shortcuts (AirSim)
-F8 to toggle Unreal free mode (very useful to explore the environment while simulating e.g. looking from above) 
-' per debug
-F2 to toggle rendering
-
-## Conventions
-<g_*> are global variables (present in utils)
-LIM<letter><index> 
-   are used as marker per bounds of  zone <letter> 
-e.g. a quadratic shape zone B has four vertices 1,...4:
-   LIMB1 [ 21.98999977 -69.79999542]
-   LIMB2 [222.08999634 -69.69999695]
-   LIMB3 [220.78999329 120.5       ]
-   LIMB4 [ 22.09000015 120.79999542]
-
-
-## Download links
-Download link for layer2.py environment (simplified version of a grid plan city ):
-#TODO
-Download link for layer2.py environment (realistic 3D based on GPS open data):
-#TODO
-
+For other sources and insipiration take a look at my watch/star list.

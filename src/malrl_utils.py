@@ -2,7 +2,7 @@ import json
 import math
 import os
 from typing import Tuple
-from airsim140.types import Vector3r
+from airsim.types import Vector3r
 from dotmap import DotMap
 from numpy.linalg import norm
 from configparser import ConfigParser

@@ -1,6 +1,6 @@
 
 
-from airsim140 import Vector3r, MultirotorClient
+from airsim import Vector3r, MultirotorClient
 from pyproj import Proj
 
 class AirSimGeoClient(MultirotorClient):

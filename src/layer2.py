@@ -3,9 +3,9 @@ import datetime
 import logging
 import threading
 import time
-from airsim140.client import MultirotorClient
-from airsim140.types import DrivetrainType, Pose, Vector3r, YawMode
-from airsim140.utils import to_quaternion
+from airsim.client import MultirotorClient
+from airsim.types import DrivetrainType, Pose, Vector3r, YawMode
+from airsim.utils import to_quaternion
 import malrl_utils
 import os
 from airsimgeo.newMyAirSimClient import NewMyAirSimClient

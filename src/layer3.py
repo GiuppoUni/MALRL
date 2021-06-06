@@ -6,8 +6,8 @@ import sys
 from time import sleep
 
 from numpy.lib.function_base import rot90
-from airsim140.types import DrivetrainType, Pose, YawMode
-from airsim140.utils import to_quaternion
+from airsim.types import DrivetrainType, Pose, YawMode
+from airsim.utils import to_quaternion
 import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt

@@ -226,7 +226,7 @@ def main():
    env = gym.make("MALRLEnv-v0",maze_file =  c_paths["STD_MAZE"],                  
       # maze_file="maze"+str(datetime.datetime.now().strftime('%Y-%m-%d--%H-%M') ),
                                     maze_size=(640, 640), 
-                                    enable_render= args.render_train,num_goals=args.ngoals, 
+                                    enable_render= args.render_train,num_goals = 1, 
                                     verbose = args.v, 
                                     random_start_pos = args.random_start_pos,
                                     random_goal_pos = args.random_goal_pos,
@@ -267,9 +267,9 @@ def main():
    n_episodes = args.nepisodes
 
 
-   # if(args.log_reward  ):
-   logOutfile ="generatedData/logs/log-"+EXPERIMENT_DATE+".txt"
-   rewLogFile=open(logOutfile, 'w')
+   if(args.log_reward  ):
+      logOutfile ="generatedData/logs/log-"+EXPERIMENT_DATE+".txt"
+      rewLogFile=open(logOutfile, 'w')
 
             
    '''
@@ -558,19 +558,16 @@ if __name__ == "__main__":
    parser.add_argument('--nepisodes', type=int, default=c_settings["EPISODES"],
                      help='episodes (default: %(default)s)')
 
-   parser.add_argument('--ngoals', type=int, default=1,
-                     help='n goals to collect (default: %(default)s)')
-
    parser.add_argument("--ntrajs",type=int,
                         help='num trajectories value (default: %(default)s)')
 
-   parser.add_argument("--nbuffer",type=int, default=3,
+   parser.add_argument("--nbuffer",type=int, default=c_settings["TRAJECTORIES_BUFFER_SIZE"],
                         help='size of buffer for past trajectories (default: %(default)s)')
 
    # parser.add_argument('--nagents', type=int, default=1,
    #                   help='num of simultaneous agents (supported 1 )(default: %(default)s)')
 
-   parser.add_argument('--nsteps', type=int, default=0,
+   parser.add_argument('--nsteps', type=int, default=c_settings["NSTEPS"],
                      help='enforce n-steps qlearning if 0 is standard qlearning  (default: %(default)s)')
 
    parser.add_argument( '--debug',action='store_true',  default=False,
@@ -591,18 +588,12 @@ if __name__ == "__main__":
    parser.add_argument('--slow',action='store_true',  default=False,
       help='Slow down training to observe behaviour (default: %(default)s)')
 
-   parser.add_argument('--n-random-init', type=int, default=5,
-                     help='n sample pool for random init (default: %(default)s)')
-
    parser.add_argument('--log-reward', action='store_true', default=False,
    help='log reward file in out (default: %(default)s)')
 
    parser.add_argument('--load-qtable', type=str, 
       help='qtable file (default: %(default)s)')
 
-   parser.add_argument('--load-maze', type=str, 
-      help='maze file (default: %(default)s)')
-   
    parser.add_argument("--show-maze-bm", action="store_true",default=False, 
       help='Show Bitmap used as maze')
 
